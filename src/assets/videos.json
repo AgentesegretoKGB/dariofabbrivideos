@@ -1,0 +1,784 @@
+[
+	{
+		"id": 1,
+		"title": "Luca Sommi intervista Dario Fabbri",
+		"url": "https://www.youtube.com/embed/zeW9dxu0MFE",
+		"date": "2025-08-26",
+		"tags": {
+			"format": ["Intervista"],
+			"argomento": ["Guerra in Ucraina","Russia","Analisi militare"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 2,
+		"title": "Filosofia e Geopolitica",
+		"url": "https://www.youtube.com/embed/8La1tvQvUSk",
+		"date": "2022-04-23",
+		"tags": {
+			"format": ["Festa Scienza Filosofia"],
+			"argomento": ["Incontro"],
+			"categoria": ["teoria"]
+		}
+	},
+	{
+		"id": 3,
+		"title": "Potenza, Dei e Demoni",
+		"url": "https://www.youtube.com/embed/PtV_-uNupsU",
+		"date": "2025-10-10",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Trump","USA"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 4,
+		"title": "La vera storia delle guerre di religione",
+		"url": "https://www.youtube.com/embed/WtyIAXxyRDw",
+		"date": "2024-09-25",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Religione","Medioevo","Scuola"],
+			"categoria": ["teoria"]
+		}
+	},
+	{
+		"id": 5,
+		"title": "La cifra culturale in Geopolitica. Come storia e costume influenzano la...",
+		"url": "https://www.youtube.com/embed/N9Czv_fQbg8?start=3325&rel=0",
+		"date": "2023-10-22",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Israele","Etnocentrismo","Iran"],
+			"categoria": ["teoria"]
+		}
+	},
+	{
+		"id": 6,
+		"title": "Alessandro Sallusti intervista Dario Fabbri a la Versalliana",
+		"url": "https://www.youtube.com/embed/By55p4oUKjs?start=3519&rel=0",
+		"date": "2025-08-22",
+		"tags": {
+			"format": ["Intervista"],
+			"argomento": ["Guerra in Ucraina","Italia"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 7,
+		"title": "Quante cine esistono?",
+		"url": "https://www.youtube.com/embed/ByhrY8zSE8g?rel=0",
+		"date": "2025-03-26",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Cina","Taiwan"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 8,
+		"title": "Assemblea generale Confiagricoltura Brescia: Noi della competizione globale",
+		"url": "https://www.youtube.com/embed/PiwHAdOfPrE?start=1658&rel=0",
+		"date": "2024-09-24",
+		"tags": {
+			"format": ["Assemblea"],
+			"argomento": ["Panoramica"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 9,
+		"title": "L'IRAN non è come sembra",
+		"url": "https://www.youtube.com/embed/zOOr2ezafFw?start=1211&rel=0",
+		"date": "2024-09-24",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Iran","Giovani"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 10,
+		"title": "L'Italia e la Sua Identità",
+		"url": "https://www.youtube.com/embed/Z7YrisENxA8?start=31&rel=0",
+		"date": "2025-07-26",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Italia"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 11,
+		"title": "L'Europa è finita? Come Trump ha cambiato le regole del potere globale",
+		"url": "https://www.youtube.com/embed/AsFmCaa0ORs?start=1694&rel=0",
+		"date": "2025-03-16",
+		"tags": {
+			"format": [],
+			"argomento": ["Guerra in Ucraina","Riarmo","EU","USA","Trump"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 12,
+		"title": "Kirk: Aveva presa sui giovani. Biden e Obama hanno voluto evitare...",
+		"url": "https://www.youtube.com/embed/teoer8m1LYQ?rel=0",
+		"date": "2025-09-14",
+		"tags": {
+			"format": ["TV","La7"],
+			"argomento": ["USA","Trump"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 13,
+		"title": "Assemblea generale Confiagricoltura Brescia: 'Il mondo del 2025'",
+		"url": "https://www.youtube.com/embed/zkfToSZhOl8?start=1373&rel=0",
+		"date": "2025-03-03",
+		"tags": {
+			"format": ["Assemblea"],
+			"argomento": ["Panoramica"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 14,
+		"title": "Che mondo fa?",
+		"url": "https://www.youtube.com/embed/_TK2Hb__F4I?rel=0",
+		"date": "2025-09-29",
+		"tags": {
+			"format": ["Intervista"],
+			"argomento": ["Medio Oriente","USA","Trump","Dazi","Guerra in Ucraina","Iran","Gaza"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 15,
+		"title": "“MECH IN ITALY” Assemblea Generale Federmeccanica",
+		"url": "https://www.youtube.com/embed/D8DnFJrFouk?rel=0",
+		"date": "2023-09-27",
+		"tags": {
+			"format": ["Assemblea"],
+			"argomento": ["Panoramica"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 16,
+		"title": "Ucraina, dove eravamo rimasti? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/4wU5DTB7FTg",
+		"date": "2023-10-07",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Guerra in Ucraina"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 17,
+		"title": "Le battaglie di Gaza (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/0zGlROeoYOk",
+		"date": "2023-10-31",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Gaza","Israele"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 18,
+		"title": "Ucraina, dove eravamo rimasti? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/4wU5DTB7FTg",
+		"date": "2023-11-07",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Guerra in Ucraina"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 20,
+		"title": "Risiko imperiale in Medio Oriente (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/-JDxj9vY4uM?rel=0",
+		"date": "2023-11-14",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Cina","USA","Argentina","Javer Milei"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 21,
+		"title": "Cina-USA, la sfida ultima (con Dario Fabbri) - Il Grande Gioco - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/mv94ph-Xqmo?rel=0",
+		"date": "2023-11-21",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Gaza","Hezbollah","Medio Oriente","Israele"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 22,
+		"title": "Gaza: geopolitica della tregua (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/sgrYglMdnE8?rel=0",
+		"date": "2023-11-28",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Gaza","Hezbollah","Medio Oriente","Israele","ONU"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 23,
+		"title": "Il Mondo contro (di noi) - Il Grande Gioco (con Dario Fabbri)",
+		"url": "https://www.youtube.com/embed/nsSpPVnTdqE?rel=0",
+		"date": "2023-12-05",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["ONU","Etnocentrismo","BRICs","Green","Vaticano","Kenya","Russia","Kissinger"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 25,
+		"title": "Demografia e Potenza (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/T-m8K6JXiT4?rel=0",
+		"date": "2023-12-12",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Gaza","Cina","Europa","Green","USA","Israele","Giappone","Russia","Kissinger"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 26,
+		"title": "L'anno che verrà (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/WO1HWCBaFDI?rel=0",
+		"date": "2023-12-19",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Russia","Israele","Gaza","Taiwan","Germania"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 27,
+		"title": "Taiwan: l'arcipelago della tensione (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/Rr1e2LBs8Os?rel=0",
+		"date": "2024-01-09",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Taiwan","Trump","Yemen","USA","Gaza","Guerra in Ucraina"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 28,
+		"title": "L'Europa in guerra (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/ev3F-fIdb3g?rel=0",
+		"date": "2024-03-08",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Guerra in Ucraina","Francia","Yemen","USA","EU","Germania","Agricoltura","Polonia","Italia"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 29,
+		"title": "Russia: vittoria o armageddon (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/9dl2_pULdEo?rel=0",
+		"date": "2024-03-15",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Guerra in Ucraina","Russia","Vaticano"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 30,
+		"title": "America contro America (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/9FE427lzjog?rel=0",
+		"date": "2024-03-22",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["USA","Russia","Cina","Tik Tok"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 31,
+		"title": "Strage di Mosca: misteri e scenari (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/zn7ooE3QhnE?rel=0",
+		"date": "2024-03-30",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Guerra in Ucraina","Russia","Isis"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 32,
+		"title": "Israele contro tutti (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/yuaYYuQIWbg?rel=0",
+		"date": "2024-04-05",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Israele","Siria","Iran"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 33,
+		"title": "Apocalypse now? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/nMuZnhTag70?rel=0",
+		"date": "2024-04-12",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Russia","Guerra in Ucraina","ONU","Israele","Iran","Nucleare"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 34,
+		"title": "Sfida per il Medio Oriente (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/Sa1FJ4nCINs?rel=0",
+		"date": "2024-04-19",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Medio Oriente","Siria","Iran","Israele","Islam","Arabia Saudita"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 35,
+		"title": "India: Superpotenza del futuro? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/0ORCqm_BTT0?rel=0",
+		"date": "2024-04-26",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["India","Islam"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 36,
+		"title": "Dove va la Turchia (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/Y3_7NyrKxlg?rel=0",
+		"date": "2024-05-03",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Turchia","Islam"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 37,
+		"title": "Resa dei conti a Rafah? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/UdPWAUqa0ds?rel=0",
+		"date": "2024-05-10",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Israele","Gaza","USA","Guerra in Ucraina"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 38,
+		"title": "Senza tregua (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/paCEIttl2LE?rel=0",
+		"date": "2024-10-15",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Israele","Gaza","USA","Guerra in Ucraina"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 39,
+		"title": "Dopo Sinwar finisce la guerra? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/BwvOQ2OpDlk?rel=0",
+		"date": "2024-10-22",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Israele","Gaza","Palestina","Yemen"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 40,
+		"title": "BRICS / la sfida dell'“Altro Mondo (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/_RhjLj9WycM?rel=0",
+		"date": "2024-10-29",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["BRICs","ONU","Nord Korea","Russia","Cina"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 41,
+		"title": "Le due anime dell'America (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/v6qUtvyVEoU?rel=0",
+		"date": "2024-11-05",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["USA"],
+			"categoria": ["attualita","teoria"]
+		}
+	},
+	{
+		"id": 42,
+		"title": "Germania, il malato d'Europa | La svolta di Biden sui missili (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/-Rt0l4lpfX8?rel=0",
+		"date": "2024-11-19",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Dazi","Germania"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 43,
+		"title": "Ucraina: negoziato o apocalisse? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/SwICzBvI93U?rel=0",
+		"date": "2024-11-26",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Guerra in Ucraina","Russia","Nord Korea","Ucraina","ONU"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 44,
+		"title": "Siria. Perché adesso? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/o6e54untAG0?rel=0",
+		"date": "2024-12-03",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Siria","Iran","Turchia","Russia","USA"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 45,
+		"title": "Cambia il Mondo, aspettando Trump (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/IgRufm5hGo0?rel=0",
+		"date": "2024-12-10",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Siria","Turchia","Romania","USA"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 46,
+		"title": "Geopolitica Vaticana (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/U7tzJMZ-47w?rel=0",
+		"date": "2024-12-17",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Vaticano","Brasile","USA"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 47,
+		"title": "America senza filtri (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/mxWF0BHykwE?rel=0",
+		"date": "2025-02-04",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["USA","Trump","Dazi","Israele","Gaza","Guerra in Ucraina"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 48,
+		"title": "La Riviera di Gaza? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/y-mx12hgQBI?rel=0",
+		"date": "2025-02-11",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Gaza","Trump","USA","Turchia","Siria","Iran"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 49,
+		"title": "Ucraina: la svolta? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/NdwwMoPa930?rel=0",
+		"date": "2025-02-18",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Guerra in Ucraina","USA","Romania"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 50,
+		"title": "Trump vs Zelensky. Fine dell'Occidente? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/oKth_td4Bmc?rel=0",
+		"date": "2025-03-04",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Trump","Guerra in Ucraina","Inghilterra","Russia"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 51,
+		"title": "Un'Europa marziale? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/Oy1gXhmgCho?rel=0",
+		"date": "2025-03-11",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Europa","Guerra in Ucraina","Francia","Polonia"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 52,
+		"title": "Chi ha paura della Pace? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/Lde7Sm_ub-I?rel=0",
+		"date": "2025-03-18",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Israele","Gaza","Cina","Turchia","Francia"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 53,
+		"title": "Cina: il convitato di pietra (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/kA7_oJtnPDc?rel=0",
+		"date": "2025-03-25",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Cina","Taiwan"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 54,
+		"title": "La fine della Globalizzazione? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/Ke7i8bBAhOo?rel=0",
+		"date": "2025-04-08",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["USA","Trump","Dazi","Russia","Cina","Yemen","Panama","Groellandia","Italia"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 55,
+		"title": "Riarmarci contro chi? (con Dario Fabbri ) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/hR16dzCZPfw?rel=0",
+		"date": "2025-04-15",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Europa","Riarmo","Russia","Francia","Germania","USA","Lettonia"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 56,
+		"title": "Il mondo senza Francesco (e Dario Fabbri risponde alle vostre domande) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/jQ1elaRdo_I?rel=0",
+		"date": "2025-04-22",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Vaticano","Messico","Turchia","Russia","Inghilterra"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 57,
+		"title": "Ucraina: miracolo a San Pietro? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/fL9aPN7GDrQ?rel=0",
+		"date": "2025-04-29",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Vaticano","Guerra in Ucraina","Trump","Russia","Nord Korea","USA"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 58,
+		"title": "Cento giorni di Trump (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/vMDrj8CCloI?rel=0",
+		"date": "2025-05-06",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["USA","Israele","Trump","Gaza","Guerra in Ucraina","Vaticano"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 59,
+		"title": "Il Mondo di Leone / e la telefonata Trump-Putin (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/DFqBOt68udo?rel=0",
+		"date": "2025-05-20",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Vaticano","USA","Trump","Russia","Guerra in Ucraina","Riarmo"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 60,
+		"title": "Israele non si ferma più? - e il dossier missili a Kiev (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/XuULVaKba3g?rel=0",
+		"date": "2025-05-27",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Israele","Gaza","Iran","Turchia","USA","Germania"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 61,
+		"title": "Pace a Gaza? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/oPI_q6fQF0s?rel=0",
+		"date": "2025-05-27",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Israele","Gaza","Trump","Russia","Turchia","USA","Germania"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 62,
+		"title": "Italia, cosa fare",
+		"url": "https://www.youtube.com/embed/oPI_q6fQF0s?rel=0",
+		"date": "2021-01-15",
+		"tags": {
+			"format": ["Limes","Approfondimento Limes"],
+			"argomento": ["Italia"],
+			"categoria": ["teoria"]
+		}
+	},
+	{
+		"id": 63,
+		"title": "Quanto sono potenti i Big Tech?",
+		"url": "https://www.youtube.com/embed/wp4ltijUrZc?rel=0",
+		"date": "2021-01-22",
+		"tags": {
+			"format": ["Limes","Approfondimento Limes"],
+			"argomento": ["USA","Tik Tok"],
+			"categoria": ["teoria"]
+		}
+	},
+	{
+		"id": 64,
+		"title": "Italia, radiografia strategica",
+		"url": "https://www.youtube.com/embed/kpmbB-NtYBk?rel=0",
+		"date": "2021-01-08",
+		"tags": {
+			"format": ["Limes","Approfondimento Limes"],
+			"argomento": ["Italia"],
+			"categoria": ["teoria"]
+		}
+	},
+
+	{
+		"id": 66,
+		"title": "Trump meritava il Nobel? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/Fk8EKy4B8zQ?start=1644&rel=0",
+		"date": "2025-10-14",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Israele","Gaza","Trump","Guerra in Ucraina"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 67,
+		"title": "Polonia vs UE. Perché?",
+		"url": "https://www.youtube.com/embed/8qv9qhDwiHg?start=119&rel=0",
+		"date": "2021-10-15",
+		"tags": {
+			"format": ["Limes","Approfondimento Limes"],
+			"argomento": ["Polonia","EU"],
+			"categoria": ["teoria"]
+		}
+	},
+	{
+		"id": 68,
+		"title": "Che Germania fa",
+		"url": "https://www.youtube.com/embed/JTqt1pzxaVU?rel=0",
+		"date": "2021-10-01",
+		"tags": {
+			"format": ["Limes","Approfondimento Limes"],
+			"argomento": ["Germania"],
+			"categoria": ["teoria"]
+		}
+	},
+    	{
+		"id": 69,
+		"title": "Forum Commercio Internazionale ",
+		"url": "https://www.youtube.com/embed/Hst6Yxh9jwc?start=180&rel=0",
+		"date": "2025-10-16",
+		"tags": {
+			"format": ["Assemblea"],
+			"argomento": ["Panoramica"],
+			"categoria": ["attualita"]
+		}
+	},
+    	{
+		"id": 70,
+		"title": "La rete a stelle e strisce - con Lucio Caracciolo, Dario Fabbri, Niccolò Locatelli",
+		"url": "https://www.youtube.com/embed/N9IClKGUoFQ?start=626&rel=0",
+		"date": "2018-11-26",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["USA", "Big Tech","Russia","Limes"],
+			"categoria": ["Teoria"]
+		}
+	},
+    {
+		"id": 71,
+		"title": "Guerre per la memoria: E' la storia, bellezza!",
+		"url": "https://www.youtube.com/embed/T_LlU1FDtos?rel=0",
+		"date": "2020-9-18",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA", "Cina","Russia","Taiwan","Limes"],
+			"categoria": ["Teoria"]
+		}
+	},
+    {
+		"id": 72,
+		"title": "Genova 2021 - Le Europe nel 2051 - Con Lucio Caracciolo e Dario Fabbri - Festival di Limes",
+		"url": "https://www.youtube.com/embed/-bXEWaaS-28?rel=0",
+		"date": "2021-12-17",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Europa", "EU","Germania","Etnocentrismo","Afghanistan","Limes"],
+			"categoria": ["Teoria"]
+		}
+	},
+    {
+		"id": 73,
+		"title": "Genova 2021 - Strategia fra passato e futuro - Festival di Limes \"La riscoperta del futuro\"",
+		"url": "https://www.youtube.com/embed/zQAt35BsiQk?rel=0",
+		"date": "2021-12-1",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Iran", "Francia","Germania","Trump","Limes"],
+			"categoria": ["Teoria"]
+		}
+	},
+      {
+		"id": 74,
+		"title": "Genova 2021 - La Grande Incognita. La potenza che non vediamo, ma sarà - Festival di Limes",
+		"url": "https://www.youtube.com/embed/2r0oBlPLg3k?rel=0",
+		"date": "2021-12-17",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["India", "Inghilterra","Brasile","Giappone","Turchia","Messico"],
+			"categoria": ["Teoria"]
+		}
+	}
+]

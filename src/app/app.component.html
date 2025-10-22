@@ -1,0 +1,25 @@
+<header class="topbar">
+  <button class="hamburger" [class.open]="drawerOpen" aria-label="Apri menu" (click)="toggleDrawer()">
+    <span class="lines" aria-hidden="true">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </span>
+  </button>
+</header>
+
+<!-- welcome banner removed from app root; displayed only in CatalogComponent -->
+<nav class="side-drawer" [class.open]="drawerOpen" aria-hidden="{{!drawerOpen}}">
+  <ul>
+    <li><a routerLink="/" (click)="toggleDrawer()">Catalogo</a></li>
+    <li><a routerLink="/sources" (click)="toggleDrawer()">Fonti</a></li>
+    <li><a routerLink="/materials" (click)="toggleDrawer()">Materiali utili</a></li>
+  </ul>
+</nav>
+
+<!-- overlay: visible when drawer is open; click to close -->
+<div class="backdrop" *ngIf="drawerOpen" (click)="toggleDrawer()" aria-hidden="false"></div>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,151 @@
+<div class="materials-container">
+  
+  <!-- Header semplice come le altre sezioni -->
+  <div class="materials-header-simple">
+    <h1 class="materials-title">MATERIALI UTILI</h1>
+    <div class="materials-desc">Raccolta di letture e video rilevanti per il discorso</div>
+  </div>
+
+  <!-- Scorrimento orizzontale materiali in evidenza -->
+  <section class="featured-section">
+    <h2 class="section-title">In evidenza</h2>
+    <div class="featured-scroller" 
+         #featuredScroller
+         (mouseenter)="onMouseEnter()" 
+         (mouseleave)="onMouseLeave()">
+      <article class="featured-slot" *ngFor="let material of featuredMaterials">
+        <div class="slot-preview" role="group">
+          <!-- Video embed se in riproduzione -->
+          <ng-container *ngIf="playingId === material.id && material.type === 'video'; else showPoster">
+            <div class="iframe-wrap">
+              <iframe [src]="material.embed | safeUrl" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" [title]="material.title"></iframe>
+              <button class="close-player" (click)="stopVideo()" aria-label="Chiudi player">✕</button>
+            </div>
+          </ng-container>
+          
+          <!-- Poster/Thumbnail -->
+          <ng-template #showPoster>
+            <div class="poster-link" (click)="material.type === 'video' ? playVideo(material) : openMaterial(material)" role="button" [attr.aria-label]="material.type === 'video' ? 'Riproduci ' + material.title : 'Apri ' + material.title">
+              <img [src]="material.poster || 'assets/pdf-placeholder.svg'" [alt]="material.title + ' anteprima'" loading="lazy" />
+              <div class="overlay" aria-hidden="true">
+                <div class="play-icon" *ngIf="material.type === 'video'">▶</div>
+                <div class="type-badge" [class]="'badge-' + material.type">{{ material.type.toUpperCase() }}</div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+        
+        <div class="slot-info">
+          <h3 class="slot-title">{{ material.title }}</h3>
+          <div class="slot-meta">{{ material.author }} • {{ material.date }}</div>
+          <div class="slot-tags" *ngIf="material.tags?.length">
+            <span class="tag" *ngFor="let tag of material.tags">{{ tag }}</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Filtri e ricerca -->
+  <header class="materials-header">
+    <div class="filters">
+      <input type="search" placeholder="Cerca materiali..." [(ngModel)]="searchQuery" aria-label="Cerca materiali" />
+      
+      <select [(ngModel)]="selectedCategory" aria-label="Filtra per categoria">
+        <option value="">Tutte le categorie</option>
+        <option *ngFor="let cat of availableCategories" [value]="cat">{{ cat | titlecase }}</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Griglia completa materiali -->
+  <div class="materials-grid">
+    <article class="material-slot" *ngFor="let material of filteredMaterials()" role="listitem">
+      <div class="preview" role="group">
+        <!-- Video embed se in riproduzione -->
+        <ng-container *ngIf="playingId === material.id && material.type === 'video'; else showMainPoster">
+          <div class="iframe-wrap">
+            <iframe [src]="material.embed | safeUrl" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" [title]="material.title"></iframe>
+            <button class="close-player" (click)="stopVideo()" aria-label="Chiudi player">✕</button>
+          </div>
+        </ng-container>
+        
+        <!-- Poster/Thumbnail principale -->
+        <ng-template #showMainPoster>
+          <div class="poster-link" (click)="material.type === 'video' ? playVideo(material) : openMaterial(material)" role="button" [attr.aria-label]="material.type === 'video' ? 'Riproduci ' + material.title : 'Apri ' + material.title">
+            <ng-container *ngIf="material.poster; else placeholder">
+              <img class="preview-img" [src]="material.poster" [alt]="material.title + ' anteprima'" loading="lazy" />
+            </ng-container>
+            <ng-template #placeholder>
+              <div class="preview-poster" aria-hidden="true">
+                <div class="type-icon" [class]="'icon-' + material.type">
+                  <span *ngIf="material.type === 'video'">▶</span>
+                  <span *ngIf="material.type === 'pdf'">📄</span>
+                  <span *ngIf="material.type === 'link'">🔗</span>
+                  <span *ngIf="material.type === 'document'">📋</span>
+                </div>
+              </div>
+            </ng-template>
+            <div class="overlay" aria-hidden="true">
+              <div class="play-overlay" *ngIf="material.type === 'video'">▶</div>
+              <div class="type-badge" [class]="'badge-' + material.type">{{ material.type.toUpperCase() }}</div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="info">
+        <h3 class="title">{{ material.title }}</h3>
+        <div class="meta">{{ material.author }} • {{ material.date }}</div>
+        <p class="description" *ngIf="material.description">{{ material.description }}</p>
+        
+        <div class="material-data">
+          <div class="data-item" *ngIf="material.category"><strong>Categoria:</strong> {{ material.category | titlecase }}</div>
+          <div class="data-item" *ngIf="material.type"><strong>Tipo:</strong> {{ material.type | titlecase }}</div>
+        </div>
+        
+        <div class="tags" *ngIf="material.tags?.length">
+          <span class="tag" *ngFor="let tag of material.tags">{{ tag }}</span>
+        </div>
+        
+        <div class="actions">
+          <button *ngIf="material.url" (click)="openMaterial(material)" class="btn-primary">
+            <span *ngIf="material.type === 'video'">Guarda</span>
+            <span *ngIf="material.type === 'pdf'">Leggi PDF</span>
+            <span *ngIf="material.type === 'link'">Visita</span>
+            <span *ngIf="material.type === 'document'">Apri</span>
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Sezione Feedback -->
+  <section class="feedback-section">
+    <div class="feedback-container">
+      <h2 class="feedback-title">Suggerisci un materiale</h2>
+      <p class="feedback-desc">
+        Conosci libri, video o documenti che potrebbero arricchire questa raccolta? 
+        Condividi i tuoi suggerimenti per ampliare la biblioteca di risorse geopolitiche.
+      </p>
+      
+      <div class="feedback-options">
+        <!-- Opzione Email -->
+        <div class="feedback-option feedback-option-single">
+          <div class="option-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 7L12 14L21 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Invia Suggerimento</h3>
+          <p>Scrivi direttamente con i tuoi suggerimenti</p>
+          <a href="mailto:dariofabbri.catalogovideo@gmail.com?subject=Suggerimento Materiale&body=Ciao,%0A%0ATi suggerisco questo materiale:%0A%0ATitolo:%0AAutore:%0ALink/Descrizione:%0A%0AMotivazione:%0A%0AGrazie!" 
+             class="btn-feedback" target="_blank">
+            Invia Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

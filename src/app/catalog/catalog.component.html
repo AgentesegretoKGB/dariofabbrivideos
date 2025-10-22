@@ -1,0 +1,118 @@
+
+<div class="app-container">
+
+  <!-- welcome banner: visible only in catalog -->
+  <section class="welcome-banner catalog-banner" role="banner">
+    <div class="welcome-inner">
+      <div class="portrait-shadow" aria-hidden="true"></div>
+      <h1 class="banner-title">Dario Fabbri — Catalogo video</h1>
+      <p class="banner-sub">Benvenuto. Qui trovi gli interventi video di Dario Fabbri. Lo scopo del sito è di organizzare l'intera raccolta per facilitarne la consultazione. Il sito non è ufficiale, ma creato dai fan.</p>
+    </div>
+  </section>
+
+
+  <header class="catalog-header">
+    <div class="filters">
+      <input type="search" placeholder="Cerca titolo o tag..." [(ngModel)]="query" aria-label="Cerca" />
+
+      <select [(ngModel)]="filterFormat" aria-label="Filtra per format">
+        <option value="">Tutti i format</option>
+        <option *ngFor="let f of ['Incontro','Il Grande Gioco','Approfondimento Limes','Mappa Mundi','Intervista','Assemblea']" [value]="f">{{ f }}</option>
+      </select>
+
+      <!-- argomento select removed: using chips below -->
+      
+      <select [(ngModel)]="sortBy" aria-label="Ordina per">
+        <option value="newest">Più recenti</option>
+        <option value="oldest">Più vecchi</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="category-filter" role="group" aria-label="Categoria">
+    <button (click)="setCategory('')" [class.active]="categoryFilter===''">Tutti</button>
+    <button (click)="setCategory('teoria')" [class.active]="categoryFilter==='teoria'">Teoria</button>
+    <button (click)="setCategory('attualita')" [class.active]="categoryFilter==='attualita'">Attualità</button>
+  </div>
+
+  <!-- black separator bar matching grid width -->
+  <div class="grid-separator" aria-hidden="true"></div>
+
+  <div class="argomenti-chips">
+    <span *ngFor="let a of availableArgomenti" class="chip" [class.selected]="selectedArgomenti.has(a)" (click)="toggleArgomento(a)">
+      {{ a }}
+    </span>
+  </div>
+
+  <div class="tag-filter" *ngFor="let g of tagGroups | keyvalue">
+    <span class="tag" *ngFor="let t of g.value" (click)="toggleTag(g.key, t)">
+      {{ t }}
+    </span>
+  </div>
+
+  <div class="videos-grid">
+  <article class="video-slot" *ngFor="let v of applyFilters()" role="listitem">
+    <div class="preview" role="group">
+      <!-- if this video is playing, show inline iframe -->
+      <ng-container *ngIf="playingId===v.id; else showPoster">
+        <div class="iframe-wrap">
+          <iframe [src]="buildEmbedUrl(v.url, true) | safeUrl" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" title="{{ v.title }}" ></iframe>
+          <button class="close-player" (click)="stopVideo()" aria-label="Chiudi player">✕</button>
+        </div>
+      </ng-container>
+      <ng-template #showPoster>
+        <a class="poster-link" (click)="playVideo(v)" role="button" aria-label="Riproduci {{ v.title }}">
+          <ng-container *ngIf="v.poster; else placeholder">
+            <img class="preview-img" [src]="v.poster" [alt]="v.title + ' anteprima'" loading="lazy" />
+            <div class="play-overlay" aria-hidden="true">▶</div>
+          </ng-container>
+          <ng-template #placeholder>
+            <div class="preview-poster" aria-hidden="true">
+              <div class="play-icon">▶</div>
+            </div>
+          </ng-template>
+        </a>
+      </ng-template>
+    </div>
+
+    <div class="info">
+      <h3 class="title">{{ v.title }}</h3>
+      <div class="meta">{{ v.date }} — ID: {{ v.id }}</div>
+
+      <div class="video-data">
+  <div class="data-item"><strong>Format:</strong> {{ (v.tags['format'] || []).join(', ') }}</div>
+  <div class="data-item"><strong>Argomento:</strong> {{ (v.tags['argomento'] || []).join(', ') }}</div>
+        <div class="data-item"><strong>Data:</strong> {{ v.date }}</div>
+      </div>
+    </div>
+  </article>
+</div>
+
+  <!-- Sezione Feedback -->
+  <section class="feedback-section">
+    <div class="feedback-container">
+      <h2 class="feedback-title">Suggerisci un video</h2>
+      <p class="feedback-desc">
+        Contribuisci alla formazione del sito inviando una mail
+      </p>
+      
+      <div class="feedback-options">
+        <!-- Opzione Email -->
+        <div class="feedback-option feedback-option-single">
+          <div class="option-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 7L12 14L21 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Invia Suggerimento</h3>
+          <p>Scrivi direttamente con i tuoi suggerimenti</p>
+          <a href="mailto:dariofabbri.catalogovideo@gmail.com?subject=Suggerimento Video&body=Ciao,%0A%0ATi suggerisco questo video:%0A%0ATitolo:%0ALink YouTube:%0ADescrizione:%0A%0AMotivazione:%0A%0AGrazie!" 
+             class="btn-feedback" target="_blank">
+            Invia Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
