@@ -1,7 +1,10 @@
 /* Materials Container */
 .materials-container {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Header semplice come le altre sezioni */
@@ -46,6 +49,12 @@
   padding: 0.5rem 0 1rem 0;
   scroll-behavior: smooth;
   cursor: grab;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+}
+
+.featured-scroller::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 .featured-scroller:active {
@@ -415,7 +424,7 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .materials-container {
-    padding: 0.75rem;
+    padding: 0.75rem 12px;
   }
   
   .featured-scroller {
@@ -429,11 +438,11 @@
 
 @media (max-width: 768px) {
   .materials-container {
-    padding: 0.5rem;
+    padding: 0.5rem 12px;
   }
   
-  .banner-title {
-    font-size: 2rem;
+  .materials-title {
+    font-size: 1.8rem;
   }
   
   .featured-scroller {
@@ -464,11 +473,12 @@
 
 @media (max-width: 480px) {
   .materials-container {
-    padding: 0.25rem;
+    padding: 0.25rem 8px;
   }
   
-  .banner-title {
-    font-size: 1.75rem;
+  .materials-title {
+    font-size: 1.6rem;
+  }
   }
   
   .featured-scroller {

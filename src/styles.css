@@ -16,6 +16,9 @@ html,body{
 	color: #0f172a;
 	/* Improve mobile scrolling */
 	-webkit-overflow-scrolling: touch;
+	/* Prevent horizontal overflow */
+	overflow-x: hidden;
+	width: 100%;
 }
 
 /* Improve touch targets for mobile */
@@ -27,6 +30,15 @@ button, a, input, select {
 /* Improve tap responsiveness */
 button, a {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Prevent horizontal overflow on all elements */
+* {
+	box-sizing: border-box;
+}
+
+*:not(svg):not(path) {
+	max-width: 100%;
 }
 
 app-root{

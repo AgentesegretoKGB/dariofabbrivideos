@@ -1,8 +1,10 @@
 /* simple */
 .sources-container {
   max-width: 700px;
-  margin: 0 auto 0 60px;
-  padding: 32px 0 48px 0;
+  margin: 0 auto;
+  padding: 32px 16px 48px 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 .sources-title {
   text-align: center;
@@ -55,17 +57,13 @@ section h2 {
   color: #2563eb;
   font-weight: 400;
   margin-left: 0.3em;
+  display: inline-block;
 }
 .opera-link a {
-  display: inline-block;
-  max-width: 220px;
-  vertical-align: bottom;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   color: #2563eb;
   text-decoration: underline;
-  word-break: break-all;
+  word-break: break-word;
+  max-width: 100%;
 }
 .opera-author {
   font-size: 1.01rem;
@@ -317,31 +315,36 @@ section h2 {
 /* Responsive */
 @media (max-width: 1024px) {
   .sources-container {
-    padding: 0.75rem;
-  }
-  
-  .sources-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.25rem;
+    padding: 16px;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 768px) {
   .sources-container {
-    padding: 0.5rem;
+    padding: 12px;
+    margin: 0 auto;
   }
   
-  .banner-title {
-    font-size: 2rem;
+  .sources-title {
+    font-size: 1.8rem;
   }
   
-  .sources-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .sources-list li {
+    padding: 1rem;
+    margin-bottom: 1.5em;
   }
   
-  .source-card {
-    padding: 1.25rem;
+  .opera-main {
+    font-size: 1.05rem;
+    line-height: 1.4;
+  }
+  
+  .opera-link {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.3em;
+    font-size: 0.9rem;
   }
   
   .feedback-options {
@@ -355,28 +358,47 @@ section h2 {
 
 @media (max-width: 480px) {
   .sources-container {
-    padding: 0.25rem;
+    padding: 8px;
+    margin: 0 auto;
   }
   
-  .banner-title {
-    font-size: 1.75rem;
+  .sources-title {
+    font-size: 1.6rem;
   }
   
-  .source-card {
-    padding: 1rem;
+  .sources-note {
+    font-size: 1rem;
+    padding: 0 8px;
   }
   
-  .source-title {
-    font-size: 1.125rem;
+  .sources-list li {
+    padding: 0.875rem;
+    margin-bottom: 1.25em;
   }
   
-  .source-author {
-    font-size: 0.875rem;
+  .opera-main {
+    font-size: 1rem;
+    line-height: 1.5;
   }
   
-  .source-type {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
+  .opera-work {
+    display: block;
+    margin-bottom: 0.3em;
+  }
+  
+  .opera-link {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.4em;
+    font-size: 0.85rem;
+  }
+  
+  .opera-author {
+    font-size: 0.95rem;
+  }
+  
+  .opera-note {
+    font-size: 0.9rem;
   }
   
   .feedback-option {
