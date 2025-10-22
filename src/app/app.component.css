@@ -107,6 +107,46 @@
   margin:0 auto;
 }
 
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .container {
+    padding: 6px 12px 40px 12px;
+  }
+  
+  .hamburger {
+    left: 12px;
+    top: 12px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .side-drawer {
+    width: 100vw;
+    left: -100vw;
+  }
+  
+  .side-drawer.open {
+    left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 6px 8px 40px 8px;
+  }
+  
+  .hamburger {
+    left: 8px;
+    top: 8px;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .hamburger .line {
+    width: 16px;
+  }
+}
+
 .backdrop{
   position:fixed;
   inset:0;
