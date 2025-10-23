@@ -80,7 +80,7 @@
 }
 
 .featured-slot {
-  flex: 0 0 280px;
+  flex: 0 0 240px;
   background: var(--card-bg);
   border-radius: var(--radius);
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -205,8 +205,8 @@
 /* Main Materials Grid */
 .materials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
   padding: 0.5rem 1rem;
 }
 
@@ -432,7 +432,7 @@
   }
   
   .featured-slot {
-    flex: 0 0 260px;
+    flex: 0 0 220px;
   }
 }
 
@@ -450,7 +450,7 @@
   }
   
   .featured-slot {
-    flex: 0 0 240px;
+    flex: 0 0 200px;
   }
   
   .filters {
@@ -495,7 +495,7 @@
   }
   
   .featured-slot {
-    flex: 0 0 200px;
+    flex: 0 0 180px;
   }
   
   .materials-grid {
