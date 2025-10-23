@@ -780,5 +780,192 @@
 			"argomento": ["India", "Inghilterra","Brasile","Giappone","Turchia","Messico"],
 			"categoria": ["Teoria"]
 		}
+	},
+	  {
+		"id": 75,
+		"title": "Ecco cosa c'è dietro ai dazi di Trump, Legacoop Romagna",
+		"url": "https://www.youtube.com/embed/M7gkjGyE_AA?start=2001",
+		"date": "2025-4-18",
+		"tags": {
+			"format": ["Assemblea"],
+			"argomento": ["Panoramica", "Dazi"],
+			"categoria": ["attualita"]
+		}
+	},
+	  {
+		"id": 76,
+		"title": "Quale destino per l'Ucraina? (con Dario Fabbri) - Il Grande Gioco",
+		"url": "https://www.youtube.com/embed/E6TzZYPq_fg",
+		"date": "2025-10-21",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Guerra in Ucraina"],
+			"categoria": ["attualita"]
+		}
+	},
+	  {
+		"id": 77,
+		"title": "Genova 2021 - Italia 2051 - Festival di Limes \"La riscoperta del futuro\"",
+		"url": "https://www.youtube.com/embed/aDI5kK8JURQ?start=2866",
+		"date": "2021-12-20",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Italia"],
+			"categoria": ["Teoria"]
+		}
+	},
+	{
+		"id": 78,
+		"title": "Geopolitica Umana: il Metodo di Dario Fabbri",
+		"url": "https://www.youtube.com/embed/UxKwGSshiZo?start=653",
+		"date": "2025-2-16",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["A.I.","Rinascimento Culturale","Panoramica"],
+			"categoria": ["Teoria"]
+		}
+	},
+	{
+		"id": 80,
+		"title": "L'Errore dei Popoli Occidentali",
+		"url": "https://www.youtube.com/embed/314k6vHPENM",
+		"date": "2025-7-16",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Afghanistan","Etnocentrismo","Panoramica"],
+			"categoria": ["Teoria"]
+		}
+	},
+	{
+		"id": 81,
+		"title": "Il secolo lungo – Dentro la guerra d’Ucraina",
+		"url": "https://www.youtube.com/embed/n6b1PLm7xho?start=4188",
+		"date": "2022-10-29",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Guerra in Ucraina"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 82,
+		"title": "Francia vs woke",
+		"url": "https://www.youtube.com/embed/eH5mdpSOo-4",
+		"date": "2021-10-22",
+		"tags": {
+			"format": ["Approfondimento Limes"],
+			"argomento": ["Francia"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 83,
+		"title": "Il fattore umano",
+		"url": "https://www.youtube.com/embed/hst7SnL1V8c",
+		"date": "2019-10-07",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": [""],
+			"categoria": ["Teoria"]
+		}
+	},
+	{
+		"id": 84,
+		"title": "Limes Risponde 2.12.21",
+		"url": "https://www.youtube.com/embed/MTeexfLVkEE",
+		"date": "2021-12-02",
+		"tags": {
+			"format": ["Intervista"],
+			"argomento": ["Albania","Italia","Panoramica"],
+			"categoria": ["Teoria"]
+		}
+	},
+		{
+		"id": 85,
+		"title": "L'importanza di essere Giappone",
+		"url": "https://www.youtube.com/embed/pENbi_042VI?start=642",
+		"date": "2021-02-19",
+		"tags": {
+			"format": ["Approfondimento Limes"],
+			"argomento": ["Giappone"],
+			"categoria": ["Teoria"]
+		}
+	},
+		{
+		"id": 86,
+		"title": "il ruolo del Pentagono nella diffusione di internet",
+		"url": "https://www.youtube.com/embed/Tx2eAymsNx8",
+		"date": "2018-11-23",
+		"tags": {
+			"format": ["Approfondimento Limes"],
+			"argomento": ["Big Tech"],
+			"categoria": ["Teoria"]
+		}
+	},
+	{
+		"id": 87,
+		"title": "Cuba tra Stati Uniti, Russia e Cina",
+		"url": "https://www.youtube.com/embed/Tx2eAymsNx8",
+		"date": "2021-07-16",
+		"tags": {
+			"format": ["Approfondimento Limes"],
+			"argomento": ["Cuba","USA","Russia","Cina"],
+			"categoria": ["attualita"]
+		}
+	},
+	{
+		"id": 88,
+		"title": "Genova 2021 - Come plasmare le collettività: fra pedagogia e demografia - Festival di Limes",
+		"url": "https://www.youtube.com/embed/fvmPyDJbgEE",
+		"date": "2021-12-09",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Italia"],
+			"categoria": ["Teoria"]
+		}
+	},
+	{
+		"id": 89,
+		"title": "Radiografia strategica della Germania",
+		"url": "https://www.youtube.com/embed/t_kPi2HS_kM",
+		"date": "2021-02-5",
+		"tags": {
+			"format": ["Approfondimento Limes"],
+			"argomento": ["Germania"],
+			"categoria": ["Teoria"]
+		}
+	},
+	{
+		"id": 90,
+		"title": "La Francia Mondiale",
+		"url": "https://www.youtube.com/embed/xVAZJgKX7Mo",
+		"date": "2020-12-11",
+		"tags": {
+			"format": ["Approfondimento Limes"],
+			"argomento": ["Francia"],
+			"categoria": ["Teoria"]
+		}
+	},
+	{
+		"id": 91,
+		"title": "Italia, Spagna, Usa e fattore umano - Limes risponde 4.11.21",
+		"url": "https://www.youtube.com/embed/qs0XJi3NVq4",
+		"date": "2021-11-04",
+		"tags": {
+			"format": ["Approfondimento Limes"],
+			"argomento": ["Spagna","Italia"],
+			"categoria": ["Teoria"]
+		}
+	},
+	{
+		"id": 92,
+		"title": "La Spagna e l'indulto per i catalani. Fine dell'indipendentismo?",
+		"url": "https://www.youtube.com/embed/3aK8jHHve8c",
+		"date": "2021-06-25",
+		"tags": {
+			"format": ["Approfondimento Limes"],
+			"argomento": ["Spagna"],
+			"categoria": ["attualita"]
+		}
 	}
 ]
