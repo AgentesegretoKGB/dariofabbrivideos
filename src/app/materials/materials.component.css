@@ -473,17 +473,25 @@
 
 @media (max-width: 480px) {
   .materials-container {
-    padding: 0.25rem 8px;
+    padding: 0.5rem 12px;
   }
   
   .materials-title {
     font-size: 1.6rem;
   }
+  
+  .materials-desc {
+    padding: 0 4px;
+    font-size: 1rem;
+  }
+  
+  .featured-section {
+    padding: 0 4px;
   }
   
   .featured-scroller {
     gap: 0.75rem;
-    padding: 0 0.5rem;
+    padding: 0 4px;
   }
   
   .featured-slot {
@@ -492,6 +500,7 @@
   
   .materials-grid {
     gap: 0.75rem;
+    padding: 0 4px;
   }
 }
 
