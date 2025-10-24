@@ -31,13 +31,21 @@
 .preview {
 	display: block;
 	width: 100%;
-	aspect-ratio: 16/9;
+	height: 180px; /* Fixed height for consistency */
 	background: linear-gradient(135deg,#0f172a,#111827);
 	color: #fff;
 	text-decoration: none;
+	overflow: hidden;
+	position: relative;
 }
 
-.preview-img{display:block;width:100%;height:100%;object-fit:cover}
+.preview-img{
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center top; /* Show top part of image */
+}
 
 .preview-poster {
 	width: 100%;
@@ -95,6 +103,11 @@
 		gap: 0.6rem; 
 		padding: 0.25rem;
 	}
+	
+	.preview {
+		height: 120px; /* Smaller height for mobile */
+	}
+	
 	.title { font-size: 0.95rem; }
 	
 	.info {
@@ -110,7 +123,16 @@
 		font-size: 0.8rem;
 		line-height: 1.3;
 	}
-	
+}
+
+/* Medium screens - tablets */
+@media (max-width: 768px) and (min-width: 521px) {
+	.preview {
+		height: 150px; /* Medium height for tablets */
+	}
+}
+
+@media (max-width: 520px) {
 	/* Optimize filters for mobile */
 	.filters {
 		flex-direction: column;
