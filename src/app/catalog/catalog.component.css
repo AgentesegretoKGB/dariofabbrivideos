@@ -20,6 +20,8 @@
 	display: flex;
 	flex-direction: column;
 	transition: transform 160ms ease, box-shadow 160ms ease;
+	/* Minimum height to accommodate preview + text */
+	min-height: 300px;
 }
 
 .video-slot:focus-within,
@@ -62,8 +64,12 @@
 }
 
 .info {
-	padding: 0.8rem;
+	padding: 1rem 0.8rem; /* Increased top padding */
 	color: #0f172a;
+	flex: 1; /* Take remaining space */
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 .title {
@@ -104,6 +110,10 @@
 		padding: 0.25rem;
 	}
 	
+	.video-slot {
+		min-height: 220px; /* Accommodate 120px preview + text */
+	}
+	
 	.preview {
 		height: 120px; /* Smaller height for mobile */
 	}
@@ -127,6 +137,10 @@
 
 /* Medium screens - tablets */
 @media (max-width: 768px) and (min-width: 521px) {
+	.video-slot {
+		min-height: 270px; /* Accommodate 150px preview + text */
+	}
+	
 	.preview {
 		height: 150px; /* Medium height for tablets */
 	}
