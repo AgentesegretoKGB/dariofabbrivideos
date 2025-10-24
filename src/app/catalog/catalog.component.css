@@ -104,6 +104,10 @@
 
 /* Tablet sizes */
 @media (max-width: 768px) {
+	.video-slot {
+		min-height: 200px; /* Smaller slot for tablet */
+	}
+	
 	.preview {
 		height: 120px !important;
 		max-height: 120px !important;
@@ -117,7 +121,7 @@
 	}
 	
 	.video-slot {
-		min-height: 180px;
+		min-height: 140px; /* Reduced to fit 80px preview + text */
 	}
 	
 	.preview {
