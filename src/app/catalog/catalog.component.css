@@ -194,6 +194,36 @@
 	.videos-grid { grid-template-columns: 1fr; }
 }
 
+/* Desktop fix - ensure proper layout above mobile breakpoint */
+@media (min-width: 521px) {
+	.preview {
+		display: block;
+		width: 100%;
+		aspect-ratio: 16/9;
+		background: linear-gradient(135deg,#0f172a,#111827);
+		color: #fff;
+		text-decoration: none;
+		position: static;
+		overflow: visible;
+	}
+	
+	.info {
+		padding: 0.8rem;
+		position: static;
+		z-index: auto;
+	}
+	
+	.video-data {
+		margin-top: 6px;
+		gap: 6px;
+	}
+	
+	.data-item {
+		font-size: 0.87rem;
+		line-height: normal;
+	}
+}
+
 .category-filter{display:flex;gap:8px;justify-content:center;margin:8px 0}
 .category-filter button{padding:8px 12px;border-radius:10px;border:1px solid rgba(14,20,30,0.06);background:rgba(255,255,255,0.9);color:var(--muted);font-weight:600}
 .category-filter button:hover{background:rgba(0,0,0,0.06)}
