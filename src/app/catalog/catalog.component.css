@@ -194,7 +194,7 @@
 	.videos-grid { grid-template-columns: 1fr; }
 }
 
-/* Desktop fix - ensure proper layout above mobile breakpoint */
+/* Desktop layout - reset mobile changes for larger screens */
 @media (min-width: 521px) {
 	.preview {
 		display: block;
@@ -203,24 +203,29 @@
 		background: linear-gradient(135deg,#0f172a,#111827);
 		color: #fff;
 		text-decoration: none;
-		position: static;
-		overflow: visible;
+		position: static !important;
+		overflow: visible !important;
 	}
 	
 	.info {
-		padding: 0.8rem;
-		position: static;
-		z-index: auto;
+		padding: 0.8rem !important;
+		position: static !important;
+		z-index: auto !important;
+		background: transparent !important;
 	}
 	
 	.video-data {
-		margin-top: 6px;
-		gap: 6px;
+		margin-top: 6px !important;
+		gap: 6px !important;
 	}
 	
 	.data-item {
-		font-size: 0.87rem;
-		line-height: normal;
+		font-size: 0.87rem !important;
+		line-height: normal !important;
+	}
+	
+	.title {
+		font-size: 1rem !important;
 	}
 }
 
