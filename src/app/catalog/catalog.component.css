@@ -35,10 +35,11 @@
 .preview {
 	display: block;
 	width: 100%;
-	aspect-ratio: 16/9;
+	height: 160px; /* Fixed height instead of aspect-ratio */
 	background: linear-gradient(135deg,#0f172a,#111827);
 	color: #fff;
 	text-decoration: none;
+	flex-shrink: 0; /* Prevent shrinking */
 }
 
 .preview-img{display:block;width:100%;height:100%;object-fit:cover}
@@ -106,15 +107,14 @@
 	}
 	
 	.video-slot {
-		min-height: 220px;
+		min-height: 200px;
+	}
+	
+	.preview {
+		height: 120px; /* Smaller fixed height for mobile */
 	}
 	
 	.title { font-size: 0.95rem; }
-	
-	/* Mobile-specific adjustments - no position changes */
-	.preview {
-		aspect-ratio: 16/9;
-	}
 	
 	.info {
 		padding: 0.75rem;
