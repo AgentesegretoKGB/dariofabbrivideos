@@ -7,8 +7,6 @@
 	display: grid;
  	/* fixed 3 columns layout on wide screens; responsive below */
  	grid-template-columns: repeat(3, minmax(0, 1fr));
- 	/* Set minimum row height to give more space for content */
- 	grid-auto-rows: minmax(280px, auto);
  	gap: 1rem;
  	padding: 0.5rem;
  	justify-items: stretch;
@@ -22,8 +20,6 @@
 	display: flex;
 	flex-direction: column;
 	transition: transform 160ms ease, box-shadow 160ms ease;
-	/* Force minimum height for desktop to prevent overlap */
-	min-height: 280px;
 }
 
 .video-slot:focus-within,
@@ -33,15 +29,12 @@
 }
 
 .preview {
-	display: block !important;
-	width: 100% !important;
-	height: 160px !important; /* Fixed height instead of aspect-ratio */
-	max-height: 160px !important;
+	display: block;
+	width: 100%;
+	aspect-ratio: 16/9;
 	background: linear-gradient(135deg,#0f172a,#111827);
 	color: #fff;
 	text-decoration: none;
-	flex-shrink: 0; /* Prevent shrinking */
-	overflow: hidden;
 }
 
 .preview-img{display:block;width:100%;height:100%;object-fit:cover}
@@ -63,11 +56,6 @@
 .info {
 	padding: 0.8rem;
 	color: #0f172a;
-	/* Ensure info section takes remaining space and doesn't overlap */
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
 }
 
 .title {
@@ -102,33 +90,11 @@
 	font-weight: 600;
 }
 
-/* Tablet sizes */
-@media (max-width: 768px) {
-	.video-slot {
-		min-height: 200px; /* Smaller slot for tablet */
-	}
-	
-	.preview {
-		height: 120px !important;
-		max-height: 120px !important;
-	}
-}
-
 @media (max-width: 520px) {
 	.videos-grid { 
 		gap: 0.6rem; 
 		padding: 0.25rem;
 	}
-	
-	.video-slot {
-		min-height: 140px; /* Reduced to fit 80px preview + text */
-	}
-	
-	.preview {
-		height: 80px !important; /* Much smaller for mobile */
-		max-height: 80px !important;
-	}
-	
 	.title { font-size: 0.95rem; }
 	
 	.info {
