@@ -22,6 +22,8 @@
 	display: flex;
 	flex-direction: column;
 	transition: transform 160ms ease, box-shadow 160ms ease;
+	/* Force minimum height for desktop to prevent overlap */
+	min-height: 280px;
 }
 
 .video-slot:focus-within,
@@ -58,6 +60,11 @@
 .info {
 	padding: 0.8rem;
 	color: #0f172a;
+	/* Ensure info section takes remaining space and doesn't overlap */
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 .title {
@@ -97,19 +104,20 @@
 		gap: 0.6rem; 
 		padding: 0.25rem;
 	}
+	
+	.video-slot {
+		min-height: 220px;
+	}
+	
 	.title { font-size: 0.95rem; }
 	
-	/* Fix preview overlap issue */
+	/* Mobile-specific adjustments - no position changes */
 	.preview {
 		aspect-ratio: 16/9;
-		position: relative;
-		overflow: hidden;
 	}
 	
 	.info {
 		padding: 0.75rem;
-		position: relative;
-		z-index: 1;
 	}
 	
 	.video-data {
