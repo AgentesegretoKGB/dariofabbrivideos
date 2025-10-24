@@ -20,8 +20,8 @@
 	display: flex;
 	flex-direction: column;
 	transition: transform 160ms ease, box-shadow 160ms ease;
-	/* Minimum height to accommodate preview + text */
-	min-height: 300px;
+	/* Minimum height to accommodate preview + text + margin */
+	min-height: 350px;
 }
 
 .video-slot:focus-within,
@@ -72,7 +72,9 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	margin-top: 10px; /* Push text below preview */
+	margin-top: 30px !important; /* Force large gap below preview */
+	position: relative;
+	z-index: 10; /* Ensure text stays above preview */
 }
 
 .title {
@@ -114,18 +116,19 @@
 	}
 	
 	.video-slot {
-		min-height: 220px; /* Accommodate 120px preview + text */
+		min-height: 250px; /* Increased for 120px preview + margin */
 	}
 	
 	.preview {
 		height: 120px; /* Smaller height for mobile */
 	}
 	
-	.title { font-size: 0.95rem; }
-	
 	.info {
+		margin-top: 20px !important;
 		padding: 0.75rem;
 	}
+	
+	.title { font-size: 0.95rem; }
 	
 	.video-data {
 		margin-top: 8px;
@@ -141,11 +144,15 @@
 /* Medium screens - tablets */
 @media (max-width: 768px) and (min-width: 521px) {
 	.video-slot {
-		min-height: 270px; /* Accommodate 150px preview + text */
+		min-height: 300px; /* Increased for 150px preview + margin */
 	}
 	
 	.preview {
 		height: 150px; /* Medium height for tablets */
+	}
+	
+	.info {
+		margin-top: 25px !important;
 	}
 }
 
