@@ -102,6 +102,14 @@
 	font-weight: 600;
 }
 
+/* Tablet sizes */
+@media (max-width: 768px) {
+	.preview {
+		height: 120px !important;
+		max-height: 120px !important;
+	}
+}
+
 @media (max-width: 520px) {
 	.videos-grid { 
 		gap: 0.6rem; 
@@ -109,11 +117,12 @@
 	}
 	
 	.video-slot {
-		min-height: 200px;
+		min-height: 180px;
 	}
 	
 	.preview {
-		height: 120px; /* Smaller fixed height for mobile */
+		height: 80px !important; /* Much smaller for mobile */
+		max-height: 80px !important;
 	}
 	
 	.title { font-size: 0.95rem; }
