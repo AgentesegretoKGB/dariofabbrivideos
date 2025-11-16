@@ -17,11 +17,12 @@
 	border-radius: var(--radius);
 	box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 	overflow: hidden;
-	display: block; /* Change from flex to block */
-	position: relative; /* For absolute positioning of preview */
+	display: flex; /* Back to flex */
+	flex-direction: column;
+	position: relative; /* Keep relative for containment */
 	transition: transform 160ms ease, box-shadow 160ms ease;
-	/* Minimum height to accommodate preview + text + margin */
-	min-height: 350px;
+	/* Bigger height for taller preview */
+	min-height: 480px;
 }
 
 .video-slot:focus-within,
@@ -33,24 +34,24 @@
 .preview {
 	display: block;
 	width: 100%;
-	height: 180px; /* Fixed height for consistency */
+	height: 280px; /* Much taller - increased from 220px */
 	background: linear-gradient(135deg,#0f172a,#111827);
 	color: #fff;
 	text-decoration: none;
 	overflow: hidden;
-	position: absolute; /* Position absolutely at top */
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 1;
+	flex-shrink: 0;
+	flex-grow: 0;
+	order: 1; /* Force preview to be first */
+	margin-bottom: 0; /* Removed white space */
 }
 
 .preview-img{
 	display: block;
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
-	object-position: center top; /* Show top part of image */
+	object-fit: contain; /* Show entire image instead of cropping */
+	object-position: center; /* Center the image */
+	background: #000; /* Black background for letterboxing */
 }
 
 .preview-poster {
@@ -68,13 +69,10 @@
 }
 
 .info {
-	padding: 1rem 0.8rem; /* Increased top padding */
+	padding: 0.8rem; /* Back to minimal padding */
 	color: #0f172a;
-	position: relative;
-	z-index: 10; /* Above preview */
-	/* Push content below the absolutely positioned preview */
-	padding-top: 200px; /* 180px preview + 20px gap */
-	margin-top: 0; /* Remove margin, use padding instead */
+	flex: 1;
+	order: 2; /* Force info to be second */
 }
 
 .title {
@@ -116,17 +114,16 @@
 	}
 	
 	.video-slot {
-		min-height: 220px; /* Compact for mobile */
+		min-height: 320px; /* Adjusted for mobile */
 	}
 	
 	.preview {
-		height: 120px; /* Smaller height for mobile */
+		height: 180px; /* Proportional height for mobile */
+		margin-bottom: 0;
 	}
 	
 	.info {
-		padding-top: 140px; /* 120px preview + 20px gap */
-		padding-left: 0.75rem;
-		padding-right: 0.75rem;
+		padding: 0.8rem 0.75rem;
 	}
 	
 	.title { font-size: 0.95rem; }
@@ -145,15 +142,16 @@
 /* Medium screens - tablets */
 @media (max-width: 768px) and (min-width: 521px) {
 	.video-slot {
-		min-height: 280px; /* Reduced for tablet */
+		min-height: 400px; /* Adjusted for tablet */
 	}
 	
 	.preview {
-		height: 150px; /* Medium height for tablets */
+		height: 220px; /* Proportional height for tablets */
+		margin-bottom: 0;
 	}
 	
 	.info {
-		padding-top: 170px; /* 150px preview + 20px gap */
+		padding: 0.8rem;
 	}
 }
 

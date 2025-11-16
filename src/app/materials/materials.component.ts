@@ -61,13 +61,13 @@ export class MaterialsComponent implements OnInit, OnDestroy {
  { 
       id: 3,
       title: 'Trasimaco - Sulla Giustizia', 
-      description: 'Analisi filosofica del concetto di giustizia nel pensiero di Trasimaco',
+      description: '',
       url: 'assets/Trasimaco giustizia.pdf', 
       type: 'pdf', 
       author: 'Trasimaco', 
       date: '2024-10-20',
       category: 'teoria',
-      tags: ['filosofia', 'giustizia', 'platone', 'sofisti'],
+      tags: ['filosofia', 'diritto'],
       poster: 'assets/pdf-placeholder.svg',
       featured: true
     },
@@ -83,6 +83,32 @@ export class MaterialsComponent implements OnInit, OnDestroy {
       category: 'attualità',
       tags: ['Vaticano','Gaza','Guerra in Ucraina'],
       poster: 'https://img.youtube.com/vi/ng6Chg_uwqs/hqdefault.jpg',
+      featured: true
+    },
+    { 
+      id: 5,
+      title: 'Platone - Apologia di Socrate',
+      description: 'Il potere dei politici',
+      url: 'assets/Platone_Apologia_di_Socrate_DF.pdf',
+      type: 'pdf',
+      author: 'Platone',
+      date: '2025-01-01',
+      category: 'teoria',
+      tags: ['filosofia'],
+      poster: 'assets/pdf-placeholder.svg',
+      featured: true
+    },
+    { 
+      id: 6,
+      title: 'Aristotele - Etica Nicomachea',
+      description: '',
+      url: 'assets/Aristotele, Etica nicomachea .pdf',
+      type: 'pdf',
+      author: 'Aristotele',
+      date: '2025-11-16',
+      category: 'teoria',
+      tags: ['filosofia', 'etica'],
+      poster: 'assets/pdf-placeholder.svg',
       featured: true
     },
   ];
