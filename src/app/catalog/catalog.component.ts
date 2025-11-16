@@ -132,7 +132,7 @@ export class CatalogComponent implements OnInit {
   private loadAllVideos(){
     this.loading = true;
     this.loadError = null;
-    this.http.get<Video[]>('/assets/videos.json').subscribe({
+    this.http.get<Video[]>('assets/videos.json').subscribe({
       next: (data: any[]) => {
         // Map incoming objects: normalize keys if needed
         this.videos = data.map(v => ({
@@ -144,10 +144,12 @@ export class CatalogComponent implements OnInit {
           tags: v.tags || (v as any).tag && { argomento: (v as any).tag } || {}
         } as Video));
         this.loading = false;
+        console.log('Video caricati:', this.videos.length);
       },
       error: (err: any) => {
         this.loadError = String(err);
         this.loading = false;
+        console.error('Errore caricamento video:', err);
       }
     });
   }
