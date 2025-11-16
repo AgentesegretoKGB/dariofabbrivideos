@@ -17,7 +17,9 @@
 
       <select [(ngModel)]="filterFormat" aria-label="Filtra per format">
         <option value="">Tutti i format</option>
-        <option *ngFor="let f of ['Incontro','Il Grande Gioco','Approfondimento Limes','Mappa Mundi','Intervista','Assemblea']" [value]="f">{{ f }}</option>
+        @for (f of ['Incontro','Il Grande Gioco','Approfondimento Limes','Mappa Mundi','Intervista','Assemblea']; track f) {
+        <option [value]="f">{{ f }}</option>
+        }
       </select>
 
       <!-- argomento select removed: using chips below -->
@@ -39,40 +41,45 @@
   <div class="grid-separator" aria-hidden="true"></div>
 
   <div class="argomenti-chips">
-    <span *ngFor="let a of availableArgomenti" class="chip" [class.selected]="selectedArgomenti.has(a)" (click)="toggleArgomento(a)">
+    @for (a of availableArgomenti; track a) {
+    <span class="chip" [class.selected]="selectedArgomenti.has(a)" (click)="toggleArgomento(a)">
       {{ a }}
     </span>
+    }
   </div>
 
-  <div class="tag-filter" *ngFor="let g of tagGroups | keyvalue">
-    <span class="tag" *ngFor="let t of g.value" (click)="toggleTag(g.key, t)">
+  @for (g of tagGroups | keyvalue; track g.key) {
+  <div class="tag-filter">
+    @for (t of g.value; track t) {
+    <span class="tag" (click)="toggleTag(g.key, t)">
       {{ t }}
     </span>
+    }
   </div>
+  }
 
   <div class="videos-grid">
-  <article class="video-slot" *ngFor="let v of applyFilters()" role="listitem">
+  @for (v of applyFilters(); track v.id) {
+  <article class="video-slot" role="listitem">
     <div class="preview" role="group">
       <!-- if this video is playing, show inline iframe -->
-      <ng-container *ngIf="playingId===v.id; else showPoster">
+      @if (playingId===v.id) {
         <div class="iframe-wrap">
-          <iframe [src]="buildEmbedUrl(v.url, true) | safeUrl" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" title="{{ v.title }}" ></iframe>
+          <iframe [src]="buildEmbedUrl(v.url, true) | safeUrl" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" [title]="v.title" ></iframe>
           <button class="close-player" (click)="stopVideo()" aria-label="Chiudi player">✕</button>
         </div>
-      </ng-container>
-      <ng-template #showPoster>
-        <a class="poster-link" (click)="playVideo(v)" role="button" aria-label="Riproduci {{ v.title }}">
-          <ng-container *ngIf="v.poster; else placeholder">
+      } @else {
+        <a class="poster-link" (click)="playVideo(v)" role="button" [attr.aria-label]="'Riproduci ' + v.title">
+          @if (v.poster) {
             <img class="preview-img" [src]="v.poster" [alt]="v.title + ' anteprima'" loading="lazy" />
             <div class="play-overlay" aria-hidden="true">▶</div>
-          </ng-container>
-          <ng-template #placeholder>
+          } @else {
             <div class="preview-poster" aria-hidden="true">
               <div class="play-icon">▶</div>
             </div>
-          </ng-template>
+          }
         </a>
-      </ng-template>
+      }
     </div>
 
     <div class="info">
@@ -86,6 +93,7 @@
       </div>
     </div>
   </article>
+  }
 </div>
 
   <!-- Sezione Feedback -->

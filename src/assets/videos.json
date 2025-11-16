@@ -1899,7 +1899,7 @@
 		"date": "2021-10-21",
 		"tags": {
 			"format": ["Incontro"],
-			"argomento": ["Cina","USA","Italia",],
+			"argomento": ["Cina","USA","Italia"],
 			"categoria": ["attualita"]	
 		}
 	},
@@ -2155,9 +2155,369 @@
 			"argomento": ["Etiopia"],
 			"categoria": ["attualita"]	
 		}
+	},
+	{
+		"id": 194,
+		"title": "Quale destino per l'Ucraina?" ,
+		"url": "https://www.youtube.com/embed/E6TzZYPq_fg",
+		"date": "2025-10-21",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Guerra in Ucraina"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 195,
+		"title": "Il Venezuela e la fortezza americana" ,
+		"url": "https://www.youtube.com/embed/hrlEZQdH3s0",
+		"date": "2025-10-28",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["Venezuela", "USA"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 196,
+		"title": "USA vs Cina. A che punto siamo?" ,
+		"url": "https://www.youtube.com/embed/Dvm9Sp7dIko",
+		"date": "2025-11-04",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["USA","Cina"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 197,
+		"title": "Geopolitica della propaganda" ,
+		"url": "https://www.youtube.com/embed/8wizUDCuruw",
+		"date": "2025-11-11",
+		"tags": {
+			"format": ["Il Grande Gioco"],
+			"argomento": ["USA","Europa","Cina"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 198,
+		"title": "Il destino dei popoli - Lectio magistralis di Dario Fabbri" ,
+		"url": "https://www.youtube.com/embed/_Z9xG2wQihU?start=2085",
+		"date": "2025-11-12",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Panoramica"],
+			"categoria": ["attualita"]	
+		}
+	},
+		{
+		"id": 199,
+		"title": "Texas e Midwest, l'America profonda e gli Usa che verranno" ,
+		"url": "https://www.youtube.com/embed/bGMuF1BqKaw",
+		"date": "2019-01-28",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["teoria"]	
+		}
+	},
+	{
+		"id": 200,
+		"title": "Cos'è la strategia: i vincoli geopolitici di Germania, Italia, Russia e Stati Uniti" ,
+		"url": "https://www.youtube.com/embed/vxd_cM8-WRU",
+		"date": "2019-12-04",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA","Italia","Germania","Russia"],
+			"categoria": ["teoria"]	
+		}
+	},
+	{
+		"id": 201,
+		"title": "Il fattore umano: ecco cos'è la geopolitica" ,
+		"url": "https://www.youtube.com/embed/XWbD2EJzZtg",
+		"date": "2019-09-23",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": [""],
+			"categoria": ["teoria"]	
+		}
+	},
+	{
+		"id": 202,
+		"title": "Festival di Limes - L'Italia tra strategia e pedagogia," ,
+		"url": "https://www.youtube.com/embed/7bNU5IEVHMs",
+		"date": "2019-03-10",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": [""],
+			"categoria": ["teoria"]	
+		}
+	},
+		{
+		"id": 203,
+		"title": "Perché gli americani vogliono costruire il muro Usa-Messico, le ragioni geopolitiche" ,
+		"url": "https://www.youtube.com/embed/red-tgmgr_I",
+		"date": "2019-01-31",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA","Messico"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 204,
+		"title": "Economicismo e potere del mito: le guerre si fanno per il petrolio?" ,
+		"url": "https://www.youtube.com/embed/b91ZOEUt2C4",
+		"date": "2020-03-18",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["Europa","USA","Cina"],
+			"categoria": ["teoria"]	
+		}
+	},
+	{
+		"id": 205,
+		"title": "Il potere del mito: dall'impero romano a quello americano" ,
+		"url": "https://www.youtube.com/embed/346hT0XsmBY",
+		"date": "2020-03-10",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["teoria"]	
+		}
+	},
+		{
+		"id": 206,
+		"title": "Festival di Limes - L'Italia e l'impero americano" ,
+		"url": "https://www.youtube.com/embed/eyBIYGPlD7Y",
+		"date": "2019-03-09",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA","Italia"],
+			"categoria": ["teoria"]	
+		}
+	},
+	{
+		"id": 207,
+		"title": "Usa-Iran, verso la guerra o un nuovo accordo?" ,
+		"url": "https://www.youtube.com/embed/z78nHxZtomg",
+		"date": "2020-02-14",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA","Iran"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 208,
+		"title": "L'Inghilterra oltre Brexit, l'impero britannico e quello americano" ,
+		"url": "https://www.youtube.com/embed/vgqNIlfH_Wc",
+		"date": "2019-06-17",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["Inghilterra"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 209,
+		"title": "Venti di guerra nel Golfo, dagli attacchi alle petroliere all'invio di truppe americane" ,
+		"url": "https://www.youtube.com/embed/YsjorMHT75Q",
+		"date": "2019-05-29",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["Iran"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 210,
+		"title": "Deep State: gli apparati e i contro poteri pubblici e segreti in Usa e nel mondo" ,
+		"url": "https://www.youtube.com/embed/py6o5u6QHhs",
+		"date": "2018-10-12",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 210,
+		"title": "Deep State: gli apparati e i contro poteri pubblici e segreti in Usa e nel mondo" ,
+		"url": "https://www.youtube.com/embed/py6o5u6QHhs",
+		"date": "2018-10-12",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 211,
+		"title": "Chi controlla i mari controlla il mondo" ,
+		"url": "https://www.youtube.com/embed/zZGB4E1Ey4I",
+		"date": "2019-08-01",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["teoria"]	
+		}
+	},
+	{
+		"id": 212,
+		"title": "Il mondo secondo Trump, l'impero americano alla prova di Siria e Russia" ,
+		"url": "https://www.youtube.com/embed/sNi4etcWB_g",
+		"date": "2019-11-07",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA","Russia","Siria"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 213,
+		"title": "La globalizzazione, il controllo dei mari e l'impero americano" ,
+		"url": "https://www.youtube.com/embed/7akXdojn3QA",
+		"date": "2018-11-11",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 214,
+		"title": "Usa, l'abbattimento delle statue di Colombo e l'assimilazione degli ispanici" ,
+		"url": "https://www.youtube.com/embed/cOYY9wkZAsY",
+		"date": "2019-02-05",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 215,
+		"title": "Deep State contro Trump, l'apparato più grande al mondo? Il Pentagono: oltre 3 mln di dipendenti" ,
+		"url": "https://www.youtube.com/embed/LNIa8jsW0Vk",
+		"date": "2018-10-21",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["attualita"]	
+		}
+	},
+		{
+		"id": 216,
+		"title": "Usa, la 'truffa' dell'Afghanistan da Obama a Trump" ,
+		"url": "https://www.youtube.com/embed/Yhgcx4HQGpc",
+		"date": "2018-10-21",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 217,
+		"title": "Cavi sottomarini e server: così gli Usa controllano Internet e i suoi giganti" ,
+		"url": "https://www.youtube.com/embed/qihYuqawlAA",
+		"date": "2018-11-11",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 218,
+		"title": "La strategia della Germania, Merkel-Trump e il G7-10" ,
+		"url": "https://www.youtube.com/embed/0hQy6Mb1PIY",
+		"date": "2020-06-08",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["Germania"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 218,
+		"title": "Hong Kong e Taiwan, una Cina in bilico (e gli Usa non stanno a guardare)" ,
+		"url": "https://www.youtube.com/embed/QuQj-xQRhs8",
+		"date": "2019-10-11",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["Cina"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 219,
+		"title": "Dalla Siria ai profughi verso l'Europa, cosa vuole la Turchia di Erdogan" ,
+		"url": "https://www.youtube.com/embed/tfCe83jwwx8",
+		"date": "2020-03-03",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["Turchia","Siria"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 220,
+		"title": "Il mondo virato: gli Stati Uniti verso un impero meno globale? " ,
+		"url": "https://www.youtube.com/embed/FsTwTryZqeE",
+		"date": "2020-04-21",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 221,
+		"title": "Il mondo virato: gli Stati Uniti verso un impero meno globale?" ,
+		"url": "https://www.youtube.com/embed/FsTwTryZqeE",
+		"date": "2020-04-21",
+		"tags": {
+			"format": ["Mappa Mundi"],
+			"argomento": ["USA"],
+			"categoria": ["attualita"]	
+		}
+	},
+	{
+		"id": 222,
+		"title": "la geopolitica dell’acqua" ,
+		"url": "https://www.youtube.com/embed/iWa86q0tLLk?start=3425",
+		"date": "2024-07-06",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["Panoramica","Iran","USA","Russia","Cina","Taiwan"],
+			"categoria": ["teoria"]	
+		}
+	},
+	{
+		"id": 223,
+		"title": "Sotto la pelle del mondo" ,
+		"url": "https://www.youtube.com/embed/kenWqnVEc20",
+		"date": "2024-12-04",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": [""], 
+			"categoria": ["teoria"]	
+		}
+	},
+	{
+		"id": 224,
+		"title": "I leader e la colpa del mondo" ,
+		"url": "https://www.youtube.com/embed/3jvoN15Z1HA?start=412",
+		"date": "2024-04-14",
+		"tags": {
+			"format": ["Incontro"],
+			"argomento": ["USA"], 
+			"categoria": ["teoria"]	
+		}
 	}
-
-
-
 	
 ]
