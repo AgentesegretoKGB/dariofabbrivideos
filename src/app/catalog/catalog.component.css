@@ -35,7 +35,7 @@
 	display: block;
 	width: 100%;
 	height: 280px; /* Much taller - increased from 220px */
-	background: linear-gradient(135deg,#0f172a,#111827);
+	background: #000; /* Black background for video container */
 	color: #fff;
 	text-decoration: none;
 	overflow: hidden;
