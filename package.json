@@ -8,6 +8,7 @@
   "scripts": {
     "start": "ng serve --open",
     "build": "ng build",
+    "vercel-build": "ng build --configuration production",
     "test": "ng test"
   },
   "dependencies": {
