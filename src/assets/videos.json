@@ -39,7 +39,7 @@
 		"date": "2024-09-25",
 		"tags": {
 			"format": ["Incontro"],
-			"argomento": ["Religione","Medioevo","Scuola"],
+			"argomento": ["Medioevo","Scuola"],
 			"categoria": ["teoria"]
 		}
 	},
@@ -237,7 +237,7 @@
 		"date": "2023-12-05",
 		"tags": {
 			"format": ["Il Grande Gioco"],
-			"argomento": ["ONU","Etnocentrismo","BRICs","Green","Vaticano","Kenya","Russia","Kissinger"],
+			"argomento": ["ONU","Etnocentrismo","BRICs","Green","Vaticano","Kenya","Russia"],
 			"categoria": ["attualita"]
 		}
 	},
@@ -248,7 +248,7 @@
 		"date": "2023-12-12",
 		"tags": {
 			"format": ["Il Grande Gioco"],
-			"argomento": ["Gaza","Cina","Europa","Green","USA","Israele","Giappone","Russia","Kissinger"],
+			"argomento": ["Gaza","Cina","Europa","Green","USA","Israele","Giappone","Russia"],
 			"categoria": ["attualita"]
 		}
 	},
@@ -303,7 +303,7 @@
 		"date": "2024-03-22",
 		"tags": {
 			"format": ["Il Grande Gioco"],
-			"argomento": ["USA","Russia","Cina","Tik Tok"],
+			"argomento": ["USA","Russia","Cina"],
 			"categoria": ["attualita"]
 		}
 	},
@@ -336,7 +336,7 @@
 		"date": "2024-04-12",
 		"tags": {
 			"format": ["Il Grande Gioco"],
-			"argomento": ["Russia","Guerra in Ucraina","ONU","Israele","Iran","Nucleare"],
+			"argomento": ["Russia","Guerra in Ucraina","ONU","Israele","Iran"],
 			"categoria": ["attualita"]
 		}
 	},
@@ -666,7 +666,7 @@
 		"date": "2021-01-22",
 		"tags": {
 			"format": ["Limes","Approfondimento Limes"],
-			"argomento": ["USA","Tik Tok"],
+			"argomento": ["USA"],
 			"categoria": ["teoria"]
 		}
 	},
@@ -821,7 +821,7 @@
 		"date": "2025-2-16",
 		"tags": {
 			"format": ["Incontro"],
-			"argomento": ["A.I.","Rinascimento Culturale","Panoramica","Limes"],
+			"argomento": ["A.I.","Panoramica","Limes"],
 			"categoria": ["Teoria"]
 		}
 	},
@@ -1140,7 +1140,7 @@
 		"date": "2015-03-12",
 		"tags": {
 			"format": ["Incontro"],
-			"argomento": ["panoramica","Limes"],
+			"argomento": ["Panoramica","Limes"],
 			"categoria": ["attualita"]
 		}
 	},
@@ -1360,7 +1360,7 @@
 		"date": "2021-07-30",
 		"tags": {
 			"format": ["Approfondimento Limes"],
-			"argomento": ["Francia","Tuchia"],
+			"argomento": ["Francia","Turchia"],
 			"categoria": ["attualita"]	
 		}
 	},
