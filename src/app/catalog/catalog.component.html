@@ -6,7 +6,7 @@
     <div class="welcome-inner">
       <div class="portrait-shadow" aria-hidden="true"></div>
       <h1 class="banner-title">Dario Fabbri — Catalogo video</h1>
-      <p class="banner-sub">Benvenuto. Qui trovi gli interventi video di Dario Fabbri. Lo scopo del sito è di organizzare l'intera raccolta per facilitarne la consultazione. Il sito non è ufficiale, ma creato dai fan.</p>
+      <p class="banner-sub">Benvenuto. Qui trovi una raccolta dinamica di tutti (ci proviamo) i video di Dario Fabbri. Lo scopo è quello di facilitare il reperimento di dosi per tutti i soggetti affetti da fabbrite. Traduco: se siete alla ricerca di nuovi video qui li troverete</p>
     </div>
   </section>
 
@@ -84,7 +84,7 @@
 
     <div class="info">
       <h3 class="title">{{ v.title }}</h3>
-      <div class="meta">{{ v.date }} — ID: {{ v.id }}</div>
+      <div class="meta">{{ v.date }}</div>
 
       <div class="video-data">
   <div class="data-item"><strong>Format:</strong> {{ (v.tags['format'] || []).join(', ') }}</div>
@@ -94,6 +94,8 @@
     </div>
   </article>
   }
+</div>
+
 </div>
 
   <!-- Sezione Feedback -->
@@ -123,4 +125,3 @@
       </div>
     </div>
   </section>
-</div>

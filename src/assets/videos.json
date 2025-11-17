@@ -1,2523 +1,3992 @@
 [
-	{
-		"id": 1,
-		"title": "Luca Sommi intervista Dario Fabbri",
-		"url": "https://www.youtube.com/embed/zeW9dxu0MFE",
-		"date": "2025-08-26",
-		"tags": {
-			"format": ["Intervista"],
-			"argomento": ["Guerra in Ucraina","Russia","Analisi militare"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 2,
-		"title": "Filosofia e Geopolitica",
-		"url": "https://www.youtube.com/embed/8La1tvQvUSk",
-		"date": "2022-04-23",
-		"tags": {
-			"format": ["Festa Scienza Filosofia"],
-			"argomento": ["Incontro"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 3,
-		"title": "Potenza, Dei e Demoni",
-		"url": "https://www.youtube.com/embed/PtV_-uNupsU",
-		"date": "2025-10-10",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Trump","USA"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 4,
-		"title": "La vera storia delle guerre di religione",
-		"url": "https://www.youtube.com/embed/WtyIAXxyRDw",
-		"date": "2024-09-25",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Medioevo","Scuola"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 5,
-		"title": "La cifra culturale in Geopolitica. Come storia e costume influenzano la...",
-		"url": "https://www.youtube.com/embed/N9Czv_fQbg8?start=3325&rel=0",
-		"date": "2023-10-22",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Israele","Etnocentrismo","Iran"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 6,
-		"title": "Alessandro Sallusti intervista Dario Fabbri a la Versalliana",
-		"url": "https://www.youtube.com/embed/By55p4oUKjs?start=3519&rel=0",
-		"date": "2025-08-22",
-		"tags": {
-			"format": ["Intervista"],
-			"argomento": ["Guerra in Ucraina","Italia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 7,
-		"title": "Quante cine esistono?",
-		"url": "https://www.youtube.com/embed/ByhrY8zSE8g?rel=0",
-		"date": "2025-03-26",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Cina","Taiwan"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 8,
-		"title": "Assemblea generale Confiagricoltura Brescia: Noi della competizione globale",
-		"url": "https://www.youtube.com/embed/PiwHAdOfPrE?start=1658&rel=0",
-		"date": "2024-09-24",
-		"tags": {
-			"format": ["Assemblea"],
-			"argomento": ["Panoramica"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 9,
-		"title": "L'IRAN non è come sembra",
-		"url": "https://www.youtube.com/embed/zOOr2ezafFw?start=1211&rel=0",
-		"date": "2024-09-24",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Iran","Giovani"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 10,
-		"title": "L'Italia e la Sua Identità",
-		"url": "https://www.youtube.com/embed/Z7YrisENxA8?start=31&rel=0",
-		"date": "2025-07-26",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Italia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 11,
-		"title": "L'Europa è finita? Come Trump ha cambiato le regole del potere globale",
-		"url": "https://www.youtube.com/embed/AsFmCaa0ORs?start=1694&rel=0",
-		"date": "2025-03-16",
-		"tags": {
-			"format": [],
-			"argomento": ["Guerra in Ucraina","Riarmo","EU","USA","Trump"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 12,
-		"title": "Kirk: Aveva presa sui giovani. Biden e Obama hanno voluto evitare...",
-		"url": "https://www.youtube.com/embed/teoer8m1LYQ?rel=0",
-		"date": "2025-09-14",
-		"tags": {
-			"format": ["TV","La7"],
-			"argomento": ["USA","Trump"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 13,
-		"title": "Assemblea generale Confiagricoltura Brescia: 'Il mondo del 2025'",
-		"url": "https://www.youtube.com/embed/zkfToSZhOl8?start=1373&rel=0",
-		"date": "2025-03-03",
-		"tags": {
-			"format": ["Assemblea"],
-			"argomento": ["Panoramica"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 14,
-		"title": "Che mondo fa?",
-		"url": "https://www.youtube.com/embed/_TK2Hb__F4I?rel=0",
-		"date": "2025-09-29",
-		"tags": {
-			"format": ["Intervista"],
-			"argomento": ["Medio Oriente","USA","Trump","Dazi","Guerra in Ucraina","Iran","Gaza"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 15,
-		"title": "“MECH IN ITALY” Assemblea Generale Federmeccanica",
-		"url": "https://www.youtube.com/embed/D8DnFJrFouk?rel=0",
-		"date": "2023-09-27",
-		"tags": {
-			"format": ["Assemblea"],
-			"argomento": ["Panoramica"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 16,
-		"title": "Ucraina, dove eravamo rimasti? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/4wU5DTB7FTg",
-		"date": "2023-10-07",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Guerra in Ucraina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 17,
-		"title": "Le battaglie di Gaza (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/0zGlROeoYOk",
-		"date": "2023-10-31",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Gaza","Israele"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 18,
-		"title": "Ucraina, dove eravamo rimasti? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/4wU5DTB7FTg",
-		"date": "2023-11-07",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Guerra in Ucraina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 20,
-		"title": "Risiko imperiale in Medio Oriente (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/-JDxj9vY4uM?rel=0",
-		"date": "2023-11-14",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Cina","USA","Argentina","Javer Milei"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 21,
-		"title": "Cina-USA, la sfida ultima (con Dario Fabbri) - Il Grande Gioco - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/mv94ph-Xqmo?rel=0",
-		"date": "2023-11-21",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Gaza","Hezbollah","Medio Oriente","Israele"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 22,
-		"title": "Gaza: geopolitica della tregua (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/sgrYglMdnE8?rel=0",
-		"date": "2023-11-28",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Gaza","Hezbollah","Medio Oriente","Israele","ONU"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 23,
-		"title": "Il Mondo contro (di noi) - Il Grande Gioco (con Dario Fabbri)",
-		"url": "https://www.youtube.com/embed/nsSpPVnTdqE?rel=0",
-		"date": "2023-12-05",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["ONU","Etnocentrismo","BRICs","Green","Vaticano","Kenya","Russia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 25,
-		"title": "Demografia e Potenza (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/T-m8K6JXiT4?rel=0",
-		"date": "2023-12-12",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Gaza","Cina","Europa","Green","USA","Israele","Giappone","Russia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 26,
-		"title": "L'anno che verrà (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/WO1HWCBaFDI?rel=0",
-		"date": "2023-12-19",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Russia","Israele","Gaza","Taiwan","Germania"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 27,
-		"title": "Taiwan: l'arcipelago della tensione (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/Rr1e2LBs8Os?rel=0",
-		"date": "2024-01-09",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Taiwan","Trump","Yemen","USA","Gaza","Guerra in Ucraina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 28,
-		"title": "L'Europa in guerra (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/ev3F-fIdb3g?rel=0",
-		"date": "2024-03-08",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Guerra in Ucraina","Francia","Yemen","USA","EU","Germania","Agricoltura","Polonia","Italia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 29,
-		"title": "Russia: vittoria o armageddon (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/9dl2_pULdEo?rel=0",
-		"date": "2024-03-15",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Guerra in Ucraina","Russia","Vaticano"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 30,
-		"title": "America contro America (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/9FE427lzjog?rel=0",
-		"date": "2024-03-22",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["USA","Russia","Cina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 31,
-		"title": "Strage di Mosca: misteri e scenari (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/zn7ooE3QhnE?rel=0",
-		"date": "2024-03-30",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Guerra in Ucraina","Russia","Isis"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 32,
-		"title": "Israele contro tutti (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/yuaYYuQIWbg?rel=0",
-		"date": "2024-04-05",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Israele","Siria","Iran"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 33,
-		"title": "Apocalypse now? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/nMuZnhTag70?rel=0",
-		"date": "2024-04-12",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Russia","Guerra in Ucraina","ONU","Israele","Iran"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 34,
-		"title": "Sfida per il Medio Oriente (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/Sa1FJ4nCINs?rel=0",
-		"date": "2024-04-19",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Medio Oriente","Siria","Iran","Israele","Islam","Arabia Saudita"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 35,
-		"title": "India: Superpotenza del futuro? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/0ORCqm_BTT0?rel=0",
-		"date": "2024-04-26",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["India","Islam"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 36,
-		"title": "Dove va la Turchia (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/Y3_7NyrKxlg?rel=0",
-		"date": "2024-05-03",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Turchia","Islam"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 37,
-		"title": "Resa dei conti a Rafah? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/UdPWAUqa0ds?rel=0",
-		"date": "2024-05-10",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Israele","Gaza","USA","Guerra in Ucraina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 38,
-		"title": "Senza tregua (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/paCEIttl2LE?rel=0",
-		"date": "2024-10-15",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Israele","Gaza","USA","Guerra in Ucraina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 39,
-		"title": "Dopo Sinwar finisce la guerra? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/BwvOQ2OpDlk?rel=0",
-		"date": "2024-10-22",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Israele","Gaza","Palestina","Yemen"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 40,
-		"title": "BRICS / la sfida dell'“Altro Mondo (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/_RhjLj9WycM?rel=0",
-		"date": "2024-10-29",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["BRICs","ONU","Nord Korea","Russia","Cina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 41,
-		"title": "Le due anime dell'America (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/v6qUtvyVEoU?rel=0",
-		"date": "2024-11-05",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["USA"],
-			"categoria": ["attualita","teoria"]
-		}
-	},
-	{
-		"id": 42,
-		"title": "Germania, il malato d'Europa | La svolta di Biden sui missili (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/-Rt0l4lpfX8?rel=0",
-		"date": "2024-11-19",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Dazi","Germania"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 43,
-		"title": "Ucraina: negoziato o apocalisse? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/SwICzBvI93U?rel=0",
-		"date": "2024-11-26",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Guerra in Ucraina","Russia","Nord Korea","Ucraina","ONU"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 44,
-		"title": "Siria. Perché adesso? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/o6e54untAG0?rel=0",
-		"date": "2024-12-03",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Siria","Iran","Turchia","Russia","USA"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 45,
-		"title": "Cambia il Mondo, aspettando Trump (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/IgRufm5hGo0?rel=0",
-		"date": "2024-12-10",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Siria","Turchia","Romania","USA"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 46,
-		"title": "Geopolitica Vaticana (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/U7tzJMZ-47w?rel=0",
-		"date": "2024-12-17",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Vaticano","Brasile","USA"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 47,
-		"title": "America senza filtri (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/mxWF0BHykwE?rel=0",
-		"date": "2025-02-04",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["USA","Trump","Dazi","Israele","Gaza","Guerra in Ucraina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 48,
-		"title": "La Riviera di Gaza? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/y-mx12hgQBI?rel=0",
-		"date": "2025-02-11",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Gaza","Trump","USA","Turchia","Siria","Iran"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 49,
-		"title": "Ucraina: la svolta? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/NdwwMoPa930?rel=0",
-		"date": "2025-02-18",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Guerra in Ucraina","USA","Romania"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 50,
-		"title": "Trump vs Zelensky. Fine dell'Occidente? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/oKth_td4Bmc?rel=0",
-		"date": "2025-03-04",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Trump","Guerra in Ucraina","Inghilterra","Russia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 51,
-		"title": "Un'Europa marziale? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/Oy1gXhmgCho?rel=0",
-		"date": "2025-03-11",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Europa","Guerra in Ucraina","Francia","Polonia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 52,
-		"title": "Chi ha paura della Pace? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/Lde7Sm_ub-I?rel=0",
-		"date": "2025-03-18",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Israele","Gaza","Cina","Turchia","Francia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 53,
-		"title": "Cina: il convitato di pietra (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/kA7_oJtnPDc?rel=0",
-		"date": "2025-03-25",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Cina","Taiwan"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 54,
-		"title": "La fine della Globalizzazione? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/Ke7i8bBAhOo?rel=0",
-		"date": "2025-04-08",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["USA","Trump","Dazi","Russia","Cina","Yemen","Panama","Groellandia","Italia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 55,
-		"title": "Riarmarci contro chi? (con Dario Fabbri ) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/hR16dzCZPfw?rel=0",
-		"date": "2025-04-15",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Europa","Riarmo","Russia","Francia","Germania","USA","Lettonia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 56,
-		"title": "Il mondo senza Francesco (e Dario Fabbri risponde alle vostre domande) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/jQ1elaRdo_I?rel=0",
-		"date": "2025-04-22",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Vaticano","Messico","Turchia","Russia","Inghilterra"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 57,
-		"title": "Ucraina: miracolo a San Pietro? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/fL9aPN7GDrQ?rel=0",
-		"date": "2025-04-29",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Vaticano","Guerra in Ucraina","Trump","Russia","Nord Korea","USA"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 58,
-		"title": "Cento giorni di Trump (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/vMDrj8CCloI?rel=0",
-		"date": "2025-05-06",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["USA","Israele","Trump","Gaza","Guerra in Ucraina","Vaticano"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 59,
-		"title": "Il Mondo di Leone / e la telefonata Trump-Putin (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/DFqBOt68udo?rel=0",
-		"date": "2025-05-20",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Vaticano","USA","Trump","Russia","Guerra in Ucraina","Riarmo"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 60,
-		"title": "Israele non si ferma più? - e il dossier missili a Kiev (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/XuULVaKba3g?rel=0",
-		"date": "2025-05-27",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Israele","Gaza","Iran","Turchia","USA","Germania"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 61,
-		"title": "Pace a Gaza? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/oPI_q6fQF0s?rel=0",
-		"date": "2025-05-27",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Israele","Gaza","Trump","Russia","Turchia","USA","Germania"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 62,
-		"title": "Italia, cosa fare",
-		"url": "https://www.youtube.com/embed/oPI_q6fQF0s?rel=0",
-		"date": "2021-01-15",
-		"tags": {
-			"format": ["Limes","Approfondimento Limes"],
-			"argomento": ["Italia"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 63,
-		"title": "Quanto sono potenti i Big Tech?",
-		"url": "https://www.youtube.com/embed/wp4ltijUrZc?rel=0",
-		"date": "2021-01-22",
-		"tags": {
-			"format": ["Limes","Approfondimento Limes"],
-			"argomento": ["USA"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 64,
-		"title": "Italia, radiografia strategica",
-		"url": "https://www.youtube.com/embed/kpmbB-NtYBk?rel=0",
-		"date": "2021-01-08",
-		"tags": {
-			"format": ["Limes","Approfondimento Limes"],
-			"argomento": ["Italia"],
-			"categoria": ["teoria"]
-		}
-	},
-
-	{
-		"id": 66,
-		"title": "Trump meritava il Nobel? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/Fk8EKy4B8zQ?start=1644&rel=0",
-		"date": "2025-10-14",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Israele","Gaza","Trump","Guerra in Ucraina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 67,
-		"title": "Polonia vs UE. Perché?",
-		"url": "https://www.youtube.com/embed/8qv9qhDwiHg?start=119&rel=0",
-		"date": "2021-10-15",
-		"tags": {
-			"format": ["Limes","Approfondimento Limes"],
-			"argomento": ["Polonia","EU"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 68,
-		"title": "Che Germania fa",
-		"url": "https://www.youtube.com/embed/JTqt1pzxaVU?rel=0",
-		"date": "2021-10-01",
-		"tags": {
-			"format": ["Limes","Approfondimento Limes"],
-			"argomento": ["Germania"],
-			"categoria": ["teoria"]
-		}
-	},
-    	{
-		"id": 69,
-		"title": "Forum Commercio Internazionale ",
-		"url": "https://www.youtube.com/embed/Hst6Yxh9jwc?start=180&rel=0",
-		"date": "2025-10-16",
-		"tags": {
-			"format": ["Assemblea"],
-			"argomento": ["Panoramica"],
-			"categoria": ["attualita"]
-		}
-	},
-    	{
-		"id": 70,
-		"title": "La rete a stelle e strisce - con Lucio Caracciolo, Dario Fabbri, Niccolò Locatelli",
-		"url": "https://www.youtube.com/embed/N9IClKGUoFQ?start=626&rel=0",
-		"date": "2018-11-26",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA", "Big Tech","Russia","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-    {
-		"id": 71,
-		"title": "Guerre per la memoria: E' la storia, bellezza!",
-		"url": "https://www.youtube.com/embed/T_LlU1FDtos?rel=0",
-		"date": "2020-9-18",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA", "Cina","Russia","Taiwan","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-    {
-		"id": 72,
-		"title": "Genova 2021 - Le Europe nel 2051 - Con Lucio Caracciolo e Dario Fabbri - Festival di Limes",
-		"url": "https://www.youtube.com/embed/-bXEWaaS-28?rel=0",
-		"date": "2021-12-17",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Europa", "EU","Germania","Etnocentrismo","Afghanistan","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-    {
-		"id": 73,
-		"title": "Genova 2021 - Strategia fra passato e futuro - Festival di Limes \"La riscoperta del futuro\"",
-		"url": "https://www.youtube.com/embed/zQAt35BsiQk?rel=0",
-		"date": "2021-12-1",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Iran", "Francia","Germania","Trump","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-      {
-		"id": 74,
-		"title": "Genova 2021 - La Grande Incognita. La potenza che non vediamo, ma sarà - Festival di Limes",
-		"url": "https://www.youtube.com/embed/2r0oBlPLg3k?rel=0",
-		"date": "2021-12-17",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["India", "Inghilterra","Brasile","Giappone","Turchia","Messico","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-	  {
-		"id": 75,
-		"title": "Ecco cosa c'è dietro ai dazi di Trump, Legacoop Romagna",
-		"url": "https://www.youtube.com/embed/M7gkjGyE_AA?start=2001",
-		"date": "2025-4-18",
-		"tags": {
-			"format": ["Assemblea"],
-			"argomento": ["Panoramica", "Dazi"],
-			"categoria": ["attualita"]
-		}
-	},
-	  {
-		"id": 76,
-		"title": "Quale destino per l'Ucraina? (con Dario Fabbri) - Il Grande Gioco",
-		"url": "https://www.youtube.com/embed/E6TzZYPq_fg",
-		"date": "2025-10-21",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Guerra in Ucraina"],
-			"categoria": ["attualita"]
-		}
-	},
-	  {
-		"id": 77,
-		"title": "Genova 2021 - Italia 2051 - Festival di Limes \"La riscoperta del futuro\"",
-		"url": "https://www.youtube.com/embed/aDI5kK8JURQ?start=2866",
-		"date": "2021-12-20",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Italia","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 78,
-		"title": "Geopolitica Umana: il Metodo di Dario Fabbri",
-		"url": "https://www.youtube.com/embed/UxKwGSshiZo?start=653",
-		"date": "2025-2-16",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["A.I.","Panoramica","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 80,
-		"title": "L'Errore dei Popoli Occidentali",
-		"url": "https://www.youtube.com/embed/314k6vHPENM",
-		"date": "2025-7-16",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Afghanistan","Etnocentrismo","Panoramica","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 81,
-		"title": "Il secolo lungo – Dentro la guerra d’Ucraina",
-		"url": "https://www.youtube.com/embed/n6b1PLm7xho?start=4188",
-		"date": "2022-10-29",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Guerra in Ucraina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 82,
-		"title": "Francia vs woke",
-		"url": "https://www.youtube.com/embed/eH5mdpSOo-4",
-		"date": "2021-10-22",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Francia"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 83,
-		"title": "Il fattore umano",
-		"url": "https://www.youtube.com/embed/hst7SnL1V8c",
-		"date": "2019-10-07",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Guerra in Ucraina","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 84,
-		"title": "Limes Risponde 2.12.21",
-		"url": "https://www.youtube.com/embed/MTeexfLVkEE",
-		"date": "2021-12-02",
-		"tags": {
-			"format": ["Intervista"],
-			"argomento": ["Albania","Italia","Panoramica"],
-			"categoria": ["Teoria"]
-		}
-	},
-		{
-		"id": 85,
-		"title": "L'importanza di essere Giappone",
-		"url": "https://www.youtube.com/embed/pENbi_042VI?start=642",
-		"date": "2021-02-19",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Giappone"],
-			"categoria": ["Teoria"]
-		}
-	},
-		{
-		"id": 86,
-		"title": "il ruolo del Pentagono nella diffusione di internet",
-		"url": "https://www.youtube.com/embed/Tx2eAymsNx8",
-		"date": "2018-11-23",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Big Tech"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 87,
-		"title": "Cuba tra Stati Uniti, Russia e Cina",
-		"url": "https://www.youtube.com/embed/Tx2eAymsNx8",
-		"date": "2021-07-16",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Cuba","USA","Russia","Cina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 88,
-		"title": "Genova 2021 - Come plasmare le collettività: fra pedagogia e demografia - Festival di Limes",
-		"url": "https://www.youtube.com/embed/fvmPyDJbgEE",
-		"date": "2021-12-09",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Italia","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 89,
-		"title": "Radiografia strategica della Germania",
-		"url": "https://www.youtube.com/embed/t_kPi2HS_kM",
-		"date": "2021-02-5",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Germania"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 90,
-		"title": "La Francia Mondiale",
-		"url": "https://www.youtube.com/embed/xVAZJgKX7Mo",
-		"date": "2020-12-11",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Francia"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 91,
-		"title": "Italia, Spagna, Usa e fattore umano - Limes risponde 4.11.21",
-		"url": "https://www.youtube.com/embed/qs0XJi3NVq4",
-		"date": "2021-11-04",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Spagna","Italia"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 92,
-		"title": "La Spagna e l'indulto per i catalani. Fine dell'indipendentismo?",
-		"url": "https://www.youtube.com/embed/3aK8jHHve8c",
-		"date": "2021-06-25",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Spagna"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 93,
-		"title": "Polonia vs UE. Perché?",
-		"url": "https://www.youtube.com/embed/8qv9qhDwiHg",
-		"date": "2021-10-15",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Polonia","EU"],
-			"categoria": ["Teoria"]
-		}
-	},
-		{
-		"id": 94,
-		"title": "L'Europa e i vaccini",
-		"url": "https://www.youtube.com/embed/EMtUxLrQBi0",
-		"date": "2021-03-12",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["EU"],
-			"categoria": ["Teoria"]
-		}
-	},
-		{
-		"id": 95,
-		"title": "Il nuovo Giappone nel contesto asiatico",
-		"url": "https://www.youtube.com/embed/ilrK1NYH5es",
-		"date": "2021-02-26",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Giappone"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 96,
-		"title": "L'importanza della Corea del Nord. Perché Biden cerca Kim",
-		"url": "https://www.youtube.com/embed/v_z4HSxGUlY",
-		"date": "2021-03-26",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Corea"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 97,
-		"title": "Quanto è unita l'Italia?",
-		"url": "https://www.youtube.com/embed/-JALvmDX8BQ",
-		"date": "2021-03-25",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Italia"],
-			"categoria": ["Teoria"]
-		}
-	},
-		{
-		"id": 98,
-		"title": "Presente e futuro del Regno (dis)Unito",
-		"url": "https://www.youtube.com/embed/nHIY7nnpfa0",
-		"date": "2021-03-19",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Inghilterra","Scozia","Irlanda"],
-			"categoria": ["Teoria"]
-		}
-	},
-		{
-		"id": 100,
-		"title": "Mappa Mundi: L'Italia ha perso l'estero vicino. La Turchia in Libia e nei Balcani",
-		"url": "https://www.youtube.com/embed/QwRFNI3WC68",
-		"date": "2020-08-17",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Italia","Turchia","Libia"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 101,
-		"title": "Dario Fabbri: Internet è materialmente sotto il controllo degli Stati Uniti",
-		"url": "https://www.youtube.com/embed/J9BlnlpgNC4",
-		"date": "2018-11-20",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Big Tech"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 102,
-		"title": "Perché la Danimarca spia la Germania per conto degli Usa?",
-		"url": "https://www.youtube.com/embed/yqNTKqXws_Q",
-		"date": "2021-06-04",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Germania"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 103,
-		"title": "Grande Medio Oriente, alle origini del risveglio arabo LimesFestival",
-		"url": "https://www.youtube.com/embed/m08t21t7qiU",
-		"date": "2014-05-22",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Panoramica","Medio Oriente","Limes"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 104,
-		"title": "Quanto valgono i dati?",
-		"url": "https://www.youtube.com/embed/EZExRjvt2N0",
-		"date": "2021-01-29",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Big Tech"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 105,
-		"title": "Che cosa farà la Germania?",
-		"url": "https://www.youtube.com/embed/ymJob-a0jC8",
-		"date": "2021-01-29",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Germania"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 106,
-		"title": "Il Numero Uno e i suoi nemici: gli Usa, la Cina e lo stato del mondo",
-		"url": "https://www.youtube.com/embed/gA6k7GD1wHc",
-		"date": "2021-01-29",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Limes"],
-			"categoria": ["attualita"]
-		}
-	},
-		{
-		"id": 107,
-		"title": "Superlega vs Geopolitica",
-		"url": "https://www.youtube.com/embed/sJPUyiICSk4",
-		"date": "2021-04-23",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["EU","Sport"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 108,
-		"title": "Come nasce lo spoils system - Note Geopolitiche",
-		"url": "https://www.youtube.com/embed/sotna-URgbA",
-		"date": "2018-10-01",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Limes"],
-			"categoria": ["Teoria"]
-		}
-	},
-	{
-		"id": 109,
-		"title": "Che mondo fa - 2° Limes Festival",
-		"url": "https://www.youtube.com/embed/R_jySiZ5wno",
-		"date": "2015-03-12",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Panoramica","Limes"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 110,
-		"title": "Dobbiamo guardare al Regno Unito come guardiamo alla Russia post-sovietica",
-		"url": "https://www.youtube.com/embed/E2AeeknEmGo",
-		"date": "2019-07-05",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Inghilterra","Limes"],
-			"categoria": ["attualita"]
-		}
-	},
-		{
-		"id": 111,
-		"title": "Dobbiamo guardare al Regno Unito come guardiamo alla Russia post-sovietica",
-		"url": "https://www.youtube.com/embed/E2AeeknEmGo",
-		"date": "2019-07-05",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Inghilterra","Limes"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 111,
-		"title": "Che succede tra Israele e Palestina?",
-		"url": "https://www.youtube.com/embed/E2AeeknEmGo",
-		"date": "2021-05-14",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Israele","Palestina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 112,
-		"title": "Stati profondi, gli abissi del potere",
-		"url": "https://www.youtube.com/embed/oumT6-EynPo?start=173",
-		"date": "2018-10-03",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Russia","Cina"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 112,
-		"title": "Che Francia pensa Macron?",
-		"url": "https://www.youtube.com/embed/64CcpGSh6L8",
-		"date": "2020-12-04",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Francia"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 113,
-		"title": "Cina vs Usa la tavola rotonda al 3° Limes Festival",
-		"url": "https://www.youtube.com/embed/v1I1zoX3vN4",
-		"date": "2016-03-11",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Cina","USA","Limes"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 114,
-		"title": "L'Europa non esiste?",
-		"url": "https://www.youtube.com/embed/2UxacojAOeA",
-		"date": "2021-03-16",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Pandemia","EU"],
-			"categoria": ["teoria"]
-		}
-	},
-		{
-		"id": 115,
-		"title": "Economicismo e potere del mito",
-		"url": "https://www.youtube.com/embed/ADI_MrKc7Fg",
-		"date": "2020-03-23",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Europa","USA"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 116,
-		"title": "Caso Aukus: Stati Uniti-Australia-Francia. Cosa è successo?",
-		"url": "https://www.youtube.com/embed/th7JH0XLvJg?start=571",
-		"date": "2021-09-24",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Francia"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 117,
-		"title": "Stati Uniti vs Russia. Cosa succede in Ucraina",
-		"url": "https://www.youtube.com/embed/rh0_IjpXYL4",
-		"date": "2021-04-16",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Ucraina"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 117,
-		"title": "Che succede tra Israele e Palestina?",
-		"url": "https://www.youtube.com/embed/Uoj91HUJj-M?start=185",
-		"date": "2021-05-14",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Israele","Palestina"],
-			"categoria": ["attualita"]
-		}
-	},
-	{
-		"id": 118,
-		"title": "L'America di Donald Rumsfeld (l/'11 settembre 2001)" ,
-		"url": "https://www.youtube.com/embed/JT31J0QFPww",
-		"date": "2021-07-02",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Afghanistan"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 119,
-		"title": "Su internet la Cina non è immune dall'influenza americana" ,
-		"url": "https://www.youtube.com/embed/LR7SfAQ8BOo",
-		"date": "2018-11-13",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Cina","Limes"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 120,
-		"title": "L'uomo e il mare - Trieste 2021" ,
-		"url": "https://www.youtube.com/embed/hO4zHmRssVA",
-		"date": "2021-10-05",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Cina","Inghilterra","Limes"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 121,
-		"title": "Il falso mito della stagione dei grandi leader - Note geopolitiche" ,
-		"url": "https://www.youtube.com/embed/Nr9QDKK22wo",
-		"date": "2018-09-25",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Limes"],
-			"categoria": ["teoria"]
-		}
-	},
-	{
-		"id": 122,
-		"title": "La Francia tra un (improbabile) golpe e il trattato del Quirinale" ,
-		"url": "https://www.youtube.com/embed/AIzB1mAs4AA",
-		"date": "2021-04-30",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Francia"],
-			"categoria": ["attualita"]	
-		}
-	},
-		{
-		"id": 123,
-		"title": "VII Festival di Limes: Dialogo Caracciolo-Conte, incontro con le scuole..." ,
-		"url": "https://www.youtube.com/embed/dSuUWSdLJz0",
-		"date": "2021-10-16",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Panoramica","Etnocentrismo","Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-		{
-		"id": 124,
-		"title": "L'America di Biden e l'Asia-Pacifico" ,
-		"url": "https://www.youtube.com/embed/frgBQfifmp0",
-		"date": "2020-12-18",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA"],
-			"categoria": ["teoria"]	
-		}
-	},
-		{
-		"id": 125,
-		"title": "Usa-Germania, duello per l'Europa, l'intervento di Dario Fabbri" ,
-		"url": "https://www.youtube.com/embed/fBs5TT22X60",
-		"date": "2017-06-22",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Germania","USA","Europa","Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-		{
-		"id": 126,
-		"title": "Che succede in Tunisia" ,
-		"url": "https://www.youtube.com/embed/9ZIAGVs0__E",
-		"date": "2021-07-30",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Francia","Turchia"],
-			"categoria": ["attualita"]	
-		}
-	},
-		{
-		"id": 127,
-		"title": "Quanto contano davvero i leader" ,
-		"url": "https://www.youtube.com/embed/a165M0lWXnY",
-		"date": "2019-10-07",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Turchia","USA","Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 128,
-		"title": "Il Regno Disunito / 1 - La Scozia ribelle" ,
-		"url": "https://www.youtube.com/embed/bL-z3hJhuKk",
-		"date": "2021-08-10",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Inghilterra","Scozia","Irlanda"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 129,
-		"title": "IL MITO DEGLI USA: LA CITTÀ SULLA COLLINA" ,
-		"url": "https://www.youtube.com/embed/tsvgBQvn9uI",
-		"date": "2021-03-11",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 130,
-		"title": "Il Giappone (e gli Stati Uniti) contro la Cina: Tokyo si riarma" ,
-		"url": "https://www.youtube.com/embed/aoPE2kt0x_Y?start=1368",
-		"date": "2021-01-26",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Giappone"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 131,
-		"title": "Afghanistan: la Cina dentro la trappola?" ,
-		"url": "https://www.youtube.com/embed/r3f-WhqCc1I",
-		"date": "2021-10-08",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Afghanistan","Cina"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 132,
-		"title": "Il Triangolo: il nuovo governo tedesco e Italia-Francia dopo il Trattato del Quirinale" ,
-		"url": "https://www.youtube.com/embed/r3f-WhqCc1I",
-		"date": "2021-12-08",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Germania","Italia","Francia","EU"],
-			"categoria": ["teoria"]	
-		}
-	},
-		{
-		"id": 133,
-		"title": "Italia-Francia- Perché il Trattato del Quirinale" ,
-		"url": "https://www.youtube.com/embed/MTNltgS-uws",
-		"date": "2021-12-03",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Italia","Francia","EU"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 134,
-		"title": "Italia-Turchia. Un nuovo canale per Istanbul e noi" ,
-		"url": "https://www.youtube.com/embed/MTNltgS-uws",
-		"date": "2021-04-09",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Italia","Turchia"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 135,
-		"title": "L'importanza di essere Stretti: Bab el-Mandeb-Suez - Canale di Sicilia - Gibilterra" ,
-		"url": "https://www.youtube.com/embed/uDq91j7aHfk",
-		"date": "2020-11-16",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Italia","USA","Cina","Riarmo","Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-		{
-		"id": 136,
-		"title": "Il senso americano per le democrazie" ,
-		"url": "https://www.youtube.com/embed/G53PTuQO8_Q",
-		"date": "2021-11-26",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Cina","Russia"],
-			"categoria": ["teoria"]	
-		}
-	},
-		{
-		"id": 137,
-		"title": "L'America di Biden e l'Europa" ,
-		"url": "https://www.youtube.com/embed/8sdZ2TN0cLs?start=80",
-		"date": "2020-12-23",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","EUROPA"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 138,
-		"title": "Taiwan, Cina, Impero Usa e Italia - Limes risponde" ,
-		"url": "https://www.youtube.com/embed/CV4kh6b5pbE",
-		"date": "2021-11-07",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Taiwan","Cina","Giappone","Italia"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 139,
-		"title": "Usa, nascita di una potenza - Limes Festival" ,
-		"url": "https://www.youtube.com/embed/GJOvF1UOF7g",
-		"date": "2014-05-26",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 140,
-		"title": "Washington contro Londra in nome dell'Irlanda" ,
-		"url": "https://www.youtube.com/embed/KD_o_FRVtbY",
-		"date": "2021-06-11",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Inghilterra","Irlanda"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 141,
-		"title": "Nord Stream 2, la Cina val bene un tubo" ,
-		"url": "https://www.youtube.com/embed/xZrdTRUdJso",
-		"date": "2021-07-23",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Germania"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 142,
-		"title": "Americani via da Kabul. Fu vero declino?" ,
-		"url": "https://www.youtube.com/embed/xZrdTRUdJso",
-		"date": "2021-09-17",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Afghanistan"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 142,
-		"title": "Il punto sul Festival - Sabato, Trieste" ,
-		"url": "https://www.youtube.com/embed/GBc-275EJTw",
-		"date": "2021-10-04",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Italia","Cina","USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 143,
-		"title": "Il Giappone torna protagonista" ,
-		"url": "https://www.youtube.com/embed/jn3fZW2Jnz0",
-		"date": "2018-03-30",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Giapppone","Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 144,
-		"title": "Euro2020, la sconfitta inglese. Celti contro Londra, Brexit e Global Britain" ,
-		"url": "https://www.youtube.com/embed/Cj0hGgHNIZ4",
-		"date": "2021-07-12",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Italia","Inghilterra","Scozia","Sport"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 145,
-		"title": "Perché conta il discorso di Xi Jinping" ,
-		"url": "https://www.youtube.com/embed/YuLmpDLsjBM",
-		"date": "2021-07-09",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Cina"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 146,
-		"title": "Il Russiagate (che non si chiama così) e lo scontro Trump-Stato profondo Usa" ,
-		"url": "https://www.youtube.com/embed/yWFzZctoAL0",
-		"date": "2018-01-29",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Russia","USA","Limes"],
-			"categoria": ["attualita"]	
-		}
-	},
-		{
-		"id": 147,
-		"title": "Il Mediterraneo conteso" ,
-		"url": "https://www.youtube.com/embed/wsHTLXUA_N0",
-		"date": "2020-11-16",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Italia","Francia","USA","Turchia","Limes"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 148,
-		"title": "l'Italia indebolita e contesa da Usa, Cina e Russia" ,
-		"url": "https://www.youtube.com/embed/LTUzY3ZOjkE",
-		"date": "2020-05-18",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Italia"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 149,
-		"title": "Genova 2021 - Speciale Mappamundi 'La riscoperta del futuro 2' Domenica - Festival di Limes" ,
-		"url": "https://www.youtube.com/embed/jRTz41NAN8I",
-		"date": "2021-12-19",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["EU","Cina","Italia","Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 150,
-		"title": "Gli gnomi di Zurigo non sono lo Stato profondo - Nota geopolitica" ,
-		"url": "https://www.youtube.com/embed/LP9F0waY1zk",
-		"date": "2018-09-21",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 151,
-		"title": "Afghanistan, il ritiro degli Usa. La trappola per Russia e Cina. Il Pakistan in bilico" ,
-		"url": "https://www.youtube.com/embed/aRH4KgcQ9bw",
-		"date": "2021-06-08",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA","Afghanistan"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 152,
-		"title": "Carte, geopolitica e Italia: Limes incontra le scuole" ,
-		"url": "https://www.youtube.com/embed/EObK8LCoJio",
-		"date": "2018-06-05",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Italia","USA","Limes"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 153,
-		"title": "Le parole di Trump e i fatti del Pentagono - Note geopolitiche" ,
-		"url": "https://www.youtube.com/embed/Od75HNA6JPQ",
-		"date": "2018-10-01",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 154,
-		"title": "Disgelo russo-americano?" ,
-		"url": "https://www.youtube.com/embed/qteRYJzQhiw",
-		"date": "2021-05-21",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Russsia"],
-			"categoria": ["attualita"]	
-		}
-	},
-		{
-		"id": 155,
-		"title": "Il Trimarium, la faglia dell'Artico e il Russiagate" ,
-		"url": "https://www.youtube.com/embed/sSL_TKq59TQ",
-		"date": "2018-01-16",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Europa","Russsia","Polonia","Limes"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 156,
-		"title": "L'isola che non c'è più, il Canale di Sicilia e altre storie" ,
-		"url": "https://www.youtube.com/embed/opfO2kTKnqo",
-		"date": "2020-12-10",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Italia"],
-			"categoria": ["teoria"]	
-		}
-	},
-		{
-		"id": 157,
-		"title": "Genova 2021 - Stati Uniti, Cina, Russia. Chi e come prevarrà fra trent’anni? - Festival di Limes" ,
-		"url": "https://www.youtube.com/embed/q9hEMAVHcIE",
-		"date": "2021-12-17",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Cina","Russia"],
-			"categoria": ["teoria"]	
-		}
-	},
-			{
-		"id": 158,
-		"title": "Lezioni afghane. Italia e Medioceano" ,
-		"url": "https://www.youtube.com/embed/n0iWj3oyK6U",
-		"date": "2021-09-14",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA","Afghanistan","Italia"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 159,
-		"title": "La sorpresa ispanica in Usa, Iran vs Erdogan, le carte di Limes (e il colore)" ,
-		"url": "https://www.youtube.com/embed/XxyFKZgjPe4",
-		"date": "2020-12-17",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA","Iran"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 160,
-		"title": "Tra G7 e Nato gli Usa definiscono la sfida a Cina e Russia" ,
-		"url": "https://www.youtube.com/embed/T0J2Lb5CREA",
-		"date": "2021-06-18",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-{
-		"id": 161,
-		"title": "Europa, non-Europa, Europa tedesca? V Festival di Limes" ,
-		"url": "https://www.youtube.com/embed/6q2McExnKC0",
-		"date": "2018-06-05",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Europa","Germania","Italia","Limes"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 162,
-		"title": "Scuola di Limes - Russia contro Nato e presentazione del corso 2022" ,
-		"url": "https://www.youtube.com/embed/-KLFp1kam2Q",
-		"date": "2021-12-05",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 163,
-		"title": "Quanto vale un G20" ,
-		"url": "https://www.youtube.com/embed/QfC7Guns_z0",
-		"date": "2021-10-29",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": [""],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 164,
-		"title": "L'Italia di Draghi alla prova della realtà" ,
-		"url": "https://www.youtube.com/embed/4ICJKHGaUgY",
-		"date": "2021-04-08",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Italia"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 165,
-		"title": "Il G20 per l'Italia (e Draghi)" ,
-		"url": "https://www.youtube.com/embed/q9fOAwyF5hc",
-		"date": "2021-11-05",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Italia"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 165,
-		"title": "Con chi stiamo? L’Italia fra America e Russia - VI Festival di Limes" ,
-		"url": "https://www.youtube.com/embed/jqDfmLjAf_4",
-		"date": "2019-03-27",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Italia","USA","Russia"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 166,
-		"title": "Il duello tra Usa e Cina si combatte nell'Indo-Pacifico" ,
-		"url": "https://www.youtube.com/embed/OJg6IrSGrVo",
-		"date": "2020-07-23",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Cina","USA"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 166,
-		"title": "Il Triangolo Francia-Italia-Germania. E gli Stati Uniti?" ,
-		"url": "https://www.youtube.com/embed/OJg6IrSGrVo",
-		"date": "2020-05-18",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Francia","Italia","Germania","USA"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 167,
-		"title": "Usa contro Cina. L'offensiva di Biden e la risposta di Pechino. E l'Italia cosa farà?" ,
-		"url": "https://www.youtube.com/embed/zm6uJBBxFd8",
-		"date": "2021-06-29",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Italia","USA","Cina"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 167,
-		"title": "Irlanda del Nord, effetto Brexit (e Biden). Scontri e proteste: i nuovi troubles?" ,
-		"url": "https://www.youtube.com/embed/V2tLp_-ah-k",
-		"date": "2021-04-20",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Irlanda","Inghilterra"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 168,
-		"title": "L'attentato a Kabul. Cosa succede ora in Afghanistan" ,
-		"url": "https://www.youtube.com/embed/AEQw65B25q0",
-		"date": "2021-08-27",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Afghanistan"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 169,
-		"title": "Biden vs Putin. Venti di guerra?" ,
-		"url": "https://www.youtube.com/embed/_28YxP5ROZg",
-		"date": "2021-12-10",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Russia"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 170,
-		"title": "Virus cinese? Perché adesso gli Usa vogliono la verità" ,
-		"url": "https://www.youtube.com/embed/5g6aG6vTcro",
-		"date": "2021-05-28",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Pandemia","Cina","USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 171,
-		"title": "Dal Medioceano all’Indo-Pacifico, epicentro della sfida Usa/Cina - Trieste 2021" ,
-		"url": "https://www.youtube.com/embed/mZ17JG5IKw4",
-		"date": "2021-10-21",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Cina","USA","Italia"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 172,
-		"title": "L'America dopo l'assalto al Congresso" ,
-		"url": "https://www.youtube.com/embed/S_cy9mjoACs",
-		"date": "2021-10-07",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 173,
-		"title": "Uk, Scozia addio? La sfida al 'Global Britain'" ,
-		"url": "https://www.youtube.com/embed/2mZi_QgxgAE",
-		"date": "2021-05-11",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Scozia","Inghilterra"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 174,
-		"title": "Tokyo 2020, le Olimpiadi della discordia e le altre notizie della settimana" ,
-		"url": "https://www.youtube.com/embed/SeHZvyVYMiQ",
-		"date": "2021-07-21",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["Giappone","Sport"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 175,
-		"title": "Biden e Trump, due presidenti per due Americhe: gli Stati Uniti che verranno" ,
-		"url": "https://www.youtube.com/embed/jr2cK3iBQlQ",
-		"date": "2020-11-23",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 176,
-		"title": "Biden e la guerra (in)civile americana. Cosa farà Trump?" ,
-		"url": "https://www.youtube.com/embed/jr2cK3iBQlQ",
-		"date": "2021-01-21",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 177,
-		"title": "Perché l'America è contro tutti" ,
-		"url": "https://www.youtube.com/embed/Xs2XqIzsG7Q",
-		"date": "2020-01-27",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Limes"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 178,
-		"title": "La sospensione dell'accordo Ue-Cina: primo successo per Biden" ,
-		"url": "https://www.youtube.com/embed/Gvn4nKcqyDk",
-		"date": "2020-05-07",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["EU","Cina","Germania"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 179,
-		"title": "Trump, il voto, i brogli e altre storie" ,
-		"url": "https://www.youtube.com/embed/gh4rNFd4guE",
-		"date": "2020-11-19",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 180,
-		"title": "L'Italia di Draghi" ,
-		"url": "https://www.youtube.com/embed/wyIv6_bWiyw",
-		"date": "2021-09-13",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Italia"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 180,
-		"title": "Diversamente occidentali: l'Occidente visto da Stati Uniti, Francia, Italia e..." ,
-		"url": "https://www.youtube.com/embed/2nc3XXhGawY",
-		"date": "2020-10-17",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 181,
-		"title": "Deep State, il potere degli apparati e degli Stati profondi in Usa, Francia, Giappone e Italia" ,
-		"url": "https://www.youtube.com/embed/2QJ8embBMwA?start=362",
-		"date": "2021-02-23",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 182,
-		"title": "L'America di Biden e il Medio Oriente" ,
-		"url": "https://www.youtube.com/embed/hCfd8aafIS8",
-		"date": "2020-12-30",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Medio Oriente"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 183,
-		"title": "Declino Usa? Gli strumenti dell'impero americano" ,
-		"url": "https://www.youtube.com/embed/kRXuQD6a7qk",
-		"date": "2021-10-05",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA","Cina"],
-			"categoria": ["attualita"]	
-		}
-	},
-		{
-		"id": 184,
-		"title": "Declino Usa? Gli strumenti dell'impero americano" ,
-		"url": "https://www.youtube.com/embed/kRXuQD6a7qk",
-		"date": "2021-10-05",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA","Cina"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 185,
-		"title": "La notte dell'impero americano" ,
-		"url": "https://www.youtube.com/embed/dk4XZ5KKa-8",
-		"date": "2021-02-09",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 186,
-		"title": "Presente e futuro delle relazioni Usa-Russia" ,
-		"url": "https://www.youtube.com/embed/B83TErUS0f8",
-		"date": "2021-03-05",
-		"tags": {
-			"format": ["Approfondimento Limes"],
-			"argomento": ["USA","Russia"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 187,
-		"title": "Germania, cosa cambia dopo il voto" ,
-		"url": "https://www.youtube.com/embed/_gnMgovGg_Q",
-		"date": "2021-09-27",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Germania"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 188,
-		"title": "L'America spaccata, gli Stati Uniti dopo le elezioni" ,
-		"url": "https://www.youtube.com/embed/J0VTcFmMoCM",
-		"date": "2020-11-05",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 189,
-		"title": "Corea, come evitare una guerra mondiale - V Festival di Limes" ,
-		"url": "https://www.youtube.com/embed/Lo9PF_UaKcg",
-		"date": "2018-06-05",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Corea","Limes"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 190,
-		"title": "Usa-Russia. Biden contro Putin" ,
-		"url": "https://www.youtube.com/embed/cxvA2-MtiXY",
-		"date": "2021-03-29",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA","Russia","Limes"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 191,
-		"title": "Limes nel futuro: prevedere non si può, si deve" ,
-		"url": "https://www.youtube.com/embed/olGpPaHPpBE",
-		"date": "2020-11-16",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": [],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 192,
-		"title": "La strategia delle grandi potenze - VI Festival di Limes" ,
-		"url": "https://www.youtube.com/embed/iaVZ1mv2izc",
-		"date": "2019-04-06",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Limes"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 193,
-		"title": "La guerra in Etiopia e perché dovrebbe interessarci" ,
-		"url": "https://www.youtube.com/embed/Tncdgm4aFcs",
-		"date": "2020-12-02",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Etiopia"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 194,
-		"title": "Quale destino per l'Ucraina?" ,
-		"url": "https://www.youtube.com/embed/E6TzZYPq_fg",
-		"date": "2025-10-21",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Guerra in Ucraina"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 195,
-		"title": "Il Venezuela e la fortezza americana" ,
-		"url": "https://www.youtube.com/embed/hrlEZQdH3s0",
-		"date": "2025-10-28",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["Venezuela", "USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 196,
-		"title": "USA vs Cina. A che punto siamo?" ,
-		"url": "https://www.youtube.com/embed/Dvm9Sp7dIko",
-		"date": "2025-11-04",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["USA","Cina"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 197,
-		"title": "Geopolitica della propaganda" ,
-		"url": "https://www.youtube.com/embed/8wizUDCuruw",
-		"date": "2025-11-11",
-		"tags": {
-			"format": ["Il Grande Gioco"],
-			"argomento": ["USA","Europa","Cina"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 198,
-		"title": "Il destino dei popoli - Lectio magistralis di Dario Fabbri" ,
-		"url": "https://www.youtube.com/embed/_Z9xG2wQihU?start=2085",
-		"date": "2025-11-12",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Panoramica"],
-			"categoria": ["attualita"]	
-		}
-	},
-		{
-		"id": 199,
-		"title": "Texas e Midwest, l'America profonda e gli Usa che verranno" ,
-		"url": "https://www.youtube.com/embed/bGMuF1BqKaw",
-		"date": "2019-01-28",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 200,
-		"title": "Cos'è la strategia: i vincoli geopolitici di Germania, Italia, Russia e Stati Uniti" ,
-		"url": "https://www.youtube.com/embed/vxd_cM8-WRU",
-		"date": "2019-12-04",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA","Italia","Germania","Russia"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 201,
-		"title": "Il fattore umano: ecco cos'è la geopolitica" ,
-		"url": "https://www.youtube.com/embed/XWbD2EJzZtg",
-		"date": "2019-09-23",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": [""],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 202,
-		"title": "Festival di Limes - L'Italia tra strategia e pedagogia," ,
-		"url": "https://www.youtube.com/embed/7bNU5IEVHMs",
-		"date": "2019-03-10",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": [""],
-			"categoria": ["teoria"]	
-		}
-	},
-		{
-		"id": 203,
-		"title": "Perché gli americani vogliono costruire il muro Usa-Messico, le ragioni geopolitiche" ,
-		"url": "https://www.youtube.com/embed/red-tgmgr_I",
-		"date": "2019-01-31",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA","Messico"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 204,
-		"title": "Economicismo e potere del mito: le guerre si fanno per il petrolio?" ,
-		"url": "https://www.youtube.com/embed/b91ZOEUt2C4",
-		"date": "2020-03-18",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Europa","USA","Cina"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 205,
-		"title": "Il potere del mito: dall'impero romano a quello americano" ,
-		"url": "https://www.youtube.com/embed/346hT0XsmBY",
-		"date": "2020-03-10",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["teoria"]	
-		}
-	},
-		{
-		"id": 206,
-		"title": "Festival di Limes - L'Italia e l'impero americano" ,
-		"url": "https://www.youtube.com/embed/eyBIYGPlD7Y",
-		"date": "2019-03-09",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA","Italia"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 207,
-		"title": "Usa-Iran, verso la guerra o un nuovo accordo?" ,
-		"url": "https://www.youtube.com/embed/z78nHxZtomg",
-		"date": "2020-02-14",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA","Iran"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 208,
-		"title": "L'Inghilterra oltre Brexit, l'impero britannico e quello americano" ,
-		"url": "https://www.youtube.com/embed/vgqNIlfH_Wc",
-		"date": "2019-06-17",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Inghilterra"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 209,
-		"title": "Venti di guerra nel Golfo, dagli attacchi alle petroliere all'invio di truppe americane" ,
-		"url": "https://www.youtube.com/embed/YsjorMHT75Q",
-		"date": "2019-05-29",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Iran"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 210,
-		"title": "Deep State: gli apparati e i contro poteri pubblici e segreti in Usa e nel mondo" ,
-		"url": "https://www.youtube.com/embed/py6o5u6QHhs",
-		"date": "2018-10-12",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 210,
-		"title": "Deep State: gli apparati e i contro poteri pubblici e segreti in Usa e nel mondo" ,
-		"url": "https://www.youtube.com/embed/py6o5u6QHhs",
-		"date": "2018-10-12",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 211,
-		"title": "Chi controlla i mari controlla il mondo" ,
-		"url": "https://www.youtube.com/embed/zZGB4E1Ey4I",
-		"date": "2019-08-01",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 212,
-		"title": "Il mondo secondo Trump, l'impero americano alla prova di Siria e Russia" ,
-		"url": "https://www.youtube.com/embed/sNi4etcWB_g",
-		"date": "2019-11-07",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA","Russia","Siria"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 213,
-		"title": "La globalizzazione, il controllo dei mari e l'impero americano" ,
-		"url": "https://www.youtube.com/embed/7akXdojn3QA",
-		"date": "2018-11-11",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 214,
-		"title": "Usa, l'abbattimento delle statue di Colombo e l'assimilazione degli ispanici" ,
-		"url": "https://www.youtube.com/embed/cOYY9wkZAsY",
-		"date": "2019-02-05",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 215,
-		"title": "Deep State contro Trump, l'apparato più grande al mondo? Il Pentagono: oltre 3 mln di dipendenti" ,
-		"url": "https://www.youtube.com/embed/LNIa8jsW0Vk",
-		"date": "2018-10-21",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-		{
-		"id": 216,
-		"title": "Usa, la 'truffa' dell'Afghanistan da Obama a Trump" ,
-		"url": "https://www.youtube.com/embed/Yhgcx4HQGpc",
-		"date": "2018-10-21",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 217,
-		"title": "Cavi sottomarini e server: così gli Usa controllano Internet e i suoi giganti" ,
-		"url": "https://www.youtube.com/embed/qihYuqawlAA",
-		"date": "2018-11-11",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 218,
-		"title": "La strategia della Germania, Merkel-Trump e il G7-10" ,
-		"url": "https://www.youtube.com/embed/0hQy6Mb1PIY",
-		"date": "2020-06-08",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Germania"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 218,
-		"title": "Hong Kong e Taiwan, una Cina in bilico (e gli Usa non stanno a guardare)" ,
-		"url": "https://www.youtube.com/embed/QuQj-xQRhs8",
-		"date": "2019-10-11",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Cina"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 219,
-		"title": "Dalla Siria ai profughi verso l'Europa, cosa vuole la Turchia di Erdogan" ,
-		"url": "https://www.youtube.com/embed/tfCe83jwwx8",
-		"date": "2020-03-03",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["Turchia","Siria"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 220,
-		"title": "Il mondo virato: gli Stati Uniti verso un impero meno globale? " ,
-		"url": "https://www.youtube.com/embed/FsTwTryZqeE",
-		"date": "2020-04-21",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 221,
-		"title": "Il mondo virato: gli Stati Uniti verso un impero meno globale?" ,
-		"url": "https://www.youtube.com/embed/FsTwTryZqeE",
-		"date": "2020-04-21",
-		"tags": {
-			"format": ["Mappa Mundi"],
-			"argomento": ["USA"],
-			"categoria": ["attualita"]	
-		}
-	},
-	{
-		"id": 222,
-		"title": "la geopolitica dell’acqua" ,
-		"url": "https://www.youtube.com/embed/iWa86q0tLLk?start=3425",
-		"date": "2024-07-06",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["Panoramica","Iran","USA","Russia","Cina","Taiwan"],
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 223,
-		"title": "Sotto la pelle del mondo" ,
-		"url": "https://www.youtube.com/embed/kenWqnVEc20",
-		"date": "2024-12-04",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": [""], 
-			"categoria": ["teoria"]	
-		}
-	},
-	{
-		"id": 224,
-		"title": "I leader e la colpa del mondo" ,
-		"url": "https://www.youtube.com/embed/3jvoN15Z1HA?start=412",
-		"date": "2024-04-14",
-		"tags": {
-			"format": ["Incontro"],
-			"argomento": ["USA"], 
-			"categoria": ["teoria"]	
-		}
-	}
-	
+  {
+    "id": 1,
+    "title": "Luca Sommi intervista Dario Fabbri",
+    "url": "https://www.youtube.com/embed/zeW9dxu0MFE",
+    "date": "2025-08-26",
+    "tags": {
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "title": "Filosofia e Geopolitica",
+    "url": "https://www.youtube.com/embed/8La1tvQvUSk",
+    "date": "2022-04-23",
+    "tags": {
+      "format": [
+        "Festa Scienza Filosofia"
+      ],
+      "argomento": [
+        "Incontro"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "title": "Potenza, Dei e Demoni",
+    "url": "https://www.youtube.com/embed/PtV_-uNupsU",
+    "date": "2025-10-10",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Trump",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "title": "La vera storia delle guerre di religione",
+    "url": "https://www.youtube.com/embed/WtyIAXxyRDw",
+    "date": "2024-09-25",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Medioevo"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "title": "La cifra culturale in Geopolitica. Come storia e costume influenzano la...",
+    "url": "https://www.youtube.com/embed/N9Czv_fQbg8?start=3325&rel=0",
+    "date": "2023-10-22",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Israele",
+        "Etnocentrismo",
+        "Iran"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "title": "Alessandro Sallusti intervista Dario Fabbri a la Versalliana",
+    "url": "https://www.youtube.com/embed/By55p4oUKjs?start=3519&rel=0",
+    "date": "2025-08-22",
+    "tags": {
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "title": "Quante cine esistono?",
+    "url": "https://www.youtube.com/embed/ByhrY8zSE8g?rel=0",
+    "date": "2025-03-26",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Cina",
+        "Taiwan"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "title": "Assemblea generale Confiagricoltura Brescia: Noi della competizione globale",
+    "url": "https://www.youtube.com/embed/PiwHAdOfPrE?start=1658&rel=0",
+    "date": "2024-09-24",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "title": "L'IRAN non è come sembra",
+    "url": "https://www.youtube.com/embed/zOOr2ezafFw?start=1211&rel=0",
+    "date": "2024-09-24",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "title": "L'Italia e la Sua Identità",
+    "url": "https://www.youtube.com/embed/Z7YrisENxA8?start=31&rel=0",
+    "date": "2025-07-26",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "title": "L'Europa è finita? Come Trump ha cambiato le regole del potere globale",
+    "url": "https://www.youtube.com/embed/AsFmCaa0ORs?start=1694&rel=0",
+    "date": "2025-03-16",
+    "tags": {
+      "format": [],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Riarmo",
+        "EU",
+        "USA",
+        "Trump"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "title": "Kirk: Aveva presa sui giovani. Biden e Obama hanno voluto evitare...",
+    "url": "https://www.youtube.com/embed/teoer8m1LYQ?rel=0",
+    "date": "2025-09-14",
+    "tags": {
+      "format": [
+        "TV",
+        "La7"
+      ],
+      "argomento": [
+        "USA",
+        "Trump"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "title": "Assemblea generale Confiagricoltura Brescia: 'Il mondo del 2025'",
+    "url": "https://www.youtube.com/embed/zkfToSZhOl8?start=1373&rel=0",
+    "date": "2025-03-03",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "title": "Che mondo fa?",
+    "url": "https://www.youtube.com/embed/_TK2Hb__F4I?rel=0",
+    "date": "2025-09-29",
+    "tags": {
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Medio Oriente",
+        "USA",
+        "Trump",
+        "Dazi",
+        "Guerra in Ucraina",
+        "Iran",
+        "Gaza"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "title": "“MECH IN ITALY” Assemblea Generale Federmeccanica",
+    "url": "https://www.youtube.com/embed/D8DnFJrFouk?rel=0",
+    "date": "2023-09-27",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "title": "Ucraina, dove eravamo rimasti?",
+    "url": "https://www.youtube.com/embed/4wU5DTB7FTg",
+    "date": "2023-10-07",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "title": "Le battaglie di Gaza",
+    "url": "https://www.youtube.com/embed/0zGlROeoYOk",
+    "date": "2023-10-31",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Gaza",
+        "Israele"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "title": "Risiko imperiale in Medio Oriente",
+    "url": "https://www.youtube.com/embed/-JDxj9vY4uM?rel=0",
+    "date": "2023-11-14",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Cina",
+        "USA",
+        "Argentina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "title": "Cina-USA, la sfida ultima",
+    "url": "https://www.youtube.com/embed/mv94ph-Xqmo?rel=0",
+    "date": "2023-11-21",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Gaza",
+        "Hezbollah",
+        "Medio Oriente",
+        "Israele"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 20,
+    "title": "Gaza: geopolitica della tregua",
+    "url": "https://www.youtube.com/embed/sgrYglMdnE8?rel=0",
+    "date": "2023-11-28",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Gaza",
+        "Hezbollah",
+        "Medio Oriente",
+        "Israele",
+        "ONU"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 21,
+    "title": "Il Mondo contro (di noi)",
+    "url": "https://www.youtube.com/embed/nsSpPVnTdqE?rel=0",
+    "date": "2023-12-05",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "ONU",
+        "Etnocentrismo",
+        "BRICs",
+        "Green",
+        "Vaticano",
+        "Kenya",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 22,
+    "title": "Demografia e Potenza",
+    "url": "https://www.youtube.com/embed/T-m8K6JXiT4?rel=0",
+    "date": "2023-12-12",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Gaza",
+        "Cina",
+        "Europa",
+        "Green",
+        "USA",
+        "Israele",
+        "Giappone",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 23,
+    "title": "L'anno che verrà",
+    "url": "https://www.youtube.com/embed/WO1HWCBaFDI?rel=0",
+    "date": "2023-12-19",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Russia",
+        "Israele",
+        "Gaza",
+        "Taiwan",
+        "Germania"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 24,
+    "title": "Taiwan: l'arcipelago della tensione",
+    "url": "https://www.youtube.com/embed/Rr1e2LBs8Os?rel=0",
+    "date": "2024-01-09",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Taiwan",
+        "Trump",
+        "Yemen",
+        "USA",
+        "Gaza",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 25,
+    "title": "L'Europa in guerra",
+    "url": "https://www.youtube.com/embed/ev3F-fIdb3g?rel=0",
+    "date": "2024-03-08",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Francia",
+        "Yemen",
+        "USA",
+        "EU",
+        "Germania",
+        "Agricoltura",
+        "Polonia",
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 26,
+    "title": "Russia: vittoria o armageddon",
+    "url": "https://www.youtube.com/embed/9dl2_pULdEo?rel=0",
+    "date": "2024-03-15",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Russia",
+        "Vaticano"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 27,
+    "title": "America contro America",
+    "url": "https://www.youtube.com/embed/9FE427lzjog?rel=0",
+    "date": "2024-03-22",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "USA",
+        "Russia",
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 28,
+    "title": "Strage di Mosca: misteri e scenari",
+    "url": "https://www.youtube.com/embed/zn7ooE3QhnE?rel=0",
+    "date": "2024-03-30",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 29,
+    "title": "Israele contro tutti",
+    "url": "https://www.youtube.com/embed/yuaYYuQIWbg?rel=0",
+    "date": "2024-04-05",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Siria",
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 30,
+    "title": "Apocalypse now?",
+    "url": "https://www.youtube.com/embed/nMuZnhTag70?rel=0",
+    "date": "2024-04-12",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Russia",
+        "Guerra in Ucraina",
+        "ONU",
+        "Israele",
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 31,
+    "title": "Sfida per il Medio Oriente",
+    "url": "https://www.youtube.com/embed/Sa1FJ4nCINs?rel=0",
+    "date": "2024-04-19",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Medio Oriente",
+        "Siria",
+        "Iran",
+        "Israele",
+        "Islam",
+        "Arabia Saudita"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 32,
+    "title": "India: Superpotenza del futuro?",
+    "url": "https://www.youtube.com/embed/0ORCqm_BTT0?rel=0",
+    "date": "2024-04-26",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "India",
+        "Islam"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 33,
+    "title": "Dove va la Turchia",
+    "url": "https://www.youtube.com/embed/Y3_7NyrKxlg?rel=0",
+    "date": "2024-05-03",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Turchia",
+        "Islam"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 34,
+    "title": "Resa dei conti a Rafah?",
+    "url": "https://www.youtube.com/embed/UdPWAUqa0ds?rel=0",
+    "date": "2024-05-10",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Gaza",
+        "USA",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 35,
+    "title": "Senza tregua",
+    "url": "https://www.youtube.com/embed/paCEIttl2LE?rel=0",
+    "date": "2024-10-15",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Gaza",
+        "USA",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 36,
+    "title": "Dopo Sinwar finisce la guerra?",
+    "url": "https://www.youtube.com/embed/BwvOQ2OpDlk?rel=0",
+    "date": "2024-10-22",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Gaza",
+        "Palestina",
+        "Yemen"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 37,
+    "title": "BRICS / la sfida dell'“Altro Mondo",
+    "url": "https://www.youtube.com/embed/_RhjLj9WycM?rel=0",
+    "date": "2024-10-29",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "BRICs",
+        "ONU",
+        "Nord Korea",
+        "Russia",
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 38,
+    "title": "Le due anime dell'America",
+    "url": "https://www.youtube.com/embed/v6qUtvyVEoU?rel=0",
+    "date": "2024-11-05",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita",
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 39,
+    "title": "Germania, il malato d'Europa | La svolta di Biden sui missili",
+    "url": "https://www.youtube.com/embed/-Rt0l4lpfX8?rel=0",
+    "date": "2024-11-19",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Dazi",
+        "Germania"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 40,
+    "title": "Ucraina: negoziato o apocalisse?",
+    "url": "https://www.youtube.com/embed/SwICzBvI93U?rel=0",
+    "date": "2024-11-26",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Russia",
+        "Nord Korea",
+        "Ucraina",
+        "ONU"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 41,
+    "title": "Siria. Perché adesso?",
+    "url": "https://www.youtube.com/embed/o6e54untAG0?rel=0",
+    "date": "2024-12-03",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Siria",
+        "Iran",
+        "Turchia",
+        "Russia",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 42,
+    "title": "Cambia il Mondo, aspettando Trump",
+    "url": "https://www.youtube.com/embed/IgRufm5hGo0?rel=0",
+    "date": "2024-12-10",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Siria",
+        "Turchia",
+        "Romania",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 43,
+    "title": "Geopolitica Vaticano",
+    "url": "https://www.youtube.com/embed/U7tzJMZ-47w?rel=0",
+    "date": "2024-12-17",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Vaticano",
+        "Brasile",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 44,
+    "title": "America senza filtri",
+    "url": "https://www.youtube.com/embed/mxWF0BHykwE?rel=0",
+    "date": "2025-02-04",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "USA",
+        "Trump",
+        "Dazi",
+        "Israele",
+        "Gaza",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 45,
+    "title": "La Riviera di Gaza?",
+    "url": "https://www.youtube.com/embed/y-mx12hgQBI?rel=0",
+    "date": "2025-02-11",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Gaza",
+        "Trump",
+        "USA",
+        "Turchia",
+        "Siria",
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 46,
+    "title": "Ucraina: la svolta?",
+    "url": "https://www.youtube.com/embed/NdwwMoPa930?rel=0",
+    "date": "2025-02-18",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "USA",
+        "Romania"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 47,
+    "title": "Trump vs Zelensky. Fine dell'Occidente?",
+    "url": "https://www.youtube.com/embed/oKth_td4Bmc?rel=0",
+    "date": "2025-03-04",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Trump",
+        "Guerra in Ucraina",
+        "Inghilterra",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 48,
+    "title": "Un'Europa marziale?",
+    "url": "https://www.youtube.com/embed/Oy1gXhmgCho?rel=0",
+    "date": "2025-03-11",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Europa",
+        "Guerra in Ucraina",
+        "Francia",
+        "Polonia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 49,
+    "title": "Chi ha paura della Pace?",
+    "url": "https://www.youtube.com/embed/Lde7Sm_ub-I?rel=0",
+    "date": "2025-03-18",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Gaza",
+        "Cina",
+        "Turchia",
+        "Francia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 50,
+    "title": "Cina: il convitato di pietra",
+    "url": "https://www.youtube.com/embed/kA7_oJtnPDc?rel=0",
+    "date": "2025-03-25",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Cina",
+        "Taiwan"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 51,
+    "title": "La fine della Globalizzazione?",
+    "url": "https://www.youtube.com/embed/Ke7i8bBAhOo?rel=0",
+    "date": "2025-04-08",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "USA",
+        "Trump",
+        "Dazi",
+        "Russia",
+        "Cina",
+        "Yemen",
+        "Panama",
+        "Groellandia",
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 52,
+    "title": "Riarmarci contro chi?",
+    "url": "https://www.youtube.com/embed/hR16dzCZPfw?rel=0",
+    "date": "2025-04-15",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Europa",
+        "Riarmo",
+        "Russia",
+        "Francia",
+        "Germania",
+        "USA",
+        "Lettonia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 53,
+    "title": "Il mondo senza Francesco (e Dario Fabbri risponde alle vostre domande) - Il Grande Gioco",
+    "url": "https://www.youtube.com/embed/jQ1elaRdo_I?rel=0",
+    "date": "2025-04-22",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Vaticano",
+        "Messico",
+        "Turchia",
+        "Russia",
+        "Inghilterra"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 54,
+    "title": "Ucraina: miracolo a San Pietro?",
+    "url": "https://www.youtube.com/embed/fL9aPN7GDrQ?rel=0",
+    "date": "2025-04-29",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Vaticano",
+        "Guerra in Ucraina",
+        "Trump",
+        "Russia",
+        "Nord Korea",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 55,
+    "title": "Cento giorni di Trump",
+    "url": "https://www.youtube.com/embed/vMDrj8CCloI?rel=0",
+    "date": "2025-05-06",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "USA",
+        "Israele",
+        "Trump",
+        "Gaza",
+        "Guerra in Ucraina",
+        "Vaticano"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 56,
+    "title": "Il Mondo di Leone / e la telefonata Trump-Putin",
+    "url": "https://www.youtube.com/embed/DFqBOt68udo?rel=0",
+    "date": "2025-05-20",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Vaticano",
+        "USA",
+        "Trump",
+        "Russia",
+        "Guerra in Ucraina",
+        "Riarmo"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 57,
+    "title": "Israele non si ferma più? - e il dossier missili a Kiev",
+    "url": "https://www.youtube.com/embed/XuULVaKba3g?rel=0",
+    "date": "2025-05-27",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Gaza",
+        "Iran",
+        "Turchia",
+        "USA",
+        "Germania"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 58,
+    "title": "Pace a Gaza?",
+    "url": "https://www.youtube.com/embed/oPI_q6fQF0s?rel=0",
+    "date": "2025-05-27",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Gaza",
+        "Trump",
+        "Russia",
+        "Turchia",
+        "USA",
+        "Germania"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 59,
+    "title": "Quanto sono potenti i Big Tech?",
+    "url": "https://www.youtube.com/embed/wp4ltijUrZc?rel=0",
+    "date": "2021-01-22",
+    "tags": {
+      "format": [
+        "Limes",
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 60,
+    "title": "Italia, radiografia strategica",
+    "url": "https://www.youtube.com/embed/kpmbB-NtYBk?rel=0",
+    "date": "2021-01-08",
+    "tags": {
+      "format": [
+        "Limes",
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 61,
+    "title": "Trump meritava il Nobel?",
+    "url": "https://www.youtube.com/embed/Fk8EKy4B8zQ?start=1644&rel=0",
+    "date": "2025-10-14",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Gaza",
+        "Trump",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 62,
+    "title": "Polonia vs UE. Perché?",
+    "url": "https://www.youtube.com/embed/8qv9qhDwiHg?start=119&rel=0",
+    "date": "2021-10-15",
+    "tags": {
+      "format": [
+        "Limes",
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Polonia",
+        "EU"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 63,
+    "title": "Che Germania fa",
+    "url": "https://www.youtube.com/embed/JTqt1pzxaVU?rel=0",
+    "date": "2021-10-01",
+    "tags": {
+      "format": [
+        "Limes",
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Germania"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 64,
+    "title": "Forum Commercio Internazionale ",
+    "url": "https://www.youtube.com/embed/Hst6Yxh9jwc?start=180&rel=0",
+    "date": "2025-10-16",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 65,
+    "title": "La rete a stelle e strisce - con Lucio Caracciolo, Dario Fabbri, Niccolò Locatelli",
+    "url": "https://www.youtube.com/embed/N9IClKGUoFQ?start=626&rel=0",
+    "date": "2018-11-26",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Big Tech",
+        "Russia",
+        "Limes"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 66,
+    "title": "Guerre per la memoria: E' la storia, bellezza!",
+    "url": "https://www.youtube.com/embed/T_LlU1FDtos?rel=0",
+    "date": "2020-9-18",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA",
+        "Cina",
+        "Russia",
+        "Taiwan",
+        "Limes"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 67,
+    "title": "Genova 2021 - Le Europe nel 2051 - Con Lucio Caracciolo e Dario Fabbri - Festival di Limes",
+    "url": "https://www.youtube.com/embed/-bXEWaaS-28?rel=0",
+    "date": "2021-12-17",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Europa",
+        "EU",
+        "Germania",
+        "Etnocentrismo",
+        "Afghanistan",
+        "Limes"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 68,
+    "title": "Genova 2021 - Strategia fra passato e futuro - Festival di Limes \"La riscoperta del futuro\"",
+    "url": "https://www.youtube.com/embed/zQAt35BsiQk?rel=0",
+    "date": "2021-12-1",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Iran",
+        "Francia",
+        "Germania",
+        "Trump",
+        "Limes"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 69,
+    "title": "Genova 2021 - La Grande Incognita. La potenza che non vediamo, ma sarà - Festival di Limes",
+    "url": "https://www.youtube.com/embed/2r0oBlPLg3k?rel=0",
+    "date": "2021-12-17",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "India",
+        "Inghilterra",
+        "Brasile",
+        "Giappone",
+        "Turchia",
+        "Messico",
+        "Limes"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 70,
+    "title": "Ecco cosa c'è dietro ai dazi di Trump, Legacoop Romagna",
+    "url": "https://www.youtube.com/embed/M7gkjGyE_AA?start=2001",
+    "date": "2025-4-18",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Dazi"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 71,
+    "title": "Quale destino per l'Ucraina?",
+    "url": "https://www.youtube.com/embed/E6TzZYPq_fg",
+    "date": "2025-10-21",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 72,
+    "title": "Genova 2021 - Italia 2051 - Festival di Limes \"La riscoperta del futuro\"",
+    "url": "https://www.youtube.com/embed/aDI5kK8JURQ?start=2866",
+    "date": "2021-12-20",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Italia",
+        "Limes"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 73,
+    "title": "Geopolitica Umana: il Metodo di Dario Fabbri",
+    "url": "https://www.youtube.com/embed/UxKwGSshiZo?start=653",
+    "date": "2025-2-16",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "A.I.",
+        "Panoramica"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 74,
+    "title": "L'Errore dei Popoli Occidentali",
+    "url": "https://www.youtube.com/embed/314k6vHPENM",
+    "date": "2025-7-16",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Afghanistan",
+        "Etnocentrismo",
+        "Panoramica"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 75,
+    "title": "Il secolo lungo – Dentro la guerra d’Ucraina",
+    "url": "https://www.youtube.com/embed/n6b1PLm7xho?start=4188",
+    "date": "2022-10-29",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 76,
+    "title": "Francia vs woke",
+    "url": "https://www.youtube.com/embed/eH5mdpSOo-4",
+    "date": "2021-10-22",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Francia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 77,
+    "title": "Il fattore umano",
+    "url": "https://www.youtube.com/embed/hst7SnL1V8c",
+    "date": "2019-10-07",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Limes"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 78,
+    "title": "Limes Risponde 2.12.21",
+    "url": "https://www.youtube.com/embed/MTeexfLVkEE",
+    "date": "2021-12-02",
+    "tags": {
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Albania",
+        "Italia",
+        "Panoramica"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 79,
+    "title": "L'importanza di essere Giappone",
+    "url": "https://www.youtube.com/embed/pENbi_042VI?start=642",
+    "date": "2021-02-19",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Giappone"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 80,
+    "title": "il ruolo del Pentagono nella diffusione di internet",
+    "url": "https://www.youtube.com/embed/Tx2eAymsNx8",
+    "date": "2018-11-23",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Big Tech"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 81,
+    "title": "Genova 2021 - Come plasmare le collettività: fra pedagogia e demografia - Festival di Limes",
+    "url": "https://www.youtube.com/embed/fvmPyDJbgEE",
+    "date": "2021-12-09",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Italia",
+        "Limes"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 82,
+    "title": "Radiografia strategica della Germania",
+    "url": "https://www.youtube.com/embed/t_kPi2HS_kM",
+    "date": "2021-02-5",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Germania"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 83,
+    "title": "La Francia Mondiale",
+    "url": "https://www.youtube.com/embed/xVAZJgKX7Mo",
+    "date": "2020-12-11",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Francia"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 84,
+    "title": "Italia, Spagna, Usa e fattore umano - Limes risponde 4.11.21",
+    "url": "https://www.youtube.com/embed/qs0XJi3NVq4",
+    "date": "2021-11-04",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Spagna",
+        "Italia"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 85,
+    "title": "La Spagna e l'indulto per i catalani. Fine dell'indipendentismo?",
+    "url": "https://www.youtube.com/embed/3aK8jHHve8c",
+    "date": "2021-06-25",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Spagna"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 86,
+    "title": "L'Europa e i vaccini",
+    "url": "https://www.youtube.com/embed/EMtUxLrQBi0",
+    "date": "2021-03-12",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "EU"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 87,
+    "title": "Il nuovo Giappone nel contesto asiatico",
+    "url": "https://www.youtube.com/embed/ilrK1NYH5es",
+    "date": "2021-02-26",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Giappone"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 88,
+    "title": "L'importanza della Corea del Nord. Perché Biden cerca Kim",
+    "url": "https://www.youtube.com/embed/v_z4HSxGUlY",
+    "date": "2021-03-26",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Corea"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 89,
+    "title": "Quanto è unita l'Italia?",
+    "url": "https://www.youtube.com/embed/-JALvmDX8BQ",
+    "date": "2021-03-25",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 90,
+    "title": "Presente e futuro del Regno (dis)Unito",
+    "url": "https://www.youtube.com/embed/nHIY7nnpfa0",
+    "date": "2021-03-19",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Inghilterra",
+        "Scozia",
+        "Irlanda"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 91,
+    "title": "Mappa Mundi: L'Italia ha perso l'estero vicino. La Turchia in Libia e nei Balcani",
+    "url": "https://www.youtube.com/embed/QwRFNI3WC68",
+    "date": "2020-08-17",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Italia",
+        "Turchia",
+        "Libia"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 92,
+    "title": "Internet è materialmente sotto il controllo degli Stati Uniti",
+    "url": "https://www.youtube.com/embed/J9BlnlpgNC4",
+    "date": "2018-11-20",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Big Tech"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 93,
+    "title": "Perché la Danimarca spia la Germania per conto degli Usa?",
+    "url": "https://www.youtube.com/embed/yqNTKqXws_Q",
+    "date": "2021-06-04",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Germania"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 94,
+    "title": "Grande Medio Oriente, alle origini del risveglio arabo LimesFestival",
+    "url": "https://www.youtube.com/embed/m08t21t7qiU",
+    "date": "2014-05-22",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Medio Oriente",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 95,
+    "title": "Quanto valgono i dati?",
+    "url": "https://www.youtube.com/embed/EZExRjvt2N0",
+    "date": "2021-01-29",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Big Tech"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 96,
+    "title": "Che cosa farà la Germania?",
+    "url": "https://www.youtube.com/embed/ymJob-a0jC8",
+    "date": "2021-01-29",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Germania"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 97,
+    "title": "Il Numero Uno e i suoi nemici: gli Usa, la Cina e lo stato del mondo",
+    "url": "https://www.youtube.com/embed/gA6k7GD1wHc",
+    "date": "2021-01-29",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 98,
+    "title": "Superlega vs Geopolitica",
+    "url": "https://www.youtube.com/embed/sJPUyiICSk4",
+    "date": "2021-04-23",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "EU",
+        "Sport"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 99,
+    "title": "Come nasce lo spoils system - Note Geopolitiche",
+    "url": "https://www.youtube.com/embed/sotna-URgbA",
+    "date": "2018-10-01",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "Teoria"
+      ]
+    }
+  },
+  {
+    "id": 100,
+    "title": "Che mondo fa - 2° Limes Festival",
+    "url": "https://www.youtube.com/embed/R_jySiZ5wno",
+    "date": "2015-03-12",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 101,
+    "title": "Dobbiamo guardare al Regno Unito come guardiamo alla Russia post-sovietica",
+    "url": "https://www.youtube.com/embed/E2AeeknEmGo",
+    "date": "2019-07-05",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Inghilterra",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 102,
+    "title": "Stati profondi, gli abissi del potere",
+    "url": "https://www.youtube.com/embed/oumT6-EynPo?start=173",
+    "date": "2018-10-03",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Russia",
+        "Cina"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 103,
+    "title": "Che Francia pensa Macron?",
+    "url": "https://www.youtube.com/embed/64CcpGSh6L8",
+    "date": "2020-12-04",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Francia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 104,
+    "title": "Cina vs Usa la tavola rotonda al 3° Limes Festival",
+    "url": "https://www.youtube.com/embed/v1I1zoX3vN4",
+    "date": "2016-03-11",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Cina",
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 105,
+    "title": "L'Europa non esiste?",
+    "url": "https://www.youtube.com/embed/2UxacojAOeA",
+    "date": "2021-03-16",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Pandemia",
+        "EU"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 106,
+    "title": "Economicismo e potere del mito",
+    "url": "https://www.youtube.com/embed/ADI_MrKc7Fg",
+    "date": "2020-03-23",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Europa",
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 107,
+    "title": "Caso Aukus: Stati Uniti-Australia-Francia. Cosa è successo?",
+    "url": "https://www.youtube.com/embed/th7JH0XLvJg?start=571",
+    "date": "2021-09-24",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Francia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 108,
+    "title": "Stati Uniti vs Russia. Cosa succede in Ucraina",
+    "url": "https://www.youtube.com/embed/rh0_IjpXYL4",
+    "date": "2021-04-16",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Ucraina"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 109,
+    "title": "Che succede tra Israele e Palestina?",
+    "url": "https://www.youtube.com/embed/Uoj91HUJj-M?start=185",
+    "date": "2021-05-14",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Israele",
+        "Palestina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 110,
+    "title": "L'America di Donald Rumsfeld (l/'11 settembre 2001)",
+    "url": "https://www.youtube.com/embed/JT31J0QFPww",
+    "date": "2021-07-02",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Afghanistan"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 111,
+    "title": "Su internet la Cina non è immune dall'influenza americana",
+    "url": "https://www.youtube.com/embed/LR7SfAQ8BOo",
+    "date": "2018-11-13",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Cina",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 112,
+    "title": "L'uomo e il mare - Trieste 2021",
+    "url": "https://www.youtube.com/embed/hO4zHmRssVA",
+    "date": "2021-10-05",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Cina",
+        "Inghilterra",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 113,
+    "title": "Il falso mito della stagione dei grandi leader - Note geopolitiche",
+    "url": "https://www.youtube.com/embed/Nr9QDKK22wo",
+    "date": "2018-09-25",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 114,
+    "title": "La Francia tra un (improbabile) golpe e il trattato del Quirinale",
+    "url": "https://www.youtube.com/embed/AIzB1mAs4AA",
+    "date": "2021-04-30",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Francia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 115,
+    "title": "VII Festival di Limes: Dialogo Caracciolo-Conte, incontro con le scuole...",
+    "url": "https://www.youtube.com/embed/dSuUWSdLJz0",
+    "date": "2021-10-16",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Etnocentrismo",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 116,
+    "title": "L'America di Biden e l'Asia-Pacifico",
+    "url": "https://www.youtube.com/embed/frgBQfifmp0",
+    "date": "2020-12-18",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 117,
+    "title": "Usa-Germania, duello per l'Europa",
+    "url": "https://www.youtube.com/embed/fBs5TT22X60",
+    "date": "2017-06-22",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Germania",
+        "USA",
+        "Europa",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 118,
+    "title": "Che succede in Tunisia",
+    "url": "https://www.youtube.com/embed/9ZIAGVs0__E",
+    "date": "2021-07-30",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Francia",
+        "Turchia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 119,
+    "title": "Quanto contano davvero i leader",
+    "url": "https://www.youtube.com/embed/a165M0lWXnY",
+    "date": "2019-10-07",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Turchia",
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 120,
+    "title": "Il Regno Disunito / 1 - La Scozia ribelle",
+    "url": "https://www.youtube.com/embed/bL-z3hJhuKk",
+    "date": "2021-08-10",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Inghilterra",
+        "Scozia",
+        "Irlanda"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 121,
+    "title": "IL MITO DEGLI USA: LA CITTÀ SULLA COLLINA",
+    "url": "https://www.youtube.com/embed/tsvgBQvn9uI",
+    "date": "2021-03-11",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 122,
+    "title": "Il Giappone (e gli Stati Uniti) contro la Cina: Tokyo si riarma",
+    "url": "https://www.youtube.com/embed/aoPE2kt0x_Y?start=1368",
+    "date": "2021-01-26",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Giappone"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 123,
+    "title": "Afghanistan: la Cina dentro la trappola?",
+    "url": "https://www.youtube.com/embed/r3f-WhqCc1I",
+    "date": "2021-10-08",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Afghanistan",
+        "Cina"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 124,
+    "title": "Italia-Francia- Perché il Trattato del Quirinale",
+    "url": "https://www.youtube.com/embed/MTNltgS-uws",
+    "date": "2021-12-03",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Italia",
+        "Francia",
+        "EU"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 125,
+    "title": "L'importanza di essere Stretti: Bab el-Mandeb-Suez - Canale di Sicilia - Gibilterra",
+    "url": "https://www.youtube.com/embed/uDq91j7aHfk",
+    "date": "2020-11-16",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Italia",
+        "USA",
+        "Cina",
+        "Riarmo",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 126,
+    "title": "Il senso americano per le democrazie",
+    "url": "https://www.youtube.com/embed/G53PTuQO8_Q",
+    "date": "2021-11-26",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Cina",
+        "Russia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 127,
+    "title": "L'America di Biden e l'Europa",
+    "url": "https://www.youtube.com/embed/8sdZ2TN0cLs?start=80",
+    "date": "2020-12-23",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "EUROPA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 128,
+    "title": "Taiwan, Cina, Impero Usa e Italia - Limes risponde",
+    "url": "https://www.youtube.com/embed/CV4kh6b5pbE",
+    "date": "2021-11-07",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Taiwan",
+        "Cina",
+        "Giappone",
+        "Italia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 129,
+    "title": "Usa, nascita di una potenza - Limes Festival",
+    "url": "https://www.youtube.com/embed/GJOvF1UOF7g",
+    "date": "2014-05-26",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 130,
+    "title": "Washington contro Londra in nome dell'Irlanda",
+    "url": "https://www.youtube.com/embed/KD_o_FRVtbY",
+    "date": "2021-06-11",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Inghilterra",
+        "Irlanda"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 131,
+    "title": "Nord Stream 2, la Cina val bene un tubo",
+    "url": "https://www.youtube.com/embed/xZrdTRUdJso",
+    "date": "2021-07-23",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Germania"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 132,
+    "title": "Il punto sul Festival - Sabato, Trieste",
+    "url": "https://www.youtube.com/embed/GBc-275EJTw",
+    "date": "2021-10-04",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Italia",
+        "Cina",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 133,
+    "title": "Il Giappone torna protagonista",
+    "url": "https://www.youtube.com/embed/jn3fZW2Jnz0",
+    "date": "2018-03-30",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Giappone",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 134,
+    "title": "Euro2020, la sconfitta inglese. Celti contro Londra, Brexit e Global Britain",
+    "url": "https://www.youtube.com/embed/Cj0hGgHNIZ4",
+    "date": "2021-07-12",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Italia",
+        "Inghilterra",
+        "Scozia",
+        "Sport"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 135,
+    "title": "Perché conta il discorso di Xi Jinping",
+    "url": "https://www.youtube.com/embed/YuLmpDLsjBM",
+    "date": "2021-07-09",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 136,
+    "title": "Il Russiagate (che non si chiama così) e lo scontro Trump-Stato profondo Usa",
+    "url": "https://www.youtube.com/embed/yWFzZctoAL0",
+    "date": "2018-01-29",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Russia",
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 137,
+    "title": "Il Mediterraneo conteso",
+    "url": "https://www.youtube.com/embed/wsHTLXUA_N0",
+    "date": "2020-11-16",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Italia",
+        "Francia",
+        "USA",
+        "Turchia",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 138,
+    "title": "l'Italia indebolita e contesa da Usa, Cina e Russia",
+    "url": "https://www.youtube.com/embed/LTUzY3ZOjkE",
+    "date": "2020-05-18",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 139,
+    "title": "Genova 2021 - Speciale Mappamundi 'La riscoperta del futuro 2' Domenica - Festival di Limes",
+    "url": "https://www.youtube.com/embed/jRTz41NAN8I",
+    "date": "2021-12-19",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "EU",
+        "Cina",
+        "Italia",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 140,
+    "title": "Gli gnomi di Zurigo non sono lo Stato profondo - Nota geopolitica",
+    "url": "https://www.youtube.com/embed/LP9F0waY1zk",
+    "date": "2018-09-21",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 141,
+    "title": "Afghanistan, il ritiro degli Usa. La trappola per Russia e Cina. Il Pakistan in bilico",
+    "url": "https://www.youtube.com/embed/aRH4KgcQ9bw",
+    "date": "2021-06-08",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA",
+        "Afghanistan"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 142,
+    "title": "Carte, geopolitica e Italia: Limes incontra le scuole",
+    "url": "https://www.youtube.com/embed/EObK8LCoJio",
+    "date": "2018-06-05",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Italia",
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 143,
+    "title": "Le parole di Trump e i fatti del Pentagono - Note geopolitiche",
+    "url": "https://www.youtube.com/embed/Od75HNA6JPQ",
+    "date": "2018-10-01",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 144,
+    "title": "Disgelo russo-americano?",
+    "url": "https://www.youtube.com/embed/qteRYJzQhiw",
+    "date": "2021-05-21",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 145,
+    "title": "Il Trimarium, la faglia dell'Artico e il Russiagate",
+    "url": "https://www.youtube.com/embed/sSL_TKq59TQ",
+    "date": "2018-01-16",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Europa",
+        "Russia",
+        "Polonia",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 146,
+    "title": "L'isola che non c'è più, il Canale di Sicilia e altre storie",
+    "url": "https://www.youtube.com/embed/opfO2kTKnqo",
+    "date": "2020-12-10",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 147,
+    "title": "Genova 2021 - Stati Uniti, Cina, Russia. Chi e come prevarrà fra trent’anni? - Festival di Limes",
+    "url": "https://www.youtube.com/embed/q9hEMAVHcIE",
+    "date": "2021-12-17",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Cina",
+        "Russia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 148,
+    "title": "Lezioni afghane. Italia e Medioceano",
+    "url": "https://www.youtube.com/embed/n0iWj3oyK6U",
+    "date": "2021-09-14",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA",
+        "Afghanistan",
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 149,
+    "title": "La sorpresa ispanica in Usa, Iran vs Erdogan, le carte di Limes (e il colore)",
+    "url": "https://www.youtube.com/embed/XxyFKZgjPe4",
+    "date": "2020-12-17",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA",
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 150,
+    "title": "Tra G7 e Nato gli Usa definiscono la sfida a Cina e Russia",
+    "url": "https://www.youtube.com/embed/T0J2Lb5CREA",
+    "date": "2021-06-18",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 151,
+    "title": "Europa, non-Europa, Europa tedesca? V Festival di Limes",
+    "url": "https://www.youtube.com/embed/6q2McExnKC0",
+    "date": "2018-06-05",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Europa",
+        "Germania",
+        "Italia",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 152,
+    "title": "Scuola di Limes - Russia contro Nato e presentazione del corso 2022",
+    "url": "https://www.youtube.com/embed/-KLFp1kam2Q",
+    "date": "2021-12-05",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 153,
+    "title": "Quanto vale un G20",
+    "url": "https://www.youtube.com/embed/QfC7Guns_z0",
+    "date": "2021-10-29",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        ""
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 154,
+    "title": "L'Italia di Draghi alla prova della realtà",
+    "url": "https://www.youtube.com/embed/4ICJKHGaUgY",
+    "date": "2021-04-08",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 155,
+    "title": "Il G20 per l'Italia (e Draghi)",
+    "url": "https://www.youtube.com/embed/q9fOAwyF5hc",
+    "date": "2021-11-05",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 156,
+    "title": "Con chi stiamo? L’Italia fra America e Russia - VI Festival di Limes",
+    "url": "https://www.youtube.com/embed/jqDfmLjAf_4",
+    "date": "2019-03-27",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Italia",
+        "USA",
+        "Russia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 157,
+    "title": "Il duello tra Usa e Cina si combatte nell'Indo-Pacifico",
+    "url": "https://www.youtube.com/embed/OJg6IrSGrVo",
+    "date": "2020-07-23",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Cina",
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 158,
+    "title": "Usa contro Cina. L'offensiva di Biden e la risposta di Pechino. E l'Italia cosa farà?",
+    "url": "https://www.youtube.com/embed/zm6uJBBxFd8",
+    "date": "2021-06-29",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Italia",
+        "USA",
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 159,
+    "title": "Irlanda del Nord, effetto Brexit (e Biden). Scontri e proteste: i nuovi troubles?",
+    "url": "https://www.youtube.com/embed/V2tLp_-ah-k",
+    "date": "2021-04-20",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Irlanda",
+        "Inghilterra"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 160,
+    "title": "L'attentato a Kabul. Cosa succede ora in Afghanistan",
+    "url": "https://www.youtube.com/embed/AEQw65B25q0",
+    "date": "2021-08-27",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Afghanistan"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 161,
+    "title": "Biden vs Putin. Venti di guerra?",
+    "url": "https://www.youtube.com/embed/_28YxP5ROZg",
+    "date": "2021-12-10",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 162,
+    "title": "Virus cinese? Perché adesso gli Usa vogliono la verità",
+    "url": "https://www.youtube.com/embed/5g6aG6vTcro",
+    "date": "2021-05-28",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Pandemia",
+        "Cina",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 163,
+    "title": "Dal Medioceano all’Indo-Pacifico, epicentro della sfida Usa/Cina - Trieste 2021",
+    "url": "https://www.youtube.com/embed/mZ17JG5IKw4",
+    "date": "2021-10-21",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Cina",
+        "USA",
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 164,
+    "title": "L'America dopo l'assalto al Congresso",
+    "url": "https://www.youtube.com/embed/S_cy9mjoACs",
+    "date": "2021-10-07",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 165,
+    "title": "Uk, Scozia addio? La sfida al 'Global Britain'",
+    "url": "https://www.youtube.com/embed/2mZi_QgxgAE",
+    "date": "2021-05-11",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Scozia",
+        "Inghilterra"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 166,
+    "title": "Tokyo 2020, le Olimpiadi della discordia e le altre notizie della settimana",
+    "url": "https://www.youtube.com/embed/SeHZvyVYMiQ",
+    "date": "2021-07-21",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Giappone",
+        "Sport"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 167,
+    "title": "Biden e Trump, due presidenti per due Americhe: gli Stati Uniti che verranno",
+    "url": "https://www.youtube.com/embed/jr2cK3iBQlQ",
+    "date": "2020-11-23",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 168,
+    "title": "Perché l'America è contro tutti",
+    "url": "https://www.youtube.com/embed/Xs2XqIzsG7Q",
+    "date": "2020-01-27",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 169,
+    "title": "La sospensione dell'accordo Ue-Cina: primo successo per Biden",
+    "url": "https://www.youtube.com/embed/Gvn4nKcqyDk",
+    "date": "2020-05-07",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "EU",
+        "Cina",
+        "Germania"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 170,
+    "title": "Trump, il voto, i brogli e altre storie",
+    "url": "https://www.youtube.com/embed/gh4rNFd4guE",
+    "date": "2020-11-19",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 171,
+    "title": "L'Italia di Draghi",
+    "url": "https://www.youtube.com/embed/wyIv6_bWiyw",
+    "date": "2021-09-13",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 172,
+    "title": "Diversamente occidentali: l'Occidente visto da Stati Uniti, Francia, Italia e...",
+    "url": "https://www.youtube.com/embed/2nc3XXhGawY",
+    "date": "2020-10-17",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 173,
+    "title": "Deep State, il potere degli apparati e degli Stati profondi in Usa, Francia, Giappone e Italia",
+    "url": "https://www.youtube.com/embed/2QJ8embBMwA?start=362",
+    "date": "2021-02-23",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 174,
+    "title": "L'America di Biden e il Medio Oriente",
+    "url": "https://www.youtube.com/embed/hCfd8aafIS8",
+    "date": "2020-12-30",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Medio Oriente"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 175,
+    "title": "Declino Usa? Gli strumenti dell'impero americano",
+    "url": "https://www.youtube.com/embed/kRXuQD6a7qk",
+    "date": "2021-10-05",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA",
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 176,
+    "title": "La notte dell'impero americano",
+    "url": "https://www.youtube.com/embed/dk4XZ5KKa-8",
+    "date": "2021-02-09",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 177,
+    "title": "Presente e futuro delle relazioni Usa-Russia",
+    "url": "https://www.youtube.com/embed/B83TErUS0f8",
+    "date": "2021-03-05",
+    "tags": {
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "USA",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 178,
+    "title": "Germania, cosa cambia dopo il voto",
+    "url": "https://www.youtube.com/embed/_gnMgovGg_Q",
+    "date": "2021-09-27",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Germania"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 179,
+    "title": "L'America spaccata, gli Stati Uniti dopo le elezioni",
+    "url": "https://www.youtube.com/embed/J0VTcFmMoCM",
+    "date": "2020-11-05",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 180,
+    "title": "Corea, come evitare una guerra mondiale - V Festival di Limes",
+    "url": "https://www.youtube.com/embed/Lo9PF_UaKcg",
+    "date": "2018-06-05",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Corea",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 181,
+    "title": "Usa-Russia. Biden contro Putin",
+    "url": "https://www.youtube.com/embed/cxvA2-MtiXY",
+    "date": "2021-03-29",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Russia",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 182,
+    "title": "Limes nel futuro: prevedere non si può, si deve",
+    "url": "https://www.youtube.com/embed/olGpPaHPpBE",
+    "date": "2020-11-16",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 183,
+    "title": "La strategia delle grandi potenze - VI Festival di Limes",
+    "url": "https://www.youtube.com/embed/iaVZ1mv2izc",
+    "date": "2019-04-06",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Limes"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 184,
+    "title": "La guerra in Etiopia e perché dovrebbe interessarci",
+    "url": "https://www.youtube.com/embed/Tncdgm4aFcs",
+    "date": "2020-12-02",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Etiopia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 185,
+    "title": "Il Venezuela e la fortezza americana",
+    "url": "https://www.youtube.com/embed/hrlEZQdH3s0",
+    "date": "2025-10-28",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Venezuela",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 186,
+    "title": "USA vs Cina. A che punto siamo?",
+    "url": "https://www.youtube.com/embed/Dvm9Sp7dIko",
+    "date": "2025-11-04",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "USA",
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 187,
+    "title": "Geopolitica della propaganda",
+    "url": "https://www.youtube.com/embed/8wizUDCuruw",
+    "date": "2025-11-11",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "USA",
+        "Europa",
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 188,
+    "title": "Il destino dei popoli",
+    "url": "https://www.youtube.com/embed/_Z9xG2wQihU?start=2085",
+    "date": "2025-11-12",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 189,
+    "title": "Texas e Midwest, l'America profonda e gli Usa che verranno",
+    "url": "https://www.youtube.com/embed/bGMuF1BqKaw",
+    "date": "2019-01-28",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 190,
+    "title": "Cos'è la strategia: i vincoli geopolitici di Germania, Italia, Russia e Stati Uniti",
+    "url": "https://www.youtube.com/embed/vxd_cM8-WRU",
+    "date": "2019-12-04",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA",
+        "Italia",
+        "Germania",
+        "Russia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 191,
+    "title": "Il fattore umano: ecco cos'è la geopolitica",
+    "url": "https://www.youtube.com/embed/XWbD2EJzZtg",
+    "date": "2019-09-23",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        ""
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 192,
+    "title": "Festival di Limes - L'Italia tra strategia e pedagogia,",
+    "url": "https://www.youtube.com/embed/7bNU5IEVHMs",
+    "date": "2019-03-10",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        ""
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 193,
+    "title": "Perché gli americani vogliono costruire il muro Usa-Messico, le ragioni geopolitiche",
+    "url": "https://www.youtube.com/embed/red-tgmgr_I",
+    "date": "2019-01-31",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA",
+        "Messico"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 194,
+    "title": "Economicismo e potere del mito: le guerre si fanno per il petrolio?",
+    "url": "https://www.youtube.com/embed/b91ZOEUt2C4",
+    "date": "2020-03-18",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Europa",
+        "USA",
+        "Cina"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 195,
+    "title": "Il potere del mito: dall'impero romano a quello americano",
+    "url": "https://www.youtube.com/embed/346hT0XsmBY",
+    "date": "2020-03-10",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 196,
+    "title": "Festival di Limes - L'Italia e l'impero americano",
+    "url": "https://www.youtube.com/embed/eyBIYGPlD7Y",
+    "date": "2019-03-09",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA",
+        "Italia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 197,
+    "title": "Usa-Iran, verso la guerra o un nuovo accordo?",
+    "url": "https://www.youtube.com/embed/z78nHxZtomg",
+    "date": "2020-02-14",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA",
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 198,
+    "title": "L'Inghilterra oltre Brexit, l'impero britannico e quello americano",
+    "url": "https://www.youtube.com/embed/vgqNIlfH_Wc",
+    "date": "2019-06-17",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Inghilterra"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 199,
+    "title": "Venti di guerra nel Golfo, dagli attacchi alle petroliere all'invio di truppe americane",
+    "url": "https://www.youtube.com/embed/YsjorMHT75Q",
+    "date": "2019-05-29",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 200,
+    "title": "Deep State: gli apparati e i contro poteri pubblici e segreti in Usa e nel mondo",
+    "url": "https://www.youtube.com/embed/py6o5u6QHhs",
+    "date": "2018-10-12",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 201,
+    "title": "Chi controlla i mari controlla il mondo",
+    "url": "https://www.youtube.com/embed/zZGB4E1Ey4I",
+    "date": "2019-08-01",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 202,
+    "title": "Il mondo secondo Trump, l'impero americano alla prova di Siria e Russia",
+    "url": "https://www.youtube.com/embed/sNi4etcWB_g",
+    "date": "2019-11-07",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA",
+        "Russia",
+        "Siria"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 203,
+    "title": "La globalizzazione, il controllo dei mari e l'impero americano",
+    "url": "https://www.youtube.com/embed/7akXdojn3QA",
+    "date": "2018-11-11",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 204,
+    "title": "Usa, l'abbattimento delle statue di Colombo e l'assimilazione degli ispanici",
+    "url": "https://www.youtube.com/embed/cOYY9wkZAsY",
+    "date": "2019-02-05",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 205,
+    "title": "Deep State contro Trump, l'apparato più grande al mondo? Il Pentagono: oltre 3 mln di dipendenti",
+    "url": "https://www.youtube.com/embed/LNIa8jsW0Vk",
+    "date": "2018-10-21",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 206,
+    "title": "Usa, la 'truffa' dell'Afghanistan da Obama a Trump",
+    "url": "https://www.youtube.com/embed/Yhgcx4HQGpc",
+    "date": "2018-10-21",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 207,
+    "title": "Cavi sottomarini e server: così gli Usa controllano Internet e i suoi giganti",
+    "url": "https://www.youtube.com/embed/qihYuqawlAA",
+    "date": "2018-11-11",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 208,
+    "title": "La strategia della Germania, Merkel-Trump e il G7-10",
+    "url": "https://www.youtube.com/embed/0hQy6Mb1PIY",
+    "date": "2020-06-08",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Germania"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 209,
+    "title": "Hong Kong e Taiwan, una Cina in bilico (e gli Usa non stanno a guardare)",
+    "url": "https://www.youtube.com/embed/QuQj-xQRhs8",
+    "date": "2019-10-11",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 210,
+    "title": "Dalla Siria ai profughi verso l'Europa, cosa vuole la Turchia di Erdogan",
+    "url": "https://www.youtube.com/embed/tfCe83jwwx8",
+    "date": "2020-03-03",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Turchia",
+        "Siria"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 211,
+    "title": "Il mondo virato: gli Stati Uniti verso un impero meno globale? ",
+    "url": "https://www.youtube.com/embed/FsTwTryZqeE",
+    "date": "2020-04-21",
+    "tags": {
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+  {
+    "id": 212,
+    "title": "la geopolitica dell’acqua",
+    "url": "https://www.youtube.com/embed/iWa86q0tLLk?start=3425",
+    "date": "2024-07-06",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Iran",
+        "USA",
+        "Russia",
+        "Cina",
+        "Taiwan"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 213,
+    "title": "Sotto la pelle del mondo",
+    "url": "https://www.youtube.com/embed/kenWqnVEc20",
+    "date": "2024-12-04",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        ""
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 214,
+    "title": "I leader e la colpa del mondo",
+    "url": "https://www.youtube.com/embed/3jvoN15Z1HA?start=412",
+    "date": "2024-04-14",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  },
+  {
+    "id": 215,
+    "title": "Pax, mari e globalizzazione | TEDxLakeComo",
+    "url": "https://www.youtube.com/embed/bRFCXvg6iu8",
+    "date": "2019-12-12",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
+  }
 ]

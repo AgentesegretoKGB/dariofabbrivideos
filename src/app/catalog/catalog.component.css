@@ -49,7 +49,7 @@
 	display: block;
 	width: 100%;
 	height: 100%;
-	object-fit: contain; /* Show entire image instead of cropping */
+	object-fit: contain; /* Show entire image without cropping */
 	object-position: center; /* Center the image */
 	background: #000; /* Black background for letterboxing */
 }
@@ -266,9 +266,11 @@
 /* ===== FEEDBACK SECTION ===== */
 .feedback-section {
   margin-top: 4rem;
+  margin-bottom: 0;
   padding: 3rem 1rem 2rem 1rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border-top: 1px solid var(--border-color);
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  width: 100%;
 }
 
 .feedback-container {
@@ -306,17 +308,17 @@
 }
 
 .feedback-option {
-  background: white;
+  background: transparent;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--border-color);
+  box-shadow: none;
+  border: none;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .feedback-option:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: none;
+  box-shadow: none;
 }
 
 .option-icon {

@@ -107,7 +107,7 @@ export class MaterialsComponent implements OnInit, OnDestroy {
       author: 'Aristotele',
       date: '2025-11-16',
       category: 'teoria',
-      tags: ['filosofia', 'etica'],
+      tags: ['filosofia'],
       poster: 'assets/pdf-placeholder.svg',
       featured: true
     },
