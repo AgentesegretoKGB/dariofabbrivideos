@@ -18,7 +18,9 @@
 </nav>
 
 <!-- overlay: visible when drawer is open; click to close -->
-<div class="backdrop" *ngIf="drawerOpen" (click)="toggleDrawer()" aria-hidden="false"></div>
+@if (drawerOpen) {
+  <div class="backdrop" (click)="toggleDrawer()" aria-hidden="false"></div>
+}
 
 <main class="container">
   <router-outlet></router-outlet>
