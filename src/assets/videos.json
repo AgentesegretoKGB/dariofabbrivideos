@@ -24,10 +24,10 @@
     "date": "2022-04-23",
     "tags": {
       "format": [
-        "Festa Scienza Filosofia"
+        "Incontro"
       ],
       "argomento": [
-        "Incontro"
+        "Consigliato"
       ],
       "categoria": [
         "teoria"
@@ -45,7 +45,8 @@
       ],
       "argomento": [
         "Trump",
-        "USA"
+        "USA",
+		"Consigliato"
       ],
       "categoria": [
         "attualita"
@@ -81,7 +82,8 @@
       "argomento": [
         "Israele",
         "Etnocentrismo",
-        "Iran"
+        "Iran",
+		"Consigliato"
       ],
       "categoria": [
         "teoria"
@@ -1179,11 +1181,10 @@
     "date": "2021-01-08",
     "tags": {
       "format": [
-        "Limes",
         "Approfondimento Limes"
       ],
       "argomento": [
-        "Italia"
+        "Italia","Consigliato"
       ],
       "categoria": [
         "teoria"
@@ -1733,7 +1734,7 @@
       "argomento": [
         "Inghilterra",
         "Scozia",
-        "Irlanda"
+        "Irlanda", "Consigliato"
       ],
       "categoria": [
         "Teoria"
@@ -3988,5 +3989,265 @@
         "teoria"
       ]
     }
+  },
+    {
+    "id": 216,
+    "title": "VENEZUELA–UCRAINA–TAIWAN” — Come si tengono insieme",
+    "url": "https://www.youtube.com/embed/yjC3B1FHxRM?start=73",
+    "date": "2025-11-08",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica","Venezuela","Ucraina","Taiwan"
+      ],
+      "categoria": [
+        "attualita"
+      ]
+    }
+  },
+   {
+    "id": 217,
+    "title": "LE CHIAVI DEL MONDO CONTEMPORANEO",
+    "url": "https://www.youtube.com/embed/ih51qUzHXlI",
+    "date": "2025-04-12",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","USA","Siria"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 218,
+    "title": "Guerre nel mondo e tensioni internazionali - Noos",
+    "url": "https://www.youtube.com/embed/qESRUfyHW7w",
+    "date": "2025-07-02",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Guerra in Ucraina","Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 219,
+    "title": "storia di una guerra infinita",
+    "url": "https://www.youtube.com/embed/iua-SQW-i-E",
+    "date": "2023-10-19",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Israele","Palestina"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 220,
+    "title": "La Turchia non è un paese arabo, anzi ha un'idea razzista verso gli arabi, e si ...",
+    "url": "https://www.youtube.com/embed/XrPS-A-VS94",
+    "date": "2023-10-28",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Turchia","Azerbaigian","Islam"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 221,
+    "title": "Perché Israele dovrebbe attaccare?",
+    "url": "https://www.youtube.com/embed/N6xFCMX6THY",
+    "date": "2023-10-17",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Gaza","Israele","Islam"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 222,
+    "title": "Guerra santa? Improprio, molti paesi arabi utilizzano la causa palestinese per ...",
+    "url": "https://www.youtube.com/embed/M58QkFaXF2A",
+    "date": "2023-10-16",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Israele","Medio Oriente"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 223,
+    "title": "Israele è l'unico paese russofono esterno all'ex spazio sovietico, i fondatori ...",
+    "url": "https://www.youtube.com/embed/z7__Ikv8Kvg",
+    "date": "2023-10-12",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Israele","Russia"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 224,
+    "title": "Ciò che sta capitando in Medio Oriente è uno schieramento anti-iraniano che ...",
+    "url": "https://www.youtube.com/embed/VmVkX2Pl6cQ",
+    "date": "2023-10-14",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Israele","Medio Oriente"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 225,
+    "title": "Quadrante di geopolitica (umana) verso il 2024",
+    "url": "https://www.youtube.com/embed/YihRbJOUpUw",
+    "date": "2023-12-29",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": [""],
+      "categoria": ["teoria"]
+    }
+  },
+     {
+    "id": 226,
+    "title": "Ep. 01: Gli americani sono depressi - SOTTO LA PELLE DELL' AMERICA",
+    "url": "https://www.youtube.com/embed/SYitMZmssc4",
+    "date": "2024-10-31",
+    "tags": {
+      "format": ["Podcast"],
+      "argomento": ["USA"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 227,
+    "title": "Ep. 02: USA e Medio Oriente - Gli americani fanno meno paura - SOTTO LA PELLE DELL' AMERICA",
+    "url": "https://www.youtube.com/embed/6cet6ockmBs",
+    "date": "2024-10-31",
+    "tags": {
+      "format": ["Podcast"],
+      "argomento": ["USA","Medio Oriente"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 228,
+    "title": "Ep.03: USA e Vecchio Continente - La guerra in Ucraina - SOTTO LA PELLE DELL' AMERICA",
+    "url": "https://www.youtube.com/embed/VzrKYeMpAZE",
+    "date": "2024-10-31",
+    "tags": {
+      "format": ["Podcast"],
+      "argomento": ["Guerra in Ucraina","USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 229,
+    "title": "Ep. 04: USA e Cina - Dobbiamo aspettarci la terza guerra mondiale? - SOTTO LA PELLE DELL' AMERICA",
+    "url": "https://www.youtube.com/embed/v5dCywwclPU?start=10",
+    "date": "2024-10-31",
+    "tags": {
+      "format": ["Podcast"],
+      "argomento": ["Taiwan","USA","Cina"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 230,
+    "title": "Gli Imperi non si dimettono",
+    "url": "https://www.youtube.com/embed/-3f2f8xncUw",
+    "date": "2021-12-06",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 231,
+    "title": "Gli USA da Trump a Biden",
+    "url": "https://www.youtube.com/embed/huM7NopSYW0",
+    "date": "2021-12-07",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 232,
+    "title": "Gli USA da Trump a Biden",
+    "url": "https://www.youtube.com/embed/huM7NopSYW0",
+    "date": "2021-12-07",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 233,
+    "title": "America contro tutti",
+    "url": "https://www.youtube.com/embed/fhLUdEUhXgc",
+    "date": "2020-03-01",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 234,
+    "title": "Lucio Caracciolo e Dario Fabbri - Il muro portante - Limes",
+    "url": "https://www.youtube.com/embed/fKty5ZmJWDI?start=928",
+    "date": "2019-11-21",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Germania","Europa","USA","Consigliato"],
+      "categoria": ["teoria"]
+    }
+  },
+  {
+    "id": 235,
+    "title": "L'impero americano e Internet, come gli Usa controllano la Rete",
+    "url": "https://www.youtube.com/embed/-mrZiZZqAcQ",
+    "date": "2018-11-09",
+    "tags": {
+      "format": ["Mappa Mundi"],
+      "argomento": ["USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 236,
+    "title": "Le ragioni e la storia di un conflitto - Dario Fabbri ospite dell'Alumni Rui",
+    "url": "https://www.youtube.com/embed/V84l0pg_woI",
+    "date": "2022-03-31",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 237,
+    "title": "L'AMERICA DOPO TRUMP",
+    "url": "https://www.youtube.com/embed/NRi3VoGlalA?start=1875",
+    "date": "2021-07-05",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 238,
+    "title": "Enrico Mentana e Dario Fabbri: \"Domino e il mondo che cambia\"",
+    "url": "https://www.youtube.com/embed/LFH_AlXXEzE",
+    "date": "2023-06-04",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Consigliato"],
+      "categoria": ["teoria"]
+    }
   }
+
 ]
