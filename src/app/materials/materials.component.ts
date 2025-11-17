@@ -111,6 +111,20 @@ export class MaterialsComponent implements OnInit, OnDestroy {
       poster: 'assets/pdf-placeholder.svg',
       featured: true
     },
+    { 
+      id: 7,
+      title: 'Mentana e Dario Fabbri ridono incontrollatamente',
+      description: '',
+      url: 'https://www.youtube.com/watch?v=rAnDosda0nY', 
+      type: 'video', 
+      author: '', 
+      date: '2022-05-19',
+      embed: 'https://www.youtube.com/embed/rAnDosda0nY',
+      category: 'attualità',
+      tags: [''],
+      poster: 'https://img.youtube.com/vi/rAnDosda0nY/hqdefault.jpg',
+      featured: true
+    },
   ];
 
   // Materiali in evidenza - i più recenti e importanti
