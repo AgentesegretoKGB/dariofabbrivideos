@@ -46,6 +46,7 @@
       "argomento": [
         "Trump",
         "USA",
+		"Brasile",
 		"Consigliato"
       ],
       "categoria": [
@@ -4248,6 +4249,207 @@
       "argomento": ["Consigliato"],
       "categoria": ["teoria"]
     }
+  },
+   {
+    "id": 239,
+    "title": "Lucio Caracciolo e Dario Fabbri - Stati profondi, gli abissi del potere",
+    "url": "https://www.youtube.com/embed/z6QshiuQamo?start=2053",
+    "date": "2018-09-20",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Consigliato","USA"],
+      "categoria": ["teoria"]
+    }
+  },
+   {
+    "id": 240,
+    "title": "Black, Mini e Shapiro: \"Vecchia Europa vs Nuova Europa? Noi secondo gli USA\"- Festival di Limes",
+    "url": "https://www.youtube.com/embed/77kt2i4LZZQ",
+    "date": "2020-12-03",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Europa","USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 241,
+    "title": "PIANURE, MONTAGNE E PORTI",
+    "url": "https://www.youtube.com/embed/hEHs-kzuCZg",
+    "date": "2022-03-04",
+    "tags": {
+      "format": ["Assemblea"],
+      "argomento": ["Guerra in Ucraina","Russia"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 242,
+    "title": "sulla guerra tra Russia Ucraina all'Assemblea Nazionale Coldiretti Giovani Impresa",
+    "url": "https://www.youtube.com/embed/kT5N_Kjd_aI",
+    "date": "2022-05-03",
+    "tags": {
+      "format": ["Assemblea"],
+      "argomento": ["Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 243,
+    "title": "Assemblea Generale 2024 'SCELTE'",
+    "url": "https://www.youtube.com/embed/dU2OgfWfz1k",
+    "date": "2024-11-14",
+    "tags": {
+      "format": ["Assemblea"],
+      "argomento": ["USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 244,
+    "title": "Caso Almasri, complotto di Francia e Germania?",
+    "url": "https://www.youtube.com/embed/x6Fgu-vGAAk",
+    "date": "2025-02-03",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Italia"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 245,
+    "title": "Kilimangiaro",
+    "url": "https://www.youtube.com/embed/zLWjNNhxwL8",
+    "date": "2024-10-28",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 246,
+    "title": "la nuova America di Trump- Kilimangiaro",
+    "url": "https://www.youtube.com/embed/PuFalZAoZcU",
+    "date": "2025-01-20",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Gaza"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 247,
+    "title": "Impero USA, Russia e conflitti",
+    "url": "https://www.youtube.com/embed/9caPGOLBxjQ",
+    "date": "2024-04-17",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 248,
+    "title": "Trentino2060 (Vol. IV) - Geopolitica di oggi e di domani",
+    "url": "https://www.youtube.com/embed/HqEin26OylM",
+    "date": "2023-05-20",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 249,
+    "title": "\"IL MONDO CHE VERRÀ\" - ENDORFINE FESTIVAL LUGANO",
+    "url": "https://www.youtube.com/embed/GY2iz1yC-4M?start=9",
+    "date": "2022-11-18",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 250,
+    "title": "Lectio Magistralis - \"Mappe\" Fiera del Libro di Iglesias",
+    "url": "https://www.youtube.com/embed/a5vPud_FI3M?start=173",
+    "date": "2023-05-12",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 251,
+    "title": "Lectio Magistralis - Fiera del Libro Argonautilus",
+    "url": "https://www.youtube.com/embed/Mkh8ogfvi80",
+    "date": "2022-11-03",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 252,
+    "title": "Guerra in Ucraina e crisi ambientale globale, Dario Fabbri – SUPSI Emergenza Terra",
+    "url": "https://www.youtube.com/embed/dRPTfexDxTk",
+    "date": "2023-06-23",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 253,
+    "title": "Cosa muove la storia? Stati, società, individui",
+    "url": "https://www.youtube.com/embed/p_ZV0CQQbDc",
+    "date": "2023-06-23",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": [""],
+      "categoria": ["teoria"]
+    }
+  },
+   {
+    "id": 254,
+    "title": "IL RUOLO DELL’AMERICA NEL MONDO",
+    "url": "https://www.youtube.com/embed/La6pQsOsh_k?start=359",
+    "date": "2024-11-08",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","Trump","Consigliato"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 255,
+    "title": "Festival di Open - Strumenti di geopolitica per comprendere il mondo che cambia",
+    "url": "https://www.youtube.com/embed/KHH4A1gHtzM",
+    "date": "2023-09-21",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Libia","BRICs","Russia","Cina"],
+      "categoria": ["attualita"]
+    }
+  },
+     {
+    "id": 256,
+    "title": "Cosa vogliono i russi?",
+    "url": "https://www.youtube.com/embed/2T3JEiZxCzo",
+    "date": "2024-03-28",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Russia"],
+      "categoria": ["attualita"]
+    }
   }
+
+
+
 
 ]
