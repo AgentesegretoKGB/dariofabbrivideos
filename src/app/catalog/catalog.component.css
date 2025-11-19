@@ -115,27 +115,34 @@
 	}
 	
 	.video-slot {
-		min-height: auto; /* Remove fixed height - let content dictate */
+		min-height: unset !important; /* Force no minimum height */
+		display: flex;
+		flex-direction: column;
 	}
 	
 	.preview {
-		height: 200px; /* Increased from 180px */
+		height: 240px !important; /* Much larger preview */
 		margin-bottom: 0;
+		flex-shrink: 0;
 	}
 	
 	.info {
-		padding: 0.8rem 0.75rem;
+		padding: 0.7rem 0.75rem;
+		flex-shrink: 1;
 	}
 	
-	.title { font-size: 0.95rem; }
+	.title { 
+		font-size: 0.92rem;
+		line-height: 1.25;
+	}
 	
 	.video-data {
-		margin-top: 8px;
+		margin-top: 6px;
 		gap: 4px;
 	}
 	
 	.data-item {
-		font-size: 0.8rem;
+		font-size: 0.78rem;
 		line-height: 1.3;
 	}
 }
