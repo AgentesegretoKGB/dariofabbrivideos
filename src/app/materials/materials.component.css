@@ -514,16 +514,47 @@
   }
   
   .material-slot {
-    padding: 0.65rem;
+    padding: 0;
   }
   
-  .material-title {
-    font-size: 0.9rem;
+  .material-slot .info {
+    padding: 0.75rem;
   }
   
-  .material-category,
-  .material-tags {
-    font-size: 0.72rem;
+  .material-slot .title {
+    font-size: 0.95rem;
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+  }
+  
+  .material-slot .meta {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .material-slot .description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+  
+  .material-slot .tags {
+    margin: 0.5rem 0;
+    gap: 0.35rem;
+  }
+  
+  .material-slot .tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+  
+  .material-slot .actions {
+    padding-top: 0.75rem;
+  }
+  
+  .material-slot .btn-primary {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.85rem;
   }
 }
 
