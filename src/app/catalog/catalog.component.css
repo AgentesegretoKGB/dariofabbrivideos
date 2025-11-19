@@ -111,14 +111,15 @@
 	.videos-grid { 
 		gap: 0.6rem; 
 		padding: 0.25rem;
+		grid-template-columns: 1fr; /* Single column on mobile */
 	}
 	
 	.video-slot {
-		min-height: 320px; /* Adjusted for mobile */
+		min-height: auto; /* Remove fixed height - let content dictate */
 	}
 	
 	.preview {
-		height: 180px; /* Proportional height for mobile */
+		height: 200px; /* Increased from 180px */
 		margin-bottom: 0;
 	}
 	
