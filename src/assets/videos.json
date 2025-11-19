@@ -4174,17 +4174,6 @@
     }
   },
   {
-    "id": 232,
-    "title": "Gli USA da Trump a Biden",
-    "url": "https://www.youtube.com/embed/huM7NopSYW0",
-    "date": "2021-12-07",
-    "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","USA"],
-      "categoria": ["attualita"]
-    }
-  },
-  {
     "id": 233,
     "title": "America contro tutti",
     "url": "https://www.youtube.com/embed/fhLUdEUhXgc",
@@ -4445,6 +4434,127 @@
     "tags": {
       "format": ["Incontro"],
       "argomento": ["Russia"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 257,
+    "title": "Le conseguenze dell'attentato a Mosca",
+    "url": "https://www.youtube.com/embed/BbPBllqVWSk",
+    "date": "2024-03-28",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Russia"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 258,
+    "title": "Capire l'attualità attraverso la Geopolitica",
+    "url": "https://www.youtube.com/embed/vuJryeyBfB0",
+    "date": "2022-04-22",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Green","Europa"],
+      "categoria": ["teoria"]
+    }
+  },
+  {
+    "id": 259,
+    "title": "Il Pentagono si è opposto al piano di Trump, non vuole mettere gli ...",
+    "url": "https://www.youtube.com/embed/yV1qQYfzAnI",
+    "date": "2025-05-25",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Vaticano","USA"],
+      "categoria": ["teoria"]
+    }
+  },
+  {
+    "id": 260,
+    "title": "Dalla Guerra fredda al nuovo disordine mondiale (1)",
+    "url": "https://www.youtube.com/embed/giGnmBXWsEU",
+    "date": "2016-11-17",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Russia","USA","Consigliato"],
+      "categoria": ["teoria"]
+    }
+  },
+  {
+    "id": 261,
+    "title": "Dalla Guerra fredda al nuovo disordine mondiale (2)",
+    "url": "https://www.youtube.com/embed/FqC6Cmd5_V4?start=7",
+    "date": "2016-11-17",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Medio Oriente","USA","Consigliato"],
+      "categoria": ["teoria"]
+    }
+  },
+  {
+    "id": 261,
+    "title": "Europa: fu vera integrazione?",
+    "url": "https://www.youtube.com/embed/93IC3QJwtQQ?start=22",
+    "date": "2017-11-21",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Europa","EU","Germania"],
+      "categoria": ["teoria"]
+    }
+  },
+  {
+    "id": 262,
+    "title": "Maschere del Califfo” nell’attuale Medio Oriente",
+    "url": "https://www.youtube.com/embed/HywuvENm66M",
+    "date": "2015-05-04",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Medio Oriente","Islam"],
+      "categoria": ["teoria"]
+    }
+  },
+   {
+    "id": 263,
+    "title": "Cosa resta della Rivoluzione russa?",
+    "url": "https://www.youtube.com/embed/ixOjuZs9pfE",
+    "date": "2017-12-20",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Russia"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 264,
+    "title": "La sensibilità imperiale degli Stati Uniti è il destino del mondo",
+    "url": "https://www.youtube.com/embed/46eDM653MyE",
+    "date": "2017-11-28",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["USA"],
+      "categoria": ["teoria"]
+    }
+  },
+  {
+    "id": 265,
+    "title": "Geopolitica e riflessi sul commercio internazionale",
+    "url": "https://www.youtube.com/embed/iuBBC153p3Q",
+    "date": "2024-12-16",
+    "tags": {
+      "format": ["Assemblea"],
+      "argomento": ["Panoramica"],
+      "categoria": ["teoria"]
+    }
+  },
+    {
+    "id": 266,
+    "title": "L'Europa nella guerra mondiale a \"pezzi\"",
+    "url": "https://www.youtube.com/embed/kSoK1C6R1yY",
+    "date": "2024-03-05",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Yemen","Iran","Medio Oriente","Afghanistan","Cina","Guerre in Ucraina","Taiwan"],
       "categoria": ["attualita"]
     }
   }
