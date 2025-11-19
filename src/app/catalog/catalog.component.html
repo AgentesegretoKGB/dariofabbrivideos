@@ -17,7 +17,7 @@
 
       <select [(ngModel)]="filterFormat" aria-label="Filtra per format">
         <option value="">Tutti i format</option>
-        @for (f of ['Incontro','Il Grande Gioco','Approfondimento Limes','Mappa Mundi','Intervista','Assemblea','Podcast']; track f) {
+        @for (f of ['Incontro','Il Grande Gioco','Approfondimento Limes','Mappa Mundi','Intervista','Assemblea','Podcast','TV']; track f) {
         <option [value]="f">{{ f }}</option>
         }
       </select>
