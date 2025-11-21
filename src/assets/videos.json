@@ -4554,10 +4554,209 @@
     "date": "2024-03-05",
     "tags": {
       "format": ["Incontro"],
-      "argomento": ["Yemen","Iran","Medio Oriente","Afghanistan","Cina","Guerre in Ucraina","Taiwan"],
+      "argomento": ["Panoramica","Yemen","Iran","Medio Oriente","Afghanistan","Russia","Cina","Guerre in Ucraina","Taiwan"],
       "categoria": ["attualita"]
     }
+  },
+  {
+    "id": 267,
+    "title": "SOTTO LA PELLE DEL MONDO (Feltrinelli)",
+    "url": "https://www.youtube.com/embed/Owd210FQDTg?start=2078",
+    "date": "2025-07-06",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Etnocentrismo","Russia","USA"],
+      "categoria": ["teoria"]
+    }
+  },
+   {
+    "id": 268,
+    "title": "NATO: Usciti tutti contenti. UE si è voluta schermare dai dazi",
+    "url": "https://www.youtube.com/embed/idEitFJlUjk",
+    "date": "2025-06-29",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Trump"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 269,
+    "title": "Droni russi in Polonia, Dario Fabbri: \"Russia impunita in questa fase di rapporti amorosi con Trump\"",
+    "url": "https://www.youtube.com/embed/9Vv3-d71mXA",
+    "date": "2025-09-14",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Polonia"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 270,
+    "title": "Ucraina, Dario Fabbri spiega la scelta tattica di Zelensky",
+    "url": "https://www.youtube.com/embed/fdI9ahdNAr0",
+    "date": "2025-05-01",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 271,
+    "title": "Trump, Dario Fabbri sui poteri del presidente USA: \"Ha molto meno potere di quello che sembra\"",
+    "url": "https://www.youtube.com/embed/KBL_NKtSd14",
+    "date": "2025-02-17",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Trump"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 272,
+    "title": "Quale sarà il futuro dell'Unione Europea? | Moneyfarm",
+    "url": "https://www.youtube.com/embed/S9ZQTQzxeeg",
+    "date": "2023-11-22",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["EU"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 273,
+    "title": "Cina-USA: la sfida del secolo che cambierà la storia | Moneyfarm",
+    "url": "https://www.youtube.com/embed/3dm1fp9Fqyg?start=5",
+    "date": "2023-09-22",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Cina","USA","BRICs","Europa"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 274,
+    "title": "La geopolitica e la storia - incontro per le scuole",
+    "url": "https://www.youtube.com/embed/2K6IhiOj0ZU",
+    "date": "2021-04-14",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Russia","Italia"],
+      "categoria": ["teoria"]
+    }
+  },
+  {
+    "id": 275,
+    "title": "Dario Fabbri e Federico Petroni: chi comanda Internet?",
+    "url": "https://www.youtube.com/embed/ja4LHlq8Ypo?start=304",
+    "date": "2020-03-30",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 276,
+    "title": "\"Chi comanda il mondo?\" - Limes incontra le scuole",
+    "url": "https://www.youtube.com/embed/T7-ogSRaALk",
+    "date": "2018-03-21",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Giappone"],
+      "categoria": ["teoria"]
+    }
+  },
+   {
+    "id": 277,
+    "title": "Geopolitica - La lezione afghana",
+    "url": "https://www.youtube.com/embed/ysGuca45tW0",
+    "date": "2024-01-15",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Afghanistan"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 278,
+    "title": "Rassegna Generazioni 2023: DOMINO. STRUMENTI PER CAPIRE LE NUOVE SFIDE GLOBALI.",
+    "url": "https://www.youtube.com/embed/_qUwQ4xVmpA",
+    "date": "2023-09-12",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Iran","Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 279,
+    "title": "Intervista a Dario Fabbri-Open",
+    "url": "https://www.youtube.com/embed/pKhAtR-dj7I",
+    "date": "2024-10-01",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 280,
+    "title": "Incontro con Dario Fabbri al Festival del giornalismo di Verona",
+    "url": "https://www.youtube.com/embed/85UYJ-nF1SY",
+    "date": "2022-05-16",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Panoramica","Guerra in Ucraina","Riarmo"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 281,
+    "title": "Dario Fabbri, Simona Merlo - Ucraina/Russia",
+    "url": "https://www.youtube.com/embed/fFBm33mlJIk",
+    "date": "2022-07-12",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Panoramica","Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 282,
+    "title": "Guido Dotti, Dario Fabbri - Scenari",
+    "url": "https://www.youtube.com/embed/mnpvxt3aDJo",
+    "date": "2022-06-28",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Panoramica","Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 283,
+    "title": "Chi sta vincendo in Bielorussia",
+    "url": "https://www.youtube.com/embed/Vt_BUrIbiao",
+    "date": "2021-11-12",
+    "tags": {
+      "format": ["Approfondimento Limes"],
+      "argomento": ["Polonia"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 284,
+    "title": "Dario Fabbri - Scuola di Giornalismo",
+    "url": "https://www.youtube.com/embed/hWnQySnNoYg",
+    "date": "2020-09-12",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Trump"],
+      "categoria": ["teoria"]
+    }
   }
+
 
 
 
