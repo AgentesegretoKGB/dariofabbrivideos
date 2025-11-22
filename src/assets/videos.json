@@ -4755,10 +4755,282 @@
       "argomento": ["Trump"],
       "categoria": ["teoria"]
     }
+  },
+    {
+    "id": 285,
+    "title": "Limes incontra le scuole – Lucio Caracciolo, Dario Fabbri, Fabrizio Maronta",
+    "url": "https://www.youtube.com/embed/hxbZ1dEjiOI",
+    "date": "2017-03-04",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["USA"],
+      "categoria": ["teoria"]
+    }
+  },
+  {
+    "id": 286,
+    "title": "G20 e geopolitica, dialogo tra Giorgio Cuscito e Dario Fabbri",
+    "url": "https://www.youtube.com/embed/v6hA_H1NPyw",
+    "date": "2021-10-21",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": [""],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 287,
+    "title": "Fronti di guerra mondiale con Enrico Mentana e Dario Fabbri",
+    "url": "https://www.youtube.com/embed/Ids6-IDabv0?start=3",
+    "date": "2024-09-10",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 288,
+    "title": "Lucio Caracciolo e Dario Fabbri: \"Il mondo virato\" - Limes",
+    "url": "https://www.youtube.com/embed/Ids6-IDabv0?start=3",
+    "date": "2020-04-17",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Pandemia","Limes"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 289,
+    "title": "Dario Fabbri e Federico Petroni presentazione dell'ultimo numero di Limes",
+    "url": "https://www.youtube.com/embed/G7bJAL1PT_M",
+    "date": "2018-02-16",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Islam","Limes"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 290,
+    "title": "#INSIDE: Le migrazioni in geopolitica",
+    "url": "https://www.youtube.com/embed/SN7HlqnY0i0",
+    "date": "2023-05-02",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Islam","Limes"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 291,
+    "title": "Italia terreno di contesa. Dario Fabbri, una strategia per l'Italia",
+    "url": "https://www.youtube.com/embed/vwVSFDCgW3c",
+    "date": "2020-12-12",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Italia"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 292,
+    "title": "AL CENTRO DEL MONDO - Primo panel con Dario Fabbri e Michela Mercuri",
+    "url": "https://www.youtube.com/embed/mk-VUF8I1o8",
+    "date": "2024-10-25",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 293,
+    "title": "Giovinazzo - Conversazioni dal Mare",
+    "url": "https://www.youtube.com/embed/uFz3AavYKf8",
+    "date": "2024-07-30",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 294,
+    "title": "Corea, come evitare una guerra mondiale - parte 1",
+    "url": "https://www.youtube.com/embed/YkvCJ9q1dTw",
+    "date": "2018-05-06",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Corea","Limes"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 295,
+    "title": "Corea, come evitare una guerra mondiale - parte 1",
+    "url": "https://www.youtube.com/embed/YkvCJ9q1dTw",
+    "date": "2018-05-06",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Corea","Limes"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 296,
+    "title": "Corea, come evitare una guerra mondiale - parte 2",
+    "url": "https://www.youtube.com/embed/0fmO3FAjJbs",
+    "date": "2018-05-06",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Corea","Limes"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 297,
+    "title": "Europa, non-Europa, Europa Tedesca?",
+    "url": "https://www.youtube.com/embed/pco_KGdjszE",
+    "date": "2018-05-06",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Europa","Limes"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 298,
+    "title": "Lucio Caracciolo e Dario Fabbri - Le Europe del 2051, Festival di Limes",
+    "url": "https://www.youtube.com/embed/JRiNj9_OEs8",
+    "date": "2021-11-30",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Europa","Limes"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 299,
+    "title": "P. Craveri, G. Friedman, D. Fabbri: \"Perché non possiamo non dirci occidentali\" - Festival di Limes",
+    "url": "https://www.youtube.com/embed/dpLlWM7DWG0",
+    "date": "2020-12-02",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Europa","Limes"],
+      "categoria": ["attualita"]
+    }
+  },
+     {
+    "id": 300,
+    "title": "La Storia in Piazza 2022 – Luciano Canfora e Dario Fabbri",
+    "url": "https://www.youtube.com/embed/u6v1P0ARBA4",
+    "date": "2022-04-01",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": [""],
+      "categoria": ["teoria"]
+    }
+  },
+    {
+    "id": 301,
+    "title": "Limes incontra le scuole Lo stato del mondo",
+    "url": "https://www.youtube.com/embed/DaadE9pORIk",
+    "date": "2022-04-01",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["USA","Limes"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 302,
+    "title": "Festival Limes - Chi sfida l'America",
+    "url": "https://www.youtube.com/embed/lrEvRwSBFv8",
+    "date": "2017-03-04",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["USA"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 303,
+    "title": "Zelbio Cult",
+    "url": "https://www.youtube.com/embed/hvL4GDl-9Qo",
+    "date": "2021-07-26",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 304,
+    "title": "Rammendare il passato, inventare il futuro. Sedici risposte sul Recovery Plan",
+    "url": "https://www.youtube.com/embed/2RahkUj9Lto",
+    "date": "2021-06-30",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["EU"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 305,
+    "title": "A casa con Dario Fabbri, giornalista e consigliere scientifico di Limes",
+    "url": "https://www.youtube.com/embed/9kKibYM6hD8",
+    "date": "2020-06-04",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["USA"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 306,
+    "title": "Pieve Incontra",
+    "url": "https://www.youtube.com/embed/n3__fU4rHZI",
+    "date": "2023-06-07",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+     {
+    "id": 307,
+    "title": "Recovery Fund, Dario Fabbri e la 'sofisticata' strategia geopolitica tedesca: \"La Germania ha ...",
+    "url": "https://www.youtube.com/embed/c1hZQR01C_E",
+    "date": "2020-04-27",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["EU"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 308,
+    "title": "Fabbri: \"Zelensky non può resistere senza intervento diretto della NATO. Deve spiegare agli ...",
+    "url": "https://www.youtube.com/embed/dMuhoQUwtNs",
+    "date": "2020-06-20",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 309,
+    "title": "100 giorni di guerra, l'analisi di Dario Fabbri: \"Europei non sono convintissimi della ...",
+    "url": "https://www.youtube.com/embed/IX04w5eWZ70",
+    "date": "2022-06-06",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
   }
-
-
-
 
 
 ]
