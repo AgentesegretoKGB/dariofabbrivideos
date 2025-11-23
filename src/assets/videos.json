@@ -5042,7 +5042,63 @@
       "argomento": ["USA","Dazi","Trump","Europa"],
       "categoria": ["attualita"]
     }
+  },
+   {
+    "id": 312,
+    "title": "Non chiamatela Guerra di Putin",
+    "url": "https://www.youtube.com/embed/gnhPsR0QtTk",
+    "date": "2022-10-16",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Guerra in Ucraina","Russia"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 313,
+    "title": "Dario Fabbri risponde sulla guerra in Ucraina",
+    "url": "https://www.youtube.com/embed/n3PnxnU3NjE",
+    "date": "2022-10-27",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Guerra in Ucraina","Russia"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 314,
+    "title": "La Fine dell'Impero Americano?",
+    "url": "https://www.youtube.com/embed/lwkftSYvDXk",
+    "date": "2024-06-30",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["USA"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 315,
+    "title": "L'India non sarà mai un impero",
+    "url": "https://www.youtube.com/embed/-MBm4fhQyvE",
+    "date": "2024-09-22",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["India"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 316,
+    "title": "USA e la fine della Globalizzazione?",
+    "url": "https://www.youtube.com/embed/dcMP6gRpiEQ",
+    "date": "2025-04-14",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["USA"],
+      "categoria": ["attualita"]
+    }
   }
+
 
 
 
