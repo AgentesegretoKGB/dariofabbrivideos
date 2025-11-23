@@ -4855,17 +4855,7 @@
       "categoria": ["attualita"]
     }
   },
-   {
-    "id": 294,
-    "title": "Corea, come evitare una guerra mondiale - parte 1",
-    "url": "https://www.youtube.com/embed/YkvCJ9q1dTw",
-    "date": "2018-05-06",
-    "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Corea","Limes"],
-      "categoria": ["attualita"]
-    }
-  },
+
   {
     "id": 295,
     "title": "Corea, come evitare una guerra mondiale - parte 1",
@@ -5039,6 +5029,17 @@
     "tags": {
       "format": ["TV"],
       "argomento": ["Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 311,
+    "title": "L'Europa dopo la fine della Storia",
+    "url": "https://www.youtube.com/embed/ZssIIJG4OJM",
+    "date": "2025-11-23",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["USA","Dazi","Trump"],
       "categoria": ["attualita"]
     }
   }
