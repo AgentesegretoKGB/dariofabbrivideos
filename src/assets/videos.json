@@ -5097,6 +5097,61 @@
       "argomento": ["USA"],
       "categoria": ["attualita"]
     }
+  },
+    {
+    "id": 317,
+    "title": "Il Regno Disunito / 2 - L'Irlanda del Nord contesa",
+    "url": "https://www.youtube.com/embed/O1vShBd9SeI?start=259",
+    "date": "2021-08-24",
+    "tags": {
+      "format": ["Mappa Mundi"],
+      "argomento": ["Irlanda","Scozia"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 318,
+    "title": "Che mondo fa? Dario Fabbri a Guerra e Pace Brescia",
+    "url": "https://www.youtube.com/embed/2BCFDrXELYQ?start=452",
+    "date": "2025-07-16",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 319,
+    "title": "SOTTO LA PELLE DEL MONDO con Dario Fabbri e Marco Damilano",
+    "url": "https://www.youtube.com/embed/Kchmk5OLTEg?start=1055",
+    "date": "2024-10-19",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 320,
+    "title": "Open Future Open Culture",
+    "url": "https://www.youtube.com/embed/wKGaJsZxGz4",
+    "date": "2023-05-29",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 321,
+    "title": "Cosa c'è dietro ai dazi di Trump",
+    "url": "https://www.youtube.com/embed/jYIkZ5qK-Ho?start=192",
+    "date": "2025-04-22",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
   }
 
 
