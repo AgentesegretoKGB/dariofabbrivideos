@@ -5152,6 +5152,50 @@
       "argomento": ["Panoramica"],
       "categoria": ["attualita"]
     }
+  },
+  {
+    "id": 322,
+    "title": "IL TEMPO DEI DAZI E IL RITORNO DELLA STORIA",
+    "url": "https://www.youtube.com/embed/Uol1ggpp974?start=662",
+    "date": "2025-11-24",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Panoramica","Europa"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 323,
+    "title": "Conferenza Identità e Geopolitica",
+    "url": "https://www.youtube.com/embed/TMZ3KCHnd-0?start=54",
+    "date": "2025-11-25",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Panoramica","Venezuela"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 324,
+    "title": "Imperi, podcast live",
+    "url": "https://www.youtube.com/embed/N8f89V_BKLc?start=230",
+    "date": "2025-11-25",
+    "tags": {
+      "format": ["Podcast"],
+      "argomento": ["Guerra in Ucraina","Russia"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 325,
+    "title": "La Rivoluzione Giapponese - Dario Fabbri e Abbas Gharib",
+    "url": "https://www.youtube.com/embed/SbQW2c84e9o",
+    "date": "2020-04-15",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Giappone"],
+      "categoria": ["attualita"]
+    }
   }
 
 
