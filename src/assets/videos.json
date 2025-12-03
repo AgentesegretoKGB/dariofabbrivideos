@@ -5207,6 +5207,28 @@
       "argomento": ["Panoramica"],
       "categoria": ["attualita"]
     }
+  },
+  {
+    "id": 327,
+    "title": "L'Europa dopo l'Ucraina",
+    "url": "https://www.youtube.com/embed/RQrBN8f4owY",
+    "date": "2025-12-03",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Guerra in Ucraina","Europa"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 328,
+    "title": "MILANO : ITALIA E OCCIDENTE NEL CAOS GLOBALE ",
+    "url": "https://www.youtube.com/embed/yjBAZvVvew4?start=947",
+    "date": "2025-11-25",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
   }
 
 
