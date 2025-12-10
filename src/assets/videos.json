@@ -5229,6 +5229,28 @@
       "argomento": ["Panoramica"],
       "categoria": ["attualita"]
     }
+  },
+   {
+    "id": 329,
+    "title": "Guerra Russo-Ucraina - \"Storia Geopolitica di una Crisi\"",
+    "url": "https://www.youtube.com/embed/LVi4I2ADzWM",
+    "date": "2022-07-21",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 329,
+    "title": "Pechino e lo scacchiere asiatico",
+    "url": "https://www.youtube.com/embed/QOuIWXHaALc",
+    "date": "2025-12-09",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Cina","USA","Russia"],
+      "categoria": ["attualita"]
+    }
   }
 
 
