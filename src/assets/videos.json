@@ -1436,7 +1436,7 @@
         "Incontro"
       ],
       "argomento": [
-        "A.I.",
+      
         "Panoramica"
       ],
       "categoria": [
@@ -1878,8 +1878,7 @@
         "Approfondimento Limes"
       ],
       "argomento": [
-        "EU",
-        "Sport"
+        "EU"
       ],
       "categoria": [
         "attualita"
@@ -2541,8 +2540,7 @@
       "argomento": [
         "Italia",
         "Inghilterra",
-        "Scozia",
-        "Sport"
+        "Scozia"
       ],
       "categoria": [
         "attualita"
@@ -4554,7 +4552,7 @@
     "date": "2024-03-05",
     "tags": {
       "format": ["Incontro"],
-      "argomento": ["Panoramica","Yemen","Iran","Medio Oriente","Afghanistan","Russia","Cina","Guerre in Ucraina","Taiwan"],
+      "argomento": ["Panoramica","Yemen","Iran","Medio Oriente","Afghanistan","Russia","Cina","Guerra in Ucraina","Taiwan"],
       "categoria": ["attualita"]
     }
   },
@@ -5249,6 +5247,17 @@
     "tags": {
       "format": ["Il Grande Gioco"],
       "argomento": ["Cina","USA","Russia"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 330,
+    "title": "Una nuova Yalta?",
+    "url": "https://www.youtube.com/embed/LbMVq4y72vM",
+    "date": "2025-12-16",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Europa"],
       "categoria": ["attualita"]
     }
   }
