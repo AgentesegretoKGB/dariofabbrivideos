@@ -381,7 +381,6 @@
         "ONU",
         "Etnocentrismo",
         "BRICs",
-        "Green",
         "Vaticano",
         "Kenya",
         "Russia"
@@ -404,7 +403,6 @@
         "Gaza",
         "Cina",
         "Europa",
-        "Green",
         "USA",
         "Israele",
         "Giappone",
@@ -474,7 +472,6 @@
         "USA",
         "EU",
         "Germania",
-        "Agricoltura",
         "Polonia",
         "Italia"
       ],
@@ -3121,8 +3118,7 @@
         "Approfondimento Limes"
       ],
       "argomento": [
-        "Giappone",
-        "Sport"
+        "Giappone"
       ],
       "categoria": [
         "attualita"
@@ -4453,7 +4449,7 @@
     "date": "2022-04-22",
     "tags": {
       "format": ["Incontro"],
-      "argomento": ["Green","Europa"],
+      "argomento": ["Europa"],
       "categoria": ["teoria"]
     }
   },
@@ -5258,6 +5254,17 @@
     "tags": {
       "format": ["Il Grande Gioco"],
       "argomento": ["Europa"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 330,
+    "title": "Economica 2025",
+    "url": "https://www.youtube.com/embed/z2T13Rkp89o",
+    "date": "2025-12-19",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Panoramica"],
       "categoria": ["attualita"]
     }
   }
