@@ -125,6 +125,19 @@ export class MaterialsComponent implements OnInit, OnDestroy {
       poster: 'https://img.youtube.com/vi/rAnDosda0nY/hqdefault.jpg',
       featured: true
     },
+    { 
+      id: 7,
+      title: 'Nietzsche - Genealogia della morale',
+      description: '',
+      url: 'assets/La genealogia della morale Nietzsche.pdf',
+      type: 'pdf',
+      author: 'Friedrich Nietzsche',
+      date: '2026-01-12',
+      category: 'teoria',
+      tags: ['filosofia'],
+      poster: 'assets/pdf-placeholder.svg',
+      featured: true
+    },
   ];
 
   // Materiali in evidenza - i più recenti e importanti
