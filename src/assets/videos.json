@@ -2405,7 +2405,7 @@
       ],
       "argomento": [
         "USA",
-        "EUROPA"
+        "Europa"
       ],
       "categoria": [
         "teoria"
@@ -4812,7 +4812,7 @@
     "date": "2023-05-02",
     "tags": {
       "format": ["Incontro"],
-      "argomento": ["Islam","Limes"],
+      "argomento": ["Islam"],
       "categoria": ["attualita"]
     }
   },
@@ -5265,6 +5265,61 @@
     "tags": {
       "format": ["Intervista"],
       "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 331,
+    "title": "Geopolitica della Rete. Il governo di Internet e l’instabilità internazionale",
+    "url": "https://www.youtube.com/embed/EE_b97k353g",
+    "date": "2022-03-04",
+    "tags": {
+      "format": ["Intervista"],
+      "argomento": ["Big Tech"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 332,
+    "title": "Dialoghi geopolitici - ospiti Lucio Caracciolo, Dario Fabbri, Fabrizio Maronta",
+    "url": "https://www.youtube.com/embed/umUFW0n5LFA?",
+    "date": "2022-03-04",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 333,
+    "title": "le mire statunitensi sulla Groenlandia non sono un bluff",
+    "url": "https://www.youtube.com/embed/vDMbdFDf0iI",
+    "date": "2026-01-09",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Groellandia"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 334,
+    "title": "Trump “oggetto di manovre dei suoi apparati”; convinto non sia l'inizio di una guerra",
+    "url": "https://www.youtube.com/embed/gvOKBLlAPMs",
+    "date": "2026-01-03",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Venezuela"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 335,
+    "title": "da non escludere la possibilità di un “impantanamento” USA in Venezuela",
+    "url": "https://www.youtube.com/embed/aXph4SrDEHY",
+    "date": "2026-01-09",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Venezuela"],
       "categoria": ["attualita"]
     }
   }
