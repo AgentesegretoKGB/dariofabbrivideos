@@ -5333,7 +5333,41 @@
       "argomento": ["Italia"],
       "categoria": ["attualita"]
     }
+  },
+   {
+    "id": 338,
+    "title": "l'analisi politica internazionale - Kilimangiaro",
+    "url": "https://www.youtube.com/embed/gZS9xKrc_f0",
+    "date": "2026-01-12",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 339,
+    "title": "L'Impero colpisce ancora",
+    "url": "https://www.youtube.com/embed/vUu6UwetKAg",
+    "date": "2026-01-13",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Venezuela","Groenlandia","Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 340,
+    "title": "Brexit, scenari europei e britannici",
+    "url": "https://www.youtube.com/embed/lM8s4h4vWEY?start=2443",
+    "date": "2021-06-03",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Inghilterra","Scozia","Irlanda"],
+      "categoria": ["attualita"]
+    }
   }
+
 
 
 
