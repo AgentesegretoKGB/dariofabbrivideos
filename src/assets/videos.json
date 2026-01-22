@@ -975,7 +975,7 @@
         "Cina",
         "Yemen",
         "Panama",
-        "Groellandia",
+        "Groenlandia",
         "Italia"
       ],
       "categoria": [
@@ -5281,7 +5281,7 @@
     "date": "2026-01-09",
     "tags": {
       "format": ["TV"],
-      "argomento": ["Groellandia"],
+      "argomento": ["Groenlandia"],
       "categoria": ["attualita"]
     }
   },
@@ -5350,7 +5350,30 @@
       "argomento": ["Inghilterra","Scozia","Irlanda"],
       "categoria": ["attualita"]
     }
+  },
+  {
+    "id": 341,
+    "title": "L'Iran che vorremmo... ma non c'è",
+    "url": "https://www.youtube.com/embed/Qg8kNK1hjHI",
+    "date": "2026-01-20",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 342,
+    "title": "La Groenlandia è come se fosse “una piattaforma per invadere il Nord America",
+    "url": "https://www.youtube.com/embed/UqpEcncP3aE",
+    "date": "2026-01-18",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Iran","Groenlandia"],
+      "categoria": ["attualita"]
+    }
   }
+
 
 
 
