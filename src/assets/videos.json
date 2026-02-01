@@ -5372,7 +5372,30 @@
       "argomento": ["Iran","Groenlandia"],
       "categoria": ["attualita"]
     }
+  },
+   {
+    "id": 343,
+    "title": "Morire per la Groenlandia?",
+    "url": "https://www.youtube.com/embed/vCD_D6FZIwQ",
+    "date": "2026-01-27",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Europa","Groenlandia"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 344,
+    "title": "Italia ed Europa a Confronto tra XIII e XXI Secolo",
+    "url": "https://www.youtube.com/embed/kAjNEC6JdPs",
+    "date": "2024-12-12",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Germania","Italia","Consigliato"],
+      "categoria": ["teoria"]
+    }
   }
+
 
 
 
