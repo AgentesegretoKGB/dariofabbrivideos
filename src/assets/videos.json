@@ -5394,6 +5394,28 @@
       "argomento": ["Germania","Italia","Consigliato"],
       "categoria": ["teoria"]
     }
+  },
+   {
+    "id": 345,
+    "title": "il punto sulla politica internazionale - Kilimangiaro",
+    "url": "https://www.youtube.com/embed/djeHV0QZ-Cg",
+    "date": "2026-02-02",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 346,
+    "title": "La rivincita dei neocon",
+    "url": "https://www.youtube.com/embed/UnVi0BTB8Co?start",
+    "date": "2026-02-02",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["USA"],
+      "categoria": ["attualita"]
+    }
   }
 
 
