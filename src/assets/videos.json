@@ -5416,7 +5416,63 @@
       "argomento": ["USA"],
       "categoria": ["attualita"]
     }
+  },
+  {
+    "id": 347,
+    "title": "Pieve Incontra",
+    "url": "https://www.youtube.com/embed/L98xtQd9snI?start=653",
+    "date": "2023-06-06",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 348,
+    "title": "Tregua Olimpica? Sport e geopolitica",
+    "url": "https://www.youtube.com/embed/79K4VOg1BgI?start=7",
+    "date": "2026-01-10",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 349,
+    "title": "Italiani Senza Patria",
+    "url": "https://www.youtube.com/embed/79K4VOg1BgI?start=7",
+    "date": "2025-07-26",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Italia","Consigliato"],
+      "categoria": ["teoria"]
+    }
+  },
+  {
+    "id": 350,
+    "title": "Alle radici della crisi ucraina DOMINO",
+    "url": "https://www.youtube.com/embed/hvLMSu_TSz4",
+    "date": "2025-07-26",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 351,
+    "title": "Il disordine globale: conflitti, commercio e rapporti di forza",
+    "url": "https://www.youtube.com/embed/y_mbuB7ejTw?",
+    "date": "2026-02-01",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
   }
+
 
 
 
