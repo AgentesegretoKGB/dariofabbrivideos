@@ -5432,7 +5432,7 @@
     "id": 348,
     "title": "Tregua Olimpica? Sport e geopolitica",
     "url": "https://www.youtube.com/embed/79K4VOg1BgI?start=7",
-    "date": "2026-01-10",
+    "date": "2026-02-10",
     "tags": {
       "format": ["Il Grande Gioco"],
       "argomento": ["Panoramica"],
@@ -5445,7 +5445,7 @@
     "url": "https://www.youtube.com/embed/79K4VOg1BgI?start=7",
     "date": "2025-07-26",
     "tags": {
-      "format": ["Incontro"],
+      "format": ["Il Grande Gioco"],
       "argomento": ["Italia","Consigliato"],
       "categoria": ["teoria"]
     }
@@ -5469,6 +5469,50 @@
     "tags": {
       "format": ["Incontro"],
       "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 352,
+    "title": "Ucraina 4 anni dopo",
+    "url": "https://www.youtube.com/embed/jPtITk31jeg",
+    "date": "2026-02-24",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Ucraina","Guerra in Ucraina"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 353,
+    "title": "Il destino dei popoli: guardare il mondo da un punto di vista profondamente umano",
+    "url": "https://www.youtube.com/embed/GaqcRLR01nY?start=34:04",
+    "date": "2026-02-25",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["teoria"]
+    }
+  },
+     {
+    "id": 354,
+    "title": "Roma - Centralità del Mediterraneo",
+    "url": "https://www.youtube.com/embed/GaqcRLR01nY?",
+    "date": "2023-10-23",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","Consigliato"],
+      "categoria": ["attualita"]
+    }
+  },
+     {
+    "id": 355,
+    "title": "Dalla Repubblica Romana all’America di Trump: perché gli imperi odiano i loro alleati",
+    "url": "https://www.youtube.com/embed/gOZHoqY05oU",
+    "date": "2025-00-00",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["USA"],
       "categoria": ["attualita"]
     }
   }
