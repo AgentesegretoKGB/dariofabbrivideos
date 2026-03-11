@@ -5515,6 +5515,61 @@
       "argomento": ["USA"],
       "categoria": ["attualita"]
     }
+  },
+   {
+    "id": 356,
+    "title": "Iran: USA non hanno un piano B, Venezuela non c'entra un cavolo",
+    "url": "https://www.youtube.com/embed/MTyXQtaLhMw",
+    "date": "2026-03-08",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 357,
+    "title": "Trappola persiana?",
+    "url": "https://www.youtube.com/embed/t51gP5Yq0T0",
+    "date": "2026-03-10",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 358,
+    "title": "Che mondo fa nel 2026, Confagricoltura Brescia",
+    "url": "https://www.youtube.com/embed/AlqUnrqN1J4",
+    "date": "2026-03-03",
+    "tags": {
+      "format": ["Assemblea"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 359,
+    "title": "Che mondo fa? Tra Americhe, Artico e Ucraina",
+    "url": "https://www.youtube.com/embed/OZ6iFEeONzQ",
+    "date": "2026-03-06",
+    "tags": {
+      "format": ["Assemblea"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 360,
+    "title": "Trump è diventato di fatto neo conservatore",
+    "url": "https://www.youtube.com/embed/BgHLv1DqKLw",
+    "date": "2026-03-02",
+    "tags": {
+      "format": ["TV"],
+      "argomento": ["USA","Trump"],
+      "categoria": ["attualita"]
+    }
   }
 
 
