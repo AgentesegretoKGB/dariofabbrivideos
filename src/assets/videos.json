@@ -5418,17 +5418,6 @@
     }
   },
   {
-    "id": 347,
-    "title": "Pieve Incontra",
-    "url": "https://www.youtube.com/embed/L98xtQd9snI?start=653",
-    "date": "2023-06-06",
-    "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
-    }
-  },
-  {
     "id": 348,
     "title": "Tregua Olimpica? Sport e geopolitica",
     "url": "https://www.youtube.com/embed/79K4VOg1BgI?start=7",
@@ -5568,6 +5557,39 @@
     "tags": {
       "format": ["TV"],
       "argomento": ["USA","Trump"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 361,
+    "title": "Iran: cosa rischia l'Europa",
+    "url": "https://www.youtube.com/embed/rPpbqhmZJeE",
+    "date": "2026-03-17",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 362,
+    "title": "Iran: il dilemma americano",
+    "url": "https://www.youtube.com/embed/TmHvWr1R9YE",
+    "date": "2026-03-24",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 363,
+    "title": "Vento nuovo in Giappone",
+    "url": "https://www.youtube.com/embed/k8sEDiTAm4U?",
+    "date": "2026-02-17",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Giappone"],
       "categoria": ["attualita"]
     }
   }
