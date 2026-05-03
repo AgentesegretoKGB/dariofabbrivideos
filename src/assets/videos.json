@@ -5592,7 +5592,120 @@
       "argomento": ["Giappone"],
       "categoria": ["attualita"]
     }
+  },
+    {
+    "id": 365,
+    "title": "Fine dell'Iran?",
+    "url": "https://www.youtube.com/embed/kALIYSJfZh0?start=0",
+    "date": "2026-03-03",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 366,
+    "title": "Israele: il grande manovratore?",
+    "url": "https://www.youtube.com/embed/hIf03st11xE?start=0",
+    "date": "2026-03-31",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Israele","Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 367,
+    "title": "Trump: la guerra si mette male",
+    "url": "https://www.youtube.com/embed/6L-joCWTpc4?start=0",
+    "date": "2026-04-07",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Israele","Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+  
+       {
+    "id": 369,
+    "title": "Hormuz: che fare?",
+    "url": "https://www.youtube.com/embed/YevDHjZQUl0?start=0",
+    "date": "2026-04-14",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Israele","Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+     {
+    "id": 370,
+    "title": "Prossima fermata Turchia?",
+    "url": "https://www.youtube.com/embed/kU2yYItB2AU?start=1455",
+    "date": "2026-04-21",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Turchia","Israele","Iran","Cina"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 371,
+    "title": "Usa-Iran, guerra di nervi",
+    "url": "https://www.youtube.com/embed/k3iPWyx0DlU?start=0",
+    "date": "2026-04-28",
+    "tags": {
+      "format": ["Il Grande Gioco"],
+      "argomento": ["Israele","Iran"],
+      "categoria": ["attualita"]
+    }
+  },
+  
+   {
+    "id": 373,
+    "title": "L'impossibile tentazione del ritiro americano",
+    "url": "https://www.youtube.com/embed/V5ujmUAH3UI?start=1538",
+    "date": "2026-05-01",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 374,
+    "title": "USA contro Cina. Sfida globale fra imperi",
+    "url": "https://www.youtube.com/embed/V5ujmUAH3UI?start=1538",
+    "date": "2026-05-02",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 375,
+    "title": "Di macchine, uomini e divinità",
+    "url": "https://www.youtube.com/embed/tPIfz9G27wc?start=0",
+    "date": "2026-04-19",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","Consigliato"],
+      "categoria": ["attualita"]
+    }
+  },
+  {
+    "id": 376,
+    "title": "Dario Fabbri spiega la guerra USA in IRAN",
+    "url": "https://www.youtube.com/embed/tPIfz9G27wc?start=0",
+    "date": "2026-04-07",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica","Consigliato"],
+      "categoria": ["attualita"]
+    }
   }
+
 
 
 
