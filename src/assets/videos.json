@@ -5694,17 +5694,7 @@
       "categoria": ["attualita"]
     }
   },
-    {
-    "id": 377,
-    "title": "Tre Continenti, una sola guerra?",
-    "url": "https://www.youtube.com/embed/UaCqW836djg",
-    "date": "2026-05-05",
-    "tags": {
-      "format": ["il Grande Gioco"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
-    }
-  },
+   
     {
     "id": 378,
     "title": "Alla corte del dragone",
@@ -5726,7 +5716,30 @@
       "argomento": ["Cuba"],
       "categoria": ["attualita"]
     }
+  },
+   {
+    "id": 380,
+    "title": "“L’ITALIA HA DIMENTICATO IL MARE” | Festival DePortibus",
+    "url": "https://www.youtube.com/embed/YUETcI1_blo?start=0",
+    "date": "2026-05-21",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+   {
+    "id": 381,
+    "title": "PERCHE' GLI USA STANNO FALLENDO CONTRO CINA E IRAN ? | 14 MAGGIO 2026 -XIX FENEALUIL",
+    "url": "https://www.youtube.com/embed/7pBPT1rxSa4?start=0",
+    "date": "2026-05-21",
+    "tags": {
+      "format": ["Incontro"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
   }
+
 
 
 
