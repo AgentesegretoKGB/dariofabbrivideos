@@ -5672,17 +5672,6 @@
       "categoria": ["attualita"]
     }
   },
-  {
-    "id": 374,
-    "title": "USA contro Cina. Sfida globale fra imperi",
-    "url": "https://www.youtube.com/embed/V5ujmUAH3UI?start=1538",
-    "date": "2026-05-02",
-    "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
-    }
-  },
    {
     "id": 375,
     "title": "Di macchine, uomini e divinità",
@@ -5694,14 +5683,47 @@
       "categoria": ["attualita"]
     }
   },
-  {
+   {
     "id": 376,
-    "title": "Dario Fabbri spiega la guerra USA in IRAN",
-    "url": "https://www.youtube.com/embed/tPIfz9G27wc?start=0",
-    "date": "2026-04-07",
+    "title": "Tre Continenti, una sola guerra?",
+    "url": "https://www.youtube.com/embed/UaCqW836djg",
+    "date": "2026-05-05",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","Consigliato"],
+      "format": ["il Grande Gioco"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 377,
+    "title": "Tre Continenti, una sola guerra?",
+    "url": "https://www.youtube.com/embed/UaCqW836djg",
+    "date": "2026-05-05",
+    "tags": {
+      "format": ["il Grande Gioco"],
+      "argomento": ["Panoramica"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 378,
+    "title": "Alla corte del dragone",
+    "url": "https://www.youtube.com/embed/UwDofW9FmSo",
+    "date": "2026-05-19",
+    "tags": {
+      "format": ["il Grande Gioco"],
+      "argomento": ["Cina"],
+      "categoria": ["attualita"]
+    }
+  },
+    {
+    "id": 379,
+    "title": "La morte di Cuba?",
+    "url": "https://www.youtube.com/embed/M-9vXircpOM",
+    "date": "2026-05-19",
+    "tags": {
+      "format": ["il Grande Gioco"],
+      "argomento": ["Cuba"],
       "categoria": ["attualita"]
     }
   }
