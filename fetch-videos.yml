@@ -1,0 +1,39 @@
+name: Cerca nuovi video di Dario Fabbri
+
+on:
+  schedule:
+    # ogni giorno alle 06:00 UTC (08:00 ora italiana in inverno, 07:00 in estate)
+    - cron: '0 6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cerca e classifica nuovi video
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: node scripts/fetch-new-videos.mjs
+
+      - name: Commit ed eventuale push
+        run: |
+          git config user.name "fabbri-videos-bot"
+          git config user.email "actions@github.com"
+          if git diff --quiet -- src/assets/videos.json; then
+            echo "Nessuna modifica, nulla da pubblicare."
+          else
+            git add src/assets/videos.json
+            git commit -m "Catalogazione automatica: nuovi video da revisionare"
+            git push
+          fi

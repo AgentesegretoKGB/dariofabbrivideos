@@ -7,4 +7,8 @@ export const routes: Routes = [
   { path: '', component: CatalogComponent },
   { path: 'sources', component: SourcesComponent },
   { path: 'materials', component: MaterialsComponent },
+  {
+    path: 'revisione',
+    loadComponent: () => import('./review/review.component').then(m => m.ReviewComponent)
+  },
 ];

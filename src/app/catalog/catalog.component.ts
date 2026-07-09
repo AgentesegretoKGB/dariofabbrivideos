@@ -11,6 +11,7 @@ interface Video {
   url: string;
   poster?: string;
   tags: { [key: string]: string[] };
+  pending?: boolean;
 }
 
 @Component({
@@ -141,7 +142,8 @@ export class CatalogComponent implements OnInit {
           url: v.url,
           date: v.date,
           poster: this.extractYoutubeThumbnail(v.url),
-          tags: v.tags || (v as any).tag && { argomento: (v as any).tag } || {}
+          tags: v.tags || (v as any).tag && { argomento: (v as any).tag } || {},
+          pending: !!(v as any).pending
         } as Video));
         this.loading = false;
         console.log('Video caricati:', this.videos.length);
@@ -157,11 +159,8 @@ export class CatalogComponent implements OnInit {
   // extract YouTube video id from common URL forms and return a thumbnail URL
   private extractYoutubeThumbnail(url?: string): string | undefined {
     if (!url || typeof url !== 'string') return undefined;
-    // common forms: https://www.youtube.com/watch?v=ID, https://youtu.be/ID, https://www.youtube.com/embed/ID
-    // remove query params
     try {
       const u = url.trim();
-      // try embed/ID
       let m = u.match(/embed\/([^?&/]+)/i);
       if (!m) m = u.match(/youtu\.be\/([^?&/]+)/i);
       if (!m) m = u.match(/[?&]v=([^?&/]+)/i);
@@ -176,7 +175,6 @@ export class CatalogComponent implements OnInit {
   // build embed URL with autoplay when playing inline
   buildEmbedUrl(url?: string, autoplay = false): string {
     if (!url) return '';
-    // extract id same as thumbnail
     const u = url.trim();
     let m = u.match(/embed\/([^?&/]+)/i);
     if (!m) m = u.match(/youtu\.be\/([^?&/]+)/i);
