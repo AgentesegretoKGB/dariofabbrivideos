@@ -1,0 +1,95 @@
+<div class="review-container">
+
+  @if (!unlocked) {
+    <div class="lock-screen">
+      <h2>Revisione catalogo</h2>
+      <p>Pagina riservata. Inserisci la password.</p>
+      <input
+        type="password"
+        [(ngModel)]="passwordInput"
+        (keyup.enter)="tryUnlock()"
+        placeholder="Password"
+        aria-label="Password"
+      />
+      <button (click)="tryUnlock()">Entra</button>
+      @if (passwordError) {
+        <p class="error-text">Password errata.</p>
+      }
+    </div>
+  }
+
+  @if (unlocked) {
+    <h2>Video da revisionare</h2>
+
+    @if (loading) {
+      <p>Caricamento...</p>
+    }
+
+    @if (loadError) {
+      <p class="error-text">Errore nel caricamento: {{ loadError }}</p>
+    }
+
+    @if (!loading && videos.length === 0) {
+      <p>Nessun video in attesa di revisione. 🎉</p>
+    }
+
+    @for (v of videos; track v.id) {
+      <div class="review-card">
+        <div class="review-row">
+          <label>Titolo</label>
+          <input type="text" [(ngModel)]="v.title" />
+        </div>
+
+        <div class="review-row">
+          <label>Data (YYYY-MM-DD)</label>
+          <input type="text" [(ngModel)]="v.date" />
+        </div>
+
+        <div class="review-row">
+          <label>URL embed</label>
+          <input type="text" [(ngModel)]="v.url" />
+        </div>
+
+        <div class="review-row">
+          <label>Formato (separati da virgola)</label>
+          <input
+            type="text"
+            [value]="tagsAsString(v, 'format')"
+            (input)="setTagsFromString(v, 'format', $any($event.target).value)"
+          />
+        </div>
+
+        <div class="review-row">
+          <label>Argomento (separati da virgola)</label>
+          <input
+            type="text"
+            [value]="tagsAsString(v, 'argomento')"
+            (input)="setTagsFromString(v, 'argomento', $any($event.target).value)"
+          />
+        </div>
+
+        <div class="review-row">
+          <label>Categoria (attualita / teoria)</label>
+          <input
+            type="text"
+            [value]="tagsAsString(v, 'categoria')"
+            (input)="setTagsFromString(v, 'categoria', $any($event.target).value)"
+          />
+        </div>
+
+        <div class="review-actions">
+          <button class="btn-approve" (click)="approve(v)" [disabled]="rowStatus[v.id]==='saving'">
+            Approva e pubblica
+          </button>
+          <button class="btn-reject" (click)="reject(v)" [disabled]="rowStatus[v.id]==='saving'">
+            Elimina
+          </button>
+          @if (rowMessage[v.id]) {
+            <span class="row-message" [class.error]="rowStatus[v.id]==='error'">{{ rowMessage[v.id] }}</span>
+          }
+        </div>
+      </div>
+    }
+  }
+
+</div>
