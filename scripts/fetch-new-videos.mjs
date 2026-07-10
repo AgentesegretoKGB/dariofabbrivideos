@@ -10,7 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const VIDEOS_PATH = path.resolve('src/assets/videos.json');
-const SEARCH_QUERIES = ['Dario Fabbri', 'Il Grande Gioco Dario Fabbri', 'Il Grande Gioco Limes'];
+const SEARCH_QUERIES = ['Dario Fabbri'];
 const MAX_RESULTS = 25;
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
@@ -157,6 +157,11 @@ async function main() {
   const candidates = results.filter(r => {
     if (existingIds.has(r.videoId)) return false; // stesso video già presente
     const norm = normalizeTitle(r.title);
+    // filtro rigido: se il titolo non menziona esplicitamente Dario Fabbri, scartiamo.
+    // Meglio perdere un video raro senza il nome nel titolo (lo aggiungerai a mano)
+    // che includere video di altre persone con un titolo simile (es. altri conduttori
+    // dello stesso format "Il Grande Gioco").
+    if (!norm.includes('dario fabbri')) return false;
     const isDuplicateTitle = existingTitles.some(et => similarity(et, norm) >= 0.82);
     return !isDuplicateTitle;
   });
