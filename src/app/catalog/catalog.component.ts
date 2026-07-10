@@ -185,18 +185,6 @@ export class CatalogComponent implements OnInit {
     return `https://www.youtube.com/embed/${id}${params}`;
   }
 
-  // build the normal (non-embed) YouTube watch URL, to open the video directly on YouTube
-  buildWatchUrl(url?: string): string {
-    if (!url) return '';
-    const u = url.trim();
-    let m = u.match(/embed\/([^?&/]+)/i);
-    if (!m) m = u.match(/youtu\.be\/([^?&/]+)/i);
-    if (!m) m = u.match(/[?&]v=([^?&/]+)/i);
-    const id = m ? m[1] : null;
-    if (!id) return '';
-    return `https://www.youtube.com/watch?v=${id}`;
-  }
-
   // build the real youtube.com link (watch page), usato per il link diretto invece dell'embed
   buildWatchUrl(url?: string): string {
     if (!url) return '';
