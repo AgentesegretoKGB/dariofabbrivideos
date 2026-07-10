@@ -6860,12 +6860,15 @@
     "date": "2026-06-08",
     "tags": {
       "format": [
-        "Incontro"
+        "Intervista"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 418,
