@@ -6840,17 +6840,18 @@
   },
   {
     "id": 415,
-    "title": "Fine della guerra? (con Dario Fabbri) - Il Grande Gioco",
+    "title": "Fine della guerra? ",
     "url": "https://www.youtube.com/embed/IaJiZeybX8Y",
     "date": "2026-06-16",
     "tags": {
       "format": [
         "Il Grande Gioco"
       ],
-      "argomento": [],
+      "argomento": [
+        "Iran"
+      ],
       "categoria": []
-    },
-    "pending": true
+    }
   },
   {
     "id": 416,
