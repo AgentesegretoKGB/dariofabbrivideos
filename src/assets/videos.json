@@ -6800,12 +6800,15 @@
     "date": "2026-07-05",
     "tags": {
       "format": [
-        "Incontro"
+        "Intervista"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 390,
