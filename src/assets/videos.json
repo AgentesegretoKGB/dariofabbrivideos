@@ -46,8 +46,8 @@
       "argomento": [
         "Trump",
         "USA",
-		"Brasile",
-		"Consigliato"
+        "Brasile",
+        "Consigliato"
       ],
       "categoria": [
         "attualita"
@@ -84,7 +84,7 @@
         "Israele",
         "Etnocentrismo",
         "Iran",
-		"Consigliato"
+        "Consigliato"
       ],
       "categoria": [
         "teoria"
@@ -161,7 +161,6 @@
       ]
     }
   },
-
   {
     "id": 11,
     "title": "L'Europa è finita? Come Trump ha cambiato le regole del potere globale",
@@ -1166,7 +1165,8 @@
         "Approfondimento Limes"
       ],
       "argomento": [
-        "Italia","Consigliato"
+        "Italia",
+        "Consigliato"
       ],
       "categoria": [
         "teoria"
@@ -1417,7 +1417,6 @@
         "Incontro"
       ],
       "argomento": [
-      
         "Panoramica"
       ],
       "categoria": [
@@ -1716,7 +1715,8 @@
       "argomento": [
         "Inghilterra",
         "Scozia",
-        "Irlanda", "Consigliato"
+        "Irlanda",
+        "Consigliato"
       ],
       "categoria": [
         "Teoria"
@@ -3969,7 +3969,7 @@
       ]
     }
   },
-    {
+  {
     "id": 216,
     "title": "VENEZUELA–UCRAINA–TAIWAN” — Come si tengono insieme",
     "url": "https://www.youtube.com/embed/yjC3B1FHxRM?start=73",
@@ -3979,33 +3979,51 @@
         "Incontro"
       ],
       "argomento": [
-        "Panoramica","Venezuela","Ucraina","Taiwan"
+        "Panoramica",
+        "Venezuela",
+        "Ucraina",
+        "Taiwan"
       ],
       "categoria": [
         "attualita"
       ]
     }
   },
-   {
+  {
     "id": 217,
     "title": "LE CHIAVI DEL MONDO CONTEMPORANEO",
     "url": "https://www.youtube.com/embed/ih51qUzHXlI",
     "date": "2025-04-12",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","USA","Siria"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "USA",
+        "Siria"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 218,
     "title": "Guerre nel mondo e tensioni internazionali - Noos",
     "url": "https://www.youtube.com/embed/qESRUfyHW7w",
     "date": "2025-07-02",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Guerra in Ucraina","Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4014,20 +4032,35 @@
     "url": "https://www.youtube.com/embed/iua-SQW-i-E",
     "date": "2023-10-19",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Israele","Palestina"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Israele",
+        "Palestina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 220,
     "title": "La Turchia non è un paese arabo, anzi ha un'idea razzista verso gli arabi, e si ...",
     "url": "https://www.youtube.com/embed/XrPS-A-VS94",
     "date": "2023-10-28",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Turchia","Azerbaigian","Islam"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Turchia",
+        "Azerbaigian",
+        "Islam"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4036,9 +4069,17 @@
     "url": "https://www.youtube.com/embed/N6xFCMX6THY",
     "date": "2023-10-17",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Gaza","Israele","Islam"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Gaza",
+        "Israele",
+        "Islam"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4047,9 +4088,16 @@
     "url": "https://www.youtube.com/embed/M58QkFaXF2A",
     "date": "2023-10-16",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Israele","Medio Oriente"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Israele",
+        "Medio Oriente"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4058,9 +4106,16 @@
     "url": "https://www.youtube.com/embed/z7__Ikv8Kvg",
     "date": "2023-10-12",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Israele","Russia"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Israele",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4069,42 +4124,68 @@
     "url": "https://www.youtube.com/embed/VmVkX2Pl6cQ",
     "date": "2023-10-14",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Israele","Medio Oriente"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Israele",
+        "Medio Oriente"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 225,
     "title": "Quadrante di geopolitica (umana) verso il 2024",
     "url": "https://www.youtube.com/embed/YihRbJOUpUw",
     "date": "2023-12-29",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": [""],
-      "categoria": ["teoria"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        ""
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-     {
+  {
     "id": 226,
     "title": "Ep. 01: Gli americani sono depressi - SOTTO LA PELLE DELL' AMERICA",
     "url": "https://www.youtube.com/embed/SYitMZmssc4",
     "date": "2024-10-31",
     "tags": {
-      "format": ["Podcast"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Podcast"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 227,
     "title": "Ep. 02: USA e Medio Oriente - Gli americani fanno meno paura - SOTTO LA PELLE DELL' AMERICA",
     "url": "https://www.youtube.com/embed/6cet6ockmBs",
     "date": "2024-10-31",
     "tags": {
-      "format": ["Podcast"],
-      "argomento": ["USA","Medio Oriente"],
-      "categoria": ["attualita"]
+      "format": [
+        "Podcast"
+      ],
+      "argomento": [
+        "USA",
+        "Medio Oriente"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4113,9 +4194,16 @@
     "url": "https://www.youtube.com/embed/VzrKYeMpAZE",
     "date": "2024-10-31",
     "tags": {
-      "format": ["Podcast"],
-      "argomento": ["Guerra in Ucraina","USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Podcast"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4124,9 +4212,17 @@
     "url": "https://www.youtube.com/embed/v5dCywwclPU?start=10",
     "date": "2024-10-31",
     "tags": {
-      "format": ["Podcast"],
-      "argomento": ["Taiwan","USA","Cina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Podcast"
+      ],
+      "argomento": [
+        "Taiwan",
+        "USA",
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4135,9 +4231,16 @@
     "url": "https://www.youtube.com/embed/-3f2f8xncUw",
     "date": "2021-12-06",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4146,9 +4249,16 @@
     "url": "https://www.youtube.com/embed/huM7NopSYW0",
     "date": "2021-12-07",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4157,9 +4267,16 @@
     "url": "https://www.youtube.com/embed/fhLUdEUhXgc",
     "date": "2020-03-01",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4168,9 +4285,18 @@
     "url": "https://www.youtube.com/embed/fKty5ZmJWDI?start=928",
     "date": "2019-11-21",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Germania","Europa","USA","Consigliato"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Germania",
+        "Europa",
+        "USA",
+        "Consigliato"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
   {
@@ -4179,9 +4305,15 @@
     "url": "https://www.youtube.com/embed/-mrZiZZqAcQ",
     "date": "2018-11-09",
     "tags": {
-      "format": ["Mappa Mundi"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4190,9 +4322,15 @@
     "url": "https://www.youtube.com/embed/V84l0pg_woI",
     "date": "2022-03-31",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4201,9 +4339,15 @@
     "url": "https://www.youtube.com/embed/NRi3VoGlalA?start=1875",
     "date": "2021-07-05",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4212,31 +4356,51 @@
     "url": "https://www.youtube.com/embed/LFH_AlXXEzE",
     "date": "2023-06-04",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Consigliato"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Consigliato"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-   {
+  {
     "id": 239,
     "title": "Lucio Caracciolo e Dario Fabbri - Stati profondi, gli abissi del potere",
     "url": "https://www.youtube.com/embed/z6QshiuQamo?start=2053",
     "date": "2018-09-20",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Consigliato","USA"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Consigliato",
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-   {
+  {
     "id": 240,
     "title": "Black, Mini e Shapiro: \"Vecchia Europa vs Nuova Europa? Noi secondo gli USA\"- Festival di Limes",
     "url": "https://www.youtube.com/embed/77kt2i4LZZQ",
     "date": "2020-12-03",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Europa","USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Europa",
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4245,9 +4409,16 @@
     "url": "https://www.youtube.com/embed/hEHs-kzuCZg",
     "date": "2022-03-04",
     "tags": {
-      "format": ["Assemblea"],
-      "argomento": ["Guerra in Ucraina","Russia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4256,20 +4427,32 @@
     "url": "https://www.youtube.com/embed/kT5N_Kjd_aI",
     "date": "2022-05-03",
     "tags": {
-      "format": ["Assemblea"],
-      "argomento": ["Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 243,
     "title": "Assemblea Generale 2024 'SCELTE'",
     "url": "https://www.youtube.com/embed/dU2OgfWfz1k",
     "date": "2024-11-14",
     "tags": {
-      "format": ["Assemblea"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4278,20 +4461,32 @@
     "url": "https://www.youtube.com/embed/x6Fgu-vGAAk",
     "date": "2025-02-03",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Italia"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 245,
     "title": "Kilimangiaro",
     "url": "https://www.youtube.com/embed/zLWjNNhxwL8",
     "date": "2024-10-28",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4300,42 +4495,67 @@
     "url": "https://www.youtube.com/embed/PuFalZAoZcU",
     "date": "2025-01-20",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Gaza"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Gaza"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 247,
     "title": "Impero USA, Russia e conflitti",
     "url": "https://www.youtube.com/embed/9caPGOLBxjQ",
     "date": "2024-04-17",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 248,
     "title": "Trentino2060 (Vol. IV) - Geopolitica di oggi e di domani",
     "url": "https://www.youtube.com/embed/HqEin26OylM",
     "date": "2023-05-20",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 249,
     "title": "\"IL MONDO CHE VERRÀ\" - ENDORFINE FESTIVAL LUGANO",
     "url": "https://www.youtube.com/embed/GY2iz1yC-4M?start=9",
     "date": "2022-11-18",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4344,9 +4564,16 @@
     "url": "https://www.youtube.com/embed/a5vPud_FI3M?start=173",
     "date": "2023-05-12",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4355,9 +4582,16 @@
     "url": "https://www.youtube.com/embed/Mkh8ogfvi80",
     "date": "2022-11-03",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4366,53 +4600,89 @@
     "url": "https://www.youtube.com/embed/dRPTfexDxTk",
     "date": "2023-06-23",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 253,
     "title": "Cosa muove la storia? Stati, società, individui",
     "url": "https://www.youtube.com/embed/p_ZV0CQQbDc",
     "date": "2023-06-23",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": [""],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        ""
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-   {
+  {
     "id": 254,
     "title": "IL RUOLO DELL’AMERICA NEL MONDO",
     "url": "https://www.youtube.com/embed/La6pQsOsh_k?start=359",
     "date": "2024-11-08",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","Trump","Consigliato"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Trump",
+        "Consigliato"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 255,
     "title": "Festival di Open - Strumenti di geopolitica per comprendere il mondo che cambia",
     "url": "https://www.youtube.com/embed/KHH4A1gHtzM",
     "date": "2023-09-21",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Libia","BRICs","Russia","Cina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Libia",
+        "BRICs",
+        "Russia",
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-     {
+  {
     "id": 256,
     "title": "Cosa vogliono i russi?",
     "url": "https://www.youtube.com/embed/2T3JEiZxCzo",
     "date": "2024-03-28",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Russia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4421,9 +4691,15 @@
     "url": "https://www.youtube.com/embed/BbPBllqVWSk",
     "date": "2024-03-28",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Russia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4432,9 +4708,15 @@
     "url": "https://www.youtube.com/embed/vuJryeyBfB0",
     "date": "2022-04-22",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Europa"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Europa"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
   {
@@ -4443,9 +4725,16 @@
     "url": "https://www.youtube.com/embed/yV1qQYfzAnI",
     "date": "2025-05-25",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Vaticano","USA"],
-      "categoria": ["teoria"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Vaticano",
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
   {
@@ -4454,9 +4743,17 @@
     "url": "https://www.youtube.com/embed/giGnmBXWsEU",
     "date": "2016-11-17",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Russia","USA","Consigliato"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Russia",
+        "USA",
+        "Consigliato"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
   {
@@ -4465,9 +4762,17 @@
     "url": "https://www.youtube.com/embed/FqC6Cmd5_V4?start=7",
     "date": "2016-11-17",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Medio Oriente","USA","Consigliato"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Medio Oriente",
+        "USA",
+        "Consigliato"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
   {
@@ -4476,9 +4781,17 @@
     "url": "https://www.youtube.com/embed/93IC3QJwtQQ?start=22",
     "date": "2017-11-21",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Europa","EU","Germania"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Europa",
+        "EU",
+        "Germania"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
   {
@@ -4487,31 +4800,50 @@
     "url": "https://www.youtube.com/embed/HywuvENm66M",
     "date": "2015-05-04",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Medio Oriente","Islam"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Medio Oriente",
+        "Islam"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-   {
+  {
     "id": 263,
     "title": "Cosa resta della Rivoluzione russa?",
     "url": "https://www.youtube.com/embed/ixOjuZs9pfE",
     "date": "2017-12-20",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Russia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 264,
     "title": "La sensibilità imperiale degli Stati Uniti è il destino del mondo",
     "url": "https://www.youtube.com/embed/46eDM653MyE",
     "date": "2017-11-28",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["USA"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
   {
@@ -4520,20 +4852,40 @@
     "url": "https://www.youtube.com/embed/iuBBC153p3Q",
     "date": "2024-12-16",
     "tags": {
-      "format": ["Assemblea"],
-      "argomento": ["Panoramica"],
-      "categoria": ["teoria"]
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-    {
+  {
     "id": 266,
     "title": "L'Europa nella guerra mondiale a \"pezzi\"",
     "url": "https://www.youtube.com/embed/kSoK1C6R1yY",
     "date": "2024-03-05",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","Yemen","Iran","Medio Oriente","Afghanistan","Russia","Cina","Guerra in Ucraina","Taiwan"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Yemen",
+        "Iran",
+        "Medio Oriente",
+        "Afghanistan",
+        "Russia",
+        "Cina",
+        "Guerra in Ucraina",
+        "Taiwan"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4542,20 +4894,34 @@
     "url": "https://www.youtube.com/embed/Owd210FQDTg?start=2078",
     "date": "2025-07-06",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Etnocentrismo","Russia","USA"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Etnocentrismo",
+        "Russia",
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-   {
+  {
     "id": 268,
     "title": "NATO: Usciti tutti contenti. UE si è voluta schermare dai dazi",
     "url": "https://www.youtube.com/embed/idEitFJlUjk",
     "date": "2025-06-29",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Trump"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Trump"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4564,9 +4930,15 @@
     "url": "https://www.youtube.com/embed/9Vv3-d71mXA",
     "date": "2025-09-14",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Polonia"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Polonia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4575,31 +4947,49 @@
     "url": "https://www.youtube.com/embed/fdI9ahdNAr0",
     "date": "2025-05-01",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 271,
     "title": "Trump, Dario Fabbri sui poteri del presidente USA: \"Ha molto meno potere di quello che sembra\"",
     "url": "https://www.youtube.com/embed/KBL_NKtSd14",
     "date": "2025-02-17",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Trump"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Trump"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 272,
     "title": "Quale sarà il futuro dell'Unione Europea? | Moneyfarm",
     "url": "https://www.youtube.com/embed/S9ZQTQzxeeg",
     "date": "2023-11-22",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["EU"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "EU"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4608,9 +4998,18 @@
     "url": "https://www.youtube.com/embed/3dm1fp9Fqyg?start=5",
     "date": "2023-09-22",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Cina","USA","BRICs","Europa"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Cina",
+        "USA",
+        "BRICs",
+        "Europa"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4619,9 +5018,16 @@
     "url": "https://www.youtube.com/embed/2K6IhiOj0ZU",
     "date": "2021-04-14",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Russia","Italia"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Russia",
+        "Italia"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
   {
@@ -4630,9 +5036,15 @@
     "url": "https://www.youtube.com/embed/ja4LHlq8Ypo?start=304",
     "date": "2020-03-30",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4641,31 +5053,50 @@
     "url": "https://www.youtube.com/embed/T7-ogSRaALk",
     "date": "2018-03-21",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Giappone"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Giappone"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-   {
+  {
     "id": 277,
     "title": "Geopolitica - La lezione afghana",
     "url": "https://www.youtube.com/embed/ysGuca45tW0",
     "date": "2024-01-15",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Afghanistan"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Afghanistan"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 278,
     "title": "Rassegna Generazioni 2023: DOMINO. STRUMENTI PER CAPIRE LE NUOVE SFIDE GLOBALI.",
     "url": "https://www.youtube.com/embed/_qUwQ4xVmpA",
     "date": "2023-09-12",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Iran","Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Iran",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4674,20 +5105,34 @@
     "url": "https://www.youtube.com/embed/pKhAtR-dj7I",
     "date": "2024-10-01",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 280,
     "title": "Incontro con Dario Fabbri al Festival del giornalismo di Verona",
     "url": "https://www.youtube.com/embed/85UYJ-nF1SY",
     "date": "2022-05-16",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Panoramica","Guerra in Ucraina","Riarmo"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Guerra in Ucraina",
+        "Riarmo"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4696,9 +5141,16 @@
     "url": "https://www.youtube.com/embed/fFBm33mlJIk",
     "date": "2022-07-12",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Panoramica","Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4707,9 +5159,16 @@
     "url": "https://www.youtube.com/embed/mnpvxt3aDJo",
     "date": "2022-06-28",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Panoramica","Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4718,31 +5177,49 @@
     "url": "https://www.youtube.com/embed/Vt_BUrIbiao",
     "date": "2021-11-12",
     "tags": {
-      "format": ["Approfondimento Limes"],
-      "argomento": ["Polonia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Polonia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 284,
     "title": "Dario Fabbri - Scuola di Giornalismo",
     "url": "https://www.youtube.com/embed/hWnQySnNoYg",
     "date": "2020-09-12",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Trump"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Trump"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-    {
+  {
     "id": 285,
     "title": "Limes incontra le scuole – Lucio Caracciolo, Dario Fabbri, Fabrizio Maronta",
     "url": "https://www.youtube.com/embed/hxbZ1dEjiOI",
     "date": "2017-03-04",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["USA"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
   {
@@ -4751,164 +5228,262 @@
     "url": "https://www.youtube.com/embed/v6hA_H1NPyw",
     "date": "2021-10-21",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": [""],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        ""
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 287,
     "title": "Fronti di guerra mondiale con Enrico Mentana e Dario Fabbri",
     "url": "https://www.youtube.com/embed/Ids6-IDabv0?start=3",
     "date": "2024-09-10",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 288,
     "title": "Lucio Caracciolo e Dario Fabbri: \"Il mondo virato\" - Limes",
     "url": "https://www.youtube.com/embed/u54dGV9vvd4?start=1666",
     "date": "2020-04-17",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Pandemia","Limes"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Pandemia",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 289,
     "title": "Dario Fabbri e Federico Petroni presentazione dell'ultimo numero di Limes",
     "url": "https://www.youtube.com/embed/G7bJAL1PT_M",
     "date": "2018-02-16",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Islam","Limes"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Islam",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 290,
     "title": "#INSIDE: Le migrazioni in geopolitica",
     "url": "https://www.youtube.com/embed/SN7HlqnY0i0",
     "date": "2023-05-02",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Islam"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Islam"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 291,
     "title": "Italia terreno di contesa. Dario Fabbri, una strategia per l'Italia",
     "url": "https://www.youtube.com/embed/vwVSFDCgW3c",
     "date": "2020-12-12",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Italia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 292,
     "title": "AL CENTRO DEL MONDO - Primo panel con Dario Fabbri e Michela Mercuri",
     "url": "https://www.youtube.com/embed/mk-VUF8I1o8",
     "date": "2024-10-25",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 293,
     "title": "Giovinazzo - Conversazioni dal Mare",
     "url": "https://www.youtube.com/embed/uFz3AavYKf8",
     "date": "2024-07-30",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-
   {
     "id": 295,
     "title": "Corea, come evitare una guerra mondiale - parte 1",
     "url": "https://www.youtube.com/embed/YkvCJ9q1dTw",
     "date": "2018-05-06",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Corea","Limes"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Corea",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 296,
     "title": "Corea, come evitare una guerra mondiale - parte 2",
     "url": "https://www.youtube.com/embed/0fmO3FAjJbs",
     "date": "2018-05-06",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Corea","Limes"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Corea",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 297,
     "title": "Europa, non-Europa, Europa Tedesca?",
     "url": "https://www.youtube.com/embed/pco_KGdjszE",
     "date": "2018-05-06",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Europa","Limes"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Europa",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 298,
     "title": "Lucio Caracciolo e Dario Fabbri - Le Europe del 2051, Festival di Limes",
     "url": "https://www.youtube.com/embed/JRiNj9_OEs8",
     "date": "2021-11-30",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Europa","Limes"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Europa",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 299,
     "title": "P. Craveri, G. Friedman, D. Fabbri: \"Perché non possiamo non dirci occidentali\" - Festival di Limes",
     "url": "https://www.youtube.com/embed/dpLlWM7DWG0",
     "date": "2020-12-02",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Europa","Limes"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Europa",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-     {
+  {
     "id": 300,
     "title": "La Storia in Piazza 2022 – Luciano Canfora e Dario Fabbri",
     "url": "https://www.youtube.com/embed/u6v1P0ARBA4",
     "date": "2022-04-01",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": [""],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        ""
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-    {
+  {
     "id": 301,
     "title": "Limes incontra le scuole Lo stato del mondo",
     "url": "https://www.youtube.com/embed/DaadE9pORIk",
     "date": "2022-04-01",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["USA","Limes"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Limes"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4917,9 +5492,15 @@
     "url": "https://www.youtube.com/embed/lrEvRwSBFv8",
     "date": "2017-03-04",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4928,64 +5509,100 @@
     "url": "https://www.youtube.com/embed/hvL4GDl-9Qo",
     "date": "2021-07-26",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 304,
     "title": "Rammendare il passato, inventare il futuro. Sedici risposte sul Recovery Plan",
     "url": "https://www.youtube.com/embed/2RahkUj9Lto",
     "date": "2021-06-30",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["EU"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "EU"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 305,
     "title": "A casa con Dario Fabbri, giornalista e consigliere scientifico di Limes",
     "url": "https://www.youtube.com/embed/9kKibYM6hD8",
     "date": "2020-06-04",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 306,
     "title": "Pieve Incontra",
     "url": "https://www.youtube.com/embed/n3__fU4rHZI",
     "date": "2023-06-07",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-     {
+  {
     "id": 307,
     "title": "Recovery Fund, Dario Fabbri e la 'sofisticata' strategia geopolitica tedesca: \"La Germania ha ...",
     "url": "https://www.youtube.com/embed/c1hZQR01C_E",
     "date": "2020-04-27",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["EU"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "EU"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 308,
     "title": "Fabbri: \"Zelensky non può resistere senza intervento diretto della NATO. Deve spiegare agli ...",
     "url": "https://www.youtube.com/embed/dMuhoQUwtNs",
     "date": "2020-06-20",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -4994,53 +5611,88 @@
     "url": "https://www.youtube.com/embed/IX04w5eWZ70",
     "date": "2022-06-06",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 310,
     "title": "Gas russo si paga solo in rubli? Questa mossa consente a Putin di aggirare ...",
     "url": "https://www.youtube.com/embed/hx2C9kpzBBk",
     "date": "2022-03-26",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 311,
     "title": "L'Europa dopo la fine della Storia",
     "url": "https://www.youtube.com/embed/ZssIIJG4OJM",
     "date": "2025-11-23",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["USA","Dazi","Trump","Europa"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA",
+        "Dazi",
+        "Trump",
+        "Europa"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 312,
     "title": "Non chiamatela Guerra di Putin",
     "url": "https://www.youtube.com/embed/gnhPsR0QtTk",
     "date": "2022-10-16",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Guerra in Ucraina","Russia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 313,
     "title": "Dario Fabbri risponde sulla guerra in Ucraina",
     "url": "https://www.youtube.com/embed/n3PnxnU3NjE",
     "date": "2022-10-27",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Guerra in Ucraina","Russia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5049,20 +5701,32 @@
     "url": "https://www.youtube.com/embed/lwkftSYvDXk",
     "date": "2024-06-30",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 315,
     "title": "L'India non sarà mai un impero",
     "url": "https://www.youtube.com/embed/-MBm4fhQyvE",
     "date": "2024-09-22",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["India"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "India"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5071,64 +5735,101 @@
     "url": "https://www.youtube.com/embed/dcMP6gRpiEQ",
     "date": "2025-04-14",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 317,
     "title": "Il Regno Disunito / 2 - L'Irlanda del Nord contesa",
     "url": "https://www.youtube.com/embed/O1vShBd9SeI?start=259",
     "date": "2021-08-24",
     "tags": {
-      "format": ["Mappa Mundi"],
-      "argomento": ["Irlanda","Scozia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Mappa Mundi"
+      ],
+      "argomento": [
+        "Irlanda",
+        "Scozia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 318,
     "title": "Che mondo fa? Dario Fabbri a Guerra e Pace Brescia",
     "url": "https://www.youtube.com/embed/2BCFDrXELYQ?start=452",
     "date": "2025-07-16",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 319,
     "title": "SOTTO LA PELLE DEL MONDO con Dario Fabbri e Marco Damilano",
     "url": "https://www.youtube.com/embed/Kchmk5OLTEg?start=1055",
     "date": "2024-10-19",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 320,
     "title": "Open Future Open Culture",
     "url": "https://www.youtube.com/embed/wKGaJsZxGz4",
     "date": "2023-05-29",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 321,
     "title": "Cosa c'è dietro ai dazi di Trump",
     "url": "https://www.youtube.com/embed/jYIkZ5qK-Ho?start=192",
     "date": "2025-04-22",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5137,42 +5838,69 @@
     "url": "https://www.youtube.com/embed/Uol1ggpp974?start=662",
     "date": "2025-11-24",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Panoramica","Europa"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Europa"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 323,
     "title": "Conferenza Identità e Geopolitica",
     "url": "https://www.youtube.com/embed/TMZ3KCHnd-0?start=54",
     "date": "2025-11-25",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Panoramica","Venezuela"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Venezuela"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 324,
     "title": "Imperi, podcast live",
     "url": "https://www.youtube.com/embed/N8f89V_BKLc?start=230",
     "date": "2025-11-25",
     "tags": {
-      "format": ["Podcast"],
-      "argomento": ["Guerra in Ucraina","Russia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Podcast"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 325,
     "title": "La Rivoluzione Giapponese - Dario Fabbri e Abbas Gharib",
     "url": "https://www.youtube.com/embed/SbQW2c84e9o",
     "date": "2020-04-15",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Giappone"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Giappone"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5181,9 +5909,15 @@
     "url": "https://www.youtube.com/embed/fQNx3a91RU8",
     "date": "2025-10-10",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5192,42 +5926,69 @@
     "url": "https://www.youtube.com/embed/RQrBN8f4owY",
     "date": "2025-12-03",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Guerra in Ucraina","Europa"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Guerra in Ucraina",
+        "Europa"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 328,
     "title": "MILANO : ITALIA E OCCIDENTE NEL CAOS GLOBALE ",
     "url": "https://www.youtube.com/embed/yjBAZvVvew4?start=947",
     "date": "2025-11-25",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 329,
     "title": "Guerra Russo-Ucraina - \"Storia Geopolitica di una Crisi\"",
     "url": "https://www.youtube.com/embed/LVi4I2ADzWM",
     "date": "2022-07-21",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 329,
     "title": "Pechino e lo scacchiere asiatico",
     "url": "https://www.youtube.com/embed/QOuIWXHaALc",
     "date": "2025-12-09",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Cina","USA","Russia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Cina",
+        "USA",
+        "Russia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5236,9 +5997,15 @@
     "url": "https://www.youtube.com/embed/LbMVq4y72vM",
     "date": "2025-12-16",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Europa"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Europa"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5247,20 +6014,32 @@
     "url": "https://www.youtube.com/embed/z2T13Rkp89o",
     "date": "2025-12-19",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 331,
     "title": "Geopolitica della Rete. Il governo di Internet e l’instabilità internazionale",
     "url": "https://www.youtube.com/embed/EE_b97k353g",
     "date": "2022-03-04",
     "tags": {
-      "format": ["Intervista"],
-      "argomento": ["Big Tech"],
-      "categoria": ["attualita"]
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Big Tech"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5269,20 +6048,32 @@
     "url": "https://www.youtube.com/embed/umUFW0n5LFA?",
     "date": "2022-03-04",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 333,
     "title": "le mire statunitensi sulla Groenlandia non sono un bluff",
     "url": "https://www.youtube.com/embed/vDMbdFDf0iI",
     "date": "2026-01-09",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Groenlandia"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Groenlandia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5291,20 +6082,32 @@
     "url": "https://www.youtube.com/embed/gvOKBLlAPMs",
     "date": "2026-01-03",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Venezuela"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Venezuela"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 335,
     "title": "da non escludere la possibilità di un “impantanamento” USA in Venezuela",
     "url": "https://www.youtube.com/embed/aXph4SrDEHY",
     "date": "2026-01-09",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Venezuela"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Venezuela"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5313,20 +6116,32 @@
     "url": "https://www.youtube.com/embed/K4JLRLk0vOo?start=457",
     "date": "2021-01-15",
     "tags": {
-      "format": ["Approfondimento Limes"],
-      "argomento": ["Italia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Approfondimento Limes"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 338,
     "title": "l'analisi politica internazionale - Kilimangiaro",
     "url": "https://www.youtube.com/embed/gZS9xKrc_f0",
     "date": "2026-01-12",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5335,9 +6150,17 @@
     "url": "https://www.youtube.com/embed/vUu6UwetKAg",
     "date": "2026-01-13",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Venezuela","Groenlandia","Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Venezuela",
+        "Groenlandia",
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5346,9 +6169,17 @@
     "url": "https://www.youtube.com/embed/lM8s4h4vWEY?start=2443",
     "date": "2021-06-03",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Inghilterra","Scozia","Irlanda"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Inghilterra",
+        "Scozia",
+        "Irlanda"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5357,64 +6188,104 @@
     "url": "https://www.youtube.com/embed/Qg8kNK1hjHI",
     "date": "2026-01-20",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 342,
     "title": "La Groenlandia è come se fosse “una piattaforma per invadere il Nord America",
     "url": "https://www.youtube.com/embed/UqpEcncP3aE",
     "date": "2026-01-18",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Iran","Groenlandia"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Iran",
+        "Groenlandia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 343,
     "title": "Morire per la Groenlandia?",
     "url": "https://www.youtube.com/embed/vCD_D6FZIwQ",
     "date": "2026-01-27",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Europa","Groenlandia"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Europa",
+        "Groenlandia"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 344,
     "title": "Italia ed Europa a Confronto tra XIII e XXI Secolo",
     "url": "https://www.youtube.com/embed/kAjNEC6JdPs",
     "date": "2024-12-12",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Germania","Italia","Consigliato"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Germania",
+        "Italia",
+        "Consigliato"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-   {
+  {
     "id": 345,
     "title": "il punto sulla politica internazionale - Kilimangiaro",
     "url": "https://www.youtube.com/embed/djeHV0QZ-Cg",
     "date": "2026-02-02",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 346,
     "title": "La rivincita dei neocon",
     "url": "https://www.youtube.com/embed/UnVi0BTB8Co?start",
     "date": "2026-02-02",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5423,9 +6294,15 @@
     "url": "https://www.youtube.com/embed/79K4VOg1BgI?start=7",
     "date": "2026-02-10",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5434,9 +6311,16 @@
     "url": "https://www.youtube.com/embed/79K4VOg1BgI?start=7",
     "date": "2025-07-26",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Italia","Consigliato"],
-      "categoria": ["teoria"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Italia",
+        "Consigliato"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
   {
@@ -5445,9 +6329,15 @@
     "url": "https://www.youtube.com/embed/hvLMSu_TSz4",
     "date": "2025-07-26",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5456,9 +6346,15 @@
     "url": "https://www.youtube.com/embed/y_mbuB7ejTw?",
     "date": "2026-02-01",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5467,53 +6363,85 @@
     "url": "https://www.youtube.com/embed/jPtITk31jeg",
     "date": "2026-02-24",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Ucraina","Guerra in Ucraina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Ucraina",
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 353,
     "title": "Il destino dei popoli: guardare il mondo da un punto di vista profondamente umano",
     "url": "https://www.youtube.com/embed/GaqcRLR01nY?start=34:04",
     "date": "2026-02-25",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["teoria"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "teoria"
+      ]
     }
   },
-     {
+  {
     "id": 354,
     "title": "Roma - Centralità del Mediterraneo",
     "url": "https://www.youtube.com/embed/GaqcRLR01nY?",
     "date": "2023-10-23",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","Consigliato"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Consigliato"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-     {
+  {
     "id": 355,
     "title": "Dalla Repubblica Romana all’America di Trump: perché gli imperi odiano i loro alleati",
     "url": "https://www.youtube.com/embed/gOZHoqY05oU",
     "date": "2025-00-00",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["USA"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 356,
     "title": "Iran: USA non hanno un piano B, Venezuela non c'entra un cavolo",
     "url": "https://www.youtube.com/embed/MTyXQtaLhMw",
     "date": "2026-03-08",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5522,20 +6450,32 @@
     "url": "https://www.youtube.com/embed/t51gP5Yq0T0",
     "date": "2026-03-10",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 358,
     "title": "Che mondo fa nel 2026, Confagricoltura Brescia",
     "url": "https://www.youtube.com/embed/AlqUnrqN1J4",
     "date": "2026-03-03",
     "tags": {
-      "format": ["Assemblea"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5544,31 +6484,50 @@
     "url": "https://www.youtube.com/embed/OZ6iFEeONzQ",
     "date": "2026-03-06",
     "tags": {
-      "format": ["Assemblea"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 360,
     "title": "Trump è diventato di fatto neo conservatore",
     "url": "https://www.youtube.com/embed/BgHLv1DqKLw",
     "date": "2026-03-02",
     "tags": {
-      "format": ["TV"],
-      "argomento": ["USA","Trump"],
-      "categoria": ["attualita"]
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "USA",
+        "Trump"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 361,
     "title": "Iran: cosa rischia l'Europa",
     "url": "https://www.youtube.com/embed/rPpbqhmZJeE",
     "date": "2026-03-17",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5577,9 +6536,15 @@
     "url": "https://www.youtube.com/embed/TmHvWr1R9YE",
     "date": "2026-03-24",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5588,65 +6553,106 @@
     "url": "https://www.youtube.com/embed/k8sEDiTAm4U?",
     "date": "2026-02-17",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Giappone"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Giappone"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 365,
     "title": "Fine dell'Iran?",
     "url": "https://www.youtube.com/embed/kALIYSJfZh0?start=0",
     "date": "2026-03-03",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 366,
     "title": "Israele: il grande manovratore?",
     "url": "https://www.youtube.com/embed/hIf03st11xE?start=0",
     "date": "2026-03-31",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Israele","Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 367,
     "title": "Trump: la guerra si mette male",
     "url": "https://www.youtube.com/embed/6L-joCWTpc4?start=0",
     "date": "2026-04-07",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Israele","Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-  
-       {
+  {
     "id": 369,
     "title": "Hormuz: che fare?",
     "url": "https://www.youtube.com/embed/YevDHjZQUl0?start=0",
     "date": "2026-04-14",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Israele","Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-     {
+  {
     "id": 370,
     "title": "Prossima fermata Turchia?",
     "url": "https://www.youtube.com/embed/kU2yYItB2AU?start=1455",
     "date": "2026-04-21",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Turchia","Israele","Iran","Cina"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Turchia",
+        "Israele",
+        "Iran",
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
   {
@@ -5655,98 +6661,486 @@
     "url": "https://www.youtube.com/embed/k3iPWyx0DlU?start=0",
     "date": "2026-04-28",
     "tags": {
-      "format": ["Il Grande Gioco"],
-      "argomento": ["Israele","Iran"],
-      "categoria": ["attualita"]
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele",
+        "Iran"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-  
-   {
+  {
     "id": 373,
     "title": "L'impossibile tentazione del ritiro americano",
     "url": "https://www.youtube.com/embed/V5ujmUAH3UI?start=1538",
     "date": "2026-05-01",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 375,
     "title": "Di macchine, uomini e divinità",
     "url": "https://www.youtube.com/embed/tPIfz9G27wc?start=0",
     "date": "2026-04-19",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica","Consigliato"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica",
+        "Consigliato"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 376,
     "title": "Tre Continenti, una sola guerra?",
     "url": "https://www.youtube.com/embed/UaCqW836djg",
     "date": "2026-05-05",
     "tags": {
-      "format": ["il Grande Gioco"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "il Grande Gioco"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   
-    {
+  {
     "id": 378,
     "title": "Alla corte del dragone",
     "url": "https://www.youtube.com/embed/UwDofW9FmSo",
     "date": "2026-05-19",
     "tags": {
-      "format": ["il Grande Gioco"],
-      "argomento": ["Cina"],
-      "categoria": ["attualita"]
+      "format": [
+        "il Grande Gioco"
+      ],
+      "argomento": [
+        "Cina"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-    {
+  {
     "id": 379,
     "title": "La morte di Cuba?",
     "url": "https://www.youtube.com/embed/M-9vXircpOM",
     "date": "2026-05-19",
     "tags": {
-      "format": ["il Grande Gioco"],
-      "argomento": ["Cuba"],
-      "categoria": ["attualita"]
+      "format": [
+        "il Grande Gioco"
+      ],
+      "argomento": [
+        "Cuba"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 380,
     "title": "“L’ITALIA HA DIMENTICATO IL MARE” | Festival DePortibus",
     "url": "https://www.youtube.com/embed/YUETcI1_blo?start=0",
     "date": "2026-05-21",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
   },
-   {
+  {
     "id": 381,
     "title": "PERCHE' GLI USA STANNO FALLENDO CONTRO CINA E IRAN ? | 14 MAGGIO 2026 -XIX FENEALUIL",
     "url": "https://www.youtube.com/embed/7pBPT1rxSa4?start=0",
     "date": "2026-05-21",
     "tags": {
-      "format": ["Incontro"],
-      "argomento": ["Panoramica"],
-      "categoria": ["attualita"]
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualita"
+      ]
     }
+  },
+  {
+    "id": 382,
+    "title": "Casale Cineforum 2026: Dialogo tra Dario Fabbri e Luca Sommi a Casalfiumanese",
+    "url": "https://www.youtube.com/embed/TRbFkqoQRlE",
+    "date": "2026-07-09",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 383,
+    "title": "Dario Fabbri: ciò che gli occidentali non capiscono",
+    "url": "https://www.youtube.com/embed/aA1dPbRmoFg",
+    "date": "2026-07-08",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 384,
+    "title": "Dario fabbri | Non esistono imperi buoni ed imperi cattivi",
+    "url": "https://www.youtube.com/embed/ngcVn51Qgig",
+    "date": "2026-07-06",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 385,
+    "title": "Dario Fabbri: popoli e lingue",
+    "url": "https://www.youtube.com/embed/diI6i8055I8",
+    "date": "2026-07-06",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 386,
+    "title": "DARIO FABBRI: TRUMP È IL SINTOMO, NON LA CAUSA  | West Coast Meeting  4 Luglio 2026",
+    "url": "https://www.youtube.com/embed/qhVGlVcyzTc",
+    "date": "2026-07-05",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 387,
+    "title": "“LE FORZE CHE MUOVONO LA STORIA”",
+    "url": "https://www.youtube.com/embed/pHz02BrnsME",
+    "date": "2026-07-05",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 388,
+    "title": "“LE FORZE CHE MUOVONO LA STORIA”",
+    "url": "https://www.youtube.com/embed/ksRqub-ipTs",
+    "date": "2026-07-05",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 389,
+    "title": "Dario Fabbri | Giochi di Guerra",
+    "url": "https://www.youtube.com/embed/aBMfntMEyV4",
+    "date": "2026-07-04",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 390,
+    "title": "DARIO FABBRI: DAZI USA, STRETTO DI HORMUZ E GUERRA IN IRAN | Rapporto Cuneo 29 giugno 2026",
+    "url": "https://www.youtube.com/embed/p7zCvudO9G4",
+    "date": "2026-07-03",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 391,
+    "title": "Perché l&#39;India, nonostante i numeri da gigante, non diventerà mai un impero?",
+    "url": "https://www.youtube.com/embed/HJCVusC9HGI",
+    "date": "2026-07-03",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 392,
+    "title": "Dario Fabbri | L&#39;Ideologia Strumento di una Potenza",
+    "url": "https://www.youtube.com/embed/wuvABxxiPVM",
+    "date": "2026-07-02",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 393,
+    "title": "SCONTRO STATI UNITI E CINA",
+    "url": "https://www.youtube.com/embed/S62u0rNEbAs",
+    "date": "2026-07-02",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 394,
+    "title": "Popoli e imperi dal Medioevo a oggi | Dario Fabbri",
+    "url": "https://www.youtube.com/embed/tDCzrwK3vVQ",
+    "date": "2026-07-01",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 395,
+    "title": "DARIO FABBRI: IL DIRITTO INTERNAZIONALE È SCRITTO DA CHI HA IL POTERE DI FARLO 🇮🇹📺 #perte #shorts",
+    "url": "https://www.youtube.com/embed/BqCRg-6fdDE",
+    "date": "2026-07-01",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 396,
+    "title": "Un&#39;america depressa",
+    "url": "https://www.youtube.com/embed/thbhU_ggmYA",
+    "date": "2026-07-01",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 397,
+    "title": "L&#39;origine della depressione americana",
+    "url": "https://www.youtube.com/embed/R9FGJ9_Yngo",
+    "date": "2026-06-29",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 398,
+    "title": "Dario Fabbri | La Strategia dell&#39;Italia",
+    "url": "https://www.youtube.com/embed/MNSKOrPqhBM",
+    "date": "2026-06-27",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 399,
+    "title": "Fabbri: il 29% degli americani diagnosticato depresso, cento milioni di persone",
+    "url": "https://www.youtube.com/embed/KFSHYdBJiHk",
+    "date": "2026-06-27",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 400,
+    "title": "DARIO FABBRI: &quot;PERCHÉ TUTTI CREDEVANO NEL MITO DELLA RIVOLUZIONE CUBANA&quot;",
+    "url": "https://www.youtube.com/embed/aU20bEUl1jk",
+    "date": "2026-06-26",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 401,
+    "title": "Dario Fabbri : L&#39;icona Che Guevara",
+    "url": "https://www.youtube.com/embed/Jtdhs9FueRs",
+    "date": "2026-06-26",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 402,
+    "title": "Il 29% degli americani è depresso",
+    "url": "https://www.youtube.com/embed/n5PqhQK8hcA",
+    "date": "2026-06-26",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 403,
+    "title": "2 perché gli americani sono così depressi",
+    "url": "https://www.youtube.com/embed/7qYqWHFLs2Y",
+    "date": "2026-06-25",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 404,
+    "title": "Fabbri: USA chiede aiuto agli ucraini contro l&#39;Iran",
+    "url": "https://www.youtube.com/embed/dqxR3K5Qgq8",
+    "date": "2026-06-24",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 405,
+    "title": "Gli USA se ne andranno dall&#39;Europa?",
+    "url": "https://www.youtube.com/embed/aSvUlkApfYM",
+    "date": "2026-06-23",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 406,
+    "title": "Fabbri: Il fallimento USA in Iran",
+    "url": "https://www.youtube.com/embed/R5t2wdHAeaY",
+    "date": "2026-06-23",
+    "tags": {
+      "format": [
+        "Assemblea"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
   }
-
-
-
-
-
-
-
-
-
-
 ]
