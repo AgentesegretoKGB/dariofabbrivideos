@@ -6900,17 +6900,20 @@
   },
   {
     "id": 421,
-    "title": "&quot;USA contro Cina. Sfida globale fra imperi | Dario Fabbri&quot;",
+    "title": "USA contro Cina. Sfida globale fra imperi",
     "url": "https://www.youtube.com/embed/503rLZxQFgs",
-    "date": "2026-05-02",
+    "date": "2023-05-02",
     "tags": {
       "format": [
-        "Incontro"
+        "Intervista"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 422,
