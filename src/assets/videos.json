@@ -6924,9 +6924,14 @@
       "format": [
         "Incontro"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Iran",
+        "USA",
+        "Consigliato"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   }
 ]
