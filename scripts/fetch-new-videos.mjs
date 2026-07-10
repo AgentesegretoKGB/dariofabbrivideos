@@ -142,9 +142,22 @@ async function main() {
 
   const durations = await youtubeVideoDetails(candidates.map(c => c.videoId));
 
+  // Scarta gli YouTube Shorts: per policy di YouTube durano al massimo 3 minuti (180s).
+  // Se per qualche motivo la durata non è disponibile, lo teniamo (meglio in dubbio che perso).
+  const SHORTS_MAX_SECONDS = 180;
+  const candidatesNoShorts = candidates.filter(c => {
+    const d = durations[c.videoId];
+    return d === undefined || d === null || d > SHORTS_MAX_SECONDS;
+  });
+
+  const skippedShorts = candidates.length - candidatesNoShorts.length;
+  if (skippedShorts > 0) {
+    console.log(`Scartati ${skippedShorts} YouTube Shorts.`);
+  }
+
   let nextId = Math.max(0, ...videos.map(v => v.id)) + 1;
 
-  const newEntries = candidates.map(c => {
+  const newEntries = candidatesNoShorts.map(c => {
     const duration = durations[c.videoId];
     const entry = {
       id: nextId++,
