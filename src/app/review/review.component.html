@@ -35,6 +35,22 @@
 
     @for (v of videos; track v.id) {
       <div class="review-card">
+
+        <div class="review-preview">
+          <div class="iframe-wrap">
+            <iframe
+              [src]="buildEmbedUrl(v.url) | safeUrl"
+              frameborder="0"
+              allowfullscreen
+              allow="encrypted-media"
+              [title]="v.title"
+            ></iframe>
+          </div>
+          <a class="youtube-direct-link" [href]="buildWatchUrl(v.url)" target="_blank" rel="noopener noreferrer">
+            Guarda su YouTube ↗
+          </a>
+        </div>
+
         <div class="review-row">
           <label>Titolo</label>
           <input type="text" [(ngModel)]="v.title" />

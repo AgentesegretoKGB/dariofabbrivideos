@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SafeUrlPipe } from '../catalog/safe-url.pipe';
 
 interface Video {
   id: number;
@@ -20,7 +21,7 @@ const REVIEW_PASSWORD = 'R3visione';
 @Component({
   selector: 'app-review',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe],
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
@@ -38,6 +39,29 @@ export class ReviewComponent implements OnInit {
   // stato per riga: messaggi di salvataggio ed eventuali errori
   rowStatus: { [id: number]: 'idle' | 'saving' | 'done' | 'error' } = {};
   rowMessage: { [id: number]: string } = {};
+
+  private extractId(url?: string): string | null {
+    if (!url) return null;
+    const u = url.trim();
+    let m = u.match(/embed\/([^?&/]+)/i);
+    if (!m) m = u.match(/youtu\.be\/([^?&/]+)/i);
+    if (!m) m = u.match(/[?&]v=([^?&/]+)/i);
+    return m ? m[1] : null;
+  }
+
+  buildEmbedUrl(url?: string): string {
+    const id = this.extractId(url);
+    if (!id) return '';
+    return `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`;
+  }
+
+  buildWatchUrl(url?: string): string {
+    const id = this.extractId(url);
+    if (!id) return url || '';
+    const startMatch = (url || '').match(/[?&]start=(\d+)/i);
+    const start = startMatch ? `&t=${startMatch[1]}s` : '';
+    return `https://www.youtube.com/watch?v=${id}${start}`;
+  }
 
   ngOnInit(): void {
     // non carichiamo nulla finché non sbloccato, per non esporre inutilmente i dati

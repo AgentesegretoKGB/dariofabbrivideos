@@ -59,6 +59,21 @@ function extractVideoId(url) {
   return m ? m[1] : null;
 }
 
+function cleanTitle(title) {
+  let t = title;
+  // Rimuove pattern comuni tipo "Dario Fabbri | Titolo", "Titolo - Dario Fabbri",
+  // "Titolo | Dario Fabbri", "Dario Fabbri: Titolo" ecc.
+  // Non tocca frasi dove il nome è parte integrante (es. "X intervista Dario Fabbri a...").
+  const patterns = [
+    /^\s*dario\s+fabbri\s*[\|\-:–]\s*/i,
+    /\s*[\|\-:–]\s*dario\s+fabbri\s*$/i,
+    /^\s*fabbri\s*[\|\-:–]\s*/i,
+    /\s*[\|\-:–]\s*fabbri\s*$/i
+  ];
+  for (const re of patterns) t = t.replace(re, '');
+  return t.trim();
+}
+
 function guessFormat(title, durationSeconds) {
   const t = title.toLowerCase();
   if (t.includes('grande gioco')) return ['Il Grande Gioco'];
@@ -161,7 +176,7 @@ async function main() {
     const duration = durations[c.videoId];
     const entry = {
       id: nextId++,
-      title: c.title,
+      title: cleanTitle(c.title),
       url: `https://www.youtube.com/embed/${c.videoId}`,
       date: c.publishedAt.slice(0, 10), // fallback: data di pubblicazione su YouTube
       tags: {
