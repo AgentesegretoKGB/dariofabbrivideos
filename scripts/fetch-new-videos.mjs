@@ -10,7 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const VIDEOS_PATH = path.resolve('src/assets/videos.json');
-const SEARCH_QUERY = 'Dario Fabbri';
+const SEARCH_QUERIES = ['Dario Fabbri', 'Il Grande Gioco Dario Fabbri', 'Il Grande Gioco Limes'];
 const MAX_RESULTS = 25;
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
@@ -94,17 +94,17 @@ function parseIsoDurationToSeconds(iso) {
   return h * 3600 + min * 60 + s;
 }
 
-async function youtubeSearch() {
+async function youtubeSearch(query) {
   const url = new URL('https://www.googleapis.com/youtube/v3/search');
   url.searchParams.set('key', API_KEY);
-  url.searchParams.set('q', SEARCH_QUERY);
+  url.searchParams.set('q', query);
   url.searchParams.set('part', 'snippet');
   url.searchParams.set('type', 'video');
   url.searchParams.set('order', 'date');
   url.searchParams.set('maxResults', String(MAX_RESULTS));
 
   const resp = await fetch(url);
-  if (!resp.ok) throw new Error('Errore ricerca YouTube: ' + (await resp.text()));
+  if (!resp.ok) throw new Error(`Errore ricerca YouTube ("${query}"): ` + (await resp.text()));
   const json = await resp.json();
   return (json.items || []).map(it => ({
     videoId: it.id.videoId,
@@ -113,6 +113,17 @@ async function youtubeSearch() {
     publishedAt: it.snippet.publishedAt,
     description: it.snippet.description
   }));
+}
+
+async function youtubeSearchAll() {
+  const seen = new Map();
+  for (const q of SEARCH_QUERIES) {
+    const items = await youtubeSearch(q);
+    for (const it of items) {
+      if (!seen.has(it.videoId)) seen.set(it.videoId, it);
+    }
+  }
+  return Array.from(seen.values());
 }
 
 async function youtubeVideoDetails(videoIds) {
@@ -141,7 +152,7 @@ async function main() {
   );
   const existingTitles = videos.map(v => normalizeTitle(v.title));
 
-  const results = await youtubeSearch();
+  const results = await youtubeSearchAll();
 
   const candidates = results.filter(r => {
     if (existingIds.has(r.videoId)) return false; // stesso video già presente
@@ -157,9 +168,8 @@ async function main() {
 
   const durations = await youtubeVideoDetails(candidates.map(c => c.videoId));
 
-  // Scarta gli YouTube Shorts: per policy di YouTube durano al massimo 3 minuti (180s).
-  // Se per qualche motivo la durata non è disponibile, lo teniamo (meglio in dubbio che perso).
-  const SHORTS_MAX_SECONDS = 180;
+  // Scarta gli YouTube Shorts e i video molto brevi: soglia a 15 minuti (900s).
+  const SHORTS_MAX_SECONDS = 15 * 60;
   const candidatesNoShorts = candidates.filter(c => {
     const d = durations[c.videoId];
     return d === undefined || d === null || d > SHORTS_MAX_SECONDS;

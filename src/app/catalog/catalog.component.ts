@@ -185,22 +185,6 @@ export class CatalogComponent implements OnInit {
     return `https://www.youtube.com/embed/${id}${params}`;
   }
 
-  // build the real youtube.com link (watch page), usato per il link diretto invece dell'embed
-  buildWatchUrl(url?: string): string {
-    if (!url) return '';
-    const u = url.trim();
-    let m = u.match(/embed\/([^?&/]+)/i);
-    if (!m) m = u.match(/youtu\.be\/([^?&/]+)/i);
-    if (!m) m = u.match(/[?&]v=([^?&/]+)/i);
-    const id = m ? m[1] : null;
-    if (!id) return u; // fallback: usa l'url originale se non riesco a estrarre l'id
-
-    // preserva eventuale timestamp di partenza (?start=xxx) anche nel link diretto
-    const startMatch = u.match(/[?&]start=(\d+)/i);
-    const start = startMatch ? `&t=${startMatch[1]}s` : '';
-    return `https://www.youtube.com/watch?v=${id}${start}`;
-  }
-
   playVideo(v: Video) {
     this.playingId = v.id;
   }
