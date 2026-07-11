@@ -6881,10 +6881,13 @@
       "format": [
         "Il Grande Gioco"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Europa"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 420,
