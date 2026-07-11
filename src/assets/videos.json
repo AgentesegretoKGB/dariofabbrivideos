@@ -6893,10 +6893,11 @@
       "format": [
         "Incontro"
       ],
-      "argomento": [],
+      "argomento": [
+        "Panoramica"
+      ],
       "categoria": []
-    },
-    "pending": true
+    }
   },
   {
     "id": 421,
