@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const VIDEOS_PATH = path.resolve('src/assets/videos.json');
+const REJECTED_IDS_PATH = path.resolve('src/assets/rejected-ids.json');
 const SEARCH_QUERIES = ['Dario Fabbri'];
 const MAX_RESULTS = 25;
 
@@ -147,6 +148,14 @@ async function main() {
   const raw = fs.readFileSync(VIDEOS_PATH, 'utf-8');
   const videos = JSON.parse(raw);
 
+  let rejectedIds = [];
+  try {
+    rejectedIds = JSON.parse(fs.readFileSync(REJECTED_IDS_PATH, 'utf-8'));
+  } catch {
+    // file non ancora esistente o vuoto: nessun problema, partiamo da lista vuota
+  }
+  const rejectedSet = new Set(rejectedIds);
+
   const existingIds = new Set(
     videos.map(v => extractVideoId(v.url)).filter(Boolean)
   );
@@ -156,11 +165,8 @@ async function main() {
 
   const candidates = results.filter(r => {
     if (existingIds.has(r.videoId)) return false; // stesso video già presente
+    if (rejectedSet.has(r.videoId)) return false; // già rifiutato in passato in revisione
     const norm = normalizeTitle(r.title);
-    // filtro rigido: se il titolo non menziona esplicitamente Dario Fabbri, scartiamo.
-    // Meglio perdere un video raro senza il nome nel titolo (lo aggiungerai a mano)
-    // che includere video di altre persone con un titolo simile (es. altri conduttori
-    // dello stesso format "Il Grande Gioco").
     if (!norm.includes('dario fabbri')) return false;
     const isDuplicateTitle = existingTitles.some(et => similarity(et, norm) >= 0.82);
     return !isDuplicateTitle;
