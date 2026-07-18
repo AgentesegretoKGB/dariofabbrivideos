@@ -6947,11 +6947,14 @@
     "date": "2026-07-17",
     "tags": {
       "format": [
-        "Incontro"
+        "Intervista"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   }
 ]
