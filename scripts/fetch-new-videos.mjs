@@ -2,7 +2,7 @@
 // Cerca su YouTube nuovi video di/con Dario Fabbri, scarta i doppioni già
 // presenti nel catalogo (o molto simili per titolo), classifica il formato
 // con poche regole semplici, e aggiunge le nuove voci come "pending": true.
-//
+// pp
 // Richiede: process.env.YOUTUBE_API_KEY
 // Eseguito da: .github/workflows/fetch-videos.yml
 
@@ -10,8 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const VIDEOS_PATH = path.resolve('src/assets/videos.json');
-const REJECTED_IDS_PATH = path.resolve('src/assets/rejected-ids.json');
-const SEARCH_QUERIES = ['Dario Fabbri'];
+const SEARCH_QUERY = 'Dario Fabbri';
 const MAX_RESULTS = 25;
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
@@ -95,17 +94,17 @@ function parseIsoDurationToSeconds(iso) {
   return h * 3600 + min * 60 + s;
 }
 
-async function youtubeSearch(query) {
+async function youtubeSearch() {
   const url = new URL('https://www.googleapis.com/youtube/v3/search');
   url.searchParams.set('key', API_KEY);
-  url.searchParams.set('q', query);
+  url.searchParams.set('q', SEARCH_QUERY);
   url.searchParams.set('part', 'snippet');
   url.searchParams.set('type', 'video');
   url.searchParams.set('order', 'date');
   url.searchParams.set('maxResults', String(MAX_RESULTS));
 
   const resp = await fetch(url);
-  if (!resp.ok) throw new Error(`Errore ricerca YouTube ("${query}"): ` + (await resp.text()));
+  if (!resp.ok) throw new Error('Errore ricerca YouTube: ' + (await resp.text()));
   const json = await resp.json();
   return (json.items || []).map(it => ({
     videoId: it.id.videoId,
@@ -114,17 +113,6 @@ async function youtubeSearch(query) {
     publishedAt: it.snippet.publishedAt,
     description: it.snippet.description
   }));
-}
-
-async function youtubeSearchAll() {
-  const seen = new Map();
-  for (const q of SEARCH_QUERIES) {
-    const items = await youtubeSearch(q);
-    for (const it of items) {
-      if (!seen.has(it.videoId)) seen.set(it.videoId, it);
-    }
-  }
-  return Array.from(seen.values());
 }
 
 async function youtubeVideoDetails(videoIds) {
@@ -148,26 +136,16 @@ async function main() {
   const raw = fs.readFileSync(VIDEOS_PATH, 'utf-8');
   const videos = JSON.parse(raw);
 
-  let rejectedIds = [];
-  try {
-    rejectedIds = JSON.parse(fs.readFileSync(REJECTED_IDS_PATH, 'utf-8'));
-  } catch {
-    // file non ancora esistente o vuoto: nessun problema, partiamo da lista vuota
-  }
-  const rejectedSet = new Set(rejectedIds);
-
   const existingIds = new Set(
     videos.map(v => extractVideoId(v.url)).filter(Boolean)
   );
   const existingTitles = videos.map(v => normalizeTitle(v.title));
 
-  const results = await youtubeSearchAll();
+  const results = await youtubeSearch();
 
   const candidates = results.filter(r => {
     if (existingIds.has(r.videoId)) return false; // stesso video già presente
-    if (rejectedSet.has(r.videoId)) return false; // già rifiutato in passato in revisione
     const norm = normalizeTitle(r.title);
-    if (!norm.includes('dario fabbri')) return false;
     const isDuplicateTitle = existingTitles.some(et => similarity(et, norm) >= 0.82);
     return !isDuplicateTitle;
   });
@@ -179,8 +157,9 @@ async function main() {
 
   const durations = await youtubeVideoDetails(candidates.map(c => c.videoId));
 
-  // Scarta gli YouTube Shorts e i video molto brevi: soglia a 15 minuti (900s).
-  const SHORTS_MAX_SECONDS = 15 * 60;
+  // Scarta gli YouTube Shorts: per policy di YouTube durano al massimo 3 minuti (180s).
+  // Se per qualche motivo la durata non è disponibile, lo teniamo (meglio in dubbio che perso).
+  const SHORTS_MAX_SECONDS = 180;
   const candidatesNoShorts = candidates.filter(c => {
     const d = durations[c.videoId];
     return d === undefined || d === null || d > SHORTS_MAX_SECONDS;
