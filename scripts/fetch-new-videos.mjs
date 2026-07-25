@@ -2,7 +2,7 @@
 // Cerca su YouTube nuovi video di/con Dario Fabbri, scarta i doppioni già
 // presenti nel catalogo (o molto simili per titolo), classifica il formato
 // con poche regole semplici, e aggiunge le nuove voci come "pending": true.
-// pp
+//
 // Richiede: process.env.YOUTUBE_API_KEY
 // Eseguito da: .github/workflows/fetch-videos.yml
 
@@ -10,8 +10,24 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const VIDEOS_PATH = path.resolve('src/assets/videos.json');
-const SEARCH_QUERY = 'Dario Fabbri';
+const REJECTED_IDS_PATH = path.resolve('src/assets/rejected-ids.json');
+const SEARCH_QUERIES = ['Dario Fabbri'];
 const MAX_RESULTS = 25;
+
+// Canali che ripubblicano contenuti (di solito doppioni di bassa qualità) da escludere sempre.
+const CHANNEL_BLACKLIST = [
+  'pensierolibero',
+  'l analista del potere',
+  'polemos',
+  'mondi in movimento'
+];
+
+// Canali su cui vogliamo cercare "a fondo" (più pagine di risultati), utile per
+// recuperare anche l'arretrato di centinaia di clip già pubblicate in passato,
+// non solo le ultime 25 in assoluto su tutto YouTube.
+const CHANNEL_DEEP_SEARCHES = [
+  { handle: 'La7', query: 'Dario Fabbri', maxPages: 6 } // 6 pagine x 50 = fino a 300 risultati
+];
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
 if (!API_KEY) {
@@ -74,13 +90,53 @@ function cleanTitle(title) {
   return t.trim();
 }
 
-function guessFormat(title, durationSeconds) {
+function guessFormat(title, channelTitle) {
   const t = title.toLowerCase();
+  const ch = (channelTitle || '').toLowerCase();
+  // La7 pubblica spesso brevi interventi TV di Fabbri: li marchiamo sempre come TV,
+  // indipendentemente dalla durata (possono durare pochi minuti).
+  if (ch.includes('la7')) return ['TV'];
   if (t.includes('grande gioco')) return ['Il Grande Gioco'];
   if (t.includes('assemblea')) return ['Assemblea'];
   if (t.includes('intervista')) return ['Intervista'];
-  if (durationSeconds && durationSeconds <= 30 * 60) return ['Assemblea'];
   return ['Incontro'];
+}
+
+// Sinonimi/parole chiave che implicano un argomento anche se il nome non compare
+// letteralmente nel titolo (es. "Trump" implica l'argomento "USA").
+const ARGOMENTO_SYNONYMS = {
+  usa: ['trump', 'biden', 'casa bianca', 'washington', 'pentagono', 'cia ', ' fbi'],
+  russia: ['putin', 'mosca', 'cremlino'],
+  cina: ['xi jinping', 'pechino'],
+  ucraina: ['zelensky', 'kiev', 'kyiv'],
+  'medio oriente': ['netanyahu', 'gaza', 'hamas', 'israele', 'iran', 'teheran', 'hezbollah']
+};
+
+// Prova a indovinare UN SOLO argomento dal titolo, dando priorità agli argomenti
+// già usati nel catalogo (per restare coerenti con quelli che usi già tu).
+function guessArgomento(title, existingArgomenti) {
+  const norm = normalizeTitle(title);
+  const existingNorm = existingArgomenti
+    .map(a => ({ original: a, norm: normalizeTitle(a) }))
+    .filter(e => e.norm.length > 0)
+    .sort((a, b) => b.norm.length - a.norm.length); // match più specifico prima
+
+  // 1. il titolo contiene già, letteralmente, il nome di un argomento esistente
+  for (const e of existingNorm) {
+    if (norm.includes(e.norm)) return [e.original];
+  }
+
+  // 2. il titolo contiene una parola chiave che implica un argomento (es. "Trump" -> USA)
+  for (const [concept, keywords] of Object.entries(ARGOMENTO_SYNONYMS)) {
+    if (keywords.some(k => norm.includes(k.trim()))) {
+      const match = existingNorm.find(e => e.norm === concept || e.norm.includes(concept));
+      if (match) return [match.original];
+      // se questo argomento non esiste ancora nel catalogo, lo proponiamo comunque
+      return [concept.replace(/\b\w/g, c => c.toUpperCase())];
+    }
+  }
+
+  return []; // nessun indizio chiaro: meglio vuoto che sbagliato, lo compili tu
 }
 
 function parseIsoDurationToSeconds(iso) {
@@ -94,17 +150,17 @@ function parseIsoDurationToSeconds(iso) {
   return h * 3600 + min * 60 + s;
 }
 
-async function youtubeSearch() {
+async function youtubeSearch(query) {
   const url = new URL('https://www.googleapis.com/youtube/v3/search');
   url.searchParams.set('key', API_KEY);
-  url.searchParams.set('q', SEARCH_QUERY);
+  url.searchParams.set('q', query);
   url.searchParams.set('part', 'snippet');
   url.searchParams.set('type', 'video');
   url.searchParams.set('order', 'date');
   url.searchParams.set('maxResults', String(MAX_RESULTS));
 
   const resp = await fetch(url);
-  if (!resp.ok) throw new Error('Errore ricerca YouTube: ' + (await resp.text()));
+  if (!resp.ok) throw new Error(`Errore ricerca YouTube ("${query}"): ` + (await resp.text()));
   const json = await resp.json();
   return (json.items || []).map(it => ({
     videoId: it.id.videoId,
@@ -113,6 +169,78 @@ async function youtubeSearch() {
     publishedAt: it.snippet.publishedAt,
     description: it.snippet.description
   }));
+}
+
+async function resolveChannelId(handle) {
+  const url = new URL('https://www.googleapis.com/youtube/v3/channels');
+  url.searchParams.set('key', API_KEY);
+  url.searchParams.set('part', 'id');
+  url.searchParams.set('forHandle', handle);
+
+  const resp = await fetch(url);
+  if (!resp.ok) {
+    console.error(`Errore risolvendo il canale @${handle}: ` + (await resp.text()));
+    return null;
+  }
+  const json = await resp.json();
+  return json.items && json.items[0] ? json.items[0].id : null;
+}
+
+async function youtubeSearchInChannel(channelId, query, maxPages) {
+  const all = [];
+  let pageToken = '';
+  for (let page = 0; page < maxPages; page++) {
+    const url = new URL('https://www.googleapis.com/youtube/v3/search');
+    url.searchParams.set('key', API_KEY);
+    url.searchParams.set('q', query);
+    url.searchParams.set('channelId', channelId);
+    url.searchParams.set('part', 'snippet');
+    url.searchParams.set('type', 'video');
+    url.searchParams.set('order', 'date');
+    url.searchParams.set('maxResults', '50');
+    if (pageToken) url.searchParams.set('pageToken', pageToken);
+
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`Errore ricerca canale (${channelId}): ` + (await resp.text()));
+    const json = await resp.json();
+    for (const it of json.items || []) {
+      all.push({
+        videoId: it.id.videoId,
+        title: it.snippet.title,
+        channelTitle: it.snippet.channelTitle,
+        publishedAt: it.snippet.publishedAt,
+        description: it.snippet.description
+      });
+    }
+    if (!json.nextPageToken) break;
+    pageToken = json.nextPageToken;
+  }
+  return all;
+}
+
+async function youtubeSearchAll() {
+  const seen = new Map();
+
+  for (const q of SEARCH_QUERIES) {
+    const items = await youtubeSearch(q);
+    for (const it of items) {
+      if (!seen.has(it.videoId)) seen.set(it.videoId, it);
+    }
+  }
+
+  for (const cfg of CHANNEL_DEEP_SEARCHES) {
+    const channelId = await resolveChannelId(cfg.handle);
+    if (!channelId) {
+      console.error(`Canale @${cfg.handle} non trovato, salto la ricerca dedicata.`);
+      continue;
+    }
+    const items = await youtubeSearchInChannel(channelId, cfg.query, cfg.maxPages);
+    for (const it of items) {
+      if (!seen.has(it.videoId)) seen.set(it.videoId, it);
+    }
+  }
+
+  return Array.from(seen.values());
 }
 
 async function youtubeVideoDetails(videoIds) {
@@ -132,20 +260,48 @@ async function youtubeVideoDetails(videoIds) {
   return map;
 }
 
+async function isYoutubeShort(videoId) {
+  try {
+    // YouTube risponde 200 con la pagina dedicata se è davvero uno Short/Reel;
+    // se invece è un video normale (anche breve), risponde con un redirect verso /watch.
+    // Questo è più affidabile della sola durata, perché video TV brevi (es. La7)
+    // possono durare pochi minuti pur non essendo Reel.
+    const resp = await fetch(`https://www.youtube.com/shorts/${videoId}`, {
+      method: 'GET',
+      redirect: 'manual'
+    });
+    return resp.status === 200;
+  } catch {
+    return false; // in caso di dubbio/errore di rete, non lo blocchiamo
+  }
+}
+
 async function main() {
   const raw = fs.readFileSync(VIDEOS_PATH, 'utf-8');
   const videos = JSON.parse(raw);
+
+  let rejectedIds = [];
+  try {
+    rejectedIds = JSON.parse(fs.readFileSync(REJECTED_IDS_PATH, 'utf-8'));
+  } catch {
+    // file non ancora esistente o vuoto: nessun problema, partiamo da lista vuota
+  }
+  const rejectedSet = new Set(rejectedIds);
 
   const existingIds = new Set(
     videos.map(v => extractVideoId(v.url)).filter(Boolean)
   );
   const existingTitles = videos.map(v => normalizeTitle(v.title));
 
-  const results = await youtubeSearch();
+  const results = await youtubeSearchAll();
 
   const candidates = results.filter(r => {
     if (existingIds.has(r.videoId)) return false; // stesso video già presente
+    if (rejectedSet.has(r.videoId)) return false; // già rifiutato in passato in revisione
+    const normChannel = normalizeTitle(r.channelTitle).replace(/\s+/g, '');
+    if (CHANNEL_BLACKLIST.some(bad => normChannel.includes(bad.replace(/\s+/g, '')))) return false; // canale in blacklist
     const norm = normalizeTitle(r.title);
+    if (!norm.includes('dario fabbri')) return false;
     const isDuplicateTitle = existingTitles.some(et => similarity(et, norm) >= 0.82);
     return !isDuplicateTitle;
   });
@@ -155,33 +311,30 @@ async function main() {
     return;
   }
 
-  const durations = await youtubeVideoDetails(candidates.map(c => c.videoId));
-
-  // Scarta gli YouTube Shorts: per policy di YouTube durano al massimo 3 minuti (180s).
-  // Se per qualche motivo la durata non è disponibile, lo teniamo (meglio in dubbio che perso).
-  const SHORTS_MAX_SECONDS = 180;
-  const candidatesNoShorts = candidates.filter(c => {
-    const d = durations[c.videoId];
-    return d === undefined || d === null || d > SHORTS_MAX_SECONDS;
-  });
+  // Verifica reale (non solo la durata) se ogni candidato è uno Short/Reel.
+  const shortChecks = await Promise.all(candidates.map(c => isYoutubeShort(c.videoId)));
+  const candidatesNoShorts = candidates.filter((c, i) => !shortChecks[i]);
 
   const skippedShorts = candidates.length - candidatesNoShorts.length;
   if (skippedShorts > 0) {
-    console.log(`Scartati ${skippedShorts} YouTube Shorts.`);
+    console.log(`Scartati ${skippedShorts} YouTube Shorts/Reel.`);
   }
+
+  const existingArgomenti = Array.from(
+    new Set(videos.flatMap(v => (v.tags && v.tags.argomento) || []))
+  );
 
   let nextId = Math.max(0, ...videos.map(v => v.id)) + 1;
 
   const newEntries = candidatesNoShorts.map(c => {
-    const duration = durations[c.videoId];
     const entry = {
       id: nextId++,
       title: cleanTitle(c.title),
       url: `https://www.youtube.com/embed/${c.videoId}`,
       date: c.publishedAt.slice(0, 10), // fallback: data di pubblicazione su YouTube
       tags: {
-        format: guessFormat(c.title, duration),
-        argomento: [],
+        format: guessFormat(c.title, c.channelTitle),
+        argomento: guessArgomento(c.title, existingArgomenti),
         categoria: []
       },
       pending: true
