@@ -28,8 +28,8 @@ const CHANNEL_BLACKLIST = [
 // dimostrata inaffidabile e restituiva 0 risultati anche quando i video esistevano.
 const CHANNEL_DEEP_SCANS = [
   { handle: 'La7', maxPages: 40 },
-  { handle: 'la7attualita', maxPages: 40 },
-  { handle: 'TgLa7', maxPages: 40 }
+  { handle: 'la7attualita', maxPages: 400 }, // canale molto grande: fino a 20.000 video scorsi
+  { handle: 'TgLa7', maxPages: 400 }
 ];
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
@@ -216,7 +216,9 @@ async function scanUploadsForKeyword(playlistId, keyword, maxPages, alreadyKnown
       const title = it.snippet?.title || '';
       if (!videoId) continue;
       if (!alreadyKnownIds.has(videoId)) newInThisPage++;
-      if (normalizeTitle(title).includes(keyword)) {
+      const normTitle = normalizeTitle(title);
+      const keywordRegex = new RegExp(`\\b${keyword}\\b`);
+      if (keywordRegex.test(normTitle)) {
         matches.push({
           videoId,
           title,
