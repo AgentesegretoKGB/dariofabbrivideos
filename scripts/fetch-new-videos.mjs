@@ -223,6 +223,7 @@ async function youtubeSearchAll() {
 
   for (const q of SEARCH_QUERIES) {
     const items = await youtubeSearch(q);
+    console.log(`Ricerca generica "${q}": ${items.length} risultati.`);
     for (const it of items) {
       if (!seen.has(it.videoId)) seen.set(it.videoId, it);
     }
@@ -231,15 +232,18 @@ async function youtubeSearchAll() {
   for (const cfg of CHANNEL_DEEP_SEARCHES) {
     const channelId = await resolveChannelId(cfg.handle);
     if (!channelId) {
-      console.error(`Canale @${cfg.handle} non trovato, salto la ricerca dedicata.`);
+      console.error(`Canale @${cfg.handle} NON TROVATO (controlla che l'handle sia corretto), salto la ricerca dedicata.`);
       continue;
     }
+    console.log(`Canale @${cfg.handle} risolto con ID: ${channelId}`);
     const items = await youtubeSearchInChannel(channelId, cfg.query, cfg.maxPages);
+    console.log(`Ricerca dentro @${cfg.handle} per "${cfg.query}": ${items.length} risultati.`);
     for (const it of items) {
       if (!seen.has(it.videoId)) seen.set(it.videoId, it);
     }
   }
 
+  console.log(`Totale risultati unici (prima di ogni filtro): ${seen.size}`);
   return Array.from(seen.values());
 }
 
@@ -295,16 +299,35 @@ async function main() {
 
   const results = await youtubeSearchAll();
 
+  let excludedBlacklist = 0;
+  let excludedNoName = 0;
+  let excludedDuplicate = 0;
+
   const candidates = results.filter(r => {
     if (existingIds.has(r.videoId)) return false; // stesso video già presente
     if (rejectedSet.has(r.videoId)) return false; // già rifiutato in passato in revisione
     const normChannel = normalizeTitle(r.channelTitle).replace(/\s+/g, '');
-    if (CHANNEL_BLACKLIST.some(bad => normChannel.includes(bad.replace(/\s+/g, '')))) return false; // canale in blacklist
+    if (CHANNEL_BLACKLIST.some(bad => normChannel.includes(bad.replace(/\s+/g, '')))) {
+      excludedBlacklist++;
+      return false;
+    }
     const norm = normalizeTitle(r.title);
-    if (!norm.includes('dario fabbri')) return false;
+    if (!norm.includes('dario fabbri')) {
+      excludedNoName++;
+      return false;
+    }
     const isDuplicateTitle = existingTitles.some(et => similarity(et, norm) >= 0.82);
-    return !isDuplicateTitle;
+    if (isDuplicateTitle) {
+      excludedDuplicate++;
+      return false;
+    }
+    return true;
   });
+
+  console.log(`Candidati dopo i filtri: ${candidates.length}`);
+  console.log(`  - esclusi per canale in blacklist: ${excludedBlacklist}`);
+  console.log(`  - esclusi perché il titolo non contiene "Dario Fabbri": ${excludedNoName}`);
+  console.log(`  - esclusi come doppioni di titolo già in catalogo: ${excludedDuplicate}`);
 
   if (candidates.length === 0) {
     console.log('Nessun video nuovo trovato.');
