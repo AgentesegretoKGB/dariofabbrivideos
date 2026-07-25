@@ -22,11 +22,12 @@ const CHANNEL_BLACKLIST = [
   'mondi in movimento'
 ];
 
-// Canali su cui vogliamo cercare "a fondo" (più pagine di risultati), utile per
-// recuperare anche l'arretrato di centinaia di clip già pubblicate in passato,
-// non solo le ultime 25 in assoluto su tutto YouTube.
-const CHANNEL_DEEP_SEARCHES = [
-  { handle: 'La7', query: 'Dario Fabbri', maxPages: 6 } // 6 pagine x 50 = fino a 300 risultati
+// Canali su cui vogliamo scorrere TUTTO l'archivio di upload (in ordine cronologico
+// dal più recente), filtrando noi stessi per "fabbri" nel titolo. Molto più affidabile
+// della ricerca testuale di YouTube su canali con moltissimi video (es. La7), che si è
+// dimostrata inaffidabile e restituiva 0 risultati anche quando i video esistevano.
+const CHANNEL_DEEP_SCANS = [
+  { handle: 'La7', maxPages: 40 } // 40 pagine x 50 = fino a 2000 video scorsi
 ];
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
@@ -171,10 +172,10 @@ async function youtubeSearch(query) {
   }));
 }
 
-async function resolveChannelId(handle) {
+async function getUploadsPlaylistId(handle) {
   const url = new URL('https://www.googleapis.com/youtube/v3/channels');
   url.searchParams.set('key', API_KEY);
-  url.searchParams.set('part', 'id');
+  url.searchParams.set('part', 'contentDetails');
   url.searchParams.set('forHandle', handle);
 
   const resp = await fetch(url);
@@ -183,42 +184,58 @@ async function resolveChannelId(handle) {
     return null;
   }
   const json = await resp.json();
-  return json.items && json.items[0] ? json.items[0].id : null;
+  const item = json.items && json.items[0];
+  return item ? item.contentDetails.relatedPlaylists.uploads : null;
 }
 
-async function youtubeSearchInChannel(channelId, query, maxPages) {
-  const all = [];
+// Scorre la playlist di tutti gli upload del canale (dal più recente), pagina per
+// pagina, tenendo solo i video con "fabbri" nel titolo. Si ferma da sola quando,
+// per una pagina intera, non trova più nulla di nuovo/rilevante: questo evita di
+// ripercorrere sempre tutto l'archivio nelle esecuzioni successive alla prima.
+async function scanUploadsForKeyword(playlistId, keyword, maxPages, alreadyKnownIds) {
+  const matches = [];
   let pageToken = '';
   for (let page = 0; page < maxPages; page++) {
-    const url = new URL('https://www.googleapis.com/youtube/v3/search');
+    const url = new URL('https://www.googleapis.com/youtube/v3/playlistItems');
     url.searchParams.set('key', API_KEY);
-    url.searchParams.set('q', query);
-    url.searchParams.set('channelId', channelId);
+    url.searchParams.set('playlistId', playlistId);
     url.searchParams.set('part', 'snippet');
-    url.searchParams.set('type', 'video');
-    url.searchParams.set('order', 'date');
     url.searchParams.set('maxResults', '50');
     if (pageToken) url.searchParams.set('pageToken', pageToken);
 
     const resp = await fetch(url);
-    if (!resp.ok) throw new Error(`Errore ricerca canale (${channelId}): ` + (await resp.text()));
+    if (!resp.ok) throw new Error(`Errore leggendo la playlist upload (${playlistId}): ` + (await resp.text()));
     const json = await resp.json();
-    for (const it of json.items || []) {
-      all.push({
-        videoId: it.id.videoId,
-        title: it.snippet.title,
-        channelTitle: it.snippet.channelTitle,
-        publishedAt: it.snippet.publishedAt,
-        description: it.snippet.description
-      });
+    const items = json.items || [];
+
+    let newInThisPage = 0;
+    for (const it of items) {
+      const videoId = it.snippet?.resourceId?.videoId;
+      const title = it.snippet?.title || '';
+      if (!videoId) continue;
+      if (!alreadyKnownIds.has(videoId)) newInThisPage++;
+      if (normalizeTitle(title).includes(keyword)) {
+        matches.push({
+          videoId,
+          title,
+          channelTitle: it.snippet.channelTitle,
+          publishedAt: it.snippet.publishedAt,
+          description: ''
+        });
+      }
     }
+
     if (!json.nextPageToken) break;
+    // Se in questa pagina non c'era NESSUN video nuovo rispetto a quelli già noti,
+    // molto probabilmente abbiamo raggiunto la parte di archivio già esplorata in
+    // esecuzioni precedenti: ci fermiamo per non consumare quota/tempo inutilmente.
+    if (page > 0 && newInThisPage === 0) break;
     pageToken = json.nextPageToken;
   }
-  return all;
+  return matches;
 }
 
-async function youtubeSearchAll() {
+async function youtubeSearchAll(alreadyKnownIds) {
   const seen = new Map();
 
   for (const q of SEARCH_QUERIES) {
@@ -229,15 +246,15 @@ async function youtubeSearchAll() {
     }
   }
 
-  for (const cfg of CHANNEL_DEEP_SEARCHES) {
-    const channelId = await resolveChannelId(cfg.handle);
-    if (!channelId) {
-      console.error(`Canale @${cfg.handle} NON TROVATO (controlla che l'handle sia corretto), salto la ricerca dedicata.`);
+  for (const cfg of CHANNEL_DEEP_SCANS) {
+    const playlistId = await getUploadsPlaylistId(cfg.handle);
+    if (!playlistId) {
+      console.error(`Canale @${cfg.handle} NON TROVATO (controlla che l'handle sia corretto), salto la scansione.`);
       continue;
     }
-    console.log(`Canale @${cfg.handle} risolto con ID: ${channelId}`);
-    const items = await youtubeSearchInChannel(channelId, cfg.query, cfg.maxPages);
-    console.log(`Ricerca dentro @${cfg.handle} per "${cfg.query}": ${items.length} risultati.`);
+    console.log(`Canale @${cfg.handle}: playlist upload trovata (${playlistId}), scorro l'archivio...`);
+    const items = await scanUploadsForKeyword(playlistId, 'fabbri', cfg.maxPages, alreadyKnownIds);
+    console.log(`Scansione @${cfg.handle}: trovati ${items.length} video con "fabbri" nel titolo.`);
     for (const it of items) {
       if (!seen.has(it.videoId)) seen.set(it.videoId, it);
     }
@@ -296,8 +313,9 @@ async function main() {
     videos.map(v => extractVideoId(v.url)).filter(Boolean)
   );
   const existingTitles = videos.map(v => normalizeTitle(v.title));
+  const alreadyKnownIds = new Set([...existingIds, ...rejectedSet]);
 
-  const results = await youtubeSearchAll();
+  const results = await youtubeSearchAll(alreadyKnownIds);
 
   let excludedBlacklist = 0;
   let excludedNoName = 0;
