@@ -7188,11 +7188,13 @@
         "TV"
       ],
       "argomento": [
-        "Palestina"
+        "Palestina",
+        "Inghilterra"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 446,
