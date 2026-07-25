@@ -7136,11 +7136,13 @@
         "TV"
       ],
       "argomento": [
-        "EU"
+        "Riarmo",
+        "Consigliato"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "teoria"
+      ]
+    }
   },
   {
     "id": 443,
