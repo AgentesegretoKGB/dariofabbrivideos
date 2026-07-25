@@ -27,7 +27,9 @@ const CHANNEL_BLACKLIST = [
 // della ricerca testuale di YouTube su canali con moltissimi video (es. La7), che si è
 // dimostrata inaffidabile e restituiva 0 risultati anche quando i video esistevano.
 const CHANNEL_DEEP_SCANS = [
-  { handle: 'La7', maxPages: 40 } // 40 pagine x 50 = fino a 2000 video scorsi
+  { handle: 'La7', maxPages: 40 },
+  { handle: 'la7attualita', maxPages: 40 },
+  { handle: 'TgLa7', maxPages: 40 }
 ];
 
 const API_KEY = process.env.YOUTUBE_API_KEY;
@@ -220,7 +222,8 @@ async function scanUploadsForKeyword(playlistId, keyword, maxPages, alreadyKnown
           title,
           channelTitle: it.snippet.channelTitle,
           publishedAt: it.snippet.publishedAt,
-          description: ''
+          description: '',
+          trustedChannel: true
         });
       }
     }
@@ -330,7 +333,7 @@ async function main() {
       return false;
     }
     const norm = normalizeTitle(r.title);
-    if (!norm.includes('dario fabbri')) {
+    if (!r.trustedChannel && !norm.includes('dario fabbri')) {
       excludedNoName++;
       return false;
     }
