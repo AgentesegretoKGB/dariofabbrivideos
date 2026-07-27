@@ -7277,11 +7277,13 @@
         "TV"
       ],
       "argomento": [
-        "Europa"
+        "Europa",
+        "Guerra in Ucraina"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 451,
