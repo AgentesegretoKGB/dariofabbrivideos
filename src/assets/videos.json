@@ -7223,10 +7223,13 @@
       "format": [
         "TV"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Gaza"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 448,
