@@ -7259,11 +7259,13 @@
         "TV"
       ],
       "argomento": [
-        "Trump"
+        "Trump",
+        "Guerra in Ucraina"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 450,
