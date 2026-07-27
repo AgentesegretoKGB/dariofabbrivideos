@@ -7295,10 +7295,12 @@
         "TV"
       ],
       "argomento": [
-        "Vaticano"
+        "Vaticano",
+        "Guerrain Ucraina"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "attualità"
+      ]
+    }
   }
 ]
