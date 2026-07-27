@@ -7206,11 +7206,13 @@
         "TV"
       ],
       "argomento": [
-        "Ucraina"
+        "Guerra in Ucraina",
+        "Russia"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 447,
