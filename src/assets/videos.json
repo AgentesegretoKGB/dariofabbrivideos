@@ -7350,5 +7350,33 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 455,
+    "title": "L&#39;inconscio dei popoli oltre l&#39;economia by Dario Fabbri",
+    "url": "https://www.youtube.com/embed/i0H2OqCnxKk",
+    "date": "2026-08-11",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 456,
+    "title": "podcast. L&#39;inconscio dei popoli e la geopolitica umana di Dario Fabbri",
+    "url": "https://www.youtube.com/embed/LmdR-p9i3aI",
+    "date": "2026-08-10",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
