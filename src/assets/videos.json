@@ -7378,5 +7378,37 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 457,
+    "title": "“QUANTE CINE ESISTONO?” | Taiwan, Pechino e la sfida agli Stati Uniti",
+    "url": "https://www.youtube.com/embed/-xj_yFBT1hg",
+    "date": "2026-08-12",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Taiwan"
+      ],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 458,
+    "title": "IRAN la Guerra Santa di TRUMP",
+    "url": "https://www.youtube.com/embed/21B0mcCvQsk",
+    "date": "2026-08-11",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Trump"
+      ],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
