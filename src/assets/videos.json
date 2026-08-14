@@ -7346,10 +7346,14 @@
       "format": [
         "Incontro"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Iran",
+        "Inghilterra"
+      ],
+      "categoria": [
+        "Attualità"
+      ]
+    }
   },
   {
     "id": 458,
