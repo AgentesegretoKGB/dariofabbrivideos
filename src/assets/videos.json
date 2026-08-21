@@ -7371,5 +7371,21 @@
         "Attualità"
       ]
     }
+  },
+  {
+    "id": 459,
+    "title": "I legami tra USA e Germania",
+    "url": "https://www.youtube.com/embed/8yv_7A2WEgE",
+    "date": "2026-08-21",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Germania"
+      ],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
