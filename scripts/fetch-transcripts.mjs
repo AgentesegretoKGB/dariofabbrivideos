@@ -3,22 +3,25 @@
 // src/assets/videos.json, e costruisce un indice unico ricercabile in
 // transcripts/_all.json (usato dalla funzione di ricerca /api/search-transcripts).
 //
+// Usa la libreria "youtube-transcript" (mantenuta dalla comunità), molto più
+// robusta di una richiesta HTTP scritta a mano: YouTube cambia periodicamente
+// le protezioni anti-bot, e una libreria mantenuta si aggiorna di conseguenza.
+//
 // Non tutti i video hanno sottotitoli disponibili: quelli senza vengono
 // semplicemente saltati (e riprovati alla prossima esecuzione).
 //
-// Eseguito manualmente da GitHub Actions (workflow_dispatch), perché può
-// essere lento su cataloghi grandi e non è pensato per girare ogni giorno.
+// IMPORTANTE: funziona meglio lanciato dal proprio computer (connessione
+// "normale") piuttosto che dai server di GitHub Actions, che YouTube a volte
+// tratta in modo più restrittivo essendo indirizzi di datacenter.
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { YoutubeTranscript } from 'youtube-transcript';
 
 const VIDEOS_PATH = path.resolve('src/assets/videos.json');
 const TRANSCRIPTS_DIR = path.resolve('transcripts');
 const MANIFEST_PATH = path.join(TRANSCRIPTS_DIR, '_manifest.json');
 const INDEX_PATH = path.join(TRANSCRIPTS_DIR, '_all.json');
-
-const USER_AGENT =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
 function extractVideoId(url) {
   if (!url) return null;
@@ -29,95 +32,26 @@ function extractVideoId(url) {
   return m ? m[1] : null;
 }
 
-// Estrae l'array "captionTracks" dall'HTML della pagina di un video YouTube,
-// contando le parentesi per trovare l'array JSON completo (più robusto di
-// una singola regex non-greedy su contenuti che possono essere lunghi).
-function extractCaptionTracks(html) {
-  const marker = '"captionTracks":';
-  const idx = html.indexOf(marker);
-  if (idx === -1) return null;
-  const start = idx + marker.length; // qui inizia il carattere "["
-  if (html[start] !== '[') return null;
-  let depth = 0;
-  let end = start;
-  for (let i = start; i < html.length; i++) {
-    if (html[i] === '[') depth++;
-    else if (html[i] === ']') {
-      depth--;
-      if (depth === 0) {
-        end = i + 1;
-        break;
-      }
-    }
-  }
-  const jsonText = html.slice(start, end);
-  try {
-    return JSON.parse(jsonText);
-  } catch {
-    return null;
-  }
-}
-
-function pickBestTrack(tracks) {
-  if (!tracks || tracks.length === 0) return null;
-  // Preferiamo i sottotitoli italiani (manuali o automatici), altrimenti il primo disponibile.
-  return (
-    tracks.find(t => t.languageCode === 'it' && t.kind !== 'asr') ||
-    tracks.find(t => t.languageCode === 'it') ||
-    tracks[0]
-  );
-}
-
-let debugCount = 0;
-
 async function fetchTranscriptForVideo(videoId) {
-  const watchResp = await fetch(`https://www.youtube.com/watch?v=${videoId}`, {
-    headers: {
-      'User-Agent': USER_AGENT,
-      'Accept-Language': 'it-IT,it;q=0.9',
-      // Questo cookie dice a YouTube "il consenso cookie è già stato dato":
-      // senza, i server "anonimi" (come quelli di GitHub Actions) a volte
-      // ricevono una pagina di consenso invece della pagina del video vera e propria.
-      Cookie: 'CONSENT=YES+1'
+  let items = null;
+  // Proviamo prima in italiano, poi con la lingua di default del video.
+  try {
+    items = await YoutubeTranscript.fetchTranscript(videoId, { lang: 'it' });
+  } catch {
+    try {
+      items = await YoutubeTranscript.fetchTranscript(videoId);
+    } catch {
+      return null;
     }
-  });
-  if (!watchResp.ok) return null;
-  const html = await watchResp.text();
-
-  const tracks = extractCaptionTracks(html);
-
-  if (debugCount < 3) {
-    debugCount++;
-    const looseIdx = html.toLowerCase().indexOf('captiontracks');
-    const context = looseIdx !== -1 ? html.slice(Math.max(0, looseIdx - 40), looseIdx + 160) : null;
-    console.log(`  [debug] video ${videoId}: status=${watchResp.status}, html.length=${html.length}, ` +
-      `sembra pagina di consenso=${html.includes('consent.youtube.com')}, ` +
-      `captionTracks trovato (marcatore esatto)=${!!tracks}, numero tracce=${tracks ? tracks.length : 0}, ` +
-      `ha "ytInitialPlayerResponse"=${html.includes('ytInitialPlayerResponse')}, ` +
-      `"captiontracks" (case-insensitive) trovato a=${looseIdx}`);
-    if (context) console.log(`  [debug] contesto attorno: ...${context}...`);
   }
+  if (!items || items.length === 0) return null;
 
-  const track = pickBestTrack(tracks);
-  if (!track || !track.baseUrl) return null;
-
-  const captionsResp = await fetch(`${track.baseUrl}&fmt=json3`, {
-    headers: { 'User-Agent': USER_AGENT }
-  });
-  if (!captionsResp.ok) return null;
-  const data = await captionsResp.json();
-
-  const segments = [];
-  for (const ev of data.events || []) {
-    if (!ev.segs) continue;
-    const text = ev.segs.map(s => s.utf8 || '').join('').replace(/\s+/g, ' ').trim();
-    if (!text) continue;
-    segments.push({
-      start: Math.round((ev.tStartMs || 0) / 1000),
-      text
-    });
-  }
-  return segments.length > 0 ? segments : null;
+  return items
+    .map(it => ({
+      start: Math.round(it.offset || 0),
+      text: (it.text || '').replace(/\s+/g, ' ').trim()
+    }))
+    .filter(seg => seg.text.length > 0);
 }
 
 async function main() {
@@ -134,7 +68,6 @@ async function main() {
   const doneSet = new Set(manifest.done);
   const failedSet = new Set(manifest.failed);
 
-  // Carichiamo già l'indice esistente, se c'è, per aggiungerci solo le novità.
   let index = [];
   try {
     index = JSON.parse(fs.readFileSync(INDEX_PATH, 'utf-8'));
@@ -146,13 +79,10 @@ async function main() {
   const toProcess = videos.filter(v => {
     const id = extractVideoId(v.url);
     return id && !doneSet.has(id) && !failedSet.has(id) && !v.pending;
-    // nota: i video ancora "pending" (non revisionati) li lasciamo per dopo,
-    // così non trascriviamo cose che potresti ancora eliminare in revisione.
   });
 
   console.log(`Video da trascrivere in questa esecuzione: ${toProcess.length}`);
 
-  // Limite di sicurezza per esecuzione (praticamente "tutti" per un catalogo di queste dimensioni).
   const BATCH_LIMIT = 5000;
   let processed = 0;
   let succeeded = 0;
@@ -166,7 +96,7 @@ async function main() {
     processed++;
     try {
       const segments = await fetchTranscriptForVideo(videoId);
-      if (segments) {
+      if (segments && segments.length > 0) {
         indexByVideoId.set(videoId, { videoId, title: v.title, segments });
         doneSet.add(videoId);
         succeeded++;
@@ -180,7 +110,7 @@ async function main() {
       console.log(`ERR #${v.id} ${v.title}: ${err}`);
     }
     // piccola pausa per non martellare YouTube di richieste
-    await new Promise(r => setTimeout(r, 300));
+    await new Promise(r => setTimeout(r, 250));
   }
 
   const newIndex = Array.from(indexByVideoId.values());

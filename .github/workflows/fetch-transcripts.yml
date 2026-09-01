@@ -21,6 +21,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Installa dipendenze
+        run: npm install
+
       - name: Scarica nuove trascrizioni
         run: node scripts/fetch-transcripts.mjs
 
