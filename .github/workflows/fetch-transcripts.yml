@@ -1,0 +1,34 @@
+name: Aggiorna trascrizioni
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  transcripts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Scarica nuove trascrizioni
+        run: node scripts/fetch-transcripts.mjs
+
+      - name: Commit ed eventuale push
+        run: |
+          git config user.name "fabbri-videos-bot"
+          git config user.email "actions@github.com"
+          if git diff --quiet -- transcripts/; then
+            echo "Nessuna nuova trascrizione, nulla da salvare."
+          else
+            git add transcripts/
+            git commit -m "Aggiornamento trascrizioni"
+            git push
+          fi

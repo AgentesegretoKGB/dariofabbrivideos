@@ -1,0 +1,61 @@
+<div class="transcripts-container">
+
+  @if (!unlocked) {
+    <div class="lock-screen">
+      <h2>Ricerca trascrizioni</h2>
+      <p>Pagina riservata. Inserisci la password.</p>
+      <input
+        type="password"
+        [(ngModel)]="passwordInput"
+        (keyup.enter)="tryUnlock()"
+        placeholder="Password"
+        aria-label="Password"
+      />
+      <button (click)="tryUnlock()">Entra</button>
+      @if (passwordError) {
+        <p class="error-text">Password errata.</p>
+      }
+    </div>
+  }
+
+  @if (unlocked) {
+    <h2>Ricerca nelle trascrizioni</h2>
+    <p class="hint">Cerca una frase per trovare in quali video compare e a che minuto.</p>
+
+    <div class="search-bar">
+      <input
+        type="text"
+        [(ngModel)]="query"
+        (keyup.enter)="search()"
+        placeholder="Scrivi una frase..."
+        aria-label="Cerca nelle trascrizioni"
+      />
+      <button (click)="search()" [disabled]="searching">
+        {{ searching ? 'Cerco...' : 'Cerca' }}
+      </button>
+    </div>
+
+    @if (searchError) {
+      <p class="error-text">{{ searchError }}</p>
+    }
+
+    @if (infoMessage) {
+      <p class="info-text">{{ infoMessage }}</p>
+    }
+
+    @if (hasSearchedOnce && !searching && results.length === 0 && !searchError && !infoMessage) {
+      <p>Nessun risultato per questa frase.</p>
+    }
+
+    @for (r of results; track r.videoId + '-' + r.timestampSeconds) {
+      <div class="result-card">
+        <div class="result-title">{{ r.title }}</div>
+        <div class="result-snippet">{{ r.snippet }}</div>
+        <a class="result-link" [href]="watchUrl(r)" target="_blank" rel="noopener noreferrer">
+          ▶ Vai al minuto {{ formatTimestamp(r.timestampSeconds) }}
+        </a>
+      </div>
+    }
+  }
+
+</div>

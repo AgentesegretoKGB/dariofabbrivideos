@@ -11,4 +11,8 @@ export const routes: Routes = [
     path: 'revisione',
     loadComponent: () => import('./review/review.component').then(m => m.ReviewComponent)
   },
+  {
+    path: 'trascrizioni',
+    loadComponent: () => import('./transcripts/transcripts.component').then(m => m.TranscriptsComponent)
+  },
 ];
