@@ -88,9 +88,14 @@ async function fetchTranscriptForVideo(videoId) {
 
   if (debugCount < 3) {
     debugCount++;
+    const looseIdx = html.toLowerCase().indexOf('captiontracks');
+    const context = looseIdx !== -1 ? html.slice(Math.max(0, looseIdx - 40), looseIdx + 160) : null;
     console.log(`  [debug] video ${videoId}: status=${watchResp.status}, html.length=${html.length}, ` +
       `sembra pagina di consenso=${html.includes('consent.youtube.com')}, ` +
-      `captionTracks trovato=${!!tracks}, numero tracce=${tracks ? tracks.length : 0}`);
+      `captionTracks trovato (marcatore esatto)=${!!tracks}, numero tracce=${tracks ? tracks.length : 0}, ` +
+      `ha "ytInitialPlayerResponse"=${html.includes('ytInitialPlayerResponse')}, ` +
+      `"captiontracks" (case-insensitive) trovato a=${looseIdx}`);
+    if (context) console.log(`  [debug] contesto attorno: ...${context}...`);
   }
 
   const track = pickBestTrack(tracks);
