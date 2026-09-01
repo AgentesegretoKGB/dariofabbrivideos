@@ -48,7 +48,7 @@ async function fetchTranscriptForVideo(videoId) {
 
   return items
     .map(it => ({
-      start: Math.round(it.offset || 0),
+      start: Math.round((it.offset || 0) / 1000),
       text: (it.text || '').replace(/\s+/g, ' ').trim()
     }))
     .filter(seg => seg.text.length > 0);
