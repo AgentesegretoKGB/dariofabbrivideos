@@ -68,14 +68,31 @@ function pickBestTrack(tracks) {
   );
 }
 
+let debugCount = 0;
+
 async function fetchTranscriptForVideo(videoId) {
   const watchResp = await fetch(`https://www.youtube.com/watch?v=${videoId}`, {
-    headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'it-IT,it;q=0.9' }
+    headers: {
+      'User-Agent': USER_AGENT,
+      'Accept-Language': 'it-IT,it;q=0.9',
+      // Questo cookie dice a YouTube "il consenso cookie è già stato dato":
+      // senza, i server "anonimi" (come quelli di GitHub Actions) a volte
+      // ricevono una pagina di consenso invece della pagina del video vera e propria.
+      Cookie: 'CONSENT=YES+1'
+    }
   });
   if (!watchResp.ok) return null;
   const html = await watchResp.text();
 
   const tracks = extractCaptionTracks(html);
+
+  if (debugCount < 3) {
+    debugCount++;
+    console.log(`  [debug] video ${videoId}: status=${watchResp.status}, html.length=${html.length}, ` +
+      `sembra pagina di consenso=${html.includes('consent.youtube.com')}, ` +
+      `captionTracks trovato=${!!tracks}, numero tracce=${tracks ? tracks.length : 0}`);
+  }
+
   const track = pickBestTrack(tracks);
   if (!track || !track.baseUrl) return null;
 
