@@ -15,4 +15,5 @@ export const routes: Routes = [
     path: 'trascrizioni',
     loadComponent: () => import('./transcripts/transcripts.component').then(m => m.TranscriptsComponent)
   },
+  { path: '**', redirectTo: '' },
 ];
