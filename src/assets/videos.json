@@ -7430,12 +7430,13 @@
     "date": "2026-09-04",
     "tags": {
       "format": [
-        "Incontro"
+        "Intervista"
       ],
       "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "teoria"
+      ]
+    }
   },
   {
     "id": 464,
