@@ -7470,5 +7470,35 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 468,
+    "title": "“Dopo Hormuz che mondo è?” di Dario Fabbri",
+    "url": "https://www.youtube.com/embed/hicsyzyaTDg",
+    "date": "2026-09-28",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 469,
+    "title": "CHI CONTROLLA GLI STRETTI CONTROLLA IL MONDO? | Hormuz e Cina - TEDxTrento, 26/09/2026",
+    "url": "https://www.youtube.com/embed/N8VY-fF_ZpA",
+    "date": "2026-09-27",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Cina"
+      ],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
