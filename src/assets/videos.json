@@ -7500,5 +7500,21 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 470,
+    "title": "Il Grande Gioco (con Dario Fabbri) - Puntata speciale dal Teatro Titano di San Marino",
+    "url": "https://www.youtube.com/embed/5K0S-oq4IlM",
+    "date": "2026-09-29",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
