@@ -7532,11 +7532,12 @@
         "Incontro"
       ],
       "argomento": [
-        "Ucraina"
+        "Panoramica"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 473,
