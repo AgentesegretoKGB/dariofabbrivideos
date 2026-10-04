@@ -7495,14 +7495,16 @@
     "date": "2026-09-29",
     "tags": {
       "format": [
-        "Il Grande Gioco"
+        "Il Grande Gioco",
+        "Incontro"
       ],
       "argomento": [
-        "USA"
+        "Panoramica"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 471,
