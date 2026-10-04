@@ -7462,12 +7462,15 @@
     "date": "2026-09-28",
     "tags": {
       "format": [
-        "Incontro"
+        "Assemblea"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 469,
