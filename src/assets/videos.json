@@ -7479,14 +7479,15 @@
     "date": "2026-09-27",
     "tags": {
       "format": [
-        "Incontro"
+        "Assemblea"
       ],
       "argomento": [
-        "Cina"
+        "USA"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "Teoria"
+      ]
+    }
   },
   {
     "id": 470,
