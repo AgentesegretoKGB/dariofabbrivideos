@@ -7523,5 +7523,33 @@
         "attualità"
       ]
     }
+  },
+  {
+    "id": 473,
+    "title": "Incontro con Dario Fabbri - Capire il mondo che cambia",
+    "url": "https://www.youtube.com/embed/VN3zGawlojI",
+    "date": "2026-10-08",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 474,
+    "title": "Dario Fabbri. Guerre: chi vince e chi perde. 05.10.2026 - ASSINISTRA.it",
+    "url": "https://www.youtube.com/embed/cSOMJtZzycs",
+    "date": "2026-10-07",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
