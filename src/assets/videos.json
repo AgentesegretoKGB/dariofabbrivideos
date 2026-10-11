@@ -7548,12 +7548,15 @@
     "date": "2026-10-07",
     "tags": {
       "format": [
-        "Incontro"
+        "Intervista"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Guerra in Ucraina"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 475,
