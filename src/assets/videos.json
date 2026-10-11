@@ -7533,10 +7533,13 @@
       "format": [
         "Incontro"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 474,
