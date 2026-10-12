@@ -32,6 +32,8 @@ const CATEGORY_LABEL: { [k: string]: string } = { teoria: 'Teoria', attualita: '
 const SORT_LABEL: { [k in Sort]: string } = { newest: 'Più recenti', oldest: 'Più vecchi', title: 'Titolo A–Z' };
 // Varianti di scrittura presenti in videos.json, ricondotte a un'unica etichetta.
 const FORMAT_ALIASES: { [lower: string]: string } = { 'il grande gioco': 'Il Grande Gioco' };
+// Valori catalogati come argomento che in realtà sono formati: vengono spostati tra i formati.
+const TOPICS_AS_FORMATS: { [lower: string]: string } = { 'limes': 'Limes' };
 const DATE_FMT = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'short', year: 'numeric' });
 
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
@@ -94,7 +96,12 @@ export class CatalogComponent implements OnInit {
     const formats = Array.from(new Set<string>((tags.format || [])
       .map((f: string) => (f || '').trim()).filter(Boolean)
       .map((f: string) => FORMAT_ALIASES[f.toLowerCase()] ?? f)));
-    const topics = Array.from(new Set<string>((tags.argomento || []).map((a: string) => (a || '').trim()).filter(Boolean)));
+    const rawTopics: string[] = (tags.argomento || []).map((a: string) => (a || '').trim()).filter(Boolean);
+    for (const a of rawTopics) {
+      const asFormat = TOPICS_AS_FORMATS[a.toLowerCase()];
+      if (asFormat && !formats.includes(asFormat)) formats.push(asFormat);
+    }
+    const topics = Array.from(new Set<string>(rawTopics.filter(a => !TOPICS_AS_FORMATS[a.toLowerCase()])));
     const cat = norm((tags.categoria || [])[0] || '');
     const category: Category = cat === 'teoria' || cat === 'attualita' ? cat : '';
     const title = (v.title || v.titolo || '').trim();
