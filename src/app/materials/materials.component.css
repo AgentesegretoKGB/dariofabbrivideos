@@ -18,7 +18,7 @@
 
 .app-scroller { scroll-behavior: smooth; }
 .app-featured__info { padding: var(--space-3) var(--space-4) var(--space-4); }
-.app-featured__title { font-size: 16px; line-height: 22px; }
+.app-featured__title { font-size: 18px; line-height: 24px; }
 
 .app-mat-filters { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
 .app-mat-filters .fc-search { flex: 1 1 320px; }

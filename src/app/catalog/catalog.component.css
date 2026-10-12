@@ -3,7 +3,7 @@
 .app-filter { position: relative; }
 .app-filter__menu { position: absolute; top: calc(100% + 6px); left: 0; z-index: 40; }
 .app-filter__menu--end { left: auto; right: 0; width: 220px; }
-.app-menu-empty { padding: var(--space-3); font-size: 14px; color: var(--muted); }
+.app-menu-empty { padding: var(--space-3); font-size: 15px; color: var(--muted); }
 .fc-filter-btn .app-no-rotate { transform: none !important; }
 
 /* Poster cliccabile e player in linea */
@@ -22,7 +22,7 @@
 
 /* Carica altri */
 .app-more { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); margin-top: var(--space-8); }
-.app-more p { margin: 0; font-size: 14px; color: var(--muted); }
+.app-more p { margin: 0; font-size: 15px; color: var(--muted); }
 
 /* Pannello filtri su telefono */
 .app-sheet-scrim { position: fixed; inset: 0; z-index: 45; }
@@ -30,7 +30,7 @@
 .app-sheet__search { padding: 0 var(--space-3) var(--space-2); }
 .app-sheet__search input {
   width: 100%; min-height: 44px; padding: 0 var(--space-3); border: 1px solid var(--border-control);
-  border-radius: var(--radius-md); font: inherit; font-size: 16px; color: var(--ink); background: var(--card-bg);
+  border-radius: var(--radius-md); font: inherit; font-size: 17px; color: var(--ink); background: var(--card-bg);
 }
 @media (min-width: 640px) { .app-sheet, .app-sheet-scrim { display: none; } }
 

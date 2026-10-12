@@ -38,7 +38,7 @@
             @if (f === 'categoria') {
               @for (o of options.categoria; track o.value) {
                 <li><label class="fc-option" [class.is-empty]="!o.count">
-                  <input type="radio" name="cat-menu" [checked]="o.selected" (change)="setCategoryExact($any(o.value))" (click)="o.selected && setCategory($any(o.value))" />
+                  <input type="radio" name="cat-menu" [checked]="o.selected" (change)="setCategoryExact($any(o.value)); openMenu = null" />
                   <span class="fc-option__label">{{ o.label }}</span><span class="fc-option__count">{{ o.count }}</span>
                 </label></li>
               }

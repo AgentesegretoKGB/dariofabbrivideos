@@ -15,7 +15,7 @@
 }
 .app-drawer.open { transform: none; visibility: visible; transition: transform 200ms ease; }
 .app-drawer__close { position: absolute; top: 6px; left: var(--space-4); box-shadow: none; }
-.app-drawer .is-current { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.app-drawer .is-current { background: var(--accent-soft); color: var(--ink); font-weight: 700; }
 
 .fc-footer { margin-top: var(--space-16); }
 .fc-social svg { flex: none; }

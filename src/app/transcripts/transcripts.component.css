@@ -15,29 +15,29 @@
 
 .lock-screen input {
   padding: 0.6rem;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-md);
 }
 
 .lock-screen button {
-  background: #3b82f6;
+  background: var(--ink);
   color: white;
   border: none;
   padding: 0.6rem;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   cursor: pointer;
 }
 
 .error-text {
-  color: #b91c1c;
+  color: var(--danger);
 }
 
 .info-text {
-  color: #6b7280;
+  color: var(--muted);
 }
 
 .hint {
-  color: #6b7280;
+  color: var(--muted);
   margin-bottom: 1rem;
 }
 
@@ -50,17 +50,17 @@
 .search-bar input {
   flex: 1;
   padding: 0.6rem;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-md);
   font-size: 1rem;
 }
 
 .search-bar button {
-  background: #3b82f6;
+  background: var(--ink);
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   cursor: pointer;
   font-weight: 600;
 }
@@ -71,12 +71,12 @@
 }
 
 .result-card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-md);
   padding: 1rem;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  box-shadow: none;
 }
 
 .result-title {
@@ -85,7 +85,7 @@
 }
 
 .result-snippet {
-  color: #374151;
+  color: var(--ink);
   font-style: italic;
   margin-bottom: 0.6rem;
   line-height: 1.4;
@@ -94,7 +94,7 @@
 .result-link {
   display: inline-block;
   font-weight: 600;
-  color: #dc2626;
+  color: var(--danger);
   text-decoration: none;
 }
 

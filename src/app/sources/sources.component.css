@@ -7,14 +7,14 @@
 .sources-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
 .sources-list li {
   padding: var(--space-4) var(--space-5);
-  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-card);
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius);
 }
-.opera-main { font-size: 16px; line-height: 24px; }
-.opera-work { font-weight: 600; color: var(--ink); }
-.opera-link { margin-left: var(--space-1); font-size: 14px; }
-.opera-link a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; word-break: break-word; display: inline-block; padding: 2px 0; }
-.opera-author { margin-top: 2px; font-size: 14px; line-height: 20px; color: var(--muted); }
-.opera-note { font-size: 14px; line-height: 20px; color: var(--muted); font-style: italic; }
+.opera-main { font-size: 18px; line-height: 26px; }
+.opera-work { font-weight: 700; color: var(--ink); }
+.opera-link { margin-left: var(--space-1); font-size: 15px; }
+.opera-link a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; word-break: break-word; display: inline-block; padding: 2px 0; }
+.opera-author { margin-top: 2px; font-size: 15px; line-height: 22px; color: var(--muted); }
+.opera-note { font-size: 15px; line-height: 22px; color: var(--muted); font-style: italic; }
 .opera-note:not(:empty) { margin-top: var(--space-2); }
 
 @media (max-width: 639px) {
