@@ -1,112 +1,221 @@
-<div class="app-container">
-  <!-- welcome banner: visible only in catalog -->
-<section class="welcome-banner catalog-banner" role="banner">
-<div class="welcome-inner">
-<div class="portrait-shadow" aria-hidden="true"></div>
-<h1 class="banner-title">Dario Fabbri — Catalogo video</h1>
-<p class="banner-sub">Benvenuto. Qui trovi una raccolta dinamica di tutti (ci proviamo) i video di Dario Fabbri. Lo scopo è quello di facilitare il reperimento di dosi per tutti i soggetti affetti da fabbrite. Traduco: buon divertimento!</p>
-</div>
+<section class="fc-hero">
+  <h1>Dario Fabbri — Catalogo video</h1>
+  <p>Benvenuto. Qui trovi una raccolta dinamica di tutti (ci proviamo) i video di Dario Fabbri. Lo scopo è quello di facilitare il reperimento di dosi per tutti i soggetti affetti da fabbrite. Traduco: buon divertimento!</p>
 </section>
-<header class="catalog-header">
-<div class="filters">
-<input type="search" placeholder="Cerca titolo o tag..." [(ngModel)]="query" aria-label="Cerca" />
-<select [(ngModel)]="filterFormat" aria-label="Filtra per format">
-<option value="">Tutti i formati</option>
-@for (f of ['Incontro','Il Grande Gioco','Approfondimento Limes','Mappa Mundi','Intervista','Assemblea','Podcast','TV']; track f) {
-<option [value]="f">{{ f }}</option>
-        }
-</select>
-<!-- argomento select removed: using chips below -->
-<select [(ngModel)]="sortBy" aria-label="Ordina per">
-<option value="newest">Più recenti</option>
-<option value="oldest">Più vecchi</option>
-</select>
-</div>
-</header>
-<div class="category-filter" role="group" aria-label="Categoria">
-<button (click)="setCategory('')" [class.active]="categoryFilter===''">Tutti</button>
-<button (click)="setCategory('teoria')" [class.active]="categoryFilter==='teoria'">Teoria</button>
-<button (click)="setCategory('attualita')" [class.active]="categoryFilter==='attualita'">Attualità</button>
-</div>
-<!-- black separator bar matching grid width -->
-<div class="grid-separator" aria-hidden="true"></div>
-<div class="argomenti-chips">
-@for (a of availableArgomenti; track a) {
-<span class="chip" [class.selected]="selectedArgomenti.has(a)" (click)="toggleArgomento(a)">
-      {{ a }}
-</span>
-    }
-</div>
-@for (g of tagGroups | keyvalue; track g.key) {
-<div class="tag-filter">
-@for (t of g.value; track t) {
-<span class="tag" (click)="toggleTag(g.key, t)">
-      {{ t }}
-</span>
-    }
-</div>
+
+<!-- Ricerca -->
+<div class="fc-search" role="search">
+  <svg class="fc-search__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  <input type="search" placeholder="Cerca titolo o argomento" aria-label="Cerca video" [ngModel]="query" (ngModelChange)="setQuery($event)" />
+  @if (query) {
+    <button class="fc-search__clear" type="button" aria-label="Svuota la ricerca" (click)="setQuery('')">
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+    </button>
   }
-<div class="videos-grid">
-@for (v of applyFilters(); track v.id) {
-<article class="video-slot" role="listitem">
-<div class="preview" role="group">
-@if (v.pending) {
-<span class="pending-badge" title="Aggiunto automaticamente, in attesa di revisione">Catalogazione automatica, non revisionata</span>
-      }
-<!-- if this video is playing, show inline iframe -->
-@if (playingId===v.id) {
-<div class="iframe-wrap">
-<iframe [src]="buildEmbedUrl(v.url, true) | safeUrl" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" [title]="v.title" ></iframe>
-<button class="close-player" (click)="stopVideo()" aria-label="Chiudi player">✕</button>
 </div>
-      } @else {
-<a class="poster-link" (click)="playVideo(v)" role="button" [attr.aria-label]="'Riproduci ' + v.title">
-@if (v.poster) {
-<img class="preview-img" [src]="v.poster" [alt]="v.title + ' anteprima'" loading="lazy" />
-<div class="play-overlay" aria-hidden="true">▶</div>
-          } @else {
-<div class="preview-poster" aria-hidden="true">
-<div class="play-icon">▶</div>
-</div>
+
+<!-- Filtri -->
+<div class="fc-filter-row">
+  @for (f of ['categoria', 'formato', 'argomento', 'anno']; track f) {
+    <div class="app-filter">
+      <button type="button" class="fc-filter-btn" [class.is-active]="facetCount($any(f)) > 0"
+              aria-haspopup="true" [attr.aria-expanded]="openMenu === f" [attr.aria-controls]="'menu-' + f"
+              (click)="toggleMenu($any(f), $event)">
+        {{ f === 'categoria' ? 'Categoria' : f === 'formato' ? 'Formato' : f === 'argomento' ? 'Argomento' : 'Anno' }}
+        @if (facetValue($any(f))) { <span class="fc-filter-btn__value">{{ facetValue($any(f)) }}</span> }
+        @else if (facetCount($any(f)) > 1) { <span class="fc-filter-btn__count">{{ facetCount($any(f)) }}</span> }
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      @if (openMenu === f) {
+        <div class="fc-filter-menu app-filter__menu" [id]="'menu-' + f" role="dialog" [attr.aria-label]="f">
+          @if (f === 'argomento') {
+            <div class="fc-filter-menu__head">
+              <input type="search" [placeholder]="'Cerca tra ' + options.argomento.length + ' argomenti'" aria-label="Cerca argomento" [(ngModel)]="topicSearch" />
+            </div>
           }
-</a>
+          <ul class="fc-filter-menu__list">
+            @if (f === 'categoria') {
+              @for (o of options.categoria; track o.value) {
+                <li><label class="fc-option" [class.is-empty]="!o.count">
+                  <input type="radio" name="cat-menu" [checked]="o.selected" (change)="setCategoryExact($any(o.value))" (click)="o.selected && setCategory($any(o.value))" />
+                  <span class="fc-option__label">{{ o.label }}</span><span class="fc-option__count">{{ o.count }}</span>
+                </label></li>
+              }
+            } @else if (f === 'argomento') {
+              @if (selectedTopicOptions.length) {
+                <li class="fc-filter-menu__group">Selezionati</li>
+                @for (o of selectedTopicOptions; track o.value) {
+                  <li><label class="fc-option"><input type="checkbox" [checked]="true" (change)="toggle('argomento', o.value)" /><span class="fc-option__label">{{ o.label }}</span><span class="fc-option__count">{{ o.count }}</span></label></li>
+                }
+                <li class="fc-filter-menu__group">Altri argomenti</li>
+              }
+              @for (o of unselectedTopicOptions; track o.value) {
+                <li><label class="fc-option" [class.is-empty]="!o.count"><input type="checkbox" [checked]="o.selected" (change)="toggle('argomento', o.value)" /><span class="fc-option__label">{{ o.label }}</span><span class="fc-option__count">{{ o.count }}</span></label></li>
+              } @empty {
+                <li class="app-menu-empty">Nessun argomento trovato</li>
+              }
+            } @else {
+              @for (o of opts(f); track o.value) {
+                <li><label class="fc-option" [class.is-empty]="!o.count"><input type="checkbox" [checked]="o.selected" (change)="toggle($any(f), o.value)" /><span class="fc-option__label">{{ o.label }}</span><span class="fc-option__count">{{ o.count }}</span></label></li>
+              }
+            }
+          </ul>
+          <div class="fc-filter-menu__foot">
+            <button type="button" class="fc-link-btn" [disabled]="!facetCount($any(f))" (click)="clearFacet($any(f))">Azzera</button>
+            <span class="fc-active__count">{{ results.length }} video</span>
+          </div>
+        </div>
       }
+    </div>
+  }
+
+  <button type="button" class="fc-filter-btn fc-filter-row__mobile" [class.is-active]="activeCount > 0" aria-haspopup="dialog" (click)="openSheet()">
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M4.5 8h7M7 12h2" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+    Filtri
+    @if (activeCount) { <span class="fc-filter-btn__count">{{ activeCount }}</span> }
+  </button>
+
+  <div class="fc-filter-row__end app-filter">
+    <button type="button" class="fc-filter-btn fc-filter-btn--ghost" aria-haspopup="true" [attr.aria-expanded]="openMenu === 'ordina'"
+            [attr.aria-label]="'Ordina: ' + sortLabel[sortBy]" (click)="toggleMenu('ordina', $event)">
+      <svg class="app-no-rotate" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3v10M5 13l-2-2M5 13l2-2M11 13V3M11 3L9 5M11 3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      {{ sortLabel[sortBy] }}
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    @if (openMenu === 'ordina') {
+      <div class="fc-filter-menu app-filter__menu app-filter__menu--end" role="dialog" aria-label="Ordina">
+        <ul class="fc-filter-menu__list">
+          @for (s of ['newest', 'oldest', 'title']; track s) {
+            <li><label class="fc-option"><input type="radio" name="sort" [checked]="sortBy === s" (change)="setSort($any(s))" /><span class="fc-option__label">{{ sortName(s) }}</span></label></li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
 </div>
-<div class="info">
-<h3 class="title">{{ v.title }}</h3>
-<div class="meta">{{ v.date }}</div>
-<div class="video-data">
-<div class="data-item"><strong>Formato:</strong> {{ (v.tags['format'] || []).join(', ') }}</div>
-<div class="data-item"><strong>Argomento:</strong> {{ (v.tags['argomento'] || []).join(', ') }}</div>
-</div>
-</div>
-</article>
+
+<!-- Filtri attivi e conteggio -->
+<div class="fc-active" aria-live="polite">
+  <span class="fc-active__count">
+    @if (loading) { Caricamento… }
+    @else { <strong>{{ results.length }}</strong> video@if (activeFilters.length) { su {{ videos.length }}} }
+  </span>
+  @for (a of activeFilters; track a.key + a.label) {
+    <span class="fc-filter-chip"><span class="fc-filter-chip__key">{{ a.key }}:</span>&nbsp;{{ a.label }}
+      <button type="button" [attr.aria-label]="'Rimuovi ' + a.key + ' ' + a.label" (click)="a.remove()">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+      </button>
+    </span>
+  }
+  @if (activeFilters.length > 1) {
+    <button type="button" class="fc-link-btn" (click)="clearAll()">Azzera tutto</button>
   }
 </div>
-</div>
-<!-- Sezione Feedback -->
-<section class="feedback-section">
-<div class="feedback-container">
-<h2 class="feedback-title">Suggerisci un video</h2>
-<p class="feedback-desc">
-        Contribuisci alla formazione del sito inviando una mail
-</p>
-<div class="feedback-options">
-<!-- Opzione Email -->
-<div class="feedback-option feedback-option-single">
-<div class="option-icon">
-<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3 7L12 14L21 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
-</svg>
-</div>
-<h3>Invia Suggerimento</h3>
-<p>Scrivi direttamente con i tuoi suggerimenti</p>
-<a href="mailto:dariofabbri.catalogovideo@gmail.com?subject=Suggerimento Video&body=Ciao,%0A%0ATi suggerisco questo video:%0A%0ATitolo:%0ALink YouTube:%0ADescrizione:%0A%0AMotivazione:%0A%0AGrazie!" 
-class="btn-feedback" target="_blank">
-            Invia Email
-</a>
-</div>
-</div>
-</div>
+
+<div class="fc-separator" aria-hidden="true"></div>
+
+<!-- Griglia -->
+@if (loadError) {
+  <div class="fc-error" role="alert"><div><h3>Impossibile caricare i video</h3><p>Ricarica la pagina tra qualche istante.</p></div></div>
+} @else if (!loading && !results.length) {
+  <div class="fc-empty">
+    <h3>Nessun video trovato</h3>
+    <p>@if (query) { Nessun video corrisponde a «{{ query }}» con questi filtri. } @else { Nessun video corrisponde a questi filtri. }</p>
+    <button type="button" class="fc-btn fc-btn--secondary" (click)="clearAll()">Azzera i filtri</button>
+  </div>
+} @else {
+  <div class="fc-grid" role="list">
+    @for (v of visible; track v.id) {
+      <article class="fc-video" role="listitem">
+        <div class="fc-video__preview">
+          @if (v.pending) {
+            <span class="fc-badge fc-badge--pending" title="Aggiunto automaticamente, in attesa di revisione">Catalogazione automatica, non revisionata</span>
+          }
+          @if (playingId === v.id) {
+            <iframe class="app-player" [src]="buildEmbedUrl(v.url) | safeUrl" allowfullscreen allow="autoplay; encrypted-media" [title]="v.title"></iframe>
+            <button type="button" class="app-player__close" (click)="stopVideo()" aria-label="Chiudi il video">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+            </button>
+          } @else {
+            <button type="button" class="app-poster" (click)="playVideo(v)" [attr.aria-label]="'Riproduci ' + v.title">
+              @if (v.poster) { <img [src]="v.poster" alt="" loading="lazy" decoding="async" /> }
+              @else { <span class="fc-video__poster"></span> }
+              <span class="fc-video__play" aria-hidden="true">▶</span>
+            </button>
+          }
+        </div>
+        <div class="fc-video__info">
+          <h3 class="fc-video__title">{{ v.title }}</h3>
+          <div class="fc-video__meta">{{ v.formats.join(', ') }}@if (v.formats.length && v.dateLabel) { · }{{ v.dateLabel }}</div>
+          @if (v.topics.length) {
+            <div class="fc-tags">
+              @for (t of v.topics.slice(0, 3); track t) { <span class="fc-tag">{{ t }}</span> }
+              @if (v.topics.length > 3) { <span class="fc-tag">+{{ v.topics.length - 3 }}</span> }
+            </div>
+          }
+        </div>
+      </article>
+    }
+  </div>
+
+  @if (results.length > visible.length) {
+    <div class="app-more">
+      <p>Ne stai vedendo {{ visible.length }} su {{ results.length }}</p>
+      <button type="button" class="fc-btn fc-btn--secondary" (click)="showMore()">Mostra altri {{ (results.length - visible.length) < 24 ? (results.length - visible.length) : 24 }} video</button>
+    </div>
+  }
+}
+
+<!-- Pannello filtri (telefono) -->
+@if (sheetOpen) {
+  <div class="fc-scrim app-sheet-scrim" (click)="closeSheet()" aria-hidden="true"></div>
+  <div class="fc-sheet app-sheet" role="dialog" aria-modal="true" aria-label="Filtri">
+    <div class="fc-sheet__grip" aria-hidden="true"></div>
+    <div class="fc-sheet__head">
+      <h2>Filtri</h2>
+      <button type="button" class="fc-link-btn" [disabled]="!activeCount" (click)="clearAll()">Azzera tutto</button>
+    </div>
+    <div class="fc-sheet__body">
+      <div class="fc-sheet__section">
+        <div class="fc-filter-menu__group">Categoria</div>
+        <div class="fc-segmented" role="group" aria-label="Categoria">
+          <button type="button" [attr.aria-pressed]="category === ''" (click)="setCategoryExact('')">Tutte</button>
+          @for (o of options.categoria; track o.value) {
+            <button type="button" [attr.aria-pressed]="o.selected" (click)="setCategoryExact($any(o.value))">{{ o.label }}</button>
+          }
+        </div>
+      </div>
+
+      @for (f of ['formato', 'argomento', 'anno']; track f) {
+        <div class="fc-sheet__section">
+          <div class="fc-filter-menu__group">{{ f === 'formato' ? 'Formato' : f === 'argomento' ? 'Argomento' : 'Anno' }}</div>
+          @if (f === 'argomento' && sheetShowAll['argomento']) {
+            <div class="app-sheet__search"><input type="search" [placeholder]="'Cerca tra ' + options.argomento.length + ' argomenti'" aria-label="Cerca argomento" [(ngModel)]="topicSearch" /></div>
+          }
+          <ul class="fc-filter-menu__list" style="padding:0">
+            @for (o of (f === 'argomento' ? (sheetShowAll['argomento'] ? topicOptions : options.argomento) : opts(f)).slice(0, sheetShowAll[f] ? 999 : 4); track o.value) {
+              <li><label class="fc-option" [class.is-empty]="!o.count"><input type="checkbox" [checked]="o.selected" (change)="toggle($any(f), o.value)" /><span class="fc-option__label">{{ o.label }}</span><span class="fc-option__count">{{ o.count }}</span></label></li>
+            }
+          </ul>
+          @if (!sheetShowAll[f] && opts(f).length > 4) {
+            <button type="button" class="fc-link-btn fc-sheet__more" (click)="sheetShowAll[f] = true">
+              Mostra {{ f === 'formato' ? 'tutti i ' + options.formato.length + ' formati' : f === 'argomento' ? 'tutti i ' + options.argomento.length + ' argomenti' : 'tutti gli anni' }}
+            </button>
+          }
+        </div>
+      }
+    </div>
+    <div class="fc-sheet__foot">
+      <button type="button" class="fc-btn fc-btn--primary fc-btn--block" (click)="closeSheet()">Mostra {{ results.length }} video</button>
+    </div>
+  </div>
+}
+
+<!-- Suggerisci un video -->
+<section class="app-suggest">
+  <svg class="app-suggest__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7L12 14L21 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/></svg>
+  <h2>Suggerisci un video</h2>
+  <p>Contribuisci alla formazione del sito inviando una mail.</p>
+  <a class="fc-btn fc-btn--primary" href="mailto:dariofabbri.catalogovideo@gmail.com?subject=Suggerimento Video&body=Ciao,%0A%0ATi suggerisco questo video:%0A%0ATitolo:%0ALink YouTube:%0ADescrizione:%0A%0AMotivazione:%0A%0AGrazie!">Invia email</a>
 </section>

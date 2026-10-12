@@ -274,7 +274,34 @@ export class MaterialsComponent implements OnInit, OnDestroy {
     this.stopAutoScroll();
   }
 
+  /** Lo scorrimento automatico parte solo con mouse e schermo largo: su telefono la striscia si scorre col dito. */
+  private canAutoScroll(): boolean {
+    return typeof window !== 'undefined'
+      && window.matchMedia('(hover: hover) and (min-width: 640px)').matches
+      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  dateLabel(m: Material): string {
+    if (!m.date) return '';
+    const d = new Date(m.date);
+    return isNaN(d.getTime()) ? m.date : new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'short', year: 'numeric' }).format(d);
+  }
+
+  isPlaceholder(m: Material): boolean {
+    return !m.poster || m.poster.includes('placeholder');
+  }
+
+  actionLabel(m: Material): string {
+    return m.type === 'video' ? 'Riproduci' : m.type === 'pdf' ? 'Leggi il PDF' : m.type === 'link' ? 'Visita' : 'Apri';
+  }
+
+  typeLabel(m: Material): string {
+    return m.type === 'document' ? 'Documento' : m.type === 'pdf' ? 'PDF' : m.type === 'video' ? 'Video' : 'Link';
+  }
+
   private startAutoScroll() {
+    if (!this.canAutoScroll()) return;
+    this.stopAutoScroll();
     this.autoScrollInterval = setInterval(() => {
       if (this.featuredScroller?.nativeElement) {
         const container = this.featuredScroller.nativeElement;

@@ -1,169 +1,110 @@
-<div class="materials-container">
-  
-  <!-- Header semplice come le altre sezioni -->
-  <div class="materials-header-simple">
-    <h1 class="materials-title">MATERIALI UTILI</h1>
-    <div class="materials-desc">Raccolta di letture e video rilevanti per il discorso</div>
+<section class="fc-hero fc-hero--page">
+  <h1>Materiali utili</h1>
+  <p>Raccolta di letture e video rilevanti per il discorso.</p>
+</section>
+
+<!-- In evidenza: striscia orizzontale -->
+@if (featuredMaterials.length) {
+  <section aria-labelledby="in-evidenza">
+    <h2 class="fc-section-title" id="in-evidenza">In evidenza</h2>
+    <div class="fc-scroller app-scroller" #featuredScroller (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+      @for (m of featuredMaterials; track m.id) {
+        <article class="fc-material">
+          <div class="fc-material__preview">
+            @if (playingId === m.id && m.type === 'video') {
+              <iframe class="app-player" [src]="m.embed | safeUrl" allowfullscreen allow="autoplay; encrypted-media" [title]="m.title"></iframe>
+              <button type="button" class="app-player__close" (click)="stopVideo()" aria-label="Chiudi il video">
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+              </button>
+            } @else {
+              <button type="button" class="app-poster" [class.is-placeholder]="isPlaceholder(m)" (click)="m.type === 'video' ? playVideo(m) : openMaterial(m)" [attr.aria-label]="actionLabel(m) + ': ' + m.title">
+                <img [src]="m.poster || 'assets/pdf-placeholder.svg'" alt="" loading="lazy" decoding="async" />
+                @if (m.type === 'video') { <span class="fc-video__play" aria-hidden="true">▶</span> }
+              </button>
+              <span class="fc-badge" [class]="'fc-badge fc-badge--' + m.type">{{ typeLabel(m) }}</span>
+            }
+          </div>
+          <div class="fc-material__info app-featured__info">
+            <h3 class="fc-material__title app-featured__title">{{ m.title }}</h3>
+            <div class="fc-material__meta">{{ m.author }}@if (m.author && m.date) { · }{{ dateLabel(m) }}</div>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+}
+
+<!-- Tutti i materiali -->
+<section aria-labelledby="tutti">
+  <h2 class="fc-section-title" id="tutti">Tutti i materiali</h2>
+
+  <div class="app-mat-filters">
+    <div class="fc-search" role="search">
+      <svg class="fc-search__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="search" placeholder="Cerca titolo o autore" [(ngModel)]="searchQuery" aria-label="Cerca materiali" />
+      @if (searchQuery) {
+        <button class="fc-search__clear" type="button" aria-label="Svuota la ricerca" (click)="searchQuery = ''">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </button>
+      }
+    </div>
+    <div class="fc-segmented app-segmented" role="group" aria-label="Categoria">
+      <button type="button" [attr.aria-pressed]="selectedCategory === ''" (click)="selectedCategory = ''">Tutte</button>
+      @for (cat of availableCategories; track cat) {
+        <button type="button" [attr.aria-pressed]="selectedCategory === cat" (click)="selectedCategory = cat!">{{ cat | titlecase }}</button>
+      }
+    </div>
   </div>
 
-  <!-- Scorrimento orizzontale materiali in evidenza -->
-  <section class="featured-section">
-    <h2 class="section-title">In evidenza</h2>
-    <div class="featured-scroller" 
-         #featuredScroller
-         (mouseenter)="onMouseEnter()" 
-         (mouseleave)="onMouseLeave()">
-      @for (material of featuredMaterials; track material.id) {
-      <article class="featured-slot">
-        <div class="slot-preview" role="group">
-          <!-- Video embed se in riproduzione -->
-          @if (playingId === material.id && material.type === 'video') {
-            <div class="iframe-wrap">
-              <iframe [src]="material.embed | safeUrl" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" [title]="material.title"></iframe>
-              <button class="close-player" (click)="stopVideo()" aria-label="Chiudi player">✕</button>
-            </div>
+  <p class="fc-active__count app-mat-count"><strong>{{ filteredMaterials().length }}</strong> materiali</p>
+
+  @if (!filteredMaterials().length) {
+    <div class="fc-empty">
+      <h3>Nessun materiale trovato</h3>
+      <p>Prova con un'altra parola o un'altra categoria.</p>
+      <button type="button" class="fc-btn fc-btn--secondary" (click)="searchQuery = ''; selectedCategory = ''">Azzera i filtri</button>
+    </div>
+  }
+
+  <div class="fc-grid" role="list">
+    @for (m of filteredMaterials(); track m.id) {
+      <article class="fc-material" role="listitem">
+        <div class="fc-material__preview">
+          @if (playingId === m.id && m.type === 'video') {
+            <iframe class="app-player" [src]="m.embed | safeUrl" allowfullscreen allow="autoplay; encrypted-media" [title]="m.title"></iframe>
+            <button type="button" class="app-player__close" (click)="stopVideo()" aria-label="Chiudi il video">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+            </button>
           } @else {
-            <div class="poster-link" (click)="material.type === 'video' ? playVideo(material) : openMaterial(material)" role="button" [attr.aria-label]="material.type === 'video' ? 'Riproduci ' + material.title : 'Apri ' + material.title">
-              <img [src]="material.poster || 'assets/pdf-placeholder.svg'" [alt]="material.title + ' anteprima'" loading="lazy" />
-              <div class="overlay" aria-hidden="true">
-                @if (material.type === 'video') {
-                  <div class="play-icon">▶</div>
-                }
-                <div class="type-badge" [class]="'badge-' + material.type">{{ material.type.toUpperCase() }}</div>
-              </div>
-            </div>
+            <button type="button" class="app-poster" [class.is-placeholder]="isPlaceholder(m)" (click)="m.type === 'video' ? playVideo(m) : openMaterial(m)" [attr.aria-label]="actionLabel(m) + ': ' + m.title">
+              <img [src]="m.poster || 'assets/pdf-placeholder.svg'" alt="" loading="lazy" decoding="async" />
+              @if (m.type === 'video') { <span class="fc-video__play" aria-hidden="true">▶</span> }
+            </button>
+            <span [class]="'fc-badge fc-badge--' + m.type">{{ typeLabel(m) }}</span>
           }
         </div>
-        
-        <div class="slot-info">
-          <h3 class="slot-title">{{ material.title }}</h3>
-          <div class="slot-meta">{{ material.author }} • {{ material.date }}</div>
-          @if (material.tags?.length) {
-            <div class="slot-tags">
-              @for (tag of material.tags; track tag) {
-                <span class="tag">{{ tag }}</span>
-              }
+        <div class="fc-material__info">
+          <h3 class="fc-material__title">{{ m.title }}</h3>
+          <div class="fc-material__meta">{{ m.author }}@if (m.author && m.category) { · }{{ m.category | titlecase }}@if (m.date) { · {{ dateLabel(m) }}}</div>
+          @if (m.description) { <p class="fc-material__desc">{{ m.description }}</p> }
+          @if (m.tags?.length) {
+            <div class="fc-tags app-mat-tags">@for (t of m.tags; track t) { <span class="fc-tag">{{ t }}</span> }</div>
+          }
+          @if (m.url) {
+            <div class="fc-material__actions">
+              <button type="button" class="fc-btn fc-btn--primary fc-btn--block" (click)="m.type === 'video' ? playVideo(m) : openMaterial(m)">{{ actionLabel(m) }}</button>
             </div>
           }
         </div>
       </article>
-      }
-    </div>
-  </section>
-
-  <!-- Filtri e ricerca -->
-  <header class="materials-header">
-    <div class="filters">
-      <input type="search" placeholder="Cerca materiali..." [(ngModel)]="searchQuery" aria-label="Cerca materiali" />
-      
-      <select [(ngModel)]="selectedCategory" aria-label="Filtra per categoria">
-        <option value="">Tutte le categorie</option>
-        @for (cat of availableCategories; track cat) {
-          <option [value]="cat">{{ cat | titlecase }}</option>
-        }
-      </select>
-    </div>
-  </header>
-
-  <!-- Griglia completa materiali -->
-  <div class="materials-grid">
-    @for (material of filteredMaterials(); track material.id) {
-    <article class="material-slot" role="listitem">
-      <div class="preview" role="group">
-        <!-- Video embed se in riproduzione -->
-        @if (playingId === material.id && material.type === 'video') {
-          <div class="iframe-wrap">
-            <iframe [src]="material.embed | safeUrl" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" [title]="material.title"></iframe>
-            <button class="close-player" (click)="stopVideo()" aria-label="Chiudi player">✕</button>
-          </div>
-        } @else {
-          <div class="poster-link" (click)="material.type === 'video' ? playVideo(material) : openMaterial(material)" role="button" [attr.aria-label]="material.type === 'video' ? 'Riproduci ' + material.title : 'Apri ' + material.title">
-            @if (material.poster) {
-              <img class="preview-img" [src]="material.poster" [alt]="material.title + ' anteprima'" loading="lazy" />
-            } @else {
-              <div class="preview-poster" aria-hidden="true">
-                <div class="type-icon" [class]="'icon-' + material.type">
-                  @if (material.type === 'video') { <span>▶</span> }
-                  @if (material.type === 'pdf') { <span>📄</span> }
-                  @if (material.type === 'link') { <span>🔗</span> }
-                  @if (material.type === 'document') { <span>📋</span> }
-                </div>
-              </div>
-            }
-            <div class="overlay" aria-hidden="true">
-              @if (material.type === 'video') {
-                <div class="play-overlay">▶</div>
-              }
-              <div class="type-badge" [class]="'badge-' + material.type">{{ material.type.toUpperCase() }}</div>
-            </div>
-          </div>
-        }
-      </div>
-
-      <div class="info">
-        <h3 class="title">{{ material.title }}</h3>
-        <div class="meta">{{ material.author }} • {{ material.date }}</div>
-        @if (material.description) {
-          <p class="description">{{ material.description }}</p>
-        }
-        
-        <div class="material-data">
-          @if (material.category) {
-            <div class="data-item"><strong>Categoria:</strong> {{ material.category | titlecase }}</div>
-          }
-          @if (material.type) {
-            <div class="data-item"><strong>Tipo:</strong> {{ material.type | titlecase }}</div>
-          }
-        </div>
-        
-        @if (material.tags?.length) {
-          <div class="tags">
-            @for (tag of material.tags; track tag) {
-              <span class="tag">{{ tag }}</span>
-            }
-          </div>
-        }
-        
-        <div class="actions">
-          @if (material.url) {
-            <button (click)="openMaterial(material)" class="btn-primary">
-              @if (material.type === 'video') { <span>Guarda</span> }
-              @if (material.type === 'pdf') { <span>Leggi PDF</span> }
-              @if (material.type === 'link') { <span>Visita</span> }
-              @if (material.type === 'document') { <span>Apri</span> }
-            </button>
-          }
-        </div>
-      </div>
-    </article>
     }
   </div>
-</div>
+</section>
 
-<!-- Sezione Feedback -->
-<section class="feedback-section">
-    <div class="feedback-container">
-      <h2 class="feedback-title">Suggerisci un materiale</h2>
-      <p class="feedback-desc">
-        Contribuisci alla formazione del sito inviando una mail
-      </p>
-      
-      <div class="feedback-options">
-        <!-- Opzione Email -->
-        <div class="feedback-option feedback-option-single">
-          <div class="option-icon">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 7L12 14L21 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
-            </svg>
-          </div>
-          <h3>Invia Suggerimento</h3>
-          <p>Scrivi direttamente con i tuoi suggerimenti</p>
-          <a href="mailto:dariofabbri.catalogovideo@gmail.com?subject=Suggerimento Materiale&body=Ciao,%0A%0ATi suggerisco questo materiale:%0A%0ATitolo:%0AAutore:%0ALink/Descrizione:%0A%0AMotivazione:%0A%0AGrazie!" 
-             class="btn-feedback" target="_blank">
-            Invia Email
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Suggerisci un materiale -->
+<section class="app-suggest">
+  <svg class="app-suggest__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7L12 14L21 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/></svg>
+  <h2>Suggerisci un materiale</h2>
+  <p>Contribuisci alla formazione del sito inviando una mail.</p>
+  <a class="fc-btn fc-btn--primary" href="mailto:dariofabbri.catalogovideo@gmail.com?subject=Suggerimento Materiale&body=Ciao,%0A%0ATi suggerisco questo materiale:%0A%0ATitolo:%0AAutore:%0ALink/Descrizione:%0A%0AMotivazione:%0A%0AGrazie!">Invia email</a>
+</section>
