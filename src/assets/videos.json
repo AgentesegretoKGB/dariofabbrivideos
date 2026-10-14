@@ -7573,5 +7573,33 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 476,
+    "title": "Dove eravamo rimasti? (con Dario Fabbri) - Il Grande Gioco",
+    "url": "https://www.youtube.com/embed/42mNiJo0tOo",
+    "date": "2026-10-13",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 477,
+    "title": "La storia non la fanno i leader, la fanno i popoli",
+    "url": "https://www.youtube.com/embed/JB6Qs39fWFM",
+    "date": "2026-10-13",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
