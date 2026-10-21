@@ -7661,5 +7661,49 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 482,
+    "title": "Abruzzo Economy Summit 2026 - DARIO FABBRI, GLI SCENARI DELLE GUERRE E LE CONSEGUENZE PER L’ECONOMIA",
+    "url": "https://www.youtube.com/embed/LDcKo245fK8",
+    "date": "2026-10-21",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 483,
+    "title": "da Hormuz alla Germania, come funziona il potere americano | Guerra e Pace —15/10/2026",
+    "url": "https://www.youtube.com/embed/LNXUgXj3CNE",
+    "date": "2026-10-21",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Germania"
+      ],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 484,
+    "title": "Molto di nuovo sul fronte orientale (con Dario Fabbri) - Il Grande Gioco",
+    "url": "https://www.youtube.com/embed/ITzRkDFEt8w",
+    "date": "2026-10-20",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
