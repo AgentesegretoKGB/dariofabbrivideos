@@ -7705,5 +7705,51 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 485,
+    "title": "dario fabbri from hormuz to germany , italiano",
+    "url": "https://www.youtube.com/embed/gAvt7F9R2SQ",
+    "date": "2026-10-25",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Italia"
+      ],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 486,
+    "title": "6 Mappe per capire il Mondo oggi",
+    "url": "https://www.youtube.com/embed/04ox8vJ5pyM",
+    "date": "2026-10-24",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 487,
+    "title": "l’Europa non è una nazione - Festival del Sarà - 23 ottobre 2026",
+    "url": "https://www.youtube.com/embed/eVBB-mCnxDI",
+    "date": "2026-10-24",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Europa"
+      ],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
