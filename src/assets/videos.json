@@ -7751,5 +7751,47 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 488,
+    "title": "Su Hormuz l’America si è sparata su un piede",
+    "url": "https://www.youtube.com/embed/A3Vot1QW0rk",
+    "date": "2026-10-26",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 489,
+    "title": "Garlasco, Fabbri: “Anch’io avrei arrestato Stasi con quelle informazioni”",
+    "url": "https://www.youtube.com/embed/nMVnD8GCKOU",
+    "date": "2026-10-25",
+    "tags": {
+      "format": [
+        "TV"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 490,
+    "title": "Garlasco, acceso confronto tra Borgonovo e Capra: \"Come fa a dire che Avato e Fabbri mentono?\"",
+    "url": "https://www.youtube.com/embed/43YSspSXDLQ",
+    "date": "2026-10-25",
+    "tags": {
+      "format": [
+        "TV"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
