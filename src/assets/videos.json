@@ -7793,5 +7793,67 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 491,
+    "title": "Dazi e nuovi equilibri geopolitici – Intervista al Forum 2026",
+    "url": "https://www.youtube.com/embed/1xy2KYYwOlc",
+    "date": "2026-10-28",
+    "tags": {
+      "format": [
+        "Intervista"
+      ],
+      "argomento": [
+        "Dazi"
+      ],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 492,
+    "title": "Domino Due Germanie di Dario Fabbri Riarmo AfD Est Fine Unione Europea ? SPECIALE TG 25 10 2026",
+    "url": "https://www.youtube.com/embed/5aWw3c17mBQ",
+    "date": "2026-10-28",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Riarmo"
+      ],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 493,
+    "title": "Un Mondo in fiamme? (con Dario Fabbri) - Il Grande Gioco",
+    "url": "https://www.youtube.com/embed/L6h4M6Xg4-c",
+    "date": "2026-10-27",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 494,
+    "title": "Dazi: un anno dopo – Forum del Commercio Internazionale 2026",
+    "url": "https://www.youtube.com/embed/CFYRwYBHz3c",
+    "date": "2026-10-27",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Dazi"
+      ],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
