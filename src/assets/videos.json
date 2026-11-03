@@ -7703,5 +7703,33 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 495,
+    "title": "Dario Fabbri, geopolitica e futuro del mondo",
+    "url": "https://www.youtube.com/embed/xgIhzkxrzX8",
+    "date": "2026-11-03",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 496,
+    "title": "Acqua: confine e potenza  | Dario Fabbri | TEDxTrento Salon",
+    "url": "https://www.youtube.com/embed/a3Th5vzEDB4",
+    "date": "2026-11-02",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
