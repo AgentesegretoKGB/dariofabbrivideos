@@ -7731,5 +7731,37 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 497,
+    "title": "perché il Texas è uno Stato così importante nelle elezioni Usa",
+    "url": "https://www.youtube.com/embed/dHZAwvOB9So",
+    "date": "2026-11-04",
+    "tags": {
+      "format": [
+        "TV"
+      ],
+      "argomento": [
+        "USA"
+      ],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 498,
+    "title": "Israele non cambia (con Dario Fabbri) - Il Grande Gioco",
+    "url": "https://www.youtube.com/embed/Gi4NWD1JLr0",
+    "date": "2026-11-03",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [
+        "Israele"
+      ],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
