@@ -7688,11 +7688,13 @@
         "Incontro"
       ],
       "argomento": [
-        "Dazi"
+        "Dazi",
+        "Panoramica"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 495,
