@@ -7680,10 +7680,17 @@
       "format": [
         "Il Grande Gioco"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Brasile",
+        "Serbia",
+        "Francia",
+        "Italia",
+        "Europa"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 494,
