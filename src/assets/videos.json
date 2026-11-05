@@ -7661,12 +7661,15 @@
     "date": "2026-10-26",
     "tags": {
       "format": [
-        "Incontro"
+        "Conferenza"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 493,
