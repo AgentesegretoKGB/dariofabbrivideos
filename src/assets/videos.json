@@ -7733,10 +7733,13 @@
       "format": [
         "Incontro"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "USA"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
   },
   {
     "id": 497,
