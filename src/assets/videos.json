@@ -7628,10 +7628,14 @@
       "format": [
         "Il Grande Gioco"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Guerra in Ucraina",
+        "Europa"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 486,
