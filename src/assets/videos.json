@@ -7602,10 +7602,20 @@
       "format": [
         "Incontro"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Consigliato",
+        "Medioevo",
+        "Spagna",
+        "Cina",
+        "S Turchia",
+        "Inghilterra",
+        "Italia",
+        "Consigliato"
+      ],
+      "categoria": [
+        "teoria"
+      ]
+    }
   },
   {
     "id": 482,
