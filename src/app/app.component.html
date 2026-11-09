@@ -5,7 +5,20 @@
     <button class="fc-hamburger" type="button" aria-label="Apri menu" aria-controls="menu" [attr.aria-expanded]="drawerOpen" (click)="openDrawer()">
       <span class="fc-hamburger__lines" aria-hidden="true"><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span></span>
     </button>
-    <p class="fc-topbar__title">{{ pageTitle }}</p>
+    <p class="fc-topbar__title">{{ topTitle }}</p>
+    @if (!onAccount) {
+    <a class="app-account" routerLink="/account" [attr.aria-label]="auth.user() ? 'Il tuo account' : 'Accedi'">
+      @if (auth.user(); as u) {
+        @if (auth.avatar(u); as pic) {
+          <img class="app-account__pic" [src]="pic" alt="" referrerpolicy="no-referrer" />
+        } @else {
+          <span class="app-account__pic app-account__pic--letter" aria-hidden="true">{{ auth.displayName(u).charAt(0).toUpperCase() }}</span>
+        }
+      } @else if (auth.ready()) {
+        <span>Accedi</span>
+      }
+    </a>
+    }
   </header>
 
   @if (drawerOpen) {
