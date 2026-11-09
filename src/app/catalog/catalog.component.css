@@ -39,3 +39,12 @@
   .app-filter:not(.fc-filter-row__end) { display: none; }
   .fc-filter-row { flex-wrap: nowrap; }
 }
+
+/* Stelle e commenti sotto le informazioni del video */
+.app-rate {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap;
+  width: 100%; margin-top: var(--space-2); padding: var(--space-2) 0 0; border: 0; border-top: 1px solid var(--border);
+  background: none; color: inherit; font: inherit; text-align: left; cursor: pointer;
+}
+.app-rate__cta { font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.app-rate:hover .app-rate__cta { color: var(--accent); }

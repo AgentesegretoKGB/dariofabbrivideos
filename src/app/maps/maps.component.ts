@@ -1,33 +1,22 @@
-import { Component } from '@angular/core';
-
-interface SavedMap {
-  title: string;
-  file: string;    // progetto .json in public/atlante/mappe
-  preview: string; // anteprima in public/atlante/anteprime
-}
-
-const EDITOR = '/atlante/editor.html';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { StarsSummaryComponent } from '../feedback/stars-summary.component';
+import { BUILTIN_MAPS, EDITOR_URL, MapItem, MapsService } from './maps.service';
 
 @Component({
   selector: 'app-maps',
   standalone: true,
+  imports: [RouterLink, StarsSummaryComponent],
   templateUrl: './maps.component.html',
   styleUrls: ['./maps.component.css']
 })
-export class MapsComponent {
-  readonly editorUrl = EDITOR;
+export class MapsComponent implements OnInit {
+  private svc = inject(MapsService);
+  readonly editorUrl = EDITOR_URL;
+  readonly maps = signal<MapItem[]>(BUILTIN_MAPS);
 
-  // Per aggiungere una mappa: metti il .json in public/atlante/mappe e l'anteprima in public/atlante/anteprime
-  readonly maps: SavedMap[] = [
-    { title: "L'Italia e la sua energia", file: 'italia-energia.json', preview: 'italia-energia.jpg' },
-    { title: 'Mediterraneo', file: 'mediterraneo.json', preview: 'mediterraneo.jpg' },
-  ];
-
-  openUrl(m: SavedMap): string {
-    return `${EDITOR}?mappa=${encodeURIComponent('/atlante/mappe/' + m.file)}`;
-  }
-
-  previewUrl(m: SavedMap): string {
-    return '/atlante/anteprime/' + m.preview;
+  async ngOnInit() {
+    const pub = await this.svc.published();
+    if (pub.length) this.maps.set([...pub, ...BUILTIN_MAPS]);
   }
 }

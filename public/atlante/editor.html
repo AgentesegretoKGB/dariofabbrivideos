@@ -385,6 +385,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
       <button class="ib" id="newMap" data-ic="newf" data-tip="Nuova carta"></button>
     </div>
     <input type="file" id="fileIn" accept=".json,application/json" style="display:none">
+    <button class="primary pbtn" id="publishMap" style="width:100%;margin-top:10px" data-tip="Pubblica la mappa nella sezione Mappe del sito: la vedranno tutti">Pubblica sul sito</button>
     <div class="note">Il lavoro si salva da solo in questo browser. Dati geografici: Natural Earth (pubblico dominio). Confini e territori contesi seguono la loro rappresentazione: controlla che corrispondano a ciò che vuoi mostrare.</div>
   </div></details>
 </aside>
@@ -935,7 +936,7 @@ function drawLabels(){
 
 /* ================= oggetti: geometria ================= */
 const maskCache=new Map();
-function P(ll){if(!ll)return null;const p=proj(ll);return p&&isFinite(p[0])&&isFinite(p[1])?p:null}
+function P(ll){if(!ll||typeof proj!=="function")return null;const p=proj(ll);return p&&isFinite(p[0])&&isFinite(p[1])?p:null}
 function projPts(a){const o=[];for(let i=0;i<a.pts.length;i++){const p=P(a.pts[i]);if(!p)return null;o.push(p)}return o}
 function dashFor(a,k){return a.dash?(a.w*3/k)+","+(a.w*2.2/k):null}
 function pathD(a,pp){
@@ -2244,6 +2245,70 @@ window.__atlante={get S(){return S},select,setTool,setLayer};
   fetch(decodeURIComponent(m[1])).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(o=>{
     S=mergeState(o);hist.length=0;redo.length=0;selId=null;syncUI();fullRender();setTransform(S.T);document.documentElement.dataset.mappa="pronta";
   }).catch(()=>toast("Impossibile aprire la mappa"));
+})();
+
+/* ===== Pubblicazione nella sezione Mappe del sito (Supabase) ===== */
+(function(){
+  const SB_URL="https://ykqoyozoinehdnltthrz.supabase.co", SB_KEY="sb_publishable_tYIEJVVcxF926h-xeTqOLA_NiPOP5xU";
+  const SB_LIB="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/dist/umd/supabase.js";
+  let sb=null;
+  function client(){
+    if(sb)return sb;
+    sb=new Promise((res,rej)=>{const s=document.createElement("script");s.src=SB_LIB;s.onload=()=>res(window.supabase.createClient(SB_URL,SB_KEY,{auth:{flowType:"pkce",persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}}));s.onerror=()=>{sb=null;rej(new Error("lib"))};document.head.appendChild(s)});
+    return sb;
+  }
+  async function preview(){
+    const w=1200,h=Math.round(1200*H/W);
+    const img=new Image();img.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svgString(w,h));
+    await img.decode();
+    const cv=document.createElement("canvas");cv.width=w;cv.height=h;
+    const ctx=cv.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);ctx.drawImage(img,0,0,w,h);
+    const blob=await new Promise(r=>cv.toBlob(r,"image/jpeg",0.82));
+    if(!blob)throw new Error("anteprima");
+    return blob;
+  }
+  const btn=$("#publishMap");
+  let busy=false;
+  btn.onclick=async()=>{
+    if(busy)return;
+    let c;
+    try{c=await client()}catch(e){toast("Non riesco a collegarmi al sito: controlla la connessione");return}
+    const {data:{session}}=await c.auth.getSession();
+    if(!session){
+      if(confirm("Per pubblicare devi accedere al sito. Apro la pagina di accesso in una nuova scheda? (La mappa resta qui.)"))window.open("/account","_blank");
+      return;
+    }
+    const uid=session.user.id;
+    const prof=await c.from("profiles").select("username").eq("id",uid).maybeSingle();
+    if(!prof.data){
+      if(confirm("Per pubblicare serve uno username. Apro la pagina del tuo account per sceglierlo?"))window.open("/account","_blank");
+      return;
+    }
+    let title=(S.title||"").trim();
+    if(!title||title==="Titolo della carta"){
+      title=(prompt("Dai un titolo alla mappa:","")||"").trim();
+      if(!title)return;
+      S.title=title;syncUI();fullRender();
+    }
+    if(!confirm("Pubblicare \""+title+"\" nella sezione Mappe del sito come @"+prof.data.username+"? Sarà visibile a tutti."))return;
+    busy=true;btn.disabled=true;btn.textContent="Pubblico…";
+    try{
+      const id=crypto.randomUUID(), base=uid+"/"+id;
+      const jpg=await preview();
+      const st=c.storage.from("mappe");
+      let r=await st.upload(base+".json",new Blob([JSON.stringify(S)],{type:"application/json"}),{contentType:"application/json"});
+      if(r.error)throw r.error;
+      r=await st.upload(base+".jpg",jpg,{contentType:"image/jpeg"});
+      if(r.error)throw r.error;
+      const ins=await c.from("maps").insert({id,user_id:uid,title:title.slice(0,120),file_path:base+".json",preview_path:base+".jpg"});
+      if(ins.error){await st.remove([base+".json",base+".jpg"]);throw ins.error}
+      toast("Mappa pubblicata!");
+      if(confirm("Mappa pubblicata! Vuoi vederla sul sito?"))window.open("/mappe/"+id,"_blank");
+    }catch(e){
+      const m=String(e&&e.message||e);
+      toast(/bucket|not found|relation|schema cache/i.test(m)?"La pubblicazione non è ancora attiva sul sito":"Pubblicazione non riuscita: "+m);
+    }finally{busy=false;btn.disabled=false;btn.textContent="Pubblica sul sito"}
+  };
 })();
 })();
 </script>

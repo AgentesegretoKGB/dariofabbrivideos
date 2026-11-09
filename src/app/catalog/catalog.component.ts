@@ -18,10 +18,13 @@ const SORT_LABEL: { [k in Sort]: string } = { newest: 'Più recenti', oldest: 'P
 
 const slug = (s: string) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
+import { StarsSummaryComponent } from '../feedback/stars-summary.component';
+import { FeedbackDialogComponent } from '../feedback/feedback-dialog.component';
+
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe],
+  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe, StarsSummaryComponent, FeedbackDialogComponent],
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
 })
@@ -35,6 +38,7 @@ export class CatalogComponent implements OnInit {
   loading = true;
   loadError: string | null = null;
   playingId: number | null = null;
+  feedbackVideo: Video | null = null;
 
   // Stato dei filtri
   query = '';
@@ -249,6 +253,7 @@ export class CatalogComponent implements OnInit {
   }
   playVideo(v: Video) { this.playingId = v.id; }
   stopVideo() { this.playingId = null; }
+  openFeedback(v: Video) { this.feedbackVideo = v; }
 
   opts(f: string): Option[] { return this.options[f as Facet] || []; }
   sortName(s: string): string { return SORT_LABEL[s as Sort]; }

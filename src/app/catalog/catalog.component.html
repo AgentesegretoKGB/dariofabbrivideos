@@ -149,6 +149,12 @@
           <h3 class="fc-video__title">{{ v.title }}</h3>
           @if (v.channel) { <p class="fc-video__channel">{{ v.channel }}</p> }
           <div class="fc-video__meta">{{ v.formats.join(', ') }}@if (v.formats.length && v.dateLabel) { · }{{ v.dateLabel }}</div>
+          @if (v.youtubeId) {
+            <button type="button" class="app-rate" (click)="openFeedback(v)" [attr.aria-label]="'Vota e commenta: ' + v.title">
+              <app-stars-summary type="video" [itemId]="v.youtubeId" />
+              <span class="app-rate__cta">{{ playingId === v.id ? 'Vota e commenta' : 'Vota' }}</span>
+            </button>
+          }
           @if (v.topics.length) {
             <div class="fc-tags">
               @for (t of v.topics.slice(0, 3); track t) { <span class="fc-tag">{{ t }}</span> }
@@ -166,6 +172,10 @@
       <button type="button" class="fc-btn fc-btn--secondary" (click)="showMore()">Mostra altri {{ (results.length - visible.length) < 24 ? (results.length - visible.length) : 24 }} video</button>
     </div>
   }
+}
+
+@if (feedbackVideo; as fv) {
+  <app-feedback-dialog type="video" [itemId]="fv.youtubeId!" [heading]="fv.title" (closed)="feedbackVideo = null" />
 }
 
 <!-- Pannello filtri (telefono) -->

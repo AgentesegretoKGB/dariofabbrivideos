@@ -20,6 +20,10 @@ export const routes: Routes = [
     loadComponent: () => import('./maps/maps.component').then(m => m.MapsComponent)
   },
   {
+    path: 'mappe/:id',
+    loadComponent: () => import('./maps/map-detail.component').then(m => m.MapDetailComponent)
+  },
+  {
     path: 'account',
     loadComponent: () => import('./account/account.component').then(m => m.AccountComponent)
   },

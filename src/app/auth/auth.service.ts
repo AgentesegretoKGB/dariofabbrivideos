@@ -2,8 +2,8 @@ import { Injectable, NgZone, signal } from '@angular/core';
 import type { Provider, Session, SupabaseClient, User } from '@supabase/supabase-js';
 
 // Dati pubblici del progetto Supabase (non sono segreti: la chiave "publishable" va nel browser)
-const SUPABASE_URL = 'https://ykqoyozoinehdnltthrz.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_tYIEJVVcxF926h-xeTqOLA_NiPOP5xU';
+export const SUPABASE_URL = 'https://ykqoyozoinehdnltthrz.supabase.co';
+export const SUPABASE_KEY = 'sb_publishable_tYIEJVVcxF926h-xeTqOLA_NiPOP5xU';
 
 /** Servizi di accesso che il sito sa mostrare, nell'ordine in cui compaiono. */
 export const PROVIDERS: { id: Provider; label: string }[] = [
