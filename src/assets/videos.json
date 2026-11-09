@@ -7607,12 +7607,15 @@
     "date": "2026-10-21",
     "tags": {
       "format": [
-        "Incontro"
+        "Assemblea"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "Panoramica"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   },
   {
     "id": 484,
