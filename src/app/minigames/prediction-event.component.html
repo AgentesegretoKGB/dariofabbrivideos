@@ -1,0 +1,123 @@
+<a class="app-back" routerLink="/minigiochi/previsioni">← Tutti gli eventi</a>
+
+@if (error()) {
+  <p class="app-note">{{ error() }}</p>
+} @else if (!loaded()) {
+  <p class="app-note">Un momento…</p>
+} @else if (ev(); as e) {
+  <header class="app-pe-head">
+    <h1 class="app-pe-title">{{ e.name }}</h1>
+    <p class="app-pe-when">{{ when(e.starts_at) }}</p>
+    <div class="app-pe-links">
+      @if (e.youtube_channel) { <a [href]="link(e.youtube_channel)" target="_blank" rel="noopener">Canale YouTube ↗</a> }
+      @if (e.org_link) { <a [href]="link(e.org_link)" target="_blank" rel="noopener">{{ host(e.org_link) }} ↗</a> }
+      @if (e.video_id) { <a [href]="yt(e.video_id)" target="_blank" rel="noopener">Guarda il video ↗</a> }
+    </div>
+    <div class="app-pe-status">
+      @if (open()) {
+        <span class="app-badge app-badge--open">Le schedine chiudono tra {{ cd(e.starts_at) }}</span>
+      } @else if (e.status === 'confirmed') {
+        <span class="app-badge app-badge--done">Risultati confermati</span>
+      } @else {
+        <span class="app-badge">Schedine chiuse · in attesa dei risultati</span>
+      }
+      @if (participants() !== null) { <span class="app-pe-count">{{ participants() }} {{ participants() === 1 ? 'giocatore' : 'giocatori' }}</span> }
+    </div>
+  </header>
+
+  @if (e.status === 'confirmed') {
+    <section class="app-card">
+      <h2 class="app-card__title">Risultati</h2>
+      @if (saved(); as mine) {
+        <p class="app-pe-score">Hai fatto <strong>{{ myScore()?.points ?? 0 }} punti</strong> indovinando {{ myScore()?.hits ?? 0 }} {{ (myScore()?.hits ?? 0) === 1 ? 'formula' : 'formule' }} su {{ mine.length }}.</p>
+        <ul class="app-chips">
+          @for (id of mine; track id) {
+            @if (byId().get(id); as p) {
+              <li class="app-chip" [class.is-hit]="said().has(id)" [class.is-miss]="!said().has(id)">{{ said().has(id) ? '✓' : '✗' }} {{ p.text }} <span>{{ p.points }} pt</span></li>
+            }
+          }
+        </ul>
+      } @else {
+        <p class="app-note">Non hai giocato questo evento.</p>
+      }
+      <h3 class="app-sub">Formule dette da Fabbri</h3>
+      @if (saidPhrases().length) {
+        <ul class="app-chips">@for (p of saidPhrases(); track p.id) { <li class="app-chip">{{ p.text }} <span>{{ p.points }} pt</span></li> }</ul>
+      } @else { <p class="app-note">Nessuna delle formule in lista.</p> }
+
+      @if (scores().length) {
+        <h3 class="app-sub">Classifica dell'evento</h3>
+        <ol class="app-board">
+          @for (s of scores(); track s.user_id; let i = $index) {
+            <li class="app-board__row" [class.is-me]="s.user_id === auth.user()?.id">
+              <span class="app-board__pos">{{ i + 1 }}</span><span class="app-board__name">&#64;{{ s.username }}</span>
+              <span class="app-board__meta">{{ s.hits }}/{{ s.phrase_ids.length }} indovinate</span><span class="app-board__pts">{{ s.points }} pt</span>
+            </li>
+          }
+        </ol>
+      }
+    </section>
+  } @else if (!open()) {
+    <section class="app-card">
+      <h2 class="app-card__title">La tua schedina</h2>
+      @if (picked().length) {
+        <ul class="app-chips">@for (p of picked(); track p.id) { <li class="app-chip">{{ p.text }} <span>{{ p.points }} pt</span></li> }</ul>
+        <p class="app-note">Se Fabbri le dice tutte, guadagni {{ potential() }} punti. I risultati arrivano dopo la revisione.</p>
+      } @else {
+        <p class="app-note">Non hai compilato la schedina per questo evento.</p>
+      }
+    </section>
+  } @else if (!auth.user()) {
+    <section class="app-card"><p class="app-note"><a routerLink="/account">Accedi</a> per compilare la tua schedina.</p></section>
+  } @else if (auth.profileLoaded() && !auth.username()) {
+    <section class="app-card"><p class="app-note">Per giocare <a routerLink="/account">scegli uno username</a>.</p></section>
+  } @else {
+    <section class="app-card app-slip" aria-labelledby="schedina">
+      <div class="app-slip__head">
+        <h2 class="app-card__title" id="schedina">La tua schedina</h2>
+        <span class="app-slip__count">{{ picks().length }}/{{ MAX }} · fino a {{ potential() }} pt</span>
+      </div>
+      @if (picked().length) {
+        <ul class="app-chips app-chips--picked">
+          @for (p of picked(); track p.id) {
+            <li><button type="button" class="app-chip app-chip--btn is-on" (click)="toggle(p)" [attr.aria-label]="'Togli ' + p.text">{{ p.text }} <span>{{ p.points }} pt</span> <b aria-hidden="true">×</b></button></li>
+          }
+        </ul>
+      } @else {
+        <p class="app-note">Scegli dalla lista qui sotto fino a {{ MAX }} formule che secondo te Fabbri dirà.</p>
+      }
+      <div class="app-slip__actions">
+        <button type="button" class="fc-btn fc-btn--primary" [disabled]="saving() || !picks().length || !dirty()" (click)="save()">{{ saving() ? 'Salvo…' : (saved() ? 'Aggiorna schedina' : 'Salva schedina') }}</button>
+        @if (saved()) { <button type="button" class="app-link" (click)="withdraw()">Ritira la schedina</button> }
+      </div>
+      @if (msg()) { <p class="app-msg" [class.is-error]="msgError()" role="status">{{ msg() }}</p> }
+    </section>
+
+    <section class="app-card" aria-label="Elenco delle formule">
+      <div class="app-list-tools">
+        <div class="fc-search app-list-search">
+          <svg class="fc-search__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="Cerca una formula…" aria-label="Cerca una formula" [ngModel]="query()" (ngModelChange)="query.set($event)" />
+        </div>
+        <label class="app-sort">Ordina
+          <select [(ngModel)]="sort"><option value="alpha">A-Z</option><option value="points">Punti</option></select>
+        </label>
+      </div>
+      <p class="app-note app-list-count">{{ filtered().length }} formule</p>
+      <ul class="app-plist">
+        @for (p of sorted(filtered()); track p.id) {
+          <li>
+            <button type="button" class="app-pitem" [class.is-on]="isPicked(p)" [attr.aria-pressed]="isPicked(p)"
+                    [disabled]="!isPicked(p) && picks().length >= MAX" (click)="toggle(p)">
+              <span class="app-pitem__check" aria-hidden="true">{{ isPicked(p) ? '✓' : '+' }}</span>
+              <span class="app-pitem__text">{{ p.text }}</span>
+              <span class="app-pitem__pts">{{ p.points }} pt</span>
+            </button>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+} @else {
+  <p class="app-note">Evento non trovato.</p>
+}

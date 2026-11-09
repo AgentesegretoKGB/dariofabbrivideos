@@ -11,6 +11,7 @@ const TITLES: { [path: string]: string } = {
   'revisione': 'Revisione',
   'trascrizioni': 'Cerca nelle trascrizioni',
   'mappe': 'Mappe',
+  'minigiochi': 'Minigiochi',
 };
 
 @Component({

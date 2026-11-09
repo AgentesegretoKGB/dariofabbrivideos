@@ -1,0 +1,128 @@
+@if (checking()) {
+  <p>Controllo l'accesso…</p>
+} @else if (!auth.user()) {
+  <p class="adm-note">Per revisionare i minigiochi <a routerLink="/account">accedi</a> con il tuo account da amministratore.</p>
+} @else if (!admin()) {
+  <p class="adm-note">Il tuo account non è amministratore. {{ error() }}</p>
+} @else {
+  @if (error()) { <p class="error-text">{{ error() }}</p> }
+
+  <!-- Nuovo evento -->
+  <details class="adm-box" open>
+    <summary>Nuovo evento</summary>
+    <form class="adm-form" (submit)="$event.preventDefault(); create()">
+      <label class="adm-wide">Nome dell'evento *<input name="n" required [(ngModel)]="nf.name" placeholder="Es. Festival di Limes, Genova" /></label>
+      <label>Data *<input name="d" type="date" required [(ngModel)]="nf.date" /></label>
+      <label>Ora di inizio *<input name="t" type="time" required [(ngModel)]="nf.time" /></label>
+      <label>Canale YouTube<input name="y" [(ngModel)]="nf.youtube_channel" placeholder="https://www.youtube.com/@…" /></label>
+      <label>Link dell'organizzazione<input name="o" [(ngModel)]="nf.org_link" placeholder="https://…" /></label>
+      <div class="adm-wide adm-row">
+        <button type="submit" class="btn-approve" [disabled]="creating()">{{ creating() ? 'Creo…' : 'Crea evento' }}</button>
+        @if (createMsg()) { <span class="row-message">{{ createMsg() }}</span> }
+      </div>
+      <p class="adm-hint adm-wide">Le schedine si chiudono esattamente alla data e ora indicate.</p>
+    </form>
+  </details>
+
+  <!-- Eventi -->
+  <h3 class="adm-h">Eventi</h3>
+  @if (!events().length) { <p class="adm-note">Ancora nessun evento.</p> }
+  @for (e of sortedEvents(); track e.id) {
+    <div class="review-card adm-ev" [class.is-open]="openId() === e.id">
+      <button type="button" class="adm-ev__head" (click)="toggleOpen(e)" [attr.aria-expanded]="openId() === e.id">
+        <span class="adm-ev__name">{{ e.name }}</span>
+        <span class="adm-ev__meta">{{ when(e.starts_at) }} · {{ counts().get(e.id) ?? 0 }} schedine</span>
+        <span class="adm-badge" [class]="'adm-badge adm-badge--' + e.status">{{ statusLabel(e) }}</span>
+      </button>
+
+      @if (openId() === e.id) {
+        @let d = draft(e);
+        <div class="adm-ev__body">
+          <form class="adm-form" (submit)="$event.preventDefault(); saveInfo(e)">
+            <label class="adm-wide">Nome *<input [name]="'n'+e.id" [(ngModel)]="d.name" /></label>
+            <label>Data *<input type="date" [name]="'d'+e.id" [(ngModel)]="d.date" /></label>
+            <label>Ora *<input type="time" [name]="'t'+e.id" [(ngModel)]="d.time" /></label>
+            <label>Canale YouTube<input [name]="'y'+e.id" [(ngModel)]="d.youtube_channel" /></label>
+            <label>Link dell'organizzazione<input [name]="'o'+e.id" [(ngModel)]="d.org_link" /></label>
+            <div class="adm-wide adm-row">
+              <button type="submit" class="adm-btn" [disabled]="d.busy">Salva dati evento</button>
+              <button type="button" class="btn-reject" (click)="remove(e)">Elimina evento</button>
+            </div>
+          </form>
+
+          <h4 class="adm-h4">Risultato</h4>
+          <div class="adm-src">
+            <label class="adm-wide">Video YouTube dell'evento
+              <span class="adm-row"><input [name]="'v'+e.id" [(ngModel)]="d.video" placeholder="https://www.youtube.com/watch?v=…" />
+              <button type="button" class="adm-btn" [disabled]="d.busy" (click)="detectVideo(e)">Calcola dalla trascrizione</button></span>
+            </label>
+            <details class="adm-paste">
+              <summary>Nessun video o trascrizione non disponibile? Incolla il testo</summary>
+              <textarea rows="5" [name]="'p'+e.id" [(ngModel)]="d.pasted" placeholder="Incolla qui la trascrizione o i tuoi appunti dell'evento…"></textarea>
+              <button type="button" class="adm-btn" [disabled]="d.busy" (click)="detectText(e)">Calcola dal testo</button>
+            </details>
+            <p class="adm-hint">Puoi anche spuntare a mano le formule dette, senza video.</p>
+          </div>
+
+          @if (d.msg) { <p class="row-message" [class.error]="d.error" role="status">{{ d.msg }}</p> }
+
+          <div class="adm-said">
+            <div class="adm-row adm-said__tools">
+              <input type="search" [name]="'q'+e.id" [(ngModel)]="d.query" placeholder="Cerca una formula…" />
+              <label class="adm-check"><input type="checkbox" [name]="'f'+e.id" [(ngModel)]="d.onlyFound" /> Solo trovate/spuntate</label>
+            </div>
+            <p class="adm-hint">{{ d.said.size }} formule segnate come dette. Il numero accanto indica quante volte compaiono nella trascrizione.</p>
+            <ul class="adm-plist">
+              @for (p of visiblePhrases(e); track p.id) {
+                <li>
+                  <label class="adm-pitem" [class.is-on]="d.said.has(p.id)">
+                    <input type="checkbox" [checked]="d.said.has(p.id)" [disabled]="e.status === 'confirmed'" (change)="toggleSaid(e, p)" />
+                    <span class="adm-pitem__text">{{ p.text }}</span>
+                    @if (found(e, p)) { <span class="adm-pitem__found" title="Volte nella trascrizione">×{{ found(e, p) }}</span> }
+                    <span class="adm-pitem__pts">{{ p.points }} pt</span>
+                  </label>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="review-actions">
+            @if (e.status === 'confirmed') {
+              <span class="row-message">Confermato il {{ when(e.confirmed_at!) }}.</span>
+              <button type="button" class="adm-btn" [disabled]="d.busy" (click)="reopen(e)">Riapri per modificare</button>
+            } @else {
+              <button type="button" class="adm-btn" [disabled]="d.busy" (click)="saveResult(e, false)">Salva come provvisorio</button>
+              <button type="button" class="btn-approve" [disabled]="d.busy" (click)="saveResult(e, true)">Conferma punteggi</button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Formule -->
+  <details class="adm-box" (toggle)="showPhrases.set($any($event.target).open)">
+    <summary>Formule ({{ phrases().length }})</summary>
+    @if (showPhrases()) {
+      <form class="adm-form" (submit)="$event.preventDefault(); addPhrase()">
+        <label class="adm-wide">Nuova formula<input name="np" [(ngModel)]="newPhrase.text" placeholder="Es. Al di là delle chiacchiere" /></label>
+        <label>Punti<input name="npp" type="number" min="1" max="50" [(ngModel)]="newPhrase.points" /></label>
+        <label>Varianti (separate da virgola)<input name="npv" [(ngModel)]="newPhrase.variants" placeholder="forme alternative" /></label>
+        <div class="adm-wide adm-row"><button type="submit" class="btn-approve">Aggiungi</button>@if (phraseMsg()) { <span class="row-message">{{ phraseMsg() }}</span> }</div>
+      </form>
+      <input class="adm-search" type="search" placeholder="Cerca tra le formule…" [ngModel]="pq()" (ngModelChange)="pq.set($event)" />
+      <table class="adm-table">
+        <thead><tr><th>Formula</th><th>Punti</th><th>Attiva</th></tr></thead>
+        <tbody>
+          @for (p of filteredPhrases(); track p.id) {
+            <tr [class.is-off]="!p.active">
+              <td>{{ p.text }}@if (p.variants.length > 1) { <small> · {{ p.variants.length }} forme</small> }</td>
+              <td><input type="number" min="1" max="50" [value]="p.points" (change)="updatePhrase(p, { points: +$any($event.target).value })" aria-label="Punti" /></td>
+              <td><input type="checkbox" [checked]="p.active" (change)="updatePhrase(p, { active: $any($event.target).checked })" aria-label="Attiva" /></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  </details>
+}
