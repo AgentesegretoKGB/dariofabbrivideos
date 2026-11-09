@@ -11,8 +11,8 @@ import { countdown, whenLabel } from './format';
   template: `
     <a class="app-back" routerLink="/minigiochi">← Minigiochi</a>
     <header class="app-pr-head">
-      <h1 class="app-pr-title">Cosa dirà Fabbri?</h1>
-      <p class="app-pr-desc">Scegli un evento e compila la tua schedina con fino a 5 formule. Si chiude all'orario d'inizio.</p>
+      <h1 class="app-pr-title">Polymarket</h1>
+      <p class="app-pr-desc">Prevedi cosa dirà Fabbri: scegli un evento e compila la tua schedina con fino a 5 formule. Si chiude all'orario d'inizio.</p>
     </header>
 
     @if (error()) { <p class="app-note">{{ error() }}</p> }
