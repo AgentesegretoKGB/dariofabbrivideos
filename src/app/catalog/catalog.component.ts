@@ -20,6 +20,7 @@ const slug = (s: string) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g
 
 import { StarsSummaryComponent } from '../feedback/stars-summary.component';
 import { FeedbackDialogComponent } from '../feedback/feedback-dialog.component';
+import { FeedbackService } from '../feedback/feedback.service';
 
 @Component({
   selector: 'app-catalog',
@@ -29,7 +30,7 @@ import { FeedbackDialogComponent } from '../feedback/feedback-dialog.component';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
+  constructor(private feedback: FeedbackService, private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
 
   readonly sortLabel = SORT_LABEL;
   readonly categoryLabel = CATEGORY_LABEL;
@@ -253,7 +254,9 @@ export class CatalogComponent implements OnInit {
   }
   playVideo(v: Video) { this.playingId = v.id; }
   stopVideo() { this.playingId = null; }
-  openFeedback(v: Video) { this.feedbackVideo = v; }
+  feedbackFocusComment = false;
+  openFeedback(v: Video, comment = false) { this.feedbackFocusComment = comment; this.feedbackVideo = v; }
+  commentsCount(v: Video): number { return v.youtubeId ? this.feedback.stats('video', v.youtubeId).comments : 0; }
 
   opts(f: string): Option[] { return this.options[f as Facet] || []; }
   sortName(s: string): string { return SORT_LABEL[s as Sort]; }

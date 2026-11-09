@@ -150,10 +150,16 @@
           @if (v.channel) { <p class="fc-video__channel">{{ v.channel }}</p> }
           <div class="fc-video__meta">{{ v.formats.join(', ') }}@if (v.formats.length && v.dateLabel) { · }{{ v.dateLabel }}</div>
           @if (v.youtubeId) {
-            <button type="button" class="app-rate" (click)="openFeedback(v)" [attr.aria-label]="'Vota e commenta: ' + v.title">
-              <app-stars-summary type="video" [itemId]="v.youtubeId" />
-              <span class="app-rate__cta">{{ playingId === v.id ? 'Vota e commenta' : 'Vota' }}</span>
-            </button>
+            <div class="app-rate">
+              <button type="button" class="app-rate__vote" (click)="openFeedback(v)" [attr.aria-label]="'Vota: ' + v.title">
+                <app-stars-summary type="video" [itemId]="v.youtubeId" [showComments]="false" />
+                <span class="app-rate__cta">Vota</span>
+              </button>
+              <button type="button" class="app-rate__comment" (click)="openFeedback(v, true)" [attr.aria-label]="'Commenta: ' + v.title">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                @if (commentsCount(v)) { <span>{{ commentsCount(v) }}</span> }
+              </button>
+            </div>
           }
           @if (v.topics.length) {
             <div class="fc-tags">
@@ -175,7 +181,7 @@
 }
 
 @if (feedbackVideo; as fv) {
-  <app-feedback-dialog type="video" [itemId]="fv.youtubeId!" [heading]="fv.title" (closed)="feedbackVideo = null" />
+  <app-feedback-dialog type="video" [itemId]="fv.youtubeId!" [heading]="fv.title" [focusComment]="feedbackFocusComment" (closed)="feedbackVideo = null" />
 }
 
 <!-- Pannello filtri (telefono) -->

@@ -38,10 +38,25 @@ export class FeedbackDialogComponent implements AfterViewInit {
   readonly type = input.required<ItemType>();
   readonly itemId = input.required<string>();
   readonly heading = input('');
+  readonly focusComment = input(false);
   readonly closed = output<void>();
   @ViewChild('dlg') dlg!: ElementRef<HTMLDialogElement>;
 
-  ngAfterViewInit() { this.dlg.nativeElement.showModal(); }
+  ngAfterViewInit() {
+    const d = this.dlg.nativeElement;
+    d.showModal();
+    if (this.focusComment()) {
+      // Porta subito ai commenti: casella di testo se si può scrivere, altrimenti la sezione
+      let tries = 0;
+      const go = () => {
+        const ta = d.querySelector('textarea') as HTMLTextAreaElement | null;
+        if (ta) { ta.focus(); ta.scrollIntoView({ block: 'center' }); return; }
+        if (++tries < 20) setTimeout(go, 100);
+        else d.querySelector('.app-fb-comments, .app-fb-note')?.scrollIntoView({ block: 'start' });
+      };
+      setTimeout(go, 50);
+    }
+  }
 
   onBackdrop(e: MouseEvent) { if (e.target === this.dlg.nativeElement) this.dlg.nativeElement.close(); }
 }
