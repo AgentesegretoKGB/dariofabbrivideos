@@ -27,7 +27,7 @@ import { MapItem, MapsService, editorLink } from './maps.service';
           </div>
         </header>
         <a class="app-md__preview" [href]="editor(m)" target="_blank" rel="noopener" [attr.aria-label]="'Apri ' + m.title + ' nell\\'editor'">
-          <img [src]="m.preview" [alt]="'Anteprima della mappa ' + m.title" />
+          <img [src]="hdFailed() ? m.preview : m.previewHd" [alt]="'Mappa ' + m.title" (error)="hdFailed.set(true)" decoding="async" />
         </a>
         @if (error()) { <p class="app-md-note app-md-note--error" role="alert">{{ error() }}</p> }
         <div class="app-md__feedback">
@@ -65,11 +65,13 @@ export class MapDetailComponent implements OnInit {
   map = signal<MapItem | null>(null);
   loading = signal(true);
   removing = signal(false);
+  hdFailed = signal(false);
   error = signal('');
 
   ngOnInit() {
     this.route.paramMap.subscribe(async p => {
       this.loading.set(true);
+      this.hdFailed.set(false);
       this.map.set(await this.svc.find(p.get('id') || ''));
       this.loading.set(false);
     });

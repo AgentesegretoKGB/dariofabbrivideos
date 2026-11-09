@@ -2257,13 +2257,13 @@ window.__atlante={get S(){return S},select,setTool,setLayer};
     sb=new Promise((res,rej)=>{const s=document.createElement("script");s.src=SB_LIB;s.onload=()=>res(window.supabase.createClient(SB_URL,SB_KEY,{auth:{flowType:"pkce",persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}}));s.onerror=()=>{sb=null;rej(new Error("lib"))};document.head.appendChild(s)});
     return sb;
   }
-  async function preview(){
-    const w=1200,h=Math.round(1200*H/W);
+  async function preview(w){
+    w=w||1200;const h=Math.round(w*H/W);
     const img=new Image();img.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svgString(w,h));
     await img.decode();
     const cv=document.createElement("canvas");cv.width=w;cv.height=h;
     const ctx=cv.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);ctx.drawImage(img,0,0,w,h);
-    const blob=await new Promise(r=>cv.toBlob(r,"image/jpeg",0.82));
+    const blob=await new Promise(r=>cv.toBlob(r,"image/jpeg",w>1200?0.9:0.82));
     if(!blob)throw new Error("anteprima");
     return blob;
   }
@@ -2294,14 +2294,16 @@ window.__atlante={get S(){return S},select,setTool,setLayer};
     busy=true;btn.disabled=true;btn.textContent="Pubblico…";
     try{
       const id=crypto.randomUUID(), base=uid+"/"+id;
-      const jpg=await preview();
+      const jpg=await preview(1200), hd=await preview(3200);
       const st=c.storage.from("mappe");
       let r=await st.upload(base+".json",new Blob([JSON.stringify(S)],{type:"application/json"}),{contentType:"application/json"});
       if(r.error)throw r.error;
       r=await st.upload(base+".jpg",jpg,{contentType:"image/jpeg"});
       if(r.error)throw r.error;
+      r=await st.upload(base+"-hd.jpg",hd,{contentType:"image/jpeg"});
+      if(r.error)throw r.error;
       const ins=await c.from("maps").insert({id,user_id:uid,title:title.slice(0,120),file_path:base+".json",preview_path:base+".jpg"});
-      if(ins.error){await st.remove([base+".json",base+".jpg"]);throw ins.error}
+      if(ins.error){await st.remove([base+".json",base+".jpg",base+"-hd.jpg"]);throw ins.error}
       toast("Mappa pubblicata!");
       if(confirm("Mappa pubblicata! Vuoi vederla sul sito?"))window.open("/mappe/"+id,"_blank");
     }catch(e){
