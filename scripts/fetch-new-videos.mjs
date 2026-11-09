@@ -377,6 +377,7 @@ async function main() {
       id: nextId++,
       title: cleanTitle(c.title),
       url: `https://www.youtube.com/embed/${c.videoId}`,
+      channel: c.channelTitle || undefined, // nome del canale YouTube, mostrato sotto il titolo
       date: c.publishedAt.slice(0, 10), // fallback: data di pubblicazione su YouTube
       tags: {
         format: guessFormat(c.title, c.channelTitle),

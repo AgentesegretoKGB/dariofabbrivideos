@@ -1,51 +1,81 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SafeUrlPipe } from '../catalog/safe-url.pipe';
+import { CatalogVideo, CATEGORY_LABEL, decodeEntities, toCatalogVideo, youtubeThumb } from '../shared/catalog-video';
 
-interface SearchResult {
+/** Un periodo (da punto a punto) che contiene la frase cercata. */
+interface ApiHit { start: number; text: string; marks: [number, number][]; cutStart?: boolean; cutEnd?: boolean; }
+interface ApiResult { videoId: string; title: string; matches: number; hits: ApiHit[]; }
+interface ApiResponse { results: ApiResult[]; total?: number; truncated?: boolean; message?: string; }
+
+/** Pezzo di testo: «bold» è la frase cercata. */
+interface Piece { text: string; bold: boolean; }
+interface Hit { start: number; time: string; pieces: Piece[]; cutStart: boolean; cutEnd: boolean; }
+
+interface ResultCard {
+  key: string;
   videoId: string;
+  video: CatalogVideo | null;   // dati del catalogo (null se il video non è in videos.json)
   title: string;
-  timestampSeconds: number;
-  snippet: string;
+  channel: string;
+  poster?: string;
+  meta: string;                 // «Formati · data»
+  matches: number;
+  hits: Hit[];
 }
-
-// Stessa "barriera leggera" della pagina di revisione: la vera password
-// viene ricontrollata lato server da /api/search-transcripts.
-const TRANSCRIPTS_PASSWORD = 'R3visione';
 
 @Component({
   selector: 'app-transcripts',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe],
   templateUrl: './transcripts.component.html',
   styleUrls: ['./transcripts.component.css']
 })
-export class TranscriptsComponent {
-  constructor(private http: HttpClient) {}
+export class TranscriptsComponent implements OnInit {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
 
-  unlocked = false;
-  passwordInput = '';
-  passwordError = false;
+  readonly categoryLabel = CATEGORY_LABEL;
 
   query = '';
+  lastQuery = '';
   searching = false;
   searchError: string | null = null;
   infoMessage: string | null = null;
-  results: SearchResult[] = [];
+  results: ResultCard[] = [];
+  total = 0;
+  truncated = false;
   hasSearchedOnce = false;
 
-  tryUnlock() {
-    if (this.passwordInput === TRANSCRIPTS_PASSWORD) {
-      this.unlocked = true;
-      this.passwordError = false;
-    } else {
-      this.passwordError = true;
-    }
+  /** Video in riproduzione: chiave della card e secondo di partenza. */
+  playing: { key: string; start: number; nonce: number } | null = null;
+
+  private catalog = new Map<string, CatalogVideo>();
+  private raw: ApiResult[] = [];
+
+  ngOnInit(): void {
+    // ?q=… nell'indirizzo: le ricerche si possono condividere con un link
+    const q = this.route.snapshot.queryParamMap.get('q');
+    if (q) { this.query = q; this.search(); }
+
+    this.http.get<any[]>('assets/videos.json').subscribe({
+      next: data => {
+        for (const raw of data) {
+          const v = toCatalogVideo(raw);
+          if (v.youtubeId && v.title) this.catalog.set(v.youtubeId, v);
+        }
+        // se la ricerca è arrivata prima del catalogo, completo le card
+        if (this.raw.length) this.results = this.raw.map(r => this.card(r));
+      },
+      error: () => { /* senza catalogo mostriamo comunque i risultati con il titolo della trascrizione */ }
+    });
   }
 
   search() {
-    if (this.query.trim().length < 3) {
+    const q = this.query.trim();
+    if (q.length < 3) {
       this.searchError = 'Scrivi almeno 3 caratteri.';
       return;
     }
@@ -53,13 +83,17 @@ export class TranscriptsComponent {
     this.searchError = null;
     this.infoMessage = null;
     this.hasSearchedOnce = true;
+    this.playing = null;
 
-    this.http.post<{ results: SearchResult[]; message?: string }>('/api/search-transcripts', {
-      password: this.passwordInput,
-      query: this.query.trim()
-    }).subscribe({
+    this.router.navigate([], { relativeTo: this.route, queryParams: { q }, replaceUrl: true });
+
+    this.http.post<ApiResponse>('/api/search-transcripts', { query: q }).subscribe({
       next: (res) => {
-        this.results = res.results || [];
+        this.lastQuery = q;
+        this.raw = res.results || [];
+        this.results = this.raw.map(r => this.card(r));
+        this.total = res.total ?? this.results.reduce((n, r) => n + r.matches, 0);
+        this.truncated = !!res.truncated;
         this.infoMessage = res.message || null;
         this.searching = false;
       },
@@ -70,13 +104,69 @@ export class TranscriptsComponent {
     });
   }
 
-  formatTimestamp(seconds: number): string {
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-    return `${m}:${s.toString().padStart(2, '0')}`;
+  clearQuery() { this.query = ''; }
+
+  // ---------- Player ----------
+
+  play(r: ResultCard, start: number) {
+    this.playing = { key: r.key, start, nonce: (this.playing?.nonce ?? 0) + 1 };
+    // se il player non è visibile (periodi lunghi, telefono) lo riporto in vista
+    setTimeout(() => {
+      const el = document.getElementById('tr-player-' + r.key);
+      if (!el) return;
+      const box = el.getBoundingClientRect();
+      if (box.top < 56 || box.bottom > window.innerHeight) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+  stop() { this.playing = null; }
+  isPlaying(r: ResultCard) { return this.playing?.key === r.key; }
+  isCurrent(r: ResultCard, h: Hit) { return this.isPlaying(r) && this.playing!.start === h.start; }
+
+  embedUrl(r: ResultCard): string {
+    const start = this.playing?.start ?? 0;
+    // «nonce» forza il ricaricamento quando si clicca di nuovo lo stesso minuto
+    return `https://www.youtube.com/embed/${r.videoId}?autoplay=1&rel=0&modestbranding=1&start=${start}&n=${this.playing?.nonce ?? 0}`;
   }
 
-  watchUrl(result: SearchResult): string {
-    return `https://www.youtube.com/watch?v=${result.videoId}&t=${result.timestampSeconds}s`;
+  // ---------- Costruzione card ----------
+
+  private card(api: ApiResult): ResultCard {
+    const video = this.catalog.get(api.videoId) || null;
+    const meta = video
+      ? [video.formats.join(', '), video.dateLabel].filter(Boolean).join(' · ')
+      : '';
+    return {
+      key: api.videoId,
+      videoId: api.videoId,
+      video,
+      title: video?.title || decodeEntities(api.title || ''),
+      channel: video?.channel || '',
+      poster: video?.poster || youtubeThumb(api.videoId),
+      meta,
+      matches: api.matches ?? api.hits.length,
+      hits: api.hits.map(h => this.hit(h)),
+    };
+  }
+
+  private hit(h: ApiHit): Hit {
+    const pieces: Piece[] = [];
+    let at = 0;
+    const marks = [...(h.marks || [])].sort((a, b) => a[0] - b[0]);
+    for (const [s, e] of marks) {
+      if (s < at) continue;
+      if (s > at) pieces.push({ text: h.text.slice(at, s), bold: false });
+      pieces.push({ text: h.text.slice(s, e), bold: true });
+      at = e;
+    }
+    if (at < h.text.length) pieces.push({ text: h.text.slice(at), bold: false });
+    return { start: h.start, time: this.formatTimestamp(h.start), pieces, cutStart: !!h.cutStart, cutEnd: !!h.cutEnd };
+  }
+
+  formatTimestamp(seconds: number): string {
+    const s = Math.max(0, Math.floor(seconds));
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const ss = (s % 60).toString().padStart(2, '0');
+    return h ? `${h}:${m.toString().padStart(2, '0')}:${ss}` : `${m}:${ss}`;
   }
 }

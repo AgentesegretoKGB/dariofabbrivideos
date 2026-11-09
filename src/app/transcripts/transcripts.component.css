@@ -1,103 +1,68 @@
-.transcripts-container {
-  max-width: 720px;
-  margin: 2rem auto;
-  padding: 1rem;
+/* Ricerca */
+.app-tr-search { display: flex; gap: var(--space-3); align-items: stretch; max-width: 880px; margin: 0 auto var(--space-4); }
+.app-tr-search .fc-search { flex: 1; min-width: 0; margin: 0; }
+.app-tr-search .fc-btn { flex: none; }
+.app-tr-msg { max-width: 880px; margin: 0 auto var(--space-4); font-size: 15px; color: var(--muted); }
+.app-tr-msg--error { color: var(--danger); }
+.app-tr-count { display: block; max-width: 880px; margin: 0 auto; }
+.app-tr-count + .fc-separator { max-width: 880px; margin-left: auto; margin-right: auto; }
+.fc-empty { max-width: 880px; margin: 0 auto; }
+
+/* Risultati: un video per card, con il player e i periodi trovati */
+.app-tr-list { display: flex; flex-direction: column; gap: var(--space-5); max-width: 880px; margin: 0 auto; }
+.app-tr-card {
+  display: grid;
+  grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+  grid-template-areas: "preview info" "hits hits";
+}
+.app-tr-card .fc-video__preview { grid-area: preview; scroll-margin-top: calc(56px + var(--space-3)); }
+.app-tr-card .fc-video__info { grid-area: info; padding: var(--space-4) var(--space-5); }
+.app-tr-card .fc-video__title { display: block; -webkit-line-clamp: unset; overflow: visible; }
+.app-tr-matches { margin: var(--space-2) 0 0; font-size: 14px; line-height: 18px; color: var(--muted); }
+
+.app-tr-hits {
+  grid-area: hits; list-style: none; margin: 0; padding: 0;
+  border-top: 1px solid var(--border);
+}
+.app-tr-hit {
+  display: flex; gap: var(--space-3); align-items: flex-start;
+  padding: var(--space-3) var(--space-5);
+}
+.app-tr-hit + .app-tr-hit { border-top: 1px solid var(--border); }
+.app-tr-hit.is-current { background: var(--accent-soft); }
+
+.app-tr-time {
+  flex: none; display: inline-flex; align-items: center; gap: 6px;
+  min-height: 32px; padding: 0 var(--space-3);
+  border: 1px solid var(--border-control); border-radius: var(--radius-pill);
+  background: var(--card-bg); color: var(--ink);
+  font: inherit; font-size: 14px; font-variant-numeric: tabular-nums; cursor: pointer;
+}
+.app-tr-time span { font-size: 10px; color: var(--accent); }
+.app-tr-time:hover { border-color: var(--accent); }
+.app-tr-hit.is-current .app-tr-time { border-color: var(--accent); }
+.app-tr-time:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.app-tr-sentence { margin: 0; padding-top: 4px; font-size: 16px; line-height: 24px; color: var(--ink); }
+.app-tr-sentence strong { font-weight: 700; }
+
+@media (max-width: 767px) {
+  .app-tr-card { grid-template-columns: minmax(0, 1fr); grid-template-areas: "preview" "info" "hits"; }
+  .app-tr-card .fc-video__info { padding: var(--space-3) var(--space-4) var(--space-4); }
+  .app-tr-hit { flex-direction: column; gap: var(--space-2); padding: var(--space-3) var(--space-4); }
+  .app-tr-sentence { padding-top: 0; }
 }
 
-.lock-screen {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  max-width: 320px;
-  margin: 4rem auto;
-  text-align: center;
+/* Poster e player (come nel catalogo) */
+.app-poster { position: absolute; inset: 0; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: var(--black); cursor: pointer; }
+.app-poster img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.app-poster .fc-video__poster { display: block; }
+.app-poster:hover .fc-video__play { background: var(--accent); }
+.app-player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.app-player__close {
+  position: absolute; top: var(--space-2); right: var(--space-2); z-index: 3;
+  width: var(--touch-target); height: var(--touch-target); display: inline-flex; align-items: center; justify-content: center;
+  border: 0; border-radius: var(--radius-pill); background: var(--scrim-strong); color: var(--white); cursor: pointer;
 }
-
-.lock-screen input {
-  padding: 0.6rem;
-  border: 1px solid var(--border-control);
-  border-radius: var(--radius-md);
-}
-
-.lock-screen button {
-  background: var(--ink);
-  color: white;
-  border: none;
-  padding: 0.6rem;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-}
-
-.error-text {
-  color: var(--danger);
-}
-
-.info-text {
-  color: var(--muted);
-}
-
-.hint {
-  color: var(--muted);
-  margin-bottom: 1rem;
-}
-
-.search-bar {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.search-bar input {
-  flex: 1;
-  padding: 0.6rem;
-  border: 1px solid var(--border-control);
-  border-radius: var(--radius-md);
-  font-size: 1rem;
-}
-
-.search-bar button {
-  background: var(--ink);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.search-bar button:disabled {
-  background: #9ca3af;
-  cursor: not-allowed;
-}
-
-.result-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-control);
-  border-radius: var(--radius-md);
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: none;
-}
-
-.result-title {
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-}
-
-.result-snippet {
-  color: var(--ink);
-  font-style: italic;
-  margin-bottom: 0.6rem;
-  line-height: 1.4;
-}
-
-.result-link {
-  display: inline-block;
-  font-weight: 600;
-  color: var(--danger);
-  text-decoration: none;
-}
-
-.result-link:hover {
-  text-decoration: underline;
-}
+.app-player__close svg { width: 16px; height: 16px; }
+.fc-video__preview .fc-badge { z-index: 2; pointer-events: none; }

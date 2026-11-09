@@ -102,6 +102,8 @@ export default async function handler(req, res) {
         id: video.id,
         title: video.title,
         url: video.url,
+        // il nome del canale non si modifica in revisione: si conserva quello già salvato
+        ...((video.channel || videosArray[idx].channel) ? { channel: video.channel || videosArray[idx].channel } : {}),
         date: video.date,
         tags: {
           format: video.tags?.format || [],

@@ -147,6 +147,7 @@
         </div>
         <div class="fc-video__info">
           <h3 class="fc-video__title">{{ v.title }}</h3>
+          @if (v.channel) { <p class="fc-video__channel">{{ v.channel }}</p> }
           <div class="fc-video__meta">{{ v.formats.join(', ') }}@if (v.formats.length && v.dateLabel) { · }{{ v.dateLabel }}</div>
           @if (v.topics.length) {
             <div class="fc-tags">

@@ -4,23 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { CatalogVideo, Category, CATEGORY_LABEL, norm, toCatalogVideo, youtubeId } from '../shared/catalog-video';
 
-interface Video {
-  id: number;
-  title: string;
-  date: string;
-  url: string;
-  poster?: string;
-  formats: string[];
-  topics: string[];
-  category: '' | 'teoria' | 'attualita';
-  year: string;
-  dateLabel: string;
-  haystack: string;
-  pending?: boolean;
-}
-
-type Category = '' | 'teoria' | 'attualita';
+type Video = CatalogVideo;
 type Sort = 'newest' | 'oldest' | 'title';
 type Facet = 'categoria' | 'formato' | 'argomento' | 'anno';
 
@@ -28,15 +14,8 @@ export interface Option { value: string; label: string; count: number; selected:
 export interface ActiveFilter { key: string; label: string; remove: () => void; }
 
 const PAGE_SIZE = 24;
-const CATEGORY_LABEL: { [k: string]: string } = { teoria: 'Teoria', attualita: 'Attualità' };
 const SORT_LABEL: { [k in Sort]: string } = { newest: 'Più recenti', oldest: 'Più vecchi', title: 'Titolo A–Z' };
-// Varianti di scrittura presenti in videos.json, ricondotte a un'unica etichetta.
-const FORMAT_ALIASES: { [lower: string]: string } = { 'il grande gioco': 'Il Grande Gioco' };
-// Valori catalogati come argomento che in realtà sono formati: vengono spostati tra i formati.
-const TOPICS_AS_FORMATS: { [lower: string]: string } = { 'limes': 'Limes' };
-const DATE_FMT = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'short', year: 'numeric' });
 
-const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
 const slug = (s: string) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 @Component({
@@ -80,7 +59,7 @@ export class CatalogComponent implements OnInit {
     this.readUrl();
     this.http.get<any[]>('assets/videos.json').subscribe({
       next: data => {
-        this.videos = data.map(v => this.toVideo(v)).filter(v => v.title);
+        this.videos = data.map(v => toCatalogVideo(v)).filter(v => v.title);
         this.loading = false;
         this.recompute(false);
       },
@@ -91,37 +70,6 @@ export class CatalogComponent implements OnInit {
     });
   }
 
-  private toVideo(v: any): Video {
-    const tags = v.tags || {};
-    const formats = Array.from(new Set<string>((tags.format || [])
-      .map((f: string) => (f || '').trim()).filter(Boolean)
-      .map((f: string) => FORMAT_ALIASES[f.toLowerCase()] ?? f)));
-    const rawTopics: string[] = (tags.argomento || []).map((a: string) => (a || '').trim()).filter(Boolean);
-    for (const a of rawTopics) {
-      const asFormat = TOPICS_AS_FORMATS[a.toLowerCase()];
-      if (asFormat && !formats.includes(asFormat)) formats.push(asFormat);
-    }
-    const topics = Array.from(new Set<string>(rawTopics.filter(a => !TOPICS_AS_FORMATS[a.toLowerCase()])));
-    const cat = norm((tags.categoria || [])[0] || '');
-    const category: Category = cat === 'teoria' || cat === 'attualita' ? cat : '';
-    const title = (v.title || v.titolo || '').trim();
-    const d = v.date ? new Date(v.date) : null;
-    const valid = d && !isNaN(d.getTime());
-    return {
-      id: v.id,
-      title,
-      url: v.url,
-      date: v.date || '',
-      poster: this.youtubeThumb(v.url),
-      formats,
-      topics,
-      category,
-      year: valid ? String(d!.getFullYear()) : '',
-      dateLabel: valid ? DATE_FMT.format(d!) : '',
-      haystack: norm([title, ...formats, ...topics, CATEGORY_LABEL[category] || ''].join(' ')),
-      pending: !!v.pending,
-    };
-  }
 
   // ---------- Filtri ----------
 
@@ -295,17 +243,8 @@ export class CatalogComponent implements OnInit {
 
   // ---------- Video ----------
 
-  private youtubeId(url?: string): string | null {
-    if (!url) return null;
-    const m = url.match(/embed\/([^?&/]+)/i) || url.match(/youtu\.be\/([^?&/]+)/i) || url.match(/[?&]v=([^?&/]+)/i);
-    return m ? m[1] : null;
-  }
-  private youtubeThumb(url?: string) {
-    const id = this.youtubeId(url);
-    return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : undefined;
-  }
   buildEmbedUrl(url?: string): string {
-    const id = this.youtubeId(url);
+    const id = youtubeId(url);
     return id ? `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1` : '';
   }
   playVideo(v: Video) { this.playingId = v.id; }
