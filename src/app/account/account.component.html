@@ -46,6 +46,18 @@
     @if (error()) { <p class="app-acc-msg app-acc-msg--error" role="alert">{{ error() }}</p> }
 
     @if (loaded()) {
+      @if (emailEnabled()) {
+        <form class="app-acc-email-form" (submit)="$event.preventDefault(); sendLink()">
+          <label for="acc-email">Ricevi un link di accesso per email</label>
+          <div class="app-acc-row">
+            <input id="acc-email" type="email" name="email" autocomplete="email" placeholder="nome@esempio.it" required [(ngModel)]="email" />
+            <button type="submit" class="fc-btn fc-btn--primary" [disabled]="busy()">{{ busy() ? 'Invio…' : 'Invia link' }}</button>
+          </div>
+        </form>
+        @if (message()) { <p class="app-acc-msg" role="status">{{ message() }}</p> }
+      }
+
+      @if (emailEnabled() && providers().length) { <p class="app-acc-or"><span>oppure</span></p> }
       <div class="app-acc-providers">
         @for (p of providers(); track p.id) {
           <button type="button" class="app-acc-provider" (click)="signInWith(p.id)">
@@ -56,18 +68,6 @@
           </button>
         }
       </div>
-
-      @if (emailEnabled()) {
-        @if (providers().length) { <p class="app-acc-or"><span>oppure</span></p> }
-        <form class="app-acc-email-form" (submit)="$event.preventDefault(); sendLink()">
-          <label for="acc-email">Ricevi un link di accesso per email</label>
-          <div class="app-acc-row">
-            <input id="acc-email" type="email" name="email" autocomplete="email" placeholder="nome@esempio.it" required [(ngModel)]="email" />
-            <button type="submit" class="fc-btn fc-btn--primary" [disabled]="busy()">{{ busy() ? 'Invio…' : 'Invia link' }}</button>
-          </div>
-        </form>
-        @if (message()) { <p class="app-acc-msg" role="status">{{ message() }}</p> }
-      }
     }
   </section>
 }
