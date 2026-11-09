@@ -55,14 +55,17 @@ import { LeaderRow, MinigameService } from './minigame.service';
           </div>
         </a>
         <a class="fc-video app-game" routerLink="/minigiochi/fiume">
-          <div class="app-game__art app-game__art--fiume">
-            <svg viewBox="0 0 416 225" preserveAspectRatio="xMidYMid slice" role="img" aria-label="La parola inglese Task force cancellata e sotto Gruppo speciale">
-              <rect width="416" height="225" fill="#f4efe3"/>
-              <rect x="0" y="0" width="139" height="10" fill="#1d7a3a"/><rect x="139" y="0" width="138" height="10" fill="#ffffff"/><rect x="277" y="0" width="139" height="10" fill="#b4282e"/>
-              <text x="208" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#8a8578">Task force</text>
-              <line x1="104" y1="83" x2="312" y2="83" stroke="#b4282e" stroke-width="5" stroke-linecap="round"/>
-              <text x="208" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#1c1b19">Gruppo speciale</text>
-              <text x="208" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-style="italic" fill="#1d7a3a">10 secondi</text>
+          <div class="app-game__art">
+            <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Tricolore attraversato da un fiume azzurro">
+              <rect x="0" y="0" width="134" height="225" fill="#009246"/>
+              <rect x="133" y="0" width="134" height="225" fill="#ffffff"/>
+              <rect x="266" y="0" width="134" height="225" fill="#ce2b37"/>
+              <path d="M-10 70 C 40 40, 80 40, 120 80 S 190 150, 240 120 S 320 50, 410 95"
+                    fill="none" stroke="#ffffff" stroke-width="34" stroke-linecap="round" stroke-opacity=".55"/>
+              <path d="M-10 70 C 40 40, 80 40, 120 80 S 190 150, 240 120 S 320 50, 410 95"
+                    fill="none" stroke="#3fa9f5" stroke-width="24" stroke-linecap="round"/>
+              <path d="M-10 70 C 40 40, 80 40, 120 80 S 190 150, 240 120 S 320 50, 410 95"
+                    fill="none" stroke="#d6eeff" stroke-width="4" stroke-linecap="round" stroke-opacity=".8" transform="translate(0 -5)"/>
             </svg>
           </div>
           <div class="app-game__info">
