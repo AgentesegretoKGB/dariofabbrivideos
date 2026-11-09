@@ -7,6 +7,15 @@
 } @else {
   @if (error()) { <p class="error-text">{{ error() }}</p> }
 
+  <div class="adm-sub" role="tablist">
+    <button type="button" role="tab" [attr.aria-selected]="section() === 'eventi'" [class.is-on]="section() === 'eventi'" (click)="section.set('eventi')">Eventi</button>
+    <button type="button" role="tab" [attr.aria-selected]="section() === 'formule'" [class.is-on]="section() === 'formule'" (click)="section.set('formule')">Formule e punti</button>
+  </div>
+
+  @if (section() === 'formule') {
+    <app-phrase-editor />
+  } @else {
+
   <!-- Nuovo evento -->
   <details class="adm-box" open>
     <summary>Nuovo evento</summary>
@@ -100,29 +109,5 @@
     </div>
   }
 
-  <!-- Formule -->
-  <details class="adm-box" (toggle)="showPhrases.set($any($event.target).open)">
-    <summary>Formule ({{ phrases().length }})</summary>
-    @if (showPhrases()) {
-      <form class="adm-form" (submit)="$event.preventDefault(); addPhrase()">
-        <label class="adm-wide">Nuova formula<input name="np" [(ngModel)]="newPhrase.text" placeholder="Es. Al di là delle chiacchiere" /></label>
-        <label>Punti<input name="npp" type="number" min="1" max="50" [(ngModel)]="newPhrase.points" /></label>
-        <label>Varianti (separate da virgola)<input name="npv" [(ngModel)]="newPhrase.variants" placeholder="forme alternative" /></label>
-        <div class="adm-wide adm-row"><button type="submit" class="btn-approve">Aggiungi</button>@if (phraseMsg()) { <span class="row-message">{{ phraseMsg() }}</span> }</div>
-      </form>
-      <input class="adm-search" type="search" placeholder="Cerca tra le formule…" [ngModel]="pq()" (ngModelChange)="pq.set($event)" />
-      <table class="adm-table">
-        <thead><tr><th>Formula</th><th>Punti</th><th>Attiva</th></tr></thead>
-        <tbody>
-          @for (p of filteredPhrases(); track p.id) {
-            <tr [class.is-off]="!p.active">
-              <td>{{ p.text }}@if (p.variants.length > 1) { <small> · {{ p.variants.length }} forme</small> }</td>
-              <td><input type="number" min="1" max="50" [value]="p.points" (change)="updatePhrase(p, { points: +$any($event.target).value })" aria-label="Punti" /></td>
-              <td><input type="checkbox" [checked]="p.active" (change)="updatePhrase(p, { active: $any($event.target).checked })" aria-label="Attiva" /></td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    }
-  </details>
+  }
 }

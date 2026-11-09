@@ -212,6 +212,12 @@ export class MinigameService {
     return { found: said.length, source };
   }
 
+  async deletePhrase(id: number) {
+    const c = await this.db();
+    const { error } = await c.from('mg_phrases').delete().eq('id', id);
+    if (error) this.err(error);
+  }
+
   /** Trascrizione dal server (indice del sito o YouTube). */
   async transcript(videoId: string): Promise<{ source: string; segments: { start: number; text: string }[] }> {
     const r = await fetch('/api/video-transcript?id=' + encodeURIComponent(videoId));

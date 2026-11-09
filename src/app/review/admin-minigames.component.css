@@ -53,3 +53,6 @@ textarea { width: 100%; resize: vertical; }
 .btn-approve:disabled, .adm-btn:disabled { opacity: .5; cursor: default; }
 .row-message { font-size: .9rem; color: var(--ink); }
 .row-message.error { color: var(--danger); }
+.adm-sub { display: inline-flex; gap: 2px; padding: 3px; margin-bottom: 1rem; border-radius: var(--radius-md); background: var(--surface-sunken); }
+.adm-sub button { padding: .45rem 1rem; border: 0; border-radius: calc(var(--radius-md) - 2px); background: none; color: var(--muted); font: inherit; font-weight: 700; cursor: pointer; }
+.adm-sub button.is-on { background: var(--card-bg); color: var(--ink); box-shadow: var(--shadow-sm); }

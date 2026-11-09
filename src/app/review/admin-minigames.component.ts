@@ -5,6 +5,7 @@ import { AuthService } from '../auth/auth.service';
 import { MgEvent, MinigameService, Phrase, fold } from '../minigames/minigame.service';
 import { shortLabel } from '../minigames/format';
 import { youtubeId } from '../shared/catalog-video';
+import { PhraseEditorComponent } from './phrase-editor.component';
 
 interface Draft {
   name: string; date: string; time: string; youtube_channel: string; org_link: string;
@@ -23,7 +24,7 @@ const toIso = (date: string, time: string) => new Date(`${date}T${time}`).toISOS
 @Component({
   selector: 'app-admin-minigames',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, PhraseEditorComponent],
   templateUrl: './admin-minigames.component.html',
   styleUrls: ['./admin-minigames.component.css']
 })
@@ -31,6 +32,7 @@ export class AdminMinigamesComponent implements OnInit {
   readonly auth = inject(AuthService);
   private mg = inject(MinigameService);
 
+  section = signal<'eventi' | 'formule'>('eventi');
   checking = signal(true);
   admin = signal(false);
   error = signal('');
@@ -45,21 +47,11 @@ export class AdminMinigamesComponent implements OnInit {
   creating = signal(false);
   createMsg = signal('');
 
-  // formule
-  showPhrases = signal(false);
-  pq = signal('');
-  newPhrase = { text: '', points: 3, variants: '' };
-  phraseMsg = signal('');
-
   readonly sortedEvents = computed(() => {
     const rank = (e: MgEvent) => e.status === 'to_review' ? 0 : (new Date(e.starts_at).getTime() <= Date.now() && e.status === 'open') ? 1 : e.status === 'open' ? 2 : 3;
     return [...this.events()].sort((a, b) => rank(a) - rank(b) || b.starts_at.localeCompare(a.starts_at));
   });
   readonly byId = computed(() => new Map(this.phrases().map(p => [p.id, p])));
-  readonly filteredPhrases = computed(() => {
-    const q = fold(this.pq()).trim();
-    return q ? this.phrases().filter(p => fold(p.text).includes(q)) : this.phrases();
-  });
 
   async ngOnInit() { await this.init(); }
 
@@ -199,23 +191,4 @@ export class AdminMinigamesComponent implements OnInit {
     this.draft(e).busy = false;
   }
 
-  // ----- formule -----
-  async addPhrase() {
-    const p = this.newPhrase;
-    if (!p.text.trim()) return;
-    try {
-      await this.mg.savePhrase({ text: p.text, points: Math.max(1, Math.min(50, Math.round(p.points || 1))), variants: p.variants.split(',').map(v => v.trim()).filter(Boolean) });
-      this.newPhrase = { text: '', points: 3, variants: '' };
-      this.phraseMsg.set('Formula aggiunta.');
-      this.phrases.set(await this.mg.phrases(true));
-    } catch (e: any) { this.phraseMsg.set(e.message); }
-  }
-
-  async updatePhrase(p: Phrase, patch: Partial<Phrase>) {
-    try {
-      await this.mg.savePhrase({ ...p, ...patch, points: Math.max(1, Math.min(50, Math.round(Number(patch.points ?? p.points) || 1))) });
-      this.phrases.set(await this.mg.phrases(true));
-      this.phraseMsg.set('Formula aggiornata.');
-    } catch (e: any) { this.phraseMsg.set(e.message); }
-  }
 }
