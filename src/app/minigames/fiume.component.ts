@@ -1,11 +1,10 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, computed, effect, inject, signal } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { FIUME_ROUND, FIUME_WORDS, FiumeWord, SECONDS_PER_WORD } from './fiume-words';
 import { AuthService } from '../auth/auth.service';
-import { MinigameService } from './minigame.service';
+import { FiumeAnswerRecord, MinigameService } from './minigame.service';
 
-interface Answer { word: FiumeWord; given: string; ok: boolean; timedOut: boolean; }
 
 const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
   .replace(/[^a-z0-9 ]+/g, ' ').replace(/\b(il|lo|la|i|gli|le|l|un|uno|una)\b/g, ' ').replace(/\s+/g, ' ').trim();
@@ -37,42 +36,64 @@ const shuffle = <T,>(a: T[]) => { const b = [...a]; for (let i = b.length - 1; i
 export class FiumeComponent implements OnDestroy {
   readonly auth = inject(AuthService);
   private mg = inject(MinigameService);
-  /** Prima partita del turno già in classifica (se c'è). */
-  firstPlay = signal<{ score: number; total: number } | null>(null);
-  saveState = signal<'idle' | 'saving' | 'saved' | 'already' | 'error' | 'guest'>('idle');
-  saveMsg = signal('');
-  private checkedFor: string | null = null;
-
-  constructor() {
-    // Quando si conosce l'utente, controlla se ha già giocato questo turno
-    effect(() => {
-      const id = this.auth.user()?.id ?? null;
-      if (id === this.checkedFor) return;
-      this.checkedFor = id;
-      this.firstPlay.set(null);
-      if (id) this.mg.fiumeFirstPlay(FIUME_ROUND).then(p => this.firstPlay.set(p)).catch(() => {});
-    });
-  }
-
   @ViewChild('answerInput') answerInput?: ElementRef<HTMLInputElement>;
   readonly SECONDS = SECONDS_PER_WORD;
   readonly total = FIUME_WORDS.length;
 
-  phase = signal<'intro' | 'play' | 'end'>('intro');
+  /** loading: controllo se ha già giocato · intro · play · end (risultato) */
+  phase = signal<'loading' | 'intro' | 'play' | 'end'>('loading');
+  interrupted = signal(false);
   words = signal<FiumeWord[]>([]);
   index = signal(0);
-  answers = signal<Answer[]>([]);
+  answers = signal<FiumeAnswerRecord[]>([]);
   draft = '';
   left = signal(SECONDS_PER_WORD * 1000);   // millisecondi rimasti
+  error = signal('');
+  starting = signal(false);
   private deadline = 0;
   private timer: any;
+  private checkedFor: string | null | undefined = undefined;
 
   readonly current = computed(() => this.words()[this.index()]);
   readonly score = computed(() => this.answers().filter(a => a.ok).length);
   readonly secondsLeft = computed(() => Math.ceil(this.left() / 1000));
   readonly progress = computed(() => this.left() / (SECONDS_PER_WORD * 1000));
+  readonly finalTotal = signal(FIUME_WORDS.length);
 
-  start() {
+  constructor() {
+    // Appena si sa chi è l'utente: se ha già giocato questo turno mostra subito il risultato
+    effect(() => {
+      if (!this.auth.ready()) return;
+      const id = this.auth.user()?.id ?? null;
+      if (id === this.checkedFor || this.phase() === 'play') return;
+      this.checkedFor = id;
+      this.loadPlay();
+    });
+  }
+
+  private async loadPlay() {
+    this.phase.set('loading');
+    try {
+      const p = await this.mg.fiumePlay(FIUME_ROUND);
+      if (p) this.showResult(p.answers || [], p.total, !p.finished_at);
+      else this.phase.set('intro');
+    } catch (e: any) { this.error.set(e.message); this.phase.set('intro'); }
+  }
+
+  private showResult(answers: FiumeAnswerRecord[], total: number, interrupted: boolean) {
+    this.answers.set(answers);
+    this.finalTotal.set(total);
+    this.interrupted.set(interrupted);
+    this.phase.set('end');
+  }
+
+  async start() {
+    this.error.set(''); this.starting.set(true);
+    try {
+      const r = await this.mg.fiumeStart(FIUME_ROUND, this.total);
+      if (r === 'already') { await this.loadPlay(); return; }
+    } catch (e: any) { this.error.set(e.message); return; }
+    finally { this.starting.set(false); }
     this.words.set(shuffle(FIUME_WORDS));
     this.answers.set([]);
     this.index.set(0);
@@ -98,22 +119,15 @@ export class FiumeComponent implements OnDestroy {
     if (this.phase() !== 'play') return;
     clearInterval(this.timer);
     const w = this.current();
-    this.answers.update(a => [...a, { word: w, given: this.draft.trim(), ok: isCorrect(this.draft, w), timedOut }]);
+    this.answers.update(a => [...a, { en: w.en, it: w.it, given: this.draft.trim(), ok: isCorrect(this.draft, w), timedOut }]);
     if (this.index() + 1 < this.words().length) { this.index.update(i => i + 1); this.nextWord(); }
-    else { this.phase.set('end'); this.saveScore(); }
+    else this.finish();
   }
 
-  private async saveScore() {
-    this.saveMsg.set('');
-    if (!this.auth.user()) { this.saveState.set('guest'); return; }
-    if (this.firstPlay()) { this.saveState.set('already'); return; }
-    this.saveState.set('saving');
-    try {
-      const r = await this.mg.fiumeSave(FIUME_ROUND, this.score(), this.total);
-      this.saveState.set(r);
-      if (r === 'saved') this.firstPlay.set({ score: this.score(), total: this.total });
-      else this.firstPlay.set(await this.mg.fiumeFirstPlay(FIUME_ROUND));
-    } catch (e: any) { this.saveState.set('error'); this.saveMsg.set(e.message); }
+  private async finish() {
+    this.showResult(this.answers(), this.total, false);
+    try { await this.mg.fiumeFinish(FIUME_ROUND, this.score(), this.answers()); }
+    catch (e: any) { this.error.set('Punteggio non registrato: ' + e.message); }
   }
 
   ngOnDestroy() { clearInterval(this.timer); }

@@ -23,6 +23,9 @@ export interface LeaderRow { user_id: string; username: string; points: number; 
 
 export const MAX_PICKS = 5;
 
+export interface FiumeAnswerRecord { en: string; it: string[]; given: string; ok: boolean; timedOut: boolean; }
+export interface FiumePlay { score: number; total: number; answers: FiumeAnswerRecord[]; finished_at: string | null; }
+
 /** Testo «piegato» per i confronti: minuscolo, senza accenti né punteggiatura. */
 export function fold(s: string): string {
   return ' ' + s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[’`]/g, "'")
@@ -148,25 +151,34 @@ export class MinigameService {
   }
 
   // ---------- Riprendiamoci Fiume! ----------
-  /** Prima partita già registrata per questo turno (null se non ancora giocato o non collegato). */
-  async fiumeFirstPlay(round: string): Promise<{ score: number; total: number } | null> {
+  /** Partita di questo turno (null se non ancora iniziata o se non si è collegati). */
+  async fiumePlay(round: string): Promise<FiumePlay | null> {
     const uid = this.auth.user()?.id;
     if (!uid) return null;
     const c = await this.db();
-    const { data, error } = await c.from('mg_fiume_plays').select('score,total').eq('user_id', uid).eq('round', round).maybeSingle();
+    const { data, error } = await c.from('mg_fiume_plays').select('score,total,answers,finished_at').eq('user_id', uid).eq('round', round).maybeSingle();
     if (error) this.err(error);
-    return data as any;
+    return data as FiumePlay | null;
   }
 
-  /** Registra la partita in classifica se è la prima del turno. Restituisce 'saved' o 'already'. */
-  async fiumeSave(round: string, score: number, total: number): Promise<'saved' | 'already'> {
+  /** Registra l'inizio della partita (0 punti). 'already' se la partita di questo turno esiste già. */
+  async fiumeStart(round: string, total: number): Promise<'started' | 'already'> {
     const uid = this.auth.user()?.id;
-    if (!uid) throw new Error('Accedi per entrare in classifica.');
-    if (!this.auth.username()) throw new Error('Scegli uno username per entrare in classifica.');
+    if (!uid) throw new Error('Accedi per giocare.');
+    if (!this.auth.username()) throw new Error('Scegli uno username per giocare.');
     const c = await this.db();
-    const { error } = await c.from('mg_fiume_plays').insert({ user_id: uid, round, score, total });
+    const { error } = await c.from('mg_fiume_plays').insert({ user_id: uid, round, score: 0, total });
     if (error) { if (error.code === '23505') return 'already'; this.err(error); }
-    return 'saved';
+    return 'started';
+  }
+
+  /** Chiude la partita con punti e risposte (si può fare una volta sola). */
+  async fiumeFinish(round: string, score: number, answers: FiumeAnswerRecord[]): Promise<void> {
+    const uid = this.auth.user()?.id;
+    const c = await this.db();
+    const { error } = await c.from('mg_fiume_plays').update({ score, answers, finished_at: new Date().toISOString() })
+      .eq('user_id', uid).eq('round', round).is('finished_at', null);
+    if (error) this.err(error);
   }
 
   // ---------- amministrazione ----------
