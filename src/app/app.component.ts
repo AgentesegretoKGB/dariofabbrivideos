@@ -33,6 +33,7 @@ export class AppComponent {
   constructor(router: Router, public auth: AuthService) {
     router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe(e => {
       const path = (e as NavigationEnd).urlAfterRedirects.split(/[?#]/)[0].replace(/^\//, '').split('/')[0];
+      try { sessionStorage.removeItem('reloaded-for'); } catch { }
       this.onAccount = path === 'account';
       this.pageTitle = TITLES[path] ?? 'Catalogo';
     });
