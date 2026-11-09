@@ -9,6 +9,7 @@ const TITLES: { [path: string]: string } = {
   'materials': 'Materiali utili',
   'revisione': 'Revisione',
   'trascrizioni': 'Cerca nelle trascrizioni',
+  'mappe': 'Mappe',
 };
 
 @Component({
