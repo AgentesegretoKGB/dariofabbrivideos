@@ -13,3 +13,13 @@ export const FIUME_WORDS: FiumeWord[] = [
 ];
 
 export const SECONDS_PER_WORD = 10;
+
+/**
+ * Identificativo del «turno»: cambia da solo quando cambia l'elenco delle parole.
+ * In classifica conta solo la prima partita di ogni turno.
+ */
+export const FIUME_ROUND = 'r' + (() => {
+  let h = 5381;
+  for (const c of JSON.stringify(FIUME_WORDS)) h = ((h * 33) ^ c.charCodeAt(0)) >>> 0;
+  return h.toString(36);
+})();

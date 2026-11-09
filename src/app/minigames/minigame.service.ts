@@ -19,7 +19,7 @@ export interface MgEvent {
 }
 
 export interface Score { user_id: string; username: string; phrase_ids: number[]; points: number; hits: number; }
-export interface LeaderRow { user_id: string; username: string; points: number; events: number; hits: number; }
+export interface LeaderRow { user_id: string; username: string; points: number; events: number; hits: number; polymarket_points?: number; fiume_points?: number; fiume_games?: number; }
 
 export const MAX_PICKS = 5;
 
@@ -145,6 +145,28 @@ export class MinigameService {
     const { data, error } = await c.from('mg_leaderboard').select('*').order('points', { ascending: false }).limit(limit);
     if (error) this.err(error);
     return data as LeaderRow[];
+  }
+
+  // ---------- Riprendiamoci Fiume! ----------
+  /** Prima partita già registrata per questo turno (null se non ancora giocato o non collegato). */
+  async fiumeFirstPlay(round: string): Promise<{ score: number; total: number } | null> {
+    const uid = this.auth.user()?.id;
+    if (!uid) return null;
+    const c = await this.db();
+    const { data, error } = await c.from('mg_fiume_plays').select('score,total').eq('user_id', uid).eq('round', round).maybeSingle();
+    if (error) this.err(error);
+    return data as any;
+  }
+
+  /** Registra la partita in classifica se è la prima del turno. Restituisce 'saved' o 'already'. */
+  async fiumeSave(round: string, score: number, total: number): Promise<'saved' | 'already'> {
+    const uid = this.auth.user()?.id;
+    if (!uid) throw new Error('Accedi per entrare in classifica.');
+    if (!this.auth.username()) throw new Error('Scegli uno username per entrare in classifica.');
+    const c = await this.db();
+    const { error } = await c.from('mg_fiume_plays').insert({ user_id: uid, round, score, total });
+    if (error) { if (error.code === '23505') return 'already'; this.err(error); }
+    return 'saved';
   }
 
   // ---------- amministrazione ----------

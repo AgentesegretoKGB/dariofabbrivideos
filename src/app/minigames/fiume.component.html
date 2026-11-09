@@ -6,6 +6,13 @@
       <h1 class="fi__title">Riprendiamoci Fiume!</h1>
       <p class="fi__lead">Ti compare una parola in inglese: scrivi la traduzione in italiano entro {{ SECONDS }} secondi. Un punto per ogni risposta giusta.</p>
       <p class="fi__meta">{{ total }} parole · {{ SECONDS }} secondi ciascuna</p>
+      @if (firstPlay(); as fp) {
+        <p class="fi__notice">Hai già giocato questo turno: in classifica conta la tua prima partita (<strong>{{ fp.score }}/{{ fp.total }}</strong>). Puoi rigiocare per allenarti.</p>
+      } @else if (!auth.user()) {
+        <p class="fi__notice"><a routerLink="/account">Accedi</a> prima di iniziare per entrare in classifica: conta solo la prima partita.</p>
+      } @else {
+        <p class="fi__notice">La prima partita entra in classifica: un punto per ogni risposta giusta.</p>
+      }
       <button type="button" class="fc-btn fc-btn--primary fi__start" (click)="start()">Inizia</button>
     }
     @case ('play') {
@@ -28,6 +35,15 @@
     @case ('end') {
       <h1 class="fi__title">Fiume è {{ score() === total ? 'riconquistata!' : score() >= total / 2 ? 'quasi nostra' : 'ancora da riprendere' }}</h1>
       <p class="fi__result"><strong>{{ score() }}</strong> / {{ total }} punti</p>
+      <p class="fi__notice" role="status">
+        @switch (saveState()) {
+          @case ('saving') { Registro il punteggio… }
+          @case ('saved') { +{{ score() }} punti aggiunti alla <a routerLink="/minigiochi">classifica</a>. }
+          @case ('already') { Partita di allenamento: in <a routerLink="/minigiochi">classifica</a> resta la tua prima partita ({{ firstPlay()?.score }}/{{ firstPlay()?.total }}). }
+          @case ('guest') { <a routerLink="/account">Accedi</a> per entrare in classifica con la prossima partita. }
+          @case ('error') { {{ saveMsg() }} }
+        }
+      </p>
       <ul class="fi__list">
         @for (a of answers(); track $index) {
           <li class="fi__item" [class.is-ok]="a.ok" [class.is-ko]="!a.ok">

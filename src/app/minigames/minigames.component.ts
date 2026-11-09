@@ -24,7 +24,7 @@ import { LeaderRow, MinigameService } from './minigame.service';
             <li class="app-board__row" [class.is-me]="r.user_id === auth.user()?.id">
               <span class="app-board__pos">{{ i + 1 }}</span>
               <span class="app-board__name">&#64;{{ r.username }}</span>
-              <span class="app-board__meta">{{ r.events }} {{ r.events === 1 ? 'evento' : 'eventi' }} · {{ r.hits }} indovinate</span>
+              <span class="app-board__meta">{{ detail(r) }}</span>
               <span class="app-board__pts">{{ r.points }} pt</span>
             </li>
           }
@@ -107,6 +107,13 @@ export class MinigamesComponent implements OnInit {
   rows = signal<LeaderRow[]>([]);
   loaded = signal(false);
   error = signal('');
+
+  detail(r: LeaderRow): string {
+    const parts: string[] = [];
+    if (r.polymarket_points || r.events) parts.push(`Polymarket ${r.polymarket_points ?? r.points}`);
+    if (r.fiume_points || r.fiume_games) parts.push(`Fiume ${r.fiume_points}`);
+    return parts.join(' · ');
+  }
 
   async ngOnInit() {
     try { this.rows.set(await this.mg.leaderboard(50)); }

@@ -1,7 +1,9 @@
-import { Component, ElementRef, OnDestroy, ViewChild, computed, signal } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { FIUME_WORDS, FiumeWord, SECONDS_PER_WORD } from './fiume-words';
+import { FIUME_ROUND, FIUME_WORDS, FiumeWord, SECONDS_PER_WORD } from './fiume-words';
+import { AuthService } from '../auth/auth.service';
+import { MinigameService } from './minigame.service';
 
 interface Answer { word: FiumeWord; given: string; ok: boolean; timedOut: boolean; }
 
@@ -33,6 +35,25 @@ const shuffle = <T,>(a: T[]) => { const b = [...a]; for (let i = b.length - 1; i
   styleUrls: ['./fiume.component.css']
 })
 export class FiumeComponent implements OnDestroy {
+  readonly auth = inject(AuthService);
+  private mg = inject(MinigameService);
+  /** Prima partita del turno già in classifica (se c'è). */
+  firstPlay = signal<{ score: number; total: number } | null>(null);
+  saveState = signal<'idle' | 'saving' | 'saved' | 'already' | 'error' | 'guest'>('idle');
+  saveMsg = signal('');
+  private checkedFor: string | null = null;
+
+  constructor() {
+    // Quando si conosce l'utente, controlla se ha già giocato questo turno
+    effect(() => {
+      const id = this.auth.user()?.id ?? null;
+      if (id === this.checkedFor) return;
+      this.checkedFor = id;
+      this.firstPlay.set(null);
+      if (id) this.mg.fiumeFirstPlay(FIUME_ROUND).then(p => this.firstPlay.set(p)).catch(() => {});
+    });
+  }
+
   @ViewChild('answerInput') answerInput?: ElementRef<HTMLInputElement>;
   readonly SECONDS = SECONDS_PER_WORD;
   readonly total = FIUME_WORDS.length;
@@ -79,7 +100,20 @@ export class FiumeComponent implements OnDestroy {
     const w = this.current();
     this.answers.update(a => [...a, { word: w, given: this.draft.trim(), ok: isCorrect(this.draft, w), timedOut }]);
     if (this.index() + 1 < this.words().length) { this.index.update(i => i + 1); this.nextWord(); }
-    else this.phase.set('end');
+    else { this.phase.set('end'); this.saveScore(); }
+  }
+
+  private async saveScore() {
+    this.saveMsg.set('');
+    if (!this.auth.user()) { this.saveState.set('guest'); return; }
+    if (this.firstPlay()) { this.saveState.set('already'); return; }
+    this.saveState.set('saving');
+    try {
+      const r = await this.mg.fiumeSave(FIUME_ROUND, this.score(), this.total);
+      this.saveState.set(r);
+      if (r === 'saved') this.firstPlay.set({ score: this.score(), total: this.total });
+      else this.firstPlay.set(await this.mg.fiumeFirstPlay(FIUME_ROUND));
+    } catch (e: any) { this.saveState.set('error'); this.saveMsg.set(e.message); }
   }
 
   ngOnDestroy() { clearInterval(this.timer); }
