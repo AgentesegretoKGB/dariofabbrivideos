@@ -51,7 +51,7 @@ import { LeaderRow, MinigameService } from './minigame.service';
           </div>
           <div class="app-game__info">
             <h3 class="app-game__title">Polymarket</h3>
-            <p class="app-game__desc">Prevedi le formule che Fabbri dirà al prossimo evento: fino a 5 scelte, più sono rare più punti valgono.</p>
+            <p class="app-game__desc">Profetizza le parole del vate!</p>
           </div>
         </a>
       </div>
