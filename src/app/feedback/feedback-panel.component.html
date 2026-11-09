@@ -1,0 +1,105 @@
+@if (!fb.available()) {
+  <p class="app-fb-note">Valutazioni e commenti non sono ancora attivi.</p>
+} @else {
+  <section class="app-fb-rating" aria-label="Valutazione">
+    <div class="app-fb-avg">
+      <span class="app-fb-avg__num">{{ stats().avg != null ? avgLabel() : '–' }}</span>
+      <div>
+        <app-stars-summary [type]="type()" [itemId]="itemId()" [showComments]="false" [showAvg]="false" />
+      </div>
+    </div>
+
+    <div class="app-fb-mine">
+      <p class="app-fb-label">La tua valutazione</p>
+      @if (auth.user()) {
+        <div class="app-fb-stars" role="radiogroup" aria-label="La tua valutazione" (mouseleave)="hover.set(0)">
+          @for (s of [1,2,3,4,5]; track s) {
+            <button type="button" role="radio" class="app-fb-star" [class.is-on]="s <= (hover() || mine())"
+                    [attr.aria-checked]="mine() === s" [attr.aria-label]="s + (s === 1 ? ' stella' : ' stelle') + ': ' + starLabels[s-1]"
+                    [disabled]="rating()" (mouseenter)="hover.set(s)" (focus)="hover.set(s)" (blur)="hover.set(0)" (click)="rate(s)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </button>
+          }
+          <span class="app-fb-hint">{{ (hover() || mine()) ? starLabels[(hover() || mine()) - 1] : '' }}</span>
+        </div>
+        @if (mine()) { <button type="button" class="app-fb-link" (click)="rate(0)">Togli il voto</button> }
+        @if (rateMsg()) { <p class="app-fb-msg" role="status">{{ rateMsg() }}</p> }
+      } @else {
+        <p class="app-fb-note"><a routerLink="/account">Accedi</a> per votare.</p>
+      }
+    </div>
+  </section>
+
+  <section class="app-fb-comments" aria-label="Commenti">
+    <h3 class="app-fb-title">Commenti @if (stats().comments) { <span>({{ stats().comments }})</span> }</h3>
+
+    @if (!auth.user()) {
+      <p class="app-fb-note"><a routerLink="/account">Accedi</a> per lasciare un commento.</p>
+    } @else if (auth.profileLoaded() && !auth.username()) {
+      <p class="app-fb-note">Per commentare <a routerLink="/account">scegli uno username</a>.</p>
+    } @else {
+      <form class="app-fb-form" (submit)="$event.preventDefault(); post()">
+        <label class="app-fb-sr" [attr.for]="'c-' + itemId()">Scrivi un commento</label>
+        <textarea [id]="'c-' + itemId()" name="body" rows="3" maxlength="2000" placeholder="Scrivi un commento…" [(ngModel)]="draft"></textarea>
+        <div class="app-fb-form__row">
+          @if (auth.username()) { <span class="app-fb-as">Commenti come &#64;{{ auth.username() }}</span> }
+          <button type="submit" class="fc-btn fc-btn--primary" [disabled]="posting() || !draft.trim()">{{ posting() ? 'Pubblico…' : 'Pubblica' }}</button>
+        </div>
+      </form>
+    }
+    @if (commentMsg()) { <p class="app-fb-msg app-fb-msg--error" role="alert">{{ commentMsg() }}</p> }
+
+    @if (loadingComments()) {
+      <p class="app-fb-note">Carico i commenti…</p>
+    } @else if (!comments().length) {
+      <p class="app-fb-note">Ancora nessun commento.</p>
+    } @else {
+      <ul class="app-fb-list">
+        @for (th of threads(); track th.c.id) {
+          <li class="app-fb-item">
+            <ng-container *ngTemplateOutlet="one; context: { $implicit: th.c, top: th.c }" />
+            @if (th.replies.length || replyTo() === th.c.id) {
+              <ul class="app-fb-replies">
+                @for (r of th.replies; track r.id) {
+                  <li class="app-fb-reply"><ng-container *ngTemplateOutlet="one; context: { $implicit: r, top: th.c }" /></li>
+                }
+                @if (replyTo() === th.c.id) {
+                  <li class="app-fb-reply">
+                    <form class="app-fb-form app-fb-form--reply" (submit)="$event.preventDefault(); postReply(th.c)">
+                      <label class="app-fb-sr" [attr.for]="'r-' + th.c.id">Rispondi a &#64;{{ th.c.username }}</label>
+                      <textarea [id]="'r-' + th.c.id" name="reply" rows="2" maxlength="2000" [placeholder]="'Rispondi a @' + (th.c.username || 'utente') + '…'" [(ngModel)]="replyDraft"></textarea>
+                      <div class="app-fb-form__row">
+                        <button type="button" class="app-fb-link" (click)="cancelReply()">Annulla</button>
+                        <button type="submit" class="fc-btn fc-btn--primary" [disabled]="replying() || !replyDraft.trim()">{{ replying() ? 'Invio…' : 'Rispondi' }}</button>
+                      </div>
+                      @if (replyMsg()) { <p class="app-fb-msg app-fb-msg--error" role="alert">{{ replyMsg() }}</p> }
+                    </form>
+                  </li>
+                }
+              </ul>
+            }
+          </li>
+        }
+      </ul>
+
+      <ng-template #one let-c let-top="top">
+        <p class="app-fb-item__head"><strong>&#64;{{ c.username || 'utente' }}</strong> <span>· {{ date(c.created_at) }}</span></p>
+        <p class="app-fb-item__body">{{ c.body }}</p>
+        <div class="app-fb-actions">
+          @if (fb.extrasAvailable()) {
+            <button type="button" class="app-fb-vote" [class.is-on]="c.myVote === 1" [attr.aria-pressed]="c.myVote === 1" (click)="vote(c, 1)" [attr.aria-label]="'Mi piace, ' + c.likes">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10zM7 10l4-7c1.4 0 2.3 1.1 2 2.5L12.3 9H18a2 2 0 012 2.3l-1.2 7A2 2 0 0116.8 20H7" stroke-width="1.7" stroke-linejoin="round"/></svg>
+              <span>{{ c.likes }}</span>
+            </button>
+            <button type="button" class="app-fb-vote" [class.is-on]="c.myVote === -1" [attr.aria-pressed]="c.myVote === -1" (click)="vote(c, -1)" [attr.aria-label]="'Non mi piace, ' + c.dislikes">
+              <svg viewBox="0 0 24 24" aria-hidden="true" style="transform: rotate(180deg)"><path d="M7 10v10H4V10zM7 10l4-7c1.4 0 2.3 1.1 2 2.5L12.3 9H18a2 2 0 012 2.3l-1.2 7A2 2 0 0116.8 20H7" stroke-width="1.7" stroke-linejoin="round"/></svg>
+              <span>{{ c.dislikes }}</span>
+            </button>
+            <button type="button" class="app-fb-link app-fb-replybtn" (click)="startReply(top, c)">Rispondi</button>
+          }
+          @if (c.user_id === auth.user()?.id) { <button type="button" class="app-fb-link" (click)="remove(c)">Cancella</button> }
+        </div>
+      </ng-template>
+    }
+  </section>
+}

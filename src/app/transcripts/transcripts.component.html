@@ -1,61 +1,87 @@
-<div class="transcripts-container">
+<section class="fc-hero fc-hero--page">
+  <h1 class="app-tr-hidden">Cerca nelle trascrizioni</h1>
+  <p>Cerca una frase per trovare in quali video compare e in che punto.</p>
+</section>
 
-  @if (!unlocked) {
-    <div class="lock-screen">
-      <h2>Ricerca trascrizioni</h2>
-      <p>Pagina riservata. Inserisci la password.</p>
-      <input
-        type="password"
-        [(ngModel)]="passwordInput"
-        (keyup.enter)="tryUnlock()"
-        placeholder="Password"
-        aria-label="Password"
-      />
-      <button (click)="tryUnlock()">Entra</button>
-      @if (passwordError) {
-        <p class="error-text">Password errata.</p>
-      }
-    </div>
-  }
-
-  @if (unlocked) {
-    <h2>Ricerca nelle trascrizioni</h2>
-    <p class="hint">Cerca una frase per trovare in quali video compare e a che minuto.</p>
-
-    <div class="search-bar">
-      <input
-        type="text"
-        [(ngModel)]="query"
-        (keyup.enter)="search()"
-        placeholder="Scrivi una frase..."
-        aria-label="Cerca nelle trascrizioni"
-      />
-      <button (click)="search()" [disabled]="searching">
-        {{ searching ? 'Cerco...' : 'Cerca' }}
+<form class="app-tr-search" role="search" (submit)="$event.preventDefault(); search()">
+  <div class="fc-search">
+    <svg class="fc-search__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input type="search" name="q" placeholder="Scrivi una frase…" aria-label="Cerca nelle trascrizioni" [(ngModel)]="query" />
+    @if (query) {
+      <button class="fc-search__clear" type="button" aria-label="Svuota la ricerca" (click)="clearQuery()">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
       </button>
+    }
+  </div>
+  <button type="submit" class="fc-btn fc-btn--primary" [disabled]="searching">{{ searching ? 'Cerco…' : 'Cerca' }}</button>
+</form>
+
+@if (searchError) {
+  <p class="app-tr-msg app-tr-msg--error" role="alert">{{ searchError }}</p>
+}
+@if (infoMessage) {
+  <p class="app-tr-msg">{{ infoMessage }}</p>
+}
+
+@if (hasSearchedOnce && !searching && !searchError && !infoMessage) {
+  @if (results.length) {
+    <p class="fc-active__count app-tr-count" aria-live="polite">
+      «{{ lastQuery }}» compare {{ total === 1 ? 'una volta' : total + ' volte' }} in {{ results.length }} {{ results.length === 1 ? 'video' : 'video' }}@if (truncated) {<span> — mostro i video in cui compare di più</span>}
+    </p>
+    <hr class="fc-separator" />
+  } @else {
+    <div class="fc-empty">
+      <h3>Nessun risultato</h3>
+      <p>La frase «{{ lastQuery }}» non compare in nessuna trascrizione. Prova con meno parole.</p>
     </div>
-
-    @if (searchError) {
-      <p class="error-text">{{ searchError }}</p>
-    }
-
-    @if (infoMessage) {
-      <p class="info-text">{{ infoMessage }}</p>
-    }
-
-    @if (hasSearchedOnce && !searching && results.length === 0 && !searchError && !infoMessage) {
-      <p>Nessun risultato per questa frase.</p>
-    }
-
-    @for (r of results; track r.videoId + '-' + r.timestampSeconds) {
-      <div class="result-card">
-        <div class="result-title">{{ r.title }}</div>
-        <div class="result-snippet">{{ r.snippet }}</div>
-        <a class="result-link" [href]="watchUrl(r)" target="_blank" rel="noopener noreferrer">
-          ▶ Vai al minuto {{ formatTimestamp(r.timestampSeconds) }}
-        </a>
-      </div>
-    }
   }
+}
 
+<div class="app-tr-list">
+  @for (r of results; track r.key) {
+    <article class="fc-video app-tr-card">
+      <div class="fc-video__preview" [id]="'tr-player-' + r.key">
+        @if (r.video?.pending) {
+          <span class="fc-badge fc-badge--pending" title="Aggiunto automaticamente, in attesa di revisione">Catalogazione automatica, non revisionata</span>
+        }
+        @if (isPlaying(r)) {
+          <iframe class="app-player" [src]="embedUrl(r) | safeUrl" allowfullscreen allow="autoplay; encrypted-media" [title]="r.title"></iframe>
+          <button type="button" class="app-player__close" (click)="stop()" aria-label="Chiudi il video">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+          </button>
+        } @else {
+          <button type="button" class="app-poster" (click)="play(r, r.hits[0].start)" [attr.aria-label]="'Riproduci ' + r.title + ' dal minuto ' + r.hits[0].time">
+            @if (r.poster) { <img [src]="r.poster" alt="" loading="lazy" decoding="async" /> }
+            @else { <span class="fc-video__poster"></span> }
+            <span class="fc-video__play" aria-hidden="true">▶</span>
+          </button>
+        }
+      </div>
+
+      <div class="fc-video__info">
+        <h3 class="fc-video__title">{{ r.title }}</h3>
+        @if (r.channel) { <p class="fc-video__channel">{{ r.channel }}</p> }
+        @if (r.video?.category || r.meta) {
+          <div class="fc-video__meta">@if (r.video?.category) {<span>{{ categoryLabel[r.video!.category] }}</span>@if (r.meta) {<span> · </span>}}<span>{{ r.meta }}</span></div>
+        }
+        @if (r.video?.topics?.length) {
+          <div class="fc-tags">
+            @for (t of r.video!.topics; track t) { <span class="fc-tag">{{ t }}</span> }
+          </div>
+        }
+        <p class="app-tr-matches">{{ r.matches === 1 ? 'Una occorrenza' : r.matches + ' occorrenze' }}@if (r.hits.length < r.matches) {<span> · ne mostro {{ r.hits.length }}</span>}</p>
+      </div>
+
+      <ol class="app-tr-hits">
+        @for (h of r.hits; track h.start + '-' + $index) {
+          <li class="app-tr-hit" [class.is-current]="isCurrent(r, h)">
+            <button type="button" class="app-tr-time" (click)="play(r, h.start)" [attr.aria-label]="'Riproduci dal minuto ' + h.time">
+              <span aria-hidden="true">▶</span> {{ h.time }}
+            </button>
+            <p class="app-tr-sentence">@if (h.cutStart) {…}@for (p of h.pieces; track $index) {@if (p.bold) {<strong>{{ p.text }}</strong>} @else {<span>{{ p.text }}</span>}}@if (h.cutEnd) {…}</p>
+          </li>
+        }
+      </ol>
+    </article>
+  }
 </div>

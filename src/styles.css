@@ -298,6 +298,7 @@ button, input, select, textarea { font: inherit; }
 .fc-video__info { padding: var(--space-3) var(--space-4) var(--space-4); display: flex; flex-direction: column; gap: var(--space-1); }
 .fc-video__title { margin: 0; font-size: 17px; line-height: 22px; font-weight: 700; color: var(--ink);
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.fc-video__channel { margin: 0; font-size: 14px; line-height: 18px; font-style: italic; color: var(--muted); }
 .fc-video__meta { font-size: 14px; line-height: 18px; color: var(--muted); }
 .fc-video__info .fc-tags { margin-top: var(--space-2); }
 
@@ -352,8 +353,8 @@ button, input, select, textarea { font: inherit; }
    sulla pagina): un container sul wrapper intrappolerebbe gli overlay position:fixed.
    Punti di rottura: bp-sm 640px (telefono), bp-lg 1100px (tablet / desktop stretto). */
 
-.fc-page { min-height: 100%; background: var(--bg); color: var(--ink); font-family: var(--font-serif); }
-.fc-page__main { max-width: var(--max-width); margin: 0 auto; padding: var(--space-6); }
+.fc-page { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-serif); }
+.fc-page__main { flex: 1 0 auto; width: 100%; box-sizing: border-box; max-width: var(--max-width); margin: 0 auto; padding: var(--space-6); }
 
 /* Barra superiore: tiene l'hamburger fuori dal contenuto (prima galleggiava sopra titoli e card). */
 .fc-topbar {

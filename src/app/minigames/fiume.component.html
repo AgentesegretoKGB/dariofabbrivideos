@@ -1,0 +1,68 @@
+<a class="app-back" routerLink="/minigiochi">← Minigiochi</a>
+
+<section class="fi">
+  @switch (phase()) {
+    @case ('intro') {
+      <h1 class="fi__title">Riprendiamoci Fiume!</h1>
+      <p class="fi__lead">Ti compare una parola in inglese: scrivi la traduzione in italiano entro {{ SECONDS }} secondi. Un punto per ogni risposta giusta.</p>
+      <p class="fi__meta">{{ total }} parole · {{ SECONDS }} secondi ciascuna</p>
+      @if (firstPlay(); as fp) {
+        <p class="fi__notice">Hai già giocato questo turno: in classifica conta la tua prima partita (<strong>{{ fp.score }}/{{ fp.total }}</strong>). Puoi rigiocare per allenarti.</p>
+      } @else if (!auth.user()) {
+        <p class="fi__notice"><a routerLink="/account">Accedi</a> prima di iniziare per entrare in classifica: conta solo la prima partita.</p>
+      } @else {
+        <p class="fi__notice">La prima partita entra in classifica: un punto per ogni risposta giusta.</p>
+      }
+      <button type="button" class="fc-btn fc-btn--primary fi__start" (click)="start()">Inizia</button>
+    }
+    @case ('play') {
+      <div class="fi__top">
+        <span>Parola {{ index() + 1 }} di {{ words().length }}</span>
+        <span class="fi__score">{{ score() }} pt</span>
+      </div>
+      <div class="fi__timer" role="progressbar" aria-label="Tempo rimasto" [attr.aria-valuenow]="secondsLeft()" aria-valuemin="0" [attr.aria-valuemax]="SECONDS">
+        <div class="fi__bar" [class.is-low]="secondsLeft() <= 3" [style.transform]="'scaleX(' + progress() + ')'"></div>
+      </div>
+      <p class="fi__secs" [class.is-low]="secondsLeft() <= 3" aria-live="off">{{ secondsLeft() }}</p>
+      <p class="fi__word" lang="en">{{ current().en }}</p>
+      <form class="fi__form" (submit)="$event.preventDefault(); submit()">
+        <label class="fi__sr" for="fi-answer">Traduzione in italiano</label>
+        <input #answerInput id="fi-answer" name="a" autocomplete="off" autocapitalize="none" spellcheck="false"
+               placeholder="Scrivi in italiano…" [(ngModel)]="draft" />
+        <button type="submit" class="fc-btn fc-btn--primary">Conferma</button>
+      </form>
+    }
+    @case ('end') {
+      <h1 class="fi__title">Fiume è {{ score() === total ? 'riconquistata!' : score() >= total / 2 ? 'quasi nostra' : 'ancora da riprendere' }}</h1>
+      <p class="fi__result"><strong>{{ score() }}</strong> / {{ total }} punti</p>
+      <p class="fi__notice" role="status">
+        @switch (saveState()) {
+          @case ('saving') { Registro il punteggio… }
+          @case ('saved') { +{{ score() }} punti aggiunti alla <a routerLink="/minigiochi">classifica</a>. }
+          @case ('already') { Partita di allenamento: in <a routerLink="/minigiochi">classifica</a> resta la tua prima partita ({{ firstPlay()?.score }}/{{ firstPlay()?.total }}). }
+          @case ('guest') { <a routerLink="/account">Accedi</a> per entrare in classifica con la prossima partita. }
+          @case ('error') { {{ saveMsg() }} }
+        }
+      </p>
+      <ul class="fi__list">
+        @for (a of answers(); track $index) {
+          <li class="fi__item" [class.is-ok]="a.ok" [class.is-ko]="!a.ok">
+            <span class="fi__mark" aria-hidden="true">{{ a.ok ? '✓' : '✗' }}</span>
+            <div class="fi__item-body">
+              <p class="fi__en" lang="en">{{ a.word.en }}</p>
+              <p class="fi__given">
+                @if (a.given) { «{{ a.given }}» } @else { <em>{{ a.timedOut ? 'Tempo scaduto' : 'Nessuna risposta' }}</em> }
+                <span class="fi__sr">{{ a.ok ? ': giusta' : ': sbagliata' }}</span>
+              </p>
+              @if (!a.ok) { <p class="fi__fix">Correzione: <strong>{{ a.word.it.join(' / ') }}</strong></p> }
+            </div>
+          </li>
+        }
+      </ul>
+      <div class="fi__actions">
+        <button type="button" class="fc-btn fc-btn--primary" (click)="start()">Rigioca</button>
+        <a class="fc-btn fc-btn--secondary" routerLink="/minigiochi">Torna ai minigiochi</a>
+      </div>
+    }
+  }
+</section>

@@ -1,0 +1,30 @@
+<h1 class="app-maps-hidden">Mappe</h1>
+
+<a class="app-create" [href]="editorUrl" target="_blank" rel="noopener">
+  <div class="app-create__text">
+    <h2 class="app-create__title">Crea la tua mappa</h2>
+    <p class="app-create__desc">Colora Stati e regioni, traccia rotte, aggiungi simboli e testi, poi scarica la carta come immagine o pubblicala qui.</p>
+    <span class="fc-btn fc-btn--primary app-create__btn">Apri l'editor</span>
+  </div>
+  <div class="app-create__preview">
+    <img src="/atlante/anteprime/editor.jpg" alt="Anteprima dell'editor di mappe" decoding="async" />
+  </div>
+</a>
+
+<section aria-labelledby="mappe-create">
+  <h2 class="fc-section-title" id="mappe-create">Mappe già create</h2>
+  <div class="fc-grid">
+    @for (m of maps(); track m.id) {
+      <a class="fc-video app-map" [routerLink]="['/mappe', m.id]">
+        <div class="app-map__preview">
+          <img [src]="m.preview" alt="" loading="lazy" decoding="async" />
+        </div>
+        <div class="app-map__info">
+          <h3 class="app-map__title">{{ m.title }}</h3>
+          @if (m.author) { <p class="app-map__author">di &#64;{{ m.author }}</p> }
+          <app-stars-summary type="map" [itemId]="m.id" />
+        </div>
+      </a>
+    }
+  </div>
+</section>

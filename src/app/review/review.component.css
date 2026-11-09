@@ -144,3 +144,16 @@
 .row-message.error {
   color: var(--danger);
 }
+
+/* Schede Video / Minigiochi */
+.review-tabs { display: flex; gap: .25rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-control); }
+.review-tabs button { padding: .6rem 1rem; border: 0; border-bottom: 3px solid transparent; background: none; color: var(--muted); font: inherit; font-weight: 700; cursor: pointer; }
+.review-tabs button.is-on { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* Collegamento al minigioco */
+.mg-link { padding: .75rem; margin-top: .25rem; background: var(--surface-sunken); border-radius: var(--radius-md); }
+.mg-row { display: flex; gap: .5rem; flex-wrap: wrap; }
+.mg-row select { flex: 1; min-width: 200px; padding: .5rem; border: 1px solid var(--border-control); border-radius: var(--radius-md); background: var(--card-bg); color: var(--ink); font: inherit; }
+.btn-link-mg { padding: .5rem 1rem; border: 1px solid var(--ink); border-radius: var(--radius-md); background: var(--card-bg); color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
+.btn-link-mg:disabled { opacity: .5; cursor: default; }
+.mg-note { font-size: .85rem; color: var(--muted); }

@@ -19,6 +19,17 @@
   }
 
   @if (unlocked) {
+    <div class="review-tabs" role="tablist">
+      <button type="button" role="tab" [attr.aria-selected]="tab === 'video'" [class.is-on]="tab === 'video'" (click)="tab = 'video'">Video da revisionare</button>
+      <button type="button" role="tab" [attr.aria-selected]="tab === 'minigiochi'" [class.is-on]="tab === 'minigiochi'" (click)="tab = 'minigiochi'">Minigiochi</button>
+    </div>
+  }
+
+  @if (unlocked && tab === 'minigiochi') {
+    <app-admin-minigames />
+  }
+
+  @if (unlocked && tab === 'video') {
     <h2>Video da revisionare</h2>
 
     @if (loading) {
@@ -91,6 +102,24 @@
             [value]="tagsAsString(v, 'categoria')"
             (input)="setTagsFromString(v, 'categoria', $any($event.target).value)"
           />
+        </div>
+
+        <div class="review-row mg-link">
+          <label>Collega a un evento minigioco</label>
+          @if (!mgAdmin) {
+            <span class="mg-note">Accedi al sito con l'account da amministratore per collegare questo video a un evento.</span>
+          } @else if (!mgEvents.length) {
+            <span class="mg-note">Nessun evento da collegare: creane uno nella scheda Minigiochi.</span>
+          } @else {
+            <div class="mg-row">
+              <select [(ngModel)]="mgChoice[v.id]" [attr.aria-label]="'Evento per ' + v.title">
+                <option [ngValue]="undefined">Scegli l'evento…</option>
+                @for (e of mgEvents; track e.id) { <option [ngValue]="e.id">{{ mgLabel(e) }}</option> }
+              </select>
+              <button type="button" class="btn-link-mg" [disabled]="!mgChoice[v.id] || mgBusy[v.id]" (click)="linkToEvent(v)">{{ mgBusy[v.id] ? 'Calcolo…' : 'Collega e calcola i punti' }}</button>
+            </div>
+          }
+          @if (mgMessage[v.id]?.text) { <span class="row-message" [class.error]="mgMessage[v.id].error">{{ mgMessage[v.id].text }}</span> }
         </div>
 
         <div class="review-actions">

@@ -1,0 +1,75 @@
+@if (error()) {
+  <p class="pe-error">{{ error() }}</p>
+} @else if (!loaded()) {
+  <p class="pe-note">Carico le formule…</p>
+} @else {
+  <form class="pe-add" (submit)="$event.preventDefault(); add()">
+    <h4>Aggiungi una formula</h4>
+    <div class="pe-add__row">
+      <input name="t" [(ngModel)]="nf.text" placeholder="Es. Al di là delle chiacchiere" aria-label="Nuova formula" />
+      <div class="pe-points" role="group" aria-label="Punti della nuova formula">
+        <button type="button" (click)="addStep(-1)" aria-label="Meno un punto">−</button>
+        <input name="p" type="number" [min]="1" [max]="50" [(ngModel)]="nf.points" aria-label="Punti" />
+        <button type="button" (click)="addStep(1)" aria-label="Più un punto">+</button>
+      </div>
+      <button type="submit" class="pe-btn pe-btn--dark" [disabled]="adding()">Aggiungi</button>
+    </div>
+    <input class="pe-add__variants" name="v" [(ngModel)]="nf.variants" placeholder="Varianti facoltative, separate da virgola (es. al di là delle chiacchere, oltre le chiacchiere)" aria-label="Varianti" />
+    @if (addMsg()) { <p class="pe-note">{{ addMsg() }}</p> }
+  </form>
+
+  <div class="pe-tools">
+    <input type="search" placeholder="Cerca…" [ngModel]="q()" (ngModelChange)="q.set($event)" aria-label="Cerca tra le formule" />
+    <select [ngModel]="sort()" (ngModelChange)="sort.set($event)" aria-label="Ordina">
+      <option value="text">A-Z</option><option value="points-desc">Punti: dal più alto</option><option value="points-asc">Punti: dal più basso</option>
+    </select>
+    <select [ngModel]="show()" (ngModelChange)="show.set($event)" aria-label="Mostra">
+      <option value="all">Tutte ({{ rows().length }})</option><option value="active">Attive ({{ stats().active }})</option><option value="off">Disattivate ({{ stats().off }})</option>
+    </select>
+  </div>
+
+  @if (dirtyCount()) {
+    <div class="pe-savebar" role="status">
+      <span>{{ dirtyCount() }} {{ dirtyCount() === 1 ? 'modifica da salvare' : 'modifiche da salvare' }}</span>
+      <button type="button" class="pe-btn pe-btn--dark" [disabled]="savingAll()" (click)="saveAll()">{{ savingAll() ? 'Salvo…' : 'Salva tutte' }}</button>
+    </div>
+  }
+  @if (topMsg()) { <p class="pe-note">{{ topMsg() }}</p> }
+
+  <ul class="pe-list">
+    @for (r of visible(); track r.p.id) {
+      <li class="pe-row" [class.is-off]="!r.active" [class.is-dirty]="dirty(r)">
+        <div class="pe-row__main">
+          <input class="pe-row__text" [(ngModel)]="r.text" (ngModelChange)="changed()" [attr.aria-label]="'Testo di ' + r.p.text" />
+          <div class="pe-points" role="group" [attr.aria-label]="'Punti di ' + r.p.text">
+            <button type="button" (click)="step(r, -1)" [disabled]="r.points <= 1" aria-label="Meno un punto">−</button>
+            <input type="number" [min]="1" [max]="50" [ngModel]="r.points" (ngModelChange)="setPoints(r, $event)" aria-label="Punti" />
+            <button type="button" (click)="step(r, 1)" [disabled]="r.points >= 50" aria-label="Più un punto">+</button>
+          </div>
+          <button type="button" class="pe-switch" [class.is-on]="r.active" role="switch" [attr.aria-checked]="r.active" (click)="toggleActive(r)" [attr.aria-label]="(r.active ? 'Disattiva ' : 'Attiva ') + r.p.text">
+            <span></span>{{ r.active ? 'Attiva' : 'Spenta' }}
+          </button>
+          <button type="button" class="pe-more" (click)="r.open = !r.open; changed()" [attr.aria-expanded]="r.open" aria-label="Altre opzioni">⋯</button>
+        </div>
+        @if (r.open) {
+          <div class="pe-row__extra">
+            <label>Varianti cercate nelle trascrizioni (separate da virgola)
+              <input [(ngModel)]="r.variants" (ngModelChange)="changed()" placeholder="nessuna" />
+            </label>
+            <button type="button" class="pe-btn pe-btn--danger" (click)="remove(r)">Elimina</button>
+          </div>
+        }
+        @if (dirty(r) || r.msg) {
+          <div class="pe-row__foot">
+            @if (r.msg) { <span class="pe-msg" [class.is-error]="r.error">{{ r.msg }}</span> }
+            @if (dirty(r)) {
+              <button type="button" class="pe-link" (click)="undo(r)">Annulla</button>
+              <button type="button" class="pe-btn pe-btn--dark" [disabled]="r.saving" (click)="save(r)">{{ r.saving ? 'Salvo…' : 'Salva' }}</button>
+            }
+          </div>
+        }
+      </li>
+    }
+  </ul>
+  @if (!visible().length) { <p class="pe-note">Nessuna formula trovata.</p> }
+}

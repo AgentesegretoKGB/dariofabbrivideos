@@ -147,11 +147,24 @@
         </div>
         <div class="fc-video__info">
           <h3 class="fc-video__title">{{ v.title }}</h3>
+          @if (v.channel) { <p class="fc-video__channel">{{ v.channel }}</p> }
           <div class="fc-video__meta">{{ v.formats.join(', ') }}@if (v.formats.length && v.dateLabel) { · }{{ v.dateLabel }}</div>
           @if (v.topics.length) {
             <div class="fc-tags">
               @for (t of v.topics.slice(0, 3); track t) { <span class="fc-tag">{{ t }}</span> }
               @if (v.topics.length > 3) { <span class="fc-tag">+{{ v.topics.length - 3 }}</span> }
+            </div>
+          }
+          @if (v.youtubeId) {
+            <div class="app-rate">
+              <button type="button" class="app-rate__vote" (click)="openFeedback(v)" [attr.aria-label]="'Vota: ' + v.title">
+                <app-stars-summary type="video" [itemId]="v.youtubeId" [showComments]="false" />
+                <span class="app-rate__cta">Vota</span>
+              </button>
+              <button type="button" class="app-rate__comment" (click)="openFeedback(v, true)" [attr.aria-label]="'Commenta: ' + v.title">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                @if (commentsCount(v)) { <span>{{ commentsCount(v) }}</span> }
+              </button>
             </div>
           }
         </div>
@@ -165,6 +178,10 @@
       <button type="button" class="fc-btn fc-btn--secondary" (click)="showMore()">Mostra altri {{ (results.length - visible.length) < 24 ? (results.length - visible.length) : 24 }} video</button>
     </div>
   }
+}
+
+@if (feedbackVideo; as fv) {
+  <app-feedback-dialog type="video" [itemId]="fv.youtubeId!" [heading]="fv.title" [focusComment]="feedbackFocusComment" (closed)="feedbackVideo = null" />
 }
 
 <!-- Pannello filtri (telefono) -->

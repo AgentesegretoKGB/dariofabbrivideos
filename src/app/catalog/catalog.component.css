@@ -39,3 +39,26 @@
   .app-filter:not(.fc-filter-row__end) { display: none; }
   .fc-filter-row { flex-wrap: nowrap; }
 }
+
+/* Stelle e commenti in fondo alla scheda */
+.fc-video__info { flex: 1 1 auto; }
+.app-rate { display: flex; align-items: center; gap: var(--space-2); margin-top: auto; padding-top: var(--space-3); }
+.app-rate__vote {
+  flex: 1; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap;
+  min-height: 36px; padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer;
+}
+.app-rate__cta { font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+.app-rate__vote:hover .app-rate__cta { color: var(--accent); }
+.app-rate__comment {
+  flex: none; display: inline-flex; align-items: center; gap: 4px; min-width: 36px; height: 36px; padding: 0 var(--space-2);
+  border: 1px solid var(--border-control); border-radius: var(--radius-pill); background: var(--card-bg); color: var(--ink);
+  font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; justify-content: center;
+}
+.app-rate__comment:hover { background: var(--surface-sunken); }
+.app-rate__comment svg { width: 18px; height: 18px; }
+
+/* Passando col mouse la scheda (e il player) si ingrandisce */
+@media (hover: hover) and (min-width: 640px) {
+  .fc-grid .fc-video { transition: transform 200ms ease, box-shadow 200ms ease; }
+  .fc-grid .fc-video:hover { transform: scale(1.05); z-index: 5; box-shadow: var(--shadow-card-hover); }
+}

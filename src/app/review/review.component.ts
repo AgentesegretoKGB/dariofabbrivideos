@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SafeUrlPipe } from '../catalog/safe-url.pipe';
+import { AdminMinigamesComponent } from './admin-minigames.component';
+import { MgEvent, MinigameService } from '../minigames/minigame.service';
+import { shortLabel } from '../minigames/format';
 
 interface Video {
   id: number;
@@ -21,12 +24,45 @@ const REVIEW_PASSWORD = 'R3visione';
 @Component({
   selector: 'app-review',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe],
+  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe, AdminMinigamesComponent],
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private mg: MinigameService) {}
+
+  tab: 'video' | 'minigiochi' = 'video';
+
+  // ----- collegamento video → evento minigioco -----
+  mgAdmin = false;
+  mgEvents: MgEvent[] = [];
+  mgChoice: { [videoId: number]: string } = {};
+  mgBusy: { [videoId: number]: boolean } = {};
+  mgMessage: { [videoId: number]: { text: string; error: boolean } } = {};
+
+  private async loadMgEvents() {
+    try {
+      this.mgAdmin = await this.mg.isAdmin();
+      if (this.mgAdmin) this.mgEvents = (await this.mg.events()).filter(e => e.status !== 'confirmed');
+    } catch { this.mgAdmin = false; }
+  }
+
+  mgLabel(e: MgEvent) { return `${e.name} — ${shortLabel(e.starts_at)}`; }
+
+  async linkToEvent(v: Video) {
+    const eventId = this.mgChoice[v.id];
+    const yt = this.extractId(v.url);
+    if (!eventId || !yt) return;
+    this.mgBusy[v.id] = true;
+    this.mgMessage[v.id] = { text: '', error: false };
+    try {
+      const r = await this.mg.detectAndSave(eventId, { videoId: yt });
+      this.mgMessage[v.id] = { text: `Collegato. Trovate ${r.found} formule nella ${r.source}: i punti sono provvisori, confermali nella scheda Minigiochi.`, error: false };
+    } catch (e: any) {
+      this.mgMessage[v.id] = { text: e.message + ' Puoi collegare il video e incollare il testo dalla scheda Minigiochi.', error: true };
+    }
+    this.mgBusy[v.id] = false;
+  }
 
   unlocked = false;
   passwordInput = '';
@@ -72,6 +108,7 @@ export class ReviewComponent implements OnInit {
       this.unlocked = true;
       this.passwordError = false;
       this.loadPendingVideos();
+      this.loadMgEvents();
     } else {
       this.passwordError = true;
     }

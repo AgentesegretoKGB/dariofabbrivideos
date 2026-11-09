@@ -19,3 +19,15 @@
 
 .fc-footer { margin-top: var(--space-16); }
 .fc-social svg { flex: none; }
+
+/* Pulsante account in alto a destra */
+.app-account {
+  margin-left: auto; display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; min-width: 40px; padding: 0 var(--space-3);
+  border: 1px solid var(--border-control); border-radius: var(--radius-pill);
+  color: var(--ink); font-size: 15px; font-weight: 700; text-decoration: none; background: var(--card-bg);
+}
+.app-account:hover { background: var(--surface-sunken); }
+.app-account:has(.app-account__pic) { padding: 0; border: 0; background: none; }
+.app-account__pic { width: 36px; height: 36px; border-radius: var(--radius-pill); object-fit: cover; display: block; }
+.app-account__pic--letter { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: var(--white); font-size: 16px; }
