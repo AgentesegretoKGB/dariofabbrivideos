@@ -51,8 +51,56 @@ export class AccountComponent implements OnInit {
     else this.message.set(`Ti abbiamo mandato un link a ${email}. Aprilo da questo dispositivo per entrare.`);
   }
 
+  // ----- username -----
+  editingUsername = signal(false);
+  usernameDraft = '';
+  usernameHint = signal('');
+  usernameOk = signal(false);
+  usernameError = signal('');
+  savingUsername = signal(false);
+  private checkTimer: any;
+
+  startEditUsername() {
+    this.usernameDraft = this.auth.username() ?? '';
+    this.usernameHint.set(''); this.usernameError.set(''); this.usernameOk.set(false);
+    this.editingUsername.set(true);
+  }
+
+  cancelEditUsername() { this.editingUsername.set(false); }
+
+  onUsernameInput() {
+    clearTimeout(this.checkTimer);
+    this.usernameError.set(''); this.usernameOk.set(false);
+    const name = this.auth.normalizeUsername(this.usernameDraft);
+    if (!name) { this.usernameHint.set(''); return; }
+    if (!AuthService.USERNAME_RE.test(name)) {
+      this.usernameHint.set('Da 3 a 20 caratteri: lettere, numeri, punto o trattino basso.');
+      return;
+    }
+    if (name === this.auth.username()) { this.usernameHint.set('È il tuo username attuale.'); return; }
+    this.usernameHint.set('Controllo…');
+    this.checkTimer = setTimeout(async () => {
+      try {
+        const free = await this.auth.isUsernameFree(name);
+        if (this.auth.normalizeUsername(this.usernameDraft) !== name) return;
+        this.usernameOk.set(free);
+        this.usernameHint.set(free ? `@${name} è disponibile` : `@${name} è già preso`);
+      } catch { this.usernameHint.set(''); }
+    }, 400);
+  }
+
+  async saveUsername() {
+    this.savingUsername.set(true); this.usernameError.set('');
+    const err = await this.auth.saveUsername(this.usernameDraft);
+    this.savingUsername.set(false);
+    if (err) { this.usernameError.set(err); return; }
+    this.editingUsername.set(false);
+    this.message.set('Username salvato.');
+  }
+
   async signOut() {
     await this.auth.signOut();
+    this.editingUsername.set(false);
     this.message.set(''); this.error.set('');
   }
 }

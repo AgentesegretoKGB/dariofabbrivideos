@@ -11,10 +11,32 @@
       }
       <div>
         <p class="app-acc-name">{{ auth.displayName(u) }}</p>
+        @if (auth.username()) { <p class="app-acc-handle">&#64;{{ auth.username() }}</p> }
         @if (u.email && u.email !== auth.displayName(u)) { <p class="app-acc-email">{{ u.email }}</p> }
       </div>
     </div>
-    <button type="button" class="fc-btn fc-btn--secondary" (click)="signOut()">Esci</button>
+
+    @if (auth.profileLoaded() && auth.profilesAvailable()) {
+      @if (editingUsername() || !auth.username()) {
+        <form class="app-acc-uname" (submit)="$event.preventDefault(); saveUsername()">
+          <label for="acc-uname">{{ auth.username() ? 'Cambia username' : 'Scegli il tuo username' }}</label>
+          <div class="app-acc-row">
+            <div class="app-acc-at">
+              <span aria-hidden="true">&#64;</span>
+              <input id="acc-uname" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="21"
+                     placeholder="il_tuo_nome" [(ngModel)]="usernameDraft" (ngModelChange)="onUsernameInput()" aria-describedby="acc-uname-hint" />
+            </div>
+            <button type="submit" class="fc-btn fc-btn--primary" [disabled]="savingUsername() || !usernameOk()">{{ savingUsername() ? 'Salvo…' : 'Salva' }}</button>
+          </div>
+          <p id="acc-uname-hint" class="app-acc-hint" [class.is-ok]="usernameOk()" aria-live="polite">{{ usernameError() || usernameHint() }}</p>
+          @if (auth.username()) { <button type="button" class="app-acc-link" (click)="cancelEditUsername()">Annulla</button> }
+        </form>
+      } @else {
+        <button type="button" class="app-acc-link app-acc-edit" (click)="startEditUsername()">Cambia username</button>
+      }
+    }
+    @if (message()) { <p class="app-acc-msg" role="status">{{ message() }}</p> }
+    <button type="button" class="fc-btn fc-btn--secondary app-acc-out" (click)="signOut()">Esci</button>
   </section>
 } @else {
   <section class="app-acc-card">

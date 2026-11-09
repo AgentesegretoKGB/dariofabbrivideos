@@ -20,6 +20,11 @@ export const PROVIDERS: { id: Provider; label: string }[] = [
 export class AuthService {
   readonly user = signal<User | null>(null);
   readonly ready = signal(false);
+  /** Username scelto dall'utente (tabella profiles); null = non ancora scelto. */
+  readonly username = signal<string | null>(null);
+  /** false se su Supabase manca la tabella dei profili (supabase/profili.sql non ancora eseguito). */
+  readonly profilesAvailable = signal(true);
+  readonly profileLoaded = signal(false);
   /** La libreria di Supabase si scarica dopo la pagina, per non rallentare il primo caricamento. */
   private readonly clientPromise: Promise<SupabaseClient>;
 
@@ -38,7 +43,52 @@ export class AuthService {
   client(): Promise<SupabaseClient> { return this.clientPromise; }
 
   private setSession(session: Session | null) {
+    const prev = this.user()?.id;
     this.zone.run(() => { this.user.set(session?.user ?? null); this.ready.set(true); });
+    const id = session?.user?.id;
+    if (!id) { this.zone.run(() => { this.username.set(null); this.profileLoaded.set(false); }); }
+    else if (id !== prev) { setTimeout(() => this.loadProfile(id)); }
+  }
+
+  private async loadProfile(id: string) {
+    const c = await this.clientPromise;
+    const { data, error } = await c.from('profiles').select('username').eq('id', id).maybeSingle();
+    this.zone.run(() => {
+      if (error) this.profilesAvailable.set(!this.isMissingTable(error));
+      this.username.set(data?.username ?? null);
+      this.profileLoaded.set(true);
+    });
+  }
+
+  private isMissingTable(e: { code?: string }) { return e.code === 'PGRST205' || e.code === '42P01'; }
+
+  /** Regola degli username: 3-20 caratteri, lettere minuscole, numeri, punto e trattino basso. */
+  static readonly USERNAME_RE = /^[a-z0-9._]{3,20}$/;
+
+  normalizeUsername(s: string) { return s.trim().replace(/^@/, '').toLowerCase(); }
+
+  async isUsernameFree(name: string): Promise<boolean> {
+    const c = await this.clientPromise;
+    const { data, error } = await c.from('profiles').select('id').eq('username', name).maybeSingle();
+    if (error) throw error;
+    return !data || data.id === this.user()?.id;
+  }
+
+  /** Salva lo username. Restituisce un messaggio d'errore, oppure null se è andato tutto bene. */
+  async saveUsername(raw: string): Promise<string | null> {
+    const id = this.user()?.id;
+    if (!id) return 'Devi prima accedere.';
+    const name = this.normalizeUsername(raw);
+    if (!AuthService.USERNAME_RE.test(name)) return 'Usa da 3 a 20 caratteri: lettere, numeri, punto o trattino basso.';
+    const c = await this.clientPromise;
+    const { error } = await c.from('profiles').upsert({ id, username: name, updated_at: new Date().toISOString() });
+    if (error) {
+      if (error.code === '23505') return 'Questo username è già preso.';
+      if (this.isMissingTable(error)) { this.zone.run(() => this.profilesAvailable.set(false)); return 'Gli username non sono ancora attivi sul sito.'; }
+      return 'Salvataggio non riuscito: ' + error.message;
+    }
+    this.zone.run(() => this.username.set(name));
+    return null;
   }
 
   /** Servizi attivati nel pannello di Supabase (Authentication → Providers). */
