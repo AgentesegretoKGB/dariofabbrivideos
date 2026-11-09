@@ -11,6 +11,10 @@ export interface ItemComment {
   created_at: string;
   user_id: string;
   username: string | null;
+  parent_id: number | null;
+  likes: number;
+  dislikes: number;
+  myVote: number;   // 1 mi piace, -1 non mi piace, 0 nessuno
 }
 
 const key = (t: ItemType, id: string) => `${t}:${id}`;
@@ -24,6 +28,8 @@ export class FeedbackService {
 
   /** false se su Supabase mancano le tabelle (supabase/recensioni-commenti-mappe.sql non ancora eseguito). */
   readonly available = signal(true);
+  /** false finché su Supabase non è stato eseguito supabase/like-risposte.sql */
+  readonly extrasAvailable = signal(true);
   private readonly statsMap = signal<Map<string, ItemStats>>(new Map());
   private readonly mineMap = signal<Map<string, number>>(new Map());
   private loadedStats = new Set<ItemType>();
@@ -103,15 +109,52 @@ export class FeedbackService {
 
   async comments(t: ItemType, id: string): Promise<ItemComment[]> {
     const c = await this.auth.client();
-    const { data, error } = await c.from('comments')
-      .select('id,body,created_at,user_id,profiles(username)')
-      .eq('item_type', t).eq('item_id', id)
-      .order('created_at', { ascending: false }).limit(200);
+    const q = (cols: string) => c.from('comments').select(cols)
+      .eq('item_type', t).eq('item_id', id).order('created_at', { ascending: false }).limit(300);
+    let { data, error } = await q('id,body,created_at,user_id,parent_id,profiles(username)');
+    if (error && error.code === '42703') {   // colonna parent_id non ancora creata
+      this.zone.run(() => this.extrasAvailable.set(false));
+      ({ data, error } = await q('id,body,created_at,user_id,profiles(username)'));
+    }
     if (error) { this.fail(error); throw error; }
-    return (data || []).map((r: any) => ({ id: r.id, body: r.body, created_at: r.created_at, user_id: r.user_id, username: r.profiles?.username ?? null }));
+    const list: ItemComment[] = (data || []).map((r: any) => ({
+      id: r.id, body: r.body, created_at: r.created_at, user_id: r.user_id, username: r.profiles?.username ?? null,
+      parent_id: r.parent_id ?? null, likes: 0, dislikes: 0, myVote: 0,
+    }));
+    if (list.length && this.extrasAvailable()) await this.attachVotes(list);
+    return list;
   }
 
-  async addComment(t: ItemType, id: string, body: string): Promise<string | null> {
+  private async attachVotes(list: ItemComment[]) {
+    const c = await this.auth.client();
+    const ids = list.map(x => x.id);
+    const { data: scores, error } = await c.from('comment_scores').select('comment_id,likes,dislikes').in('comment_id', ids);
+    if (error) { if (this.missing(error)) this.zone.run(() => this.extrasAvailable.set(false)); return; }
+    const byId = new Map(list.map(x => [x.id, x]));
+    for (const s of scores || []) { const x = byId.get(s.comment_id); if (x) { x.likes = s.likes; x.dislikes = s.dislikes; } }
+    const uid = this.auth.user()?.id;
+    if (!uid) return;
+    const { data: mine } = await c.from('comment_votes').select('comment_id,value').eq('user_id', uid).in('comment_id', ids);
+    for (const m of mine || []) { const x = byId.get(m.comment_id); if (x) x.myVote = m.value; }
+  }
+
+  /** Mi piace (1) / non mi piace (-1). Ripetere lo stesso voto lo toglie. Aggiorna il commento passato. */
+  async voteComment(cm: ItemComment, value: 1 | -1): Promise<string | null> {
+    const uid = this.auth.user()?.id;
+    if (!uid) return 'Accedi per votare i commenti.';
+    const c = await this.auth.client();
+    const next = cm.myVote === value ? 0 : value;
+    const { error } = next
+      ? await c.from('comment_votes').upsert({ comment_id: cm.id, user_id: uid, value: next })
+      : await c.from('comment_votes').delete().match({ comment_id: cm.id, user_id: uid });
+    if (error) { if (this.missing(error)) this.zone.run(() => this.extrasAvailable.set(false)); return 'Voto non salvato: ' + error.message; }
+    if (cm.myVote === 1) cm.likes--; else if (cm.myVote === -1) cm.dislikes--;
+    if (next === 1) cm.likes++; else if (next === -1) cm.dislikes++;
+    cm.myVote = next;
+    return null;
+  }
+
+  async addComment(t: ItemType, id: string, body: string, parentId: number | null = null): Promise<string | null> {
     const uid = this.auth.user()?.id;
     if (!uid) return 'Accedi per commentare.';
     if (!this.auth.username()) return 'Scegli prima uno username nella pagina del tuo account.';
@@ -119,7 +162,9 @@ export class FeedbackService {
     if (!text) return 'Scrivi qualcosa prima di pubblicare.';
     if (text.length > 2000) return 'Il commento è troppo lungo (massimo 2000 caratteri).';
     const c = await this.auth.client();
-    const { error } = await c.from('comments').insert({ item_type: t, item_id: id, user_id: uid, body: text });
+    const row: any = { item_type: t, item_id: id, user_id: uid, body: text };
+    if (parentId) row.parent_id = parentId;
+    const { error } = await c.from('comments').insert(row);
     if (error) { this.fail(error); return 'Commento non pubblicato: ' + error.message; }
     await this.refreshOne(t, id);
     return null;

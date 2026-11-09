@@ -55,14 +55,51 @@
       <p class="app-fb-note">Ancora nessun commento.</p>
     } @else {
       <ul class="app-fb-list">
-        @for (c of comments(); track c.id) {
+        @for (th of threads(); track th.c.id) {
           <li class="app-fb-item">
-            <p class="app-fb-item__head"><strong>&#64;{{ c.username || 'utente' }}</strong> <span>· {{ date(c.created_at) }}</span></p>
-            <p class="app-fb-item__body">{{ c.body }}</p>
-            @if (c.user_id === auth.user()?.id) { <button type="button" class="app-fb-link app-fb-del" (click)="remove(c)">Cancella</button> }
+            <ng-container *ngTemplateOutlet="one; context: { $implicit: th.c, top: th.c }" />
+            @if (th.replies.length || replyTo() === th.c.id) {
+              <ul class="app-fb-replies">
+                @for (r of th.replies; track r.id) {
+                  <li class="app-fb-reply"><ng-container *ngTemplateOutlet="one; context: { $implicit: r, top: th.c }" /></li>
+                }
+                @if (replyTo() === th.c.id) {
+                  <li class="app-fb-reply">
+                    <form class="app-fb-form app-fb-form--reply" (submit)="$event.preventDefault(); postReply(th.c)">
+                      <label class="app-fb-sr" [attr.for]="'r-' + th.c.id">Rispondi a &#64;{{ th.c.username }}</label>
+                      <textarea [id]="'r-' + th.c.id" name="reply" rows="2" maxlength="2000" [placeholder]="'Rispondi a @' + (th.c.username || 'utente') + '…'" [(ngModel)]="replyDraft"></textarea>
+                      <div class="app-fb-form__row">
+                        <button type="button" class="app-fb-link" (click)="cancelReply()">Annulla</button>
+                        <button type="submit" class="fc-btn fc-btn--primary" [disabled]="replying() || !replyDraft.trim()">{{ replying() ? 'Invio…' : 'Rispondi' }}</button>
+                      </div>
+                      @if (replyMsg()) { <p class="app-fb-msg app-fb-msg--error" role="alert">{{ replyMsg() }}</p> }
+                    </form>
+                  </li>
+                }
+              </ul>
+            }
           </li>
         }
       </ul>
+
+      <ng-template #one let-c let-top="top">
+        <p class="app-fb-item__head"><strong>&#64;{{ c.username || 'utente' }}</strong> <span>· {{ date(c.created_at) }}</span></p>
+        <p class="app-fb-item__body">{{ c.body }}</p>
+        <div class="app-fb-actions">
+          @if (fb.extrasAvailable()) {
+            <button type="button" class="app-fb-vote" [class.is-on]="c.myVote === 1" [attr.aria-pressed]="c.myVote === 1" (click)="vote(c, 1)" [attr.aria-label]="'Mi piace, ' + c.likes">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v10H4V10zM7 10l4-7c1.4 0 2.3 1.1 2 2.5L12.3 9H18a2 2 0 012 2.3l-1.2 7A2 2 0 0116.8 20H7" stroke-width="1.7" stroke-linejoin="round"/></svg>
+              <span>{{ c.likes }}</span>
+            </button>
+            <button type="button" class="app-fb-vote" [class.is-on]="c.myVote === -1" [attr.aria-pressed]="c.myVote === -1" (click)="vote(c, -1)" [attr.aria-label]="'Non mi piace, ' + c.dislikes">
+              <svg viewBox="0 0 24 24" aria-hidden="true" style="transform: rotate(180deg)"><path d="M7 10v10H4V10zM7 10l4-7c1.4 0 2.3 1.1 2 2.5L12.3 9H18a2 2 0 012 2.3l-1.2 7A2 2 0 0116.8 20H7" stroke-width="1.7" stroke-linejoin="round"/></svg>
+              <span>{{ c.dislikes }}</span>
+            </button>
+            <button type="button" class="app-fb-link app-fb-replybtn" (click)="startReply(top, c)">Rispondi</button>
+          }
+          @if (c.user_id === auth.user()?.id) { <button type="button" class="app-fb-link" (click)="remove(c)">Cancella</button> }
+        </div>
+      </ng-template>
     }
   </section>
 }

@@ -1,4 +1,5 @@
 import { Component, OnChanges, computed, inject, input, signal } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
@@ -11,7 +12,7 @@ const DATE_FMT = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'shor
 @Component({
   selector: 'app-feedback',
   standalone: true,
-  imports: [FormsModule, RouterLink, StarsSummaryComponent],
+  imports: [FormsModule, RouterLink, NgTemplateOutlet, StarsSummaryComponent],
   templateUrl: './feedback-panel.component.html',
   styleUrls: ['./feedback-panel.component.css']
 })
@@ -32,6 +33,47 @@ export class FeedbackPanelComponent implements OnChanges {
   draft = '';
   posting = signal(false);
   commentMsg = signal('');
+
+  /** Commenti principali (dal più recente) con le loro risposte (dalla più vecchia). */
+  readonly threads = computed(() => {
+    const all = this.comments();
+    const ids = new Set(all.map(c => c.id));
+    const top = all.filter(c => !c.parent_id || !ids.has(c.parent_id));
+    return top.map(c => ({ c, replies: all.filter(r => r.parent_id === c.id).sort((a, b) => a.created_at.localeCompare(b.created_at)) }));
+  });
+
+  replyTo = signal<number | null>(null);
+  replyDraft = '';
+  replying = signal(false);
+  replyMsg = signal('');
+
+  readonly canWrite = computed(() => !!this.auth.user() && !!this.auth.username());
+
+  startReply(top: ItemComment, to: ItemComment) {
+    if (!this.auth.user()) { this.commentMsg.set('Accedi per rispondere ai commenti.'); return; }
+    if (!this.auth.username()) { this.commentMsg.set('Scegli prima uno username nella pagina del tuo account.'); return; }
+    this.replyTo.set(top.id);
+    this.replyDraft = to.id !== top.id && to.username ? '@' + to.username + ' ' : '';
+    this.replyMsg.set('');
+    setTimeout(() => (document.getElementById('r-' + top.id) as HTMLTextAreaElement | null)?.focus());
+  }
+
+  cancelReply() { this.replyTo.set(null); this.replyDraft = ''; }
+
+  async postReply(top: ItemComment) {
+    this.replying.set(true); this.replyMsg.set('');
+    const err = await this.fb.addComment(this.type(), this.itemId(), this.replyDraft, top.id);
+    this.replying.set(false);
+    if (err) { this.replyMsg.set(err); return; }
+    this.cancelReply();
+    await this.loadComments();
+  }
+
+  async vote(c: ItemComment, value: 1 | -1) {
+    const err = await this.fb.voteComment(c, value);
+    if (err) { this.commentMsg.set(err); return; }
+    this.comments.update(l => [...l]);
+  }
 
   readonly starLabels = ['Pessimo', 'Scarso', 'Discreto', 'Buono', 'Ottimo'];
 

@@ -31,4 +31,16 @@
 .app-fb-item__head { margin: 0 0 var(--space-1); font-size: 14px; line-height: 20px; }
 .app-fb-item__head span { color: var(--muted); }
 .app-fb-item__body { margin: 0; font-size: 16px; line-height: 24px; white-space: pre-wrap; overflow-wrap: anywhere; }
-.app-fb-del { margin-top: var(--space-1); }
+.app-fb-actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
+.app-fb-vote {
+  display: inline-flex; align-items: center; gap: 5px; height: 32px; padding: 0 var(--space-2);
+  border: 1px solid var(--border-control); border-radius: var(--radius-pill); background: var(--card-bg); color: var(--muted);
+  font: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+}
+.app-fb-vote svg { width: 17px; height: 17px; fill: none; stroke: currentColor; }
+.app-fb-vote:hover { background: var(--surface-sunken); color: var(--ink); }
+.app-fb-vote.is-on { color: var(--ink); border-color: var(--ink); background: var(--surface-sunken); }
+.app-fb-vote.is-on svg { fill: currentColor; fill-opacity: .18; }
+.app-fb-replybtn { color: var(--ink); font-weight: 700; }
+.app-fb-replies { list-style: none; margin: var(--space-3) 0 0; padding: 0 0 0 var(--space-4); border-left: 2px solid var(--border); display: flex; flex-direction: column; gap: var(--space-3); }
+.app-fb-form--reply textarea { min-height: 64px; }
