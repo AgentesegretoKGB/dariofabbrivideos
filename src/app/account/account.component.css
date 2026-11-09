@@ -60,3 +60,5 @@
 .app-acc-edit { display: block; margin: 0 0 var(--space-5); }
 .app-acc-out { margin-top: var(--space-2); }
 .app-acc-card > .app-acc-msg { margin: 0 0 var(--space-4); }
+.app-acc-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
+@media (max-width: 639px) { .app-acc-actions .fc-btn { flex: 1 1 100%; } }

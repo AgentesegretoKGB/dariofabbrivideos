@@ -1,12 +1,13 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { Provider } from '@supabase/supabase-js';
 import { AuthService, PROVIDERS } from '../auth/auth.service';
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })

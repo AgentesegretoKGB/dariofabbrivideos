@@ -36,7 +36,10 @@
       }
     }
     @if (message()) { <p class="app-acc-msg" role="status">{{ message() }}</p> }
-    <button type="button" class="fc-btn fc-btn--secondary app-acc-out" (click)="signOut()">Esci</button>
+    <div class="app-acc-actions">
+      <a class="fc-btn fc-btn--primary" routerLink="/">Torna alla schermata principale</a>
+      <button type="button" class="fc-btn fc-btn--secondary" (click)="signOut()">Esci</button>
+    </div>
   </section>
 } @else {
   <section class="app-acc-card">
