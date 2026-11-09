@@ -8,7 +8,7 @@ const TITLES: { [path: string]: string } = {
   'sources': 'Fonti',
   'materials': 'Materiali utili',
   'revisione': 'Revisione',
-  'trascrizioni': 'Trascrizioni',
+  'trascrizioni': 'Cerca nelle trascrizioni',
 };
 
 @Component({
