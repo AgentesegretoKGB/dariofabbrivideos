@@ -54,6 +54,22 @@ import { LeaderRow, MinigameService } from './minigame.service';
             <p class="app-game__desc">Profetizza le parole del vate!</p>
           </div>
         </a>
+        <a class="fc-video app-game" routerLink="/minigiochi/fiume">
+          <div class="app-game__art app-game__art--fiume">
+            <svg viewBox="0 0 416 225" preserveAspectRatio="xMidYMid slice" role="img" aria-label="La parola inglese Task force cancellata e sotto Gruppo speciale">
+              <rect width="416" height="225" fill="#f4efe3"/>
+              <rect x="0" y="0" width="139" height="10" fill="#1d7a3a"/><rect x="139" y="0" width="138" height="10" fill="#ffffff"/><rect x="277" y="0" width="139" height="10" fill="#b4282e"/>
+              <text x="208" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#8a8578">Task force</text>
+              <line x1="104" y1="83" x2="312" y2="83" stroke="#b4282e" stroke-width="5" stroke-linecap="round"/>
+              <text x="208" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#1c1b19">Gruppo speciale</text>
+              <text x="208" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-style="italic" fill="#1d7a3a">10 secondi</text>
+            </svg>
+          </div>
+          <div class="app-game__info">
+            <h3 class="app-game__title">Riprendiamoci Fiume!</h3>
+            <p class="app-game__desc">Traduci in italiano la parola inglese entro 10 secondi.</p>
+          </div>
+        </a>
       </div>
     </section>
   `,

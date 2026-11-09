@@ -28,6 +28,10 @@ export const routes: Routes = [
     loadComponent: () => import('./minigames/minigames.component').then(m => m.MinigamesComponent)
   },
   {
+    path: 'minigiochi/fiume',
+    loadComponent: () => import('./minigames/fiume.component').then(m => m.FiumeComponent)
+  },
+  {
     path: 'minigiochi/previsioni',
     loadComponent: () => import('./minigames/predictions.component').then(m => m.PredictionsComponent)
   },
