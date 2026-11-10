@@ -8231,5 +8231,37 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 502,
+    "title": "DARIO FABBRI",
+    "url": "https://www.youtube.com/embed/V8iXlZhLY20",
+    "channel": "Dario Bordet",
+    "date": "2026-11-09",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 503,
+    "title": "ISRAELE STA VINCENDO O PERDENDO? LA VERA GUERRA È CONTRO L&#39;IRAN",
+    "url": "https://www.youtube.com/embed/5UuXmaa0qCI",
+    "channel": "I Grandi della Geopolitica",
+    "date": "2026-11-08",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Israele"
+      ],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
