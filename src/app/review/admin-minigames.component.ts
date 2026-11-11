@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { Component, Input, OnInit, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
@@ -33,6 +33,8 @@ export class AdminMinigamesComponent implements OnInit {
   private mg = inject(MinigameService);
 
   readonly TVS = RVM_TVS;
+  /** Evento da aprire subito (arrivando dal pulsante «Conferma il minigioco» di un video). */
+  @Input() focusId: string | null = null;
   section = signal<'eventi' | 'formule'>('eventi');
   checking = signal(true);
   admin = signal(false);
@@ -62,6 +64,7 @@ export class AdminMinigamesComponent implements OnInit {
       await new Promise<void>(r => { const t = setInterval(() => { if (this.auth.ready()) { clearInterval(t); r(); } }, 50); });
       this.admin.set(await this.mg.isAdmin());
       if (this.admin()) await this.reload();
+      if (this.focusId) { this.section.set('eventi'); this.openId.set(this.focusId); setTimeout(() => document.querySelector('.adm-ev.is-open')?.scrollIntoView({ block: 'start' })); }
     } catch (e: any) { this.error.set(e.message); }
     this.checking.set(false);
   }

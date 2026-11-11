@@ -62,3 +62,13 @@
   .fc-grid .fc-video { transition: transform 200ms ease, box-shadow 200ms ease; }
   .fc-grid .fc-video:hover { transform: scale(1.05); z-index: 5; box-shadow: var(--shadow-card-hover); }
 }
+
+/* Token «Polymarket» sul player dei video collegati a un minigioco */
+.app-pm-token {
+  position: absolute; top: var(--space-2); right: var(--space-2); z-index: 4;
+  display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px 5px 8px;
+  border: 0; border-radius: var(--radius-pill); background: #1652f0; color: #fff;
+  font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+.app-pm-token svg { width: 16px; height: 16px; }
+.app-pm-token:hover { background: #0f3fc2; }

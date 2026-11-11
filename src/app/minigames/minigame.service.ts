@@ -236,6 +236,21 @@ export class MinigameService {
     if (error) this.err(error);
   }
 
+  /** Collega un video a un evento senza calcolare nulla (quando la trascrizione non è disponibile). */
+  async linkVideo(id: string, videoId: string) {
+    const c = await this.db();
+    const { error } = await c.from('mg_events').update({ video_id: videoId, status: 'to_review', confirmed_at: null }).eq('id', id).neq('status', 'confirmed');
+    if (error) this.err(error);
+  }
+
+  /** Eventi confermati collegati a un video (per il token «Polymarket» nel catalogo). */
+  async confirmedByVideo(): Promise<Map<string, MgEvent>> {
+    const c = await this.db();
+    const { data, error } = await c.from('mg_events').select('*').eq('status', 'confirmed').not('video_id', 'is', null);
+    if (error) return new Map();
+    return new Map((data as MgEvent[]).map(e => [e.video_id as string, e]));
+  }
+
   async reopenResult(id: string) {
     const c = await this.db();
     const { error } = await c.from('mg_events').update({ status: 'to_review', confirmed_at: null }).eq('id', id);

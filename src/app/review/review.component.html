@@ -20,13 +20,14 @@
 
   @if (unlocked) {
     <div class="review-tabs" role="tablist">
-      <button type="button" role="tab" [attr.aria-selected]="tab === 'video'" [class.is-on]="tab === 'video'" (click)="tab = 'video'">Video da revisionare</button>
+      <button type="button" role="tab" [attr.aria-selected]="tab === 'video'" [class.is-on]="tab === 'video'" (click)="backToVideos()">Video da revisionare</button>
       <button type="button" role="tab" [attr.aria-selected]="tab === 'minigiochi'" [class.is-on]="tab === 'minigiochi'" (click)="tab = 'minigiochi'">Minigiochi</button>
     </div>
   }
 
   @if (unlocked && tab === 'minigiochi') {
-    <app-admin-minigames />
+    @if (mgFocus) { <button type="button" class="mg-back" (click)="backToVideos()">← Torna ai video da revisionare</button> }
+    <app-admin-minigames [focusId]="mgFocus" />
   }
 
   @if (unlocked && tab === 'video') {
@@ -105,9 +106,22 @@
         </div>
 
         <div class="review-row mg-link">
-          <label>Collega a un evento minigioco</label>
+          <label>Minigioco Polymarket</label>
           @if (!mgAdmin) {
             <span class="mg-note">Accedi al sito con l'account da amministratore per collegare questo video a un evento.</span>
+          } @else if (linkedEvent(v); as le) {
+            <div class="mg-linked" [class.is-done]="le.status === 'confirmed'">
+              <span>Collegato a <strong>{{ mgLabel(le) }}</strong></span>
+              @if (le.status === 'confirmed') {
+                <span class="mg-ok">✓ Minigioco confermato: puoi approvare il video</span>
+              } @else {
+                <span class="mg-warn">Da confermare prima di approvare il video</span>
+                <button type="button" class="btn-link-mg" (click)="openMinigame(le)">Conferma il minigioco</button>
+              }
+            </div>
+            @if (le.status !== 'confirmed' && !mgShowPaste[v.id]) {
+              <button type="button" class="mg-textlink" (click)="mgShowPaste[v.id] = true">Ricalcola incollando la trascrizione</button>
+            }
           } @else if (!mgEvents.length) {
             <span class="mg-note">Nessun evento da collegare: creane uno nella scheda Minigiochi.</span>
           } @else {
@@ -120,6 +134,12 @@
             </div>
           }
           @if (mgMessage[v.id]?.text) { <span class="row-message" [class.error]="mgMessage[v.id].error">{{ mgMessage[v.id].text }}</span> }
+          @if (mgShowPaste[v.id] && (linkedEvent(v) || mgChoice[v.id])) {
+            <div class="mg-paste">
+              <textarea rows="5" [(ngModel)]="mgPaste[v.id]" placeholder="Incolla qui la trascrizione del video…" [attr.aria-label]="'Trascrizione di ' + v.title"></textarea>
+              <button type="button" class="btn-link-mg" [disabled]="mgBusy[v.id] || !(mgPaste[v.id] || '').trim()" (click)="detectFromPaste(v)">{{ mgBusy[v.id] ? 'Calcolo…' : 'Calcola i punti dal testo' }}</button>
+            </div>
+          }
         </div>
 
         <div class="review-actions">
