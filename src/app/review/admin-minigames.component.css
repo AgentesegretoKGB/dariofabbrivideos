@@ -25,8 +25,12 @@ textarea { width: 100%; resize: vertical; }
 .adm-badge--confirmed { background: var(--success-surface); color: var(--success-ink); }
 .adm-ev__body { padding: 0 1rem 1rem; border-top: 1px solid var(--border); }
 .adm-src { display: flex; flex-direction: column; gap: .5rem; }
-.adm-paste summary { cursor: pointer; font-size: 14px; color: var(--muted); margin: .25rem 0; }
-.adm-paste textarea { margin: .5rem 0; }
+.adm-paste { display: flex; flex-direction: column; gap: .4rem; margin-top: .5rem; padding: .75rem; border-radius: var(--radius-md); background: var(--surface-sunken); }
+.adm-paste label { font-size: 14px; font-weight: 700; }
+.adm-paste .adm-hint { margin: 0; }
+.adm-paste .adm-btn { align-self: flex-start; }
+.adm-btn--dark { background: var(--ink); border-color: var(--ink); color: #fff; }
+.adm-btn--dark:hover { background: var(--ink-hover); }
 .adm-said { margin-top: .75rem; }
 .adm-said__tools input[type=search] { flex: 1; }
 .adm-check { display: inline-flex; gap: .4rem; align-items: center; font-size: 14px; }

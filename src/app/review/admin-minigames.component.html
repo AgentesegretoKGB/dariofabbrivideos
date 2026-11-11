@@ -65,11 +65,12 @@
               <span class="adm-row"><input [name]="'v'+e.id" [(ngModel)]="d.video" placeholder="https://www.youtube.com/watch?v=…" />
               <button type="button" class="adm-btn" [disabled]="d.busy" (click)="detectVideo(e)">Calcola dalla trascrizione</button></span>
             </label>
-            <details class="adm-paste">
-              <summary>Nessun video o trascrizione non disponibile? Incolla il testo</summary>
-              <textarea rows="5" [name]="'p'+e.id" [(ngModel)]="d.pasted" placeholder="Incolla qui la trascrizione o i tuoi appunti dell'evento…"></textarea>
-              <button type="button" class="adm-btn" [disabled]="d.busy" (click)="detectText(e)">Calcola dal testo</button>
-            </details>
+            <div class="adm-paste">
+              <label [attr.for]="'p'+e.id">Oppure incolla qui l'intera trascrizione (o i tuoi appunti dell'evento)</label>
+              <p class="adm-hint">Su YouTube: sotto il video premi «…altro» → «Mostra trascrizione», seleziona tutto il testo della trascrizione, copialo e incollalo qui.</p>
+              <textarea rows="7" [id]="'p'+e.id" [name]="'p'+e.id" [(ngModel)]="d.pasted" placeholder="Incolla qui la trascrizione completa…"></textarea>
+              <button type="button" class="adm-btn adm-btn--dark" [disabled]="d.busy || !d.pasted.trim()" (click)="detectText(e)">Calcola dal testo incollato</button>
+            </div>
             <p class="adm-hint">Puoi anche spuntare a mano le formule dette, senza video.</p>
           </div>
 

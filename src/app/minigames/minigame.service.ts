@@ -51,6 +51,16 @@ export function phraseForms(p: Phrase): string[] {
   return Array.from(new Set([fold(p.text), ...(p.variants || []).map(fold)])).filter(f => f.trim());
 }
 
+/**
+ * Toglie gli orari che YouTube mette nella trascrizione copiata («0:07», «1:02:03», «7 secondi»,
+ * «2 minuti e 5 secondi»…): altrimenti spezzano le formule a metà.
+ */
+export function stripTimestamps(text: string): string {
+  return text
+    .replace(/^\s*(\d+\s+(ore|ora|minuti|minuto|secondi|secondo)(,|\s+e)?\s*)+$/gim, ' ')
+    .replace(/\b\d{1,2}(:\d{2}){1,2}\b/g, ' ');
+}
+
 /** Conta quante volte ogni formula compare in un testo (es. una trascrizione). */
 export function countPhrases(text: string, phrases: Phrase[]): { [id: number]: number } {
   const t = fold(text);
@@ -277,7 +287,7 @@ export class MinigameService {
       source = tr.source === 'indice' ? 'trascrizione del sito' : 'trascrizione di YouTube';
     }
     if (!text.trim()) throw new Error('Nessun testo da analizzare.');
-    const detected = countPhrases(text, phrases);
+    const detected = countPhrases(stripTimestamps(text), phrases);
     const said = Object.keys(detected).map(Number);
     await this.saveResult(eventId, { video_id: src.videoId === undefined ? undefined : src.videoId, detected, said_ids: said, confirm: false });
     return { found: said.length, source };

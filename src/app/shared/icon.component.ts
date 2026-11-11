@@ -10,7 +10,7 @@ const ICONS: { [name: string]: string } = {
   mappe: '<path d="M3 6.5l6-2.5 6 2.5 6-2.5v13.5l-6 2.5-6-2.5-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/>',
   minigiochi: '<path d="M5 21h14a1 1 0 0 0 1-1v-1.5a3.5 3.5 0 0 0-3.5-3.5h-9A3.5 3.5 0 0 0 4 18.5V20a1 1 0 0 0 1 1z"/><path d="M12 15V8.6"/><circle cx="12" cy="5.6" r="3"/><circle cx="16.6" cy="18.2" r="1" fill="currentColor"/>',
   fonti: '<path d="M12 8.5V3.5"/><path d="M12 3.5c-2.6 0-4.6 2-4.9 4.5M12 3.5c2.6 0 4.6 2 4.9 4.5"/><path d="M6.5 9.5h11c-.6 2-2.7 3.2-5.5 3.2s-4.9-1.2-5.5-3.2z"/><path d="M12 12.7v3.3"/><path d="M2.5 16h19c-.6 3-3.6 5-9.5 5s-8.9-2-9.5-5z"/>',
-  materiali: '<path d="M7.5 3h9l3 8h-15z"/><path d="M12 11v8.5"/><path d="M7.5 21h9"/><path d="M15 11v2.5"/>',
+  materiali: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2v2h5v-2c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/><path d="M10.5 12.5l1.5-2 1.5 2"/>',
   calendario: '<rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="M7.5 13.5h2M11 13.5h2M14.5 13.5h2M7.5 17h2M11 17h2"/>',
   account: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/>',
   // dettagli eventi e moduli
