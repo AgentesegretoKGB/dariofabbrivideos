@@ -95,6 +95,19 @@
             </ul>
           </div>
 
+          <h4 class="adm-h4">Da quali TV sono arrivati gli RVM</h4>
+          <p class="adm-hint">Segna tutte le televisioni da cui sono arrivati gli RVM: chi ne ha indovinata una prende 5 punti.</p>
+          <ul class="adm-plist adm-tvs">
+            @for (tv of TVS; track tv.id) {
+              <li>
+                <label class="adm-pitem" [class.is-on]="d.rvm.has(tv.id)">
+                  <input type="checkbox" [checked]="d.rvm.has(tv.id)" [disabled]="e.status === 'confirmed'" (change)="toggleRvm(e, tv.id)" />
+                  <span class="adm-pitem__text">{{ tv.label }}</span>
+                </label>
+              </li>
+            }
+          </ul>
+
           <div class="review-actions">
             @if (e.status === 'confirmed') {
               <span class="row-message">Confermato il {{ when(e.confirmed_at!) }}.</span>

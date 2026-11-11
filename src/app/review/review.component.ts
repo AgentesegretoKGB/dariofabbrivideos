@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SafeUrlPipe } from '../catalog/safe-url.pipe';
 import { AdminMinigamesComponent } from './admin-minigames.component';
+import { AdminCalendarComponent } from './admin-calendar.component';
 import { MgEvent, MinigameService } from '../minigames/minigame.service';
 import { shortLabel } from '../minigames/format';
 
@@ -24,30 +25,42 @@ const REVIEW_PASSWORD = 'R3visione';
 @Component({
   selector: 'app-review',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe, AdminMinigamesComponent],
+  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe, AdminMinigamesComponent, AdminCalendarComponent],
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
   constructor(private http: HttpClient, private mg: MinigameService) {}
 
-  tab: 'video' | 'minigiochi' = 'video';
+  tab: 'video' | 'minigiochi' | 'calendario' = 'video';
 
   // ----- collegamento video → evento minigioco -----
   mgAdmin = false;
-  mgEvents: MgEvent[] = [];
+  mgAll: MgEvent[] = [];
   mgChoice: { [videoId: number]: string } = {};
   mgBusy: { [videoId: number]: boolean } = {};
   mgMessage: { [videoId: number]: { text: string; error: boolean } } = {};
+  mgPaste: { [videoId: number]: string } = {};
+  mgShowPaste: { [videoId: number]: boolean } = {};
+  /** Evento da aprire nella scheda Minigiochi (dal pulsante «Conferma il minigioco»). */
+  mgFocus: string | null = null;
 
-  private async loadMgEvents() {
+  get mgEvents() { return this.mgAll.filter(e => e.status !== 'confirmed'); }
+
+  async loadMgEvents() {
     try {
       this.mgAdmin = await this.mg.isAdmin();
-      if (this.mgAdmin) this.mgEvents = (await this.mg.events()).filter(e => e.status !== 'confirmed');
+      if (this.mgAdmin) this.mgAll = await this.mg.events();
     } catch { this.mgAdmin = false; }
   }
 
   mgLabel(e: MgEvent) { return `${e.name} — ${shortLabel(e.starts_at)}`; }
+
+  /** Evento a cui è già collegato questo video (se c'è). */
+  linkedEvent(v: Video): MgEvent | null {
+    const yt = this.extractId(v.url);
+    return (yt && this.mgAll.find(e => e.video_id === yt)) || null;
+  }
 
   async linkToEvent(v: Video) {
     const eventId = this.mgChoice[v.id];
@@ -57,12 +70,50 @@ export class ReviewComponent implements OnInit {
     this.mgMessage[v.id] = { text: '', error: false };
     try {
       const r = await this.mg.detectAndSave(eventId, { videoId: yt });
-      this.mgMessage[v.id] = { text: `Collegato. Trovate ${r.found} formule nella ${r.source}: i punti sono provvisori, confermali nella scheda Minigiochi.`, error: false };
+      this.mgMessage[v.id] = { text: `Collegato. Trovate ${r.found} formule nella ${r.source}: ora conferma il minigioco.`, error: false };
     } catch (e: any) {
-      this.mgMessage[v.id] = { text: e.message + ' Puoi collegare il video e incollare il testo dalla scheda Minigiochi.', error: true };
+      // trascrizione non disponibile: il video resta collegato e si può incollare il testo
+      try { await this.mg.linkVideo(eventId, yt); } catch { }
+      this.mgShowPaste[v.id] = true;
+      this.mgMessage[v.id] = { text: 'Video collegato, ma YouTube non fornisce la trascrizione ai server. Incollala qui sotto (su YouTube: sotto il video «…altro» → «Mostra trascrizione», seleziona tutto e copia).', error: true };
     }
+    await this.loadMgEvents();
     this.mgBusy[v.id] = false;
   }
+
+  async detectFromPaste(v: Video) {
+    const ev = this.linkedEvent(v) || this.mgAll.find(e => e.id === this.mgChoice[v.id]);
+    const text = (this.mgPaste[v.id] || '').trim();
+    if (!ev || !text) return;
+    this.mgBusy[v.id] = true;
+    try {
+      const r = await this.mg.detectAndSave(ev.id, { videoId: this.extractId(v.url), text });
+      this.mgPaste[v.id] = ''; this.mgShowPaste[v.id] = false;
+      this.mgMessage[v.id] = { text: `Trovate ${r.found} formule nel testo incollato: ora conferma il minigioco.`, error: false };
+      await this.loadMgEvents();
+    } catch (e: any) { this.mgMessage[v.id] = { text: e.message, error: true }; }
+    this.mgBusy[v.id] = false;
+  }
+
+  /** Apre la scheda Minigiochi sull'evento collegato, per controllare e confermare i punti. */
+  openMinigame(e: MgEvent) {
+    this.mgFocus = e.id;
+    this.tab = 'minigiochi';
+  }
+
+  async backToVideos() {
+    this.tab = 'video';
+    this.mgFocus = null;
+    await this.loadMgEvents();
+    // i messaggi «ora conferma il minigioco» non servono più se l'evento è stato confermato
+    for (const v of this.videos) {
+      if (this.linkedEvent(v)?.status === 'confirmed') {
+        delete this.mgMessage[v.id];
+        if (this.rowStatus[v.id] === 'error') { this.rowStatus[v.id] = 'idle'; this.rowMessage[v.id] = ''; }
+      }
+    }
+  }
+
 
   unlocked = false;
   passwordInput = '';
@@ -151,6 +202,12 @@ export class ReviewComponent implements OnInit {
   }
 
   approve(v: Video) {
+    const ev = this.linkedEvent(v);
+    if (ev && ev.status !== 'confirmed') {
+      this.rowStatus[v.id] = 'error';
+      this.rowMessage[v.id] = 'Prima conferma il minigioco collegato a questo video.';
+      return;
+    }
     this.rowStatus[v.id] = 'saving';
     this.rowMessage[v.id] = '';
     this.http.post('/api/approve-video', {

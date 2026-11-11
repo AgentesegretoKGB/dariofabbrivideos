@@ -21,16 +21,18 @@ const slug = (s: string) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g
 import { StarsSummaryComponent } from '../feedback/stars-summary.component';
 import { FeedbackDialogComponent } from '../feedback/feedback-dialog.component';
 import { FeedbackService } from '../feedback/feedback.service';
+import { MgEvent, MinigameService, Phrase } from '../minigames/minigame.service';
+import { PolymarketResultDialogComponent } from '../minigames/polymarket-result-dialog.component';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe, StarsSummaryComponent, FeedbackDialogComponent],
+  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe, StarsSummaryComponent, FeedbackDialogComponent, PolymarketResultDialogComponent],
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-  constructor(private feedback: FeedbackService, private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
+  constructor(private minigames: MinigameService, private feedback: FeedbackService, private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
 
   readonly sortLabel = SORT_LABEL;
   readonly categoryLabel = CATEGORY_LABEL;
@@ -61,6 +63,7 @@ export class CatalogComponent implements OnInit {
   options: { [k in Facet]: Option[] } = { categoria: [], formato: [], argomento: [], anno: [] };
 
   ngOnInit(): void {
+    this.loadPolymarket();
     this.readUrl();
     this.http.get<any[]>('assets/videos.json').subscribe({
       next: data => {
@@ -255,6 +258,18 @@ export class CatalogComponent implements OnInit {
   playVideo(v: Video) { this.playingId = v.id; }
   stopVideo() { this.playingId = null; }
   feedbackFocusComment = false;
+
+  // ----- token «Polymarket»: video collegati a un evento del minigioco già confermato -----
+  pmByVideo = new Map<string, MgEvent>();
+  pmPhrases = new Map<number, Phrase>();
+  pmOpen: MgEvent | null = null;
+  private async loadPolymarket() {
+    try {
+      this.pmByVideo = await this.minigames.confirmedByVideo();
+      if (this.pmByVideo.size) this.pmPhrases = new Map((await this.minigames.phrases(true)).map(p => [p.id, p]));
+    } catch { /* minigiochi non attivi: nessun token */ }
+  }
+  pmEvent(v: Video): MgEvent | null { return (v.youtubeId && this.pmByVideo.get(v.youtubeId)) || null; }
   openFeedback(v: Video, comment = false) { this.feedbackFocusComment = comment; this.feedbackVideo = v; }
   commentsCount(v: Video): number { return v.youtubeId ? this.feedback.stats('video', v.youtubeId).comments : 0; }
 

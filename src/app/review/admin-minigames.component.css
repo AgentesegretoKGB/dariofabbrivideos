@@ -56,3 +56,5 @@ textarea { width: 100%; resize: vertical; }
 .adm-sub { display: inline-flex; gap: 2px; padding: 3px; margin-bottom: 1rem; border-radius: var(--radius-md); background: var(--surface-sunken); }
 .adm-sub button { padding: .45rem 1rem; border: 0; border-radius: calc(var(--radius-md) - 2px); background: none; color: var(--muted); font: inherit; font-weight: 700; cursor: pointer; }
 .adm-sub button.is-on { background: var(--card-bg); color: var(--ink); box-shadow: var(--shadow-sm); }
+.adm-tvs { grid-template-columns: repeat(3, minmax(0, 1fr)); max-height: none; }
+@media (max-width: 639px) { .adm-tvs { grid-template-columns: 1fr 1fr; } }

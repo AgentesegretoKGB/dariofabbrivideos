@@ -157,3 +157,12 @@
 .btn-link-mg { padding: .5rem 1rem; border: 1px solid var(--ink); border-radius: var(--radius-md); background: var(--card-bg); color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
 .btn-link-mg:disabled { opacity: .5; cursor: default; }
 .mg-note { font-size: .85rem; color: var(--muted); }
+
+.mg-linked { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; font-size: .9rem; }
+.mg-warn { color: #7a4b00; background: #fdecc8; padding: 2px 8px; border-radius: 99px; font-weight: 700; font-size: .8rem; }
+.mg-ok { color: #1d7a3a; font-weight: 700; }
+.mg-textlink { align-self: flex-start; padding: 0; border: 0; background: none; color: var(--muted); font: inherit; font-size: .85rem; text-decoration: underline; cursor: pointer; }
+.mg-paste { display: flex; flex-direction: column; gap: .5rem; margin-top: .25rem; }
+.mg-paste textarea { width: 100%; padding: .5rem; border: 1px solid var(--border-control); border-radius: var(--radius-md); background: var(--card-bg); color: var(--ink); font: inherit; resize: vertical; }
+.mg-paste .btn-link-mg { align-self: flex-start; }
+.mg-back { margin-bottom: 1rem; padding: 0; border: 0; background: none; color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; text-decoration: underline; }

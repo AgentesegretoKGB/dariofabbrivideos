@@ -1,15 +1,15 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { Component, Input, OnInit, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-import { MgEvent, MinigameService, Phrase, fold } from '../minigames/minigame.service';
+import { MgEvent, MinigameService, Phrase, RVM_TVS, fold } from '../minigames/minigame.service';
 import { shortLabel } from '../minigames/format';
 import { youtubeId } from '../shared/catalog-video';
 import { PhraseEditorComponent } from './phrase-editor.component';
 
 interface Draft {
   name: string; date: string; time: string; youtube_channel: string; org_link: string;
-  video: string; pasted: string; said: Set<number>; query: string; onlyFound: boolean;
+  video: string; pasted: string; said: Set<number>; rvm: Set<string>; query: string; onlyFound: boolean;
   busy: boolean; msg: string; error: boolean;
 }
 
@@ -32,6 +32,9 @@ export class AdminMinigamesComponent implements OnInit {
   readonly auth = inject(AuthService);
   private mg = inject(MinigameService);
 
+  readonly TVS = RVM_TVS;
+  /** Evento da aprire subito (arrivando dal pulsante «Conferma il minigioco» di un video). */
+  @Input() focusId: string | null = null;
   section = signal<'eventi' | 'formule'>('eventi');
   checking = signal(true);
   admin = signal(false);
@@ -61,6 +64,7 @@ export class AdminMinigamesComponent implements OnInit {
       await new Promise<void>(r => { const t = setInterval(() => { if (this.auth.ready()) { clearInterval(t); r(); } }, 50); });
       this.admin.set(await this.mg.isAdmin());
       if (this.admin()) await this.reload();
+      if (this.focusId) { this.section.set('eventi'); this.openId.set(this.focusId); setTimeout(() => document.querySelector('.adm-ev.is-open')?.scrollIntoView({ block: 'start' })); }
     } catch (e: any) { this.error.set(e.message); }
     this.checking.set(false);
   }
@@ -87,7 +91,7 @@ export class AdminMinigamesComponent implements OnInit {
     this.drafts.set(e.id, {
       name: e.name, date, time, youtube_channel: e.youtube_channel || '', org_link: e.org_link || '',
       video: e.video_id ? 'https://www.youtube.com/watch?v=' + e.video_id : '', pasted: '',
-      said: new Set(e.said_ids || []), query: old?.query || '', onlyFound: old?.onlyFound ?? !!Object.keys(e.detected || {}).length,
+      said: new Set(e.said_ids || []), rvm: new Set(e.rvm_sources || []), query: old?.query || '', onlyFound: old?.onlyFound ?? !!Object.keys(e.detected || {}).length,
       busy: false, msg: old?.msg || '', error: old?.error || false,
     });
   }
@@ -155,6 +159,12 @@ export class AdminMinigamesComponent implements OnInit {
     d.msg = '';
   }
 
+  toggleRvm(e: MgEvent, id: string) {
+    const d = this.draft(e);
+    d.rvm.has(id) ? d.rvm.delete(id) : d.rvm.add(id);
+    d.msg = '';
+  }
+
   visiblePhrases(e: MgEvent): Phrase[] {
     const d = this.draft(e), q = fold(d.query).trim(), det = e.detected || {};
     let list = this.phrases().filter(p => p.active || d.said.has(p.id));
@@ -168,7 +178,7 @@ export class AdminMinigamesComponent implements OnInit {
     const d = this.draft(e);
     if (confirm && !window.confirm(`Confermare i risultati di "${e.name}"? I punti verranno assegnati a tutti i giocatori.`)) return;
     await this.run(e, async () => {
-      await this.mg.saveResult(e.id, { said_ids: [...d.said], confirm });
+      await this.mg.saveResult(e.id, { said_ids: [...d.said], rvm_sources: [...d.rvm], confirm });
       return confirm ? 'Risultati confermati: punti assegnati.' : 'Salvato come provvisorio.';
     });
   }

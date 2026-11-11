@@ -67,3 +67,16 @@
   .app-list-tools { flex-direction: column; align-items: stretch; }
   .app-slip { top: calc(var(--topbar-height) + var(--space-1)); }
 }
+
+/* Sezione RVM */
+.app-rvm-note { margin-bottom: var(--space-3); }
+.app-tvs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
+.app-tv { display: flex; align-items: center; gap: var(--space-2); min-height: 44px; padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--card-bg); color: var(--ink); font: inherit; font-size: 15px; text-align: left; cursor: pointer; }
+.app-tv:hover { border-color: var(--border-control); background: var(--surface-sunken); }
+.app-tv.is-on { border-color: #1652f0; background: #eaf0fe; font-weight: 700; }
+.app-tv__dot { flex: none; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--border-control); background: var(--card-bg); }
+.app-tv.is-on .app-tv__dot { border-color: #1652f0; box-shadow: inset 0 0 0 4px var(--card-bg); background: #1652f0; }
+.app-chip--tv { background: #1652f0; border-color: #1652f0; }
+.app-chips--rvm { margin-top: var(--space-2); }
+@media (max-width: 639px) { .app-tvs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

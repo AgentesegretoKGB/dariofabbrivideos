@@ -132,6 +132,11 @@
           @if (v.pending) {
             <span class="fc-badge fc-badge--pending" title="Aggiunto automaticamente, in attesa di revisione">Catalogazione automatica, non revisionata</span>
           }
+          @if (pmEvent(v); as pe) {
+            <button type="button" class="app-pm-token" (click)="pmOpen = pe" [attr.aria-label]="'Polymarket: formule vincenti di ' + pe.name">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l5-6 4 3 7-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Polymarket
+            </button>
+          }
           @if (playingId === v.id) {
             <iframe class="app-player" [src]="buildEmbedUrl(v.url) | safeUrl" allowfullscreen allow="autoplay; encrypted-media" [title]="v.title"></iframe>
             <button type="button" class="app-player__close" (click)="stopVideo()" aria-label="Chiudi il video">
@@ -178,6 +183,10 @@
       <button type="button" class="fc-btn fc-btn--secondary" (click)="showMore()">Mostra altri {{ (results.length - visible.length) < 24 ? (results.length - visible.length) : 24 }} video</button>
     </div>
   }
+}
+
+@if (pmOpen; as po) {
+  <app-polymarket-result-dialog [event]="po" [phrases]="pmPhrases" (closed)="pmOpen = null" />
 }
 
 @if (feedbackVideo; as fv) {

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, computed, inject, signal } from '@angular
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
-import { MAX_PICKS, MgEvent, MinigameService, Phrase, Score, fold } from './minigame.service';
+import { MAX_PICKS, MgEvent, MinigameService, Phrase, RVM_POINTS, RVM_TVS, Score, fold, rvmLabel } from './minigame.service';
 import { countdown, whenLabel, youtubeUrl } from './format';
 
 @Component({
@@ -17,6 +17,9 @@ export class PredictionEventComponent implements OnInit, OnDestroy {
   private mg = inject(MinigameService);
   private route = inject(ActivatedRoute);
   readonly MAX = MAX_PICKS;
+  readonly TVS = RVM_TVS;
+  readonly RVM_POINTS = RVM_POINTS;
+  readonly tvLabel = rvmLabel;
 
   ev = signal<MgEvent | null>(null);
   phrases = signal<Phrase[]>([]);
@@ -27,6 +30,9 @@ export class PredictionEventComponent implements OnInit, OnDestroy {
 
   picks = signal<number[]>([]);
   saved = signal<number[] | null>(null);
+  rvm = signal<string | null>(null);
+  savedRvm = signal<string | null>(null);
+  hasEntry = signal(false);
   saving = signal(false);
   msg = signal('');
   msgError = signal(false);
@@ -37,8 +43,10 @@ export class PredictionEventComponent implements OnInit, OnDestroy {
   readonly open = computed(() => { const e = this.ev(); return !!e && new Date(e.starts_at).getTime() > this.now(); });
   readonly byId = computed(() => new Map(this.phrases().map(p => [p.id, p])));
   readonly picked = computed(() => this.picks().map(id => this.byId().get(id)).filter((p): p is Phrase => !!p));
-  readonly potential = computed(() => this.picked().reduce((a, p) => a + p.points, 0));
-  readonly dirty = computed(() => JSON.stringify([...this.picks()].sort()) !== JSON.stringify([...(this.saved() || [])].sort()));
+  readonly potential = computed(() => this.picked().reduce((a, p) => a + p.points, 0) + (this.rvm() ? RVM_POINTS : 0));
+  readonly dirty = computed(() => JSON.stringify([...this.picks()].sort()) !== JSON.stringify([...(this.saved() || [])].sort()) || this.rvm() !== this.savedRvm());
+  readonly canSave = computed(() => this.picks().length > 0 || !!this.rvm());
+  readonly rvmSources = computed(() => this.ev()?.rvm_sources || []);
   readonly filtered = computed(() => {
     const q = fold(this.query()).trim();
     const list = this.phrases();
@@ -65,7 +73,9 @@ export class PredictionEventComponent implements OnInit, OnDestroy {
       this.phrases.set(phrases.filter(p => p.active || ev?.said_ids?.includes(p.id)));
       if (ev) {
         const mine = await this.mg.myEntry(ev.id);
-        this.saved.set(mine); this.picks.set(mine ? [...mine] : []);
+        this.hasEntry.set(!!mine);
+        this.saved.set(mine ? mine.phrase_ids : null); this.picks.set(mine ? [...mine.phrase_ids] : []);
+        this.savedRvm.set(mine?.rvm_guess ?? null); this.rvm.set(mine?.rvm_guess ?? null);
         this.participants.set(await this.mg.entriesCount(ev.id));
         if (ev.status === 'confirmed') this.scores.set(await this.mg.scores(ev.id));
       }
@@ -88,8 +98,8 @@ export class PredictionEventComponent implements OnInit, OnDestroy {
     const e = this.ev(); if (!e) return;
     this.saving.set(true); this.msg.set('');
     try {
-      await this.mg.saveEntry(e.id, this.picks());
-      this.saved.set([...this.picks()]);
+      await this.mg.saveEntry(e.id, this.picks(), this.rvm());
+      this.saved.set([...this.picks()]); this.savedRvm.set(this.rvm()); this.hasEntry.set(true);
       this.msgError.set(false); this.msg.set('Schedina salvata! Puoi modificarla fino all\'inizio dell\'evento.');
       this.participants.set(await this.mg.entriesCount(e.id));
     } catch (err: any) { this.msgError.set(true); this.msg.set(err.message); }
@@ -100,11 +110,13 @@ export class PredictionEventComponent implements OnInit, OnDestroy {
     const e = this.ev(); if (!e || !confirm('Vuoi ritirare la tua schedina?')) return;
     try {
       await this.mg.withdrawEntry(e.id);
-      this.saved.set(null); this.picks.set([]);
+      this.saved.set(null); this.picks.set([]); this.savedRvm.set(null); this.rvm.set(null); this.hasEntry.set(false);
       this.msgError.set(false); this.msg.set('Schedina ritirata.');
       this.participants.set(await this.mg.entriesCount(e.id));
     } catch (err: any) { this.msgError.set(true); this.msg.set(err.message); }
   }
+
+  pickTv(id: string) { if (!this.open()) return; this.msg.set(''); this.rvm.set(this.rvm() === id ? null : id); }
 
   when(iso: string) { return whenLabel(iso); }
   cd(iso: string) { return countdown(iso, this.now()); }
