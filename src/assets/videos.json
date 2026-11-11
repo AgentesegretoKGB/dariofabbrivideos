@@ -8278,10 +8278,12 @@
         "Il Grande Gioco"
       ],
       "argomento": [
-        "Trump"
+        "Trump",
+        "USA"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "attualità"
+      ]
+    }
   }
 ]
