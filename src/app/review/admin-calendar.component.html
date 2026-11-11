@@ -1,0 +1,99 @@
+@if (checking()) {
+  <p>Controllo l'accesso…</p>
+} @else if (!auth.user()) {
+  <p class="acal-note">Per gestire il calendario <a routerLink="/account">accedi</a> con il tuo account da amministratore.</p>
+} @else if (!admin()) {
+  <p class="acal-note">Il tuo account non è amministratore.</p>
+} @else {
+  @if (error()) { <p class="acal-error">{{ error() }}</p> }
+
+  <div class="acal-sub" role="tablist">
+    <button type="button" role="tab" [attr.aria-selected]="section() === 'eventi'" [class.is-on]="section() === 'eventi'" (click)="section.set('eventi')">Eventi</button>
+    <button type="button" role="tab" [attr.aria-selected]="section() === 'segnalazioni'" [class.is-on]="section() === 'segnalazioni'" (click)="section.set('segnalazioni')">
+      Segnalazioni @if (newReports().length) { <span class="acal-badge">{{ newReports().length }}</span> }
+    </button>
+  </div>
+
+  @if (section() === 'eventi') {
+    <form class="acal-form" (submit)="$event.preventDefault(); save()">
+      <h3>{{ fromReport ? 'Pubblica la segnalazione' : form.id ? 'Modifica evento' : 'Nuovo evento' }}</h3>
+      <label class="acal-field acal-wide"><app-icon name="titolo" /><span>Nome *</span><input name="t" [(ngModel)]="form.title" maxlength="200" placeholder="Es. Dario Fabbri al Festival di Limes" /></label>
+      <label class="acal-field acal-wide"><app-icon name="luogo" /><span>Luogo</span><input name="l" [(ngModel)]="form.place" maxlength="200" placeholder="Es. Palazzo Ducale, Genova" /></label>
+      <label class="acal-field"><app-icon name="data" /><span>Data *</span><input name="d" type="date" [(ngModel)]="form.day" /></label>
+      <label class="acal-field"><app-icon name="orario" /><span>Orario</span><input name="o" type="time" [(ngModel)]="form.time" /></label>
+      <label class="acal-field acal-wide acal-field--top"><app-icon name="descrizione" /><span>Breve descrizione</span><textarea name="de" rows="3" maxlength="2000" [(ngModel)]="form.description"></textarea></label>
+      <label class="acal-field acal-wide"><app-icon name="link" /><span>Link pubblico</span><input name="li" [(ngModel)]="form.link" maxlength="500" placeholder="https://…" /></label>
+      <div class="acal-wide acal-actions">
+        <button type="submit" class="acal-btn" [disabled]="saving()">{{ saving() ? 'Salvo…' : fromReport ? 'Pubblica' : form.id ? 'Salva modifiche' : 'Aggiungi al calendario' }}</button>
+        @if (form.id || fromReport) { <button type="button" class="acal-link" (click)="cancelEdit()">Annulla</button> }
+        @if (msg()) { <span class="acal-msg" [class.is-error]="msgError()">{{ msg() }}</span> }
+      </div>
+    </form>
+
+    <h3 class="acal-h">Prossimi eventi ({{ upcoming().length }})</h3>
+    @if (!upcoming().length) { <p class="acal-note">Nessun evento in programma.</p> }
+    <ul class="acal-list">
+      @for (e of upcoming(); track e.id) {
+        <li class="acal-item">
+          <div class="acal-item__main">
+            <strong>{{ e.title }}</strong>
+            <span class="acal-meta"><app-icon name="data" [size]="15" />{{ day(e.day) }} @if (e.time) { <app-icon name="orario" [size]="15" />{{ hhmm(e.time) }} } @if (e.place) { <app-icon name="luogo" [size]="15" />{{ e.place }} }</span>
+            @if (e.link) { <a class="acal-meta" [href]="href(e.link)" target="_blank" rel="noopener"><app-icon name="link" [size]="15" />{{ host(e.link) }}</a> }
+          </div>
+          <div class="acal-item__btns">
+            <button type="button" class="acal-icon" (click)="edit(e)" aria-label="Modifica" title="Modifica"><app-icon name="modifica" [size]="18" /></button>
+            <button type="button" class="acal-icon acal-icon--danger" (click)="remove(e)" aria-label="Elimina" title="Elimina"><app-icon name="cestino" [size]="18" /></button>
+          </div>
+        </li>
+      }
+    </ul>
+    @if (past().length) {
+      <button type="button" class="acal-link acal-pastbtn" (click)="showPast.set(!showPast())">{{ showPast() ? 'Nascondi' : 'Mostra' }} gli eventi passati ({{ past().length }})</button>
+      @if (showPast()) {
+        <ul class="acal-list acal-list--past">
+          @for (e of past(); track e.id) {
+            <li class="acal-item">
+              <div class="acal-item__main"><strong>{{ e.title }}</strong><span class="acal-meta"><app-icon name="data" [size]="15" />{{ day(e.day) }}</span></div>
+              <div class="acal-item__btns">
+                <button type="button" class="acal-icon" (click)="edit(e)" aria-label="Modifica"><app-icon name="modifica" [size]="18" /></button>
+                <button type="button" class="acal-icon acal-icon--danger" (click)="remove(e)" aria-label="Elimina"><app-icon name="cestino" [size]="18" /></button>
+              </div>
+            </li>
+          }
+        </ul>
+      }
+    }
+  } @else {
+    <h3 class="acal-h">Da controllare ({{ newReports().length }})</h3>
+    @if (!newReports().length) { <p class="acal-note">Nessuna nuova segnalazione.</p> }
+    <ul class="acal-list">
+      @for (r of newReports(); track r.id) {
+        <li class="acal-item acal-report">
+          <div class="acal-item__main">
+            <strong>{{ r.title }}</strong>
+            <span class="acal-meta"><app-icon name="data" [size]="15" />{{ day(r.day) }} @if (r.time) { <app-icon name="orario" [size]="15" />{{ hhmm(r.time) }} } @if (r.place) { <app-icon name="luogo" [size]="15" />{{ r.place }} }</span>
+            @if (r.description) { <span class="acal-meta acal-desc"><app-icon name="descrizione" [size]="15" />{{ r.description }}</span> }
+            @if (r.link) { <a class="acal-meta" [href]="href(r.link)" target="_blank" rel="noopener"><app-icon name="link" [size]="15" />{{ r.link }}</a> }
+            @if (r.email) { <a class="acal-meta" [href]="'mailto:' + r.email"><app-icon name="email" [size]="15" />{{ r.email }}</a> }
+            <span class="acal-sent">Segnalata il {{ sentAt(r.created_at) }}</span>
+          </div>
+          <div class="acal-report__btns">
+            <button type="button" class="acal-btn" (click)="review(r)">Controlla e pubblica</button>
+            <button type="button" class="acal-btn acal-btn--ghost" (click)="reject(r)">Rifiuta</button>
+          </div>
+        </li>
+      }
+    </ul>
+    @if (oldReports().length) {
+      <h3 class="acal-h">Già gestite</h3>
+      <ul class="acal-list acal-list--past">
+        @for (r of oldReports(); track r.id) {
+          <li class="acal-item">
+            <div class="acal-item__main"><strong>{{ r.title }}</strong><span class="acal-meta">{{ day(r.day) }} · {{ r.status === 'approved' ? 'pubblicata' : 'rifiutata' }}@if (r.email) { · {{ r.email }} }</span></div>
+            <div class="acal-item__btns"><button type="button" class="acal-icon acal-icon--danger" (click)="removeReport(r)" aria-label="Elimina segnalazione"><app-icon name="cestino" [size]="18" /></button></div>
+          </li>
+        }
+      </ul>
+    }
+  }
+}

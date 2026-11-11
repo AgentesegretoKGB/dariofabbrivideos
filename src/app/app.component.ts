@@ -3,6 +3,12 @@ import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { AuthService } from './auth/auth.service';
+import { IconComponent } from './shared/icon.component';
+
+const ICONS: { [path: string]: string } = {
+  '': 'catalogo', 'trascrizioni': 'trascrizioni', 'mappe': 'mappe', 'minigiochi': 'minigiochi',
+  'sources': 'fonti', 'materials': 'materiali', 'calendario': 'calendario', 'account': 'account',
+};
 
 const TITLES: { [path: string]: string } = {
   '': 'Catalogo',
@@ -12,6 +18,7 @@ const TITLES: { [path: string]: string } = {
   'trascrizioni': 'Cerca nelle trascrizioni',
   'mappe': 'Mappe',
   'minigiochi': 'Minigiochi',
+  'calendario': 'Calendario',
 };
 
 @Component({
@@ -19,12 +26,13 @@ const TITLES: { [path: string]: string } = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [RouterModule, CommonModule]
+  imports: [RouterModule, CommonModule, IconComponent]
 })
 export class AppComponent {
   drawerOpen = false;
   pageTitle = 'Catalogo';
   onAccount = false;
+  topIcon: string | null = 'catalogo';
 
   get topTitle(): string {
     return this.onAccount ? (this.auth.user() ? 'Il tuo account' : 'Accedi') : this.pageTitle;
@@ -37,6 +45,7 @@ export class AppComponent {
       try { sessionStorage.removeItem('reloaded-for'); } catch { }
       this.onAccount = path === 'account';
       this.pageTitle = TITLES[path] ?? 'Catalogo';
+      this.topIcon = path in ICONS ? ICONS[path] : (TITLES[path] ? null : 'catalogo');
     });
   }
 

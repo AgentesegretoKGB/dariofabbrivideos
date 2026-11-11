@@ -22,7 +22,12 @@
     <div class="review-tabs" role="tablist">
       <button type="button" role="tab" [attr.aria-selected]="tab === 'video'" [class.is-on]="tab === 'video'" (click)="backToVideos()">Video da revisionare</button>
       <button type="button" role="tab" [attr.aria-selected]="tab === 'minigiochi'" [class.is-on]="tab === 'minigiochi'" (click)="tab = 'minigiochi'">Minigiochi</button>
+      <button type="button" role="tab" [attr.aria-selected]="tab === 'calendario'" [class.is-on]="tab === 'calendario'" (click)="tab = 'calendario'">Calendario</button>
     </div>
+  }
+
+  @if (unlocked && tab === 'calendario') {
+    <app-admin-calendar />
   }
 
   @if (unlocked && tab === 'minigiochi') {

@@ -40,6 +40,10 @@ export const routes: Routes = [
     loadComponent: () => import('./minigames/prediction-event.component').then(m => m.PredictionEventComponent)
   },
   {
+    path: 'calendario',
+    loadComponent: () => import('./calendar/calendar.component').then(m => m.CalendarComponent)
+  },
+  {
     path: 'account',
     loadComponent: () => import('./account/account.component').then(m => m.AccountComponent)
   },

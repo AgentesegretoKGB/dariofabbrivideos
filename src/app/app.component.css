@@ -31,3 +31,9 @@
 .app-account:has(.app-account__pic) { padding: 0; border: 0; background: none; }
 .app-account__pic { width: 36px; height: 36px; border-radius: var(--radius-pill); object-fit: cover; display: block; }
 .app-account__pic--letter { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: var(--white); font-size: 16px; }
+
+/* Icone di sezione nel menu e nella barra in alto */
+.app-drawer a { gap: var(--space-3); }
+.app-drawer a app-icon { color: var(--muted); }
+.app-drawer a.is-current app-icon, .app-drawer a:hover app-icon { color: var(--ink); }
+.fc-topbar__title { display: inline-flex; align-items: center; gap: var(--space-2); }

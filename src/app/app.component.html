@@ -5,7 +5,7 @@
     <button class="fc-hamburger" type="button" aria-label="Apri menu" aria-controls="menu" [attr.aria-expanded]="drawerOpen" (click)="openDrawer()">
       <span class="fc-hamburger__lines" aria-hidden="true"><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span></span>
     </button>
-    <p class="fc-topbar__title">{{ topTitle }}</p>
+    <p class="fc-topbar__title">@if (topIcon) { <app-icon [name]="topIcon" [size]="20" /> }{{ topTitle }}</p>
     @if (!onAccount) {
     <a class="app-account" routerLink="/account" [attr.aria-label]="auth.user() ? 'Il tuo account' : 'Accedi'">
       @if (auth.user(); as u) {
@@ -29,12 +29,13 @@
       <span class="fc-hamburger__lines" aria-hidden="true"><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span></span>
     </button>
     <ul>
-      <li><a routerLink="/" routerLinkActive="is-current" [routerLinkActiveOptions]="{ paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }" ariaCurrentWhenActive="page" (click)="closeDrawer()">Catalogo</a></li>
-      <li><a routerLink="/trascrizioni" routerLinkActive="is-current" [routerLinkActiveOptions]="{ paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }" ariaCurrentWhenActive="page" (click)="closeDrawer()">Cerca nelle trascrizioni</a></li>
-      <li><a routerLink="/mappe" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()">Mappe</a></li>
-      <li><a routerLink="/minigiochi" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()">Minigiochi</a></li>
-      <li><a routerLink="/sources" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()">Fonti</a></li>
-      <li><a routerLink="/materials" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()">Materiali utili</a></li>
+      <li><a routerLink="/" routerLinkActive="is-current" [routerLinkActiveOptions]="{ paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="catalogo" [size]="22" />Catalogo</a></li>
+      <li><a routerLink="/trascrizioni" routerLinkActive="is-current" [routerLinkActiveOptions]="{ paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="trascrizioni" [size]="22" />Cerca nelle trascrizioni</a></li>
+      <li><a routerLink="/mappe" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="mappe" [size]="22" />Mappe</a></li>
+      <li><a routerLink="/minigiochi" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="minigiochi" [size]="22" />Minigiochi</a></li>
+      <li><a routerLink="/calendario" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="calendario" [size]="22" />Calendario</a></li>
+      <li><a routerLink="/sources" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="fonti" [size]="22" />Fonti</a></li>
+      <li><a routerLink="/materials" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="materiali" [size]="22" />Materiali utili</a></li>
     </ul>
   </nav>
 

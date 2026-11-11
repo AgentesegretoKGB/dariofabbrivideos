@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SafeUrlPipe } from '../catalog/safe-url.pipe';
 import { AdminMinigamesComponent } from './admin-minigames.component';
+import { AdminCalendarComponent } from './admin-calendar.component';
 import { MgEvent, MinigameService } from '../minigames/minigame.service';
 import { shortLabel } from '../minigames/format';
 
@@ -24,14 +25,14 @@ const REVIEW_PASSWORD = 'R3visione';
 @Component({
   selector: 'app-review',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe, AdminMinigamesComponent],
+  imports: [CommonModule, FormsModule, HttpClientModule, SafeUrlPipe, AdminMinigamesComponent, AdminCalendarComponent],
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
   constructor(private http: HttpClient, private mg: MinigameService) {}
 
-  tab: 'video' | 'minigiochi' = 'video';
+  tab: 'video' | 'minigiochi' | 'calendario' = 'video';
 
   // ----- collegamento video → evento minigioco -----
   mgAdmin = false;
