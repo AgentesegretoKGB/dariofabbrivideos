@@ -70,7 +70,7 @@ export class ReviewComponent implements OnInit {
     this.mgMessage[v.id] = { text: '', error: false };
     try {
       const r = await this.mg.detectAndSave(eventId, { videoId: yt });
-      this.mgMessage[v.id] = { text: `Collegato. Trovate ${r.found} formule nella ${r.source}: ora conferma il minigioco.`, error: false };
+      this.mgMessage[v.id] = { text: `Collegato. Trovate ${r.found} formule e ${r.tvs} TV nella ${r.source}: ora conferma il minigioco.`, error: false };
     } catch (e: any) {
       // trascrizione non disponibile: il video resta collegato e si può incollare il testo
       try { await this.mg.linkVideo(eventId, yt); } catch { }
@@ -89,7 +89,7 @@ export class ReviewComponent implements OnInit {
     try {
       const r = await this.mg.detectAndSave(ev.id, { videoId: this.extractId(v.url), text });
       this.mgPaste[v.id] = ''; this.mgShowPaste[v.id] = false;
-      this.mgMessage[v.id] = { text: `Trovate ${r.found} formule nel testo incollato: ora conferma il minigioco.`, error: false };
+      this.mgMessage[v.id] = { text: `Trovate ${r.found} formule e ${r.tvs} TV nel testo incollato: ora conferma il minigioco.`, error: false };
       await this.loadMgEvents();
     } catch (e: any) { this.mgMessage[v.id] = { text: e.message, error: true }; }
     this.mgBusy[v.id] = false;

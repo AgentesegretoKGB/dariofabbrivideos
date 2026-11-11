@@ -145,7 +145,7 @@ export class AdminMinigamesComponent implements OnInit {
     try {
       const r = await this.mg.detectAndSave(e.id, { videoId: id });
       await this.reload(e.id);
-      this.say(this.draft(e), `Trovate ${r.found} formule nella ${r.source}. Controlla l'elenco e conferma.`);
+      this.say(this.draft(e), `Trovate ${r.found} formule e ${r.tvs} TV nella ${r.source}. Controlla gli elenchi e conferma.`);
     } catch {
       // YouTube non dà la trascrizione ai server: il video resta collegato e si incolla il testo
       try { await this.mg.linkVideo(e.id, id); await this.reload(e.id); } catch { }
@@ -162,7 +162,7 @@ export class AdminMinigamesComponent implements OnInit {
       const vid = this.videoIdOf(d);
       const r = await this.mg.detectAndSave(e.id, vid ? { text: d.pasted, videoId: vid } : { text: d.pasted });
       d.pasted = '';
-      return `Trovate ${r.found} formule nel testo incollato. Controlla l'elenco e conferma.`;
+      return `Trovate ${r.found} formule e ${r.tvs} TV nel testo incollato. Controlla gli elenchi e conferma.`;
     });
   }
 
@@ -186,6 +186,7 @@ export class AdminMinigamesComponent implements OnInit {
     return list.sort((a, b) => (det[b.id] || 0) - (det[a.id] || 0) || a.text.localeCompare(b.text));
   }
   found(e: MgEvent, p: Phrase) { return (e.detected || {})[p.id] || 0; }
+  foundTv(e: MgEvent, id: string) { return (e.detected || {})['tv:' + id] || 0; }
 
   async saveResult(e: MgEvent, confirm: boolean) {
     const d = this.draft(e);

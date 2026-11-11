@@ -61,6 +61,35 @@ export function stripTimestamps(text: string): string {
     .replace(/\b\d{1,2}(:\d{2}){1,2}\b/g, ' ');
 }
 
+/** Aggettivi (anche al maschile e con grafie diverse) → TV degli RVM. */
+const TV_ADJ: [RegExp, string][] = [
+  [/francofona belga|belga francofona|francofona del belgio|del belgio|belga|belgi|belghe/, 'belga'],
+  [/svedese|svedesi/, 'svedese'], [/rumena|rumeno|romena|romeno|rumene|romene/, 'rumena'],
+  [/olandese|olandesi/, 'olandese'], [/cinese|cinesi/, 'cinese'], [/iraniana|iraniano|iraniane/, 'iraniana'],
+  [/danese|danesi/, 'danese'], [/australiana|australiano|australiane/, 'australiana'],
+  [/tedesca|tedesco|tedesche/, 'tedesca'], [/albanese|albanesi/, 'albanese'], [/francese|francesi/, 'francese'],
+  [/lettone|lettoni/, 'lettone'],
+];
+const TV_WORD = '(?:tv|tivu|t v|televisione|televisioni|telegiornale|tg)';
+const TV_MIDDLE = '(?:(?:pubblica|di stato|nazionale|statale|privata) )?';
+
+/** Conta le TV citate nella trascrizione: «TV svedese», «televisione tedesca», «tg iraniano», «BBC»… */
+export function countTvs(text: string): { [tv: string]: number } {
+  const t = fold(stripTimestamps(text));
+  const out: { [tv: string]: number } = {};
+  const add = (id: string) => { out[id] = (out[id] || 0) + 1; };
+  const re = new RegExp(` ${TV_WORD} ${TV_MIDDLE}((?:[a-z']+ ){1,3})`, 'g');
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(t))) {
+    const words = ' ' + m[1];
+    for (const [adj, id] of TV_ADJ) if (new RegExp(` (?:${adj.source}) `).test(words)) { add(id); break; }
+    re.lastIndex = m.index + 1;
+  }
+  const bbc = t.match(/ bbc /g);
+  if (bbc) out['bbc'] = bbc.length;
+  return out;
+}
+
 /** Conta quante volte ogni formula compare in un testo (es. una trascrizione). */
 export function countPhrases(text: string, phrases: Phrase[]): { [id: number]: number } {
   const t = fold(text);
@@ -278,7 +307,7 @@ export class MinigameService {
    * Calcola le formule dette in un video (dalla trascrizione) o in un testo incollato
    * e le salva come risultato provvisorio dell'evento, da confermare.
    */
-  async detectAndSave(eventId: string, src: { videoId?: string | null; text?: string }): Promise<{ found: number; source: string }> {
+  async detectAndSave(eventId: string, src: { videoId?: string | null; text?: string }): Promise<{ found: number; tvs: number; source: string }> {
     const phrases = await this.phrases(true);
     let text = src.text || '', source = 'testo incollato';
     if (!text && src.videoId) {
@@ -287,10 +316,12 @@ export class MinigameService {
       source = tr.source === 'indice' ? 'trascrizione del sito' : 'trascrizione di YouTube';
     }
     if (!text.trim()) throw new Error('Nessun testo da analizzare.');
-    const detected = countPhrases(stripTimestamps(text), phrases);
+    const detected: { [k: string]: number } = countPhrases(stripTimestamps(text), phrases);
     const said = Object.keys(detected).map(Number);
-    await this.saveResult(eventId, { video_id: src.videoId === undefined ? undefined : src.videoId, detected, said_ids: said, confirm: false });
-    return { found: said.length, source };
+    const tvs = countTvs(text);
+    for (const [id, n] of Object.entries(tvs)) detected['tv:' + id] = n;
+    await this.saveResult(eventId, { video_id: src.videoId === undefined ? undefined : src.videoId, detected, said_ids: said, rvm_sources: Object.keys(tvs), confirm: false });
+    return { found: said.length, tvs: Object.keys(tvs).length, source };
   }
 
   async deletePhrase(id: number) {
