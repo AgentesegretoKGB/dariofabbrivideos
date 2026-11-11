@@ -133,21 +133,34 @@ export class AdminMinigamesComponent implements OnInit {
     catch (err: any) { alert(err.message); }
   }
 
+  private videoIdOf(d: Draft): string | null {
+    return youtubeId(d.video) || (/^[A-Za-z0-9_-]{11}$/.test(d.video.trim()) ? d.video.trim() : null);
+  }
+
   async detectVideo(e: MgEvent) {
     const d = this.draft(e);
-    const id = youtubeId(d.video) || (/^[A-Za-z0-9_-]{11}$/.test(d.video.trim()) ? d.video.trim() : null);
+    const id = this.videoIdOf(d);
     if (!id) { this.say(d, 'Incolla un link YouTube valido.', true); return; }
-    await this.run(e, async () => {
+    d.busy = true; d.msg = '';
+    try {
       const r = await this.mg.detectAndSave(e.id, { videoId: id });
-      return `Trovate ${r.found} formule nella ${r.source}. Controlla l'elenco e conferma.`;
-    });
+      await this.reload(e.id);
+      this.say(this.draft(e), `Trovate ${r.found} formule nella ${r.source}. Controlla l'elenco e conferma.`);
+    } catch {
+      // YouTube non dà la trascrizione ai server: il video resta collegato e si incolla il testo
+      try { await this.mg.linkVideo(e.id, id); await this.reload(e.id); } catch { }
+      this.say(this.draft(e), 'YouTube non fornisce la trascrizione al sito (blocca le richieste automatiche). Il video è collegato: incolla la trascrizione nella casella qui sotto.', true);
+      setTimeout(() => { const ta = document.getElementById('p' + e.id) as HTMLTextAreaElement | null; ta?.scrollIntoView({ block: 'center' }); ta?.focus(); });
+    }
+    this.draft(e).busy = false;
   }
 
   async detectText(e: MgEvent) {
     const d = this.draft(e);
     if (!d.pasted.trim()) { this.say(d, 'Incolla prima il testo della trascrizione.', true); return; }
     await this.run(e, async () => {
-      const r = await this.mg.detectAndSave(e.id, { text: d.pasted });
+      const vid = this.videoIdOf(d);
+      const r = await this.mg.detectAndSave(e.id, vid ? { text: d.pasted, videoId: vid } : { text: d.pasted });
       d.pasted = '';
       return `Trovate ${r.found} formule nel testo incollato. Controlla l'elenco e conferma.`;
     });
