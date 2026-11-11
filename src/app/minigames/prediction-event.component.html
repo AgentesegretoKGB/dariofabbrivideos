@@ -28,8 +28,9 @@
   @if (e.status === 'confirmed') {
     <section class="app-card">
       <h2 class="app-card__title">Risultati</h2>
-      @if (saved(); as mine) {
-        <p class="app-pe-score">Hai fatto <strong>{{ myScore()?.points ?? 0 }} punti</strong> indovinando {{ myScore()?.hits ?? 0 }} {{ (myScore()?.hits ?? 0) === 1 ? 'formula' : 'formule' }} su {{ mine.length }}.</p>
+      @if (hasEntry()) {
+        @let mine = saved() || [];
+        <p class="app-pe-score">Hai fatto <strong>{{ myScore()?.points ?? 0 }} punti</strong> indovinando {{ myScore()?.hits ?? 0 }} {{ (myScore()?.hits ?? 0) === 1 ? 'formula' : 'formule' }} su {{ mine.length }}@if (savedRvm()) { e {{ myScore()?.rvm_hit ? 'la TV degli RVM' : 'non la TV degli RVM' }}}.</p>
         <ul class="app-chips">
           @for (id of mine; track id) {
             @if (byId().get(id); as p) {
@@ -40,10 +41,19 @@
       } @else {
         <p class="app-note">Non hai giocato questo evento.</p>
       }
+      @if (savedRvm(); as g) {
+        <ul class="app-chips app-chips--rvm">
+          <li class="app-chip" [class.is-hit]="rvmSources().includes(g)" [class.is-miss]="!rvmSources().includes(g)">{{ rvmSources().includes(g) ? '✓' : '✗' }} RVM: {{ tvLabel(g) }} <span>{{ RVM_POINTS }} pt</span></li>
+        </ul>
+      }
       <h3 class="app-sub">Formule dette da Fabbri</h3>
       @if (saidPhrases().length) {
         <ul class="app-chips">@for (p of saidPhrases(); track p.id) { <li class="app-chip">{{ p.text }} <span>{{ p.points }} pt</span></li> }</ul>
       } @else { <p class="app-note">Nessuna delle formule in lista.</p> }
+      <h3 class="app-sub">Da dove arrivavano gli RVM</h3>
+      @if (rvmSources().length) {
+        <ul class="app-chips">@for (s of rvmSources(); track s) { <li class="app-chip">{{ tvLabel(s) }}</li> }</ul>
+      } @else { <p class="app-note">Nessuna delle TV in lista.</p> }
 
       @if (scores().length) {
         <h3 class="app-sub">Classifica dell'evento</h3>
@@ -51,7 +61,7 @@
           @for (s of scores(); track s.user_id; let i = $index) {
             <li class="app-board__row" [class.is-me]="s.user_id === auth.user()?.id">
               <span class="app-board__pos">{{ i + 1 }}</span><span class="app-board__name">&#64;{{ s.username }}</span>
-              <span class="app-board__meta">{{ s.hits }}/{{ s.phrase_ids.length }} indovinate</span><span class="app-board__pts">{{ s.points }} pt</span>
+              <span class="app-board__meta">{{ s.hits }}/{{ s.phrase_ids.length }} formule@if (s.rvm_guess) { · RVM {{ s.rvm_hit ? '✓' : '✗' }}}</span><span class="app-board__pts">{{ s.points }} pt</span>
             </li>
           }
         </ol>
@@ -60,9 +70,12 @@
   } @else if (!open()) {
     <section class="app-card">
       <h2 class="app-card__title">La tua schedina</h2>
-      @if (picked().length) {
-        <ul class="app-chips">@for (p of picked(); track p.id) { <li class="app-chip">{{ p.text }} <span>{{ p.points }} pt</span></li> }</ul>
-        <p class="app-note">Se Fabbri le dice tutte, guadagni {{ potential() }} punti. I risultati arrivano dopo la revisione.</p>
+      @if (picked().length || rvm()) {
+        <ul class="app-chips">
+          @for (p of picked(); track p.id) { <li class="app-chip">{{ p.text }} <span>{{ p.points }} pt</span></li> }
+          @if (rvm()) { <li class="app-chip">RVM: {{ tvLabel(rvm()) }} <span>{{ RVM_POINTS }} pt</span></li> }
+        </ul>
+        <p class="app-note">Se indovini tutto, guadagni {{ potential() }} punti. I risultati arrivano dopo la revisione.</p>
       } @else {
         <p class="app-note">Non hai compilato la schedina per questo evento.</p>
       }
@@ -77,23 +90,39 @@
         <h2 class="app-card__title" id="schedina">La tua schedina</h2>
         <span class="app-slip__count">{{ picks().length }}/{{ MAX }} · fino a {{ potential() }} pt</span>
       </div>
-      @if (picked().length) {
+      @if (picked().length || rvm()) {
         <ul class="app-chips app-chips--picked">
           @for (p of picked(); track p.id) {
             <li><button type="button" class="app-chip app-chip--btn is-on" (click)="toggle(p)" [attr.aria-label]="'Togli ' + p.text">{{ p.text }} <span>{{ p.points }} pt</span> <b aria-hidden="true">×</b></button></li>
           }
+          @if (rvm()) {
+            <li><button type="button" class="app-chip app-chip--btn app-chip--tv" (click)="pickTv(rvm()!)" [attr.aria-label]="'Togli ' + tvLabel(rvm())">RVM: {{ tvLabel(rvm()) }} <span>{{ RVM_POINTS }} pt</span> <b aria-hidden="true">×</b></button></li>
+          }
         </ul>
       } @else {
-        <p class="app-note">Scegli dalla lista qui sotto fino a {{ MAX }} formule che secondo te Fabbri dirà.</p>
+        <p class="app-note">Scegli fino a {{ MAX }} formule che secondo te Fabbri dirà e la TV da cui arriveranno gli RVM.</p>
       }
       <div class="app-slip__actions">
-        <button type="button" class="fc-btn fc-btn--primary" [disabled]="saving() || !picks().length || !dirty()" (click)="save()">{{ saving() ? 'Salvo…' : (saved() ? 'Aggiorna schedina' : 'Salva schedina') }}</button>
-        @if (saved()) { <button type="button" class="app-link" (click)="withdraw()">Ritira la schedina</button> }
+        <button type="button" class="fc-btn fc-btn--primary" [disabled]="saving() || !canSave() || !dirty()" (click)="save()">{{ saving() ? 'Salvo…' : (hasEntry() ? 'Aggiorna schedina' : 'Salva schedina') }}</button>
+        @if (hasEntry()) { <button type="button" class="app-link" (click)="withdraw()">Ritira la schedina</button> }
       </div>
       @if (msg()) { <p class="app-msg" [class.is-error]="msgError()" role="status">{{ msg() }}</p> }
     </section>
 
+    <section class="app-card" aria-labelledby="rvm-title">
+      <h2 class="app-card__title" id="rvm-title">Da quale TV arriveranno gli RVM?</h2>
+      <p class="app-note app-rvm-note">Scegline una: se è tra quelle da cui arrivano gli RVM della puntata, guadagni {{ RVM_POINTS }} punti.</p>
+      <div class="app-tvs" role="radiogroup" aria-labelledby="rvm-title">
+        @for (tv of TVS; track tv.id) {
+          <button type="button" role="radio" class="app-tv" [class.is-on]="rvm() === tv.id" [attr.aria-checked]="rvm() === tv.id" (click)="pickTv(tv.id)">
+            <span class="app-tv__dot" aria-hidden="true"></span>{{ tv.label }}
+          </button>
+        }
+      </div>
+    </section>
+
     <section class="app-card" aria-label="Elenco delle formule">
+      <h2 class="app-card__title">Le formule</h2>
       <div class="app-list-tools">
         <div class="fc-search app-list-search">
           <svg class="fc-search__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>

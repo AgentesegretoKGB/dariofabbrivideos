@@ -15,10 +15,24 @@ export interface MgEvent {
   status: EventStatus;
   detected: { [phraseId: string]: number };
   said_ids: number[];
+  rvm_sources?: string[];
   confirmed_at: string | null;
 }
 
-export interface Score { user_id: string; username: string; phrase_ids: number[]; points: number; hits: number; }
+export interface Score { user_id: string; username: string; phrase_ids: number[]; points: number; hits: number; rvm_guess?: string | null; rvm_hit?: boolean; }
+
+export interface Entry { phrase_ids: number[]; rvm_guess: string | null; }
+
+/** Televisioni da cui possono arrivare gli RVM (codice → nome mostrato). */
+export const RVM_TVS: { id: string; label: string }[] = [
+  { id: 'svedese', label: 'TV svedese' }, { id: 'rumena', label: 'TV rumena' }, { id: 'olandese', label: 'TV olandese' },
+  { id: 'cinese', label: 'TV cinese' }, { id: 'bbc', label: 'BBC' }, { id: 'iraniana', label: 'TV iraniana' },
+  { id: 'danese', label: 'TV danese' }, { id: 'australiana', label: 'TV australiana' }, { id: 'tedesca', label: 'TV tedesca' },
+  { id: 'albanese', label: 'TV albanese' }, { id: 'francese', label: 'TV francese' }, { id: 'belga', label: 'TV francofona belga' },
+  { id: 'lettone', label: 'TV lettone' },
+];
+export const RVM_POINTS = 5;
+export const rvmLabel = (id: string | null | undefined) => RVM_TVS.find(t => t.id === id)?.label ?? '';
 export interface LeaderRow { user_id: string; username: string; points: number; events: number; hits: number; polymarket_points?: number; fiume_points?: number; fiume_games?: number; }
 
 export const MAX_PICKS = 5;
@@ -93,13 +107,14 @@ export class MinigameService {
     return data as MgEvent | null;
   }
 
-  async myEntry(eventId: string): Promise<number[] | null> {
+  async myEntry(eventId: string): Promise<Entry | null> {
     const uid = this.auth.user()?.id;
     if (!uid) return null;
     const c = await this.db();
-    const { data, error } = await c.from('mg_entries').select('phrase_ids').eq('event_id', eventId).eq('user_id', uid).maybeSingle();
+    let { data, error } = await c.from('mg_entries').select('phrase_ids,rvm_guess').eq('event_id', eventId).eq('user_id', uid).maybeSingle();
+    if (error?.code === '42703') ({ data, error } = await c.from('mg_entries').select('phrase_ids').eq('event_id', eventId).eq('user_id', uid).maybeSingle() as any);
     if (error) this.err(error);
-    return data?.phrase_ids ?? null;
+    return data ? { phrase_ids: (data as any).phrase_ids || [], rvm_guess: (data as any).rvm_guess ?? null } : null;
   }
 
   async myEntries(): Promise<Map<string, number[]>> {
@@ -110,15 +125,20 @@ export class MinigameService {
     return new Map((data || []).map((r: any) => [r.event_id, r.phrase_ids]));
   }
 
-  async saveEntry(eventId: string, phraseIds: number[]): Promise<void> {
+  async saveEntry(eventId: string, phraseIds: number[], rvmGuess: string | null = null): Promise<void> {
     const uid = this.auth.user()?.id;
     if (!uid) throw new Error('Accedi per giocare.');
     if (!this.auth.username()) throw new Error('Scegli prima uno username nella pagina del tuo account.');
-    if (!phraseIds.length || phraseIds.length > MAX_PICKS) throw new Error(`Scegli da 1 a ${MAX_PICKS} formule.`);
+    if (phraseIds.length > MAX_PICKS) throw new Error(`Puoi scegliere al massimo ${MAX_PICKS} formule.`);
+    if (!phraseIds.length && !rvmGuess) throw new Error('Scegli almeno una formula o la TV degli RVM.');
     const c = await this.db();
-    const { error } = await c.from('mg_entries').upsert({ event_id: eventId, user_id: uid, phrase_ids: phraseIds });
+    const row: any = { event_id: eventId, user_id: uid, phrase_ids: phraseIds };
+    if (rvmGuess !== undefined) row.rvm_guess = rvmGuess;
+    const { error } = await c.from('mg_entries').upsert(row);
     if (error) {
       if (/row-level security/i.test(error.message)) throw new Error('Le schedine per questo evento sono chiuse.');
+      if (error.code === '42703' || error.code === 'PGRST204') throw new Error('La sezione RVM non è ancora attiva sul sito.');
+      if (/scelta_check|phrase_ids_check/.test(error.message)) throw new Error('Scegli almeno una formula o la TV degli RVM.');
       this.err(error);
     }
   }
@@ -138,7 +158,8 @@ export class MinigameService {
 
   async scores(eventId: string): Promise<Score[]> {
     const c = await this.db();
-    const { data, error } = await c.from('mg_scores').select('user_id,username,phrase_ids,points,hits').eq('event_id', eventId).order('points', { ascending: false });
+    let { data, error } = await c.from('mg_scores').select('user_id,username,phrase_ids,points,hits,rvm_guess,rvm_hit').eq('event_id', eventId).order('points', { ascending: false });
+    if (error?.code === '42703') ({ data, error } = await c.from('mg_scores').select('user_id,username,phrase_ids,points,hits').eq('event_id', eventId).order('points', { ascending: false }) as any);
     if (error) this.err(error);
     return data as Score[];
   }
@@ -205,11 +226,12 @@ export class MinigameService {
   }
 
   /** Salva il risultato (provvisorio o confermato) di un evento. */
-  async saveResult(id: string, r: { video_id?: string | null; detected?: { [k: string]: number }; said_ids: number[]; confirm: boolean }) {
+  async saveResult(id: string, r: { video_id?: string | null; detected?: { [k: string]: number }; said_ids: number[]; rvm_sources?: string[]; confirm: boolean }) {
     const c = await this.db();
     const row: any = { said_ids: r.said_ids, status: r.confirm ? 'confirmed' : 'to_review', confirmed_at: r.confirm ? new Date().toISOString() : null };
     if (r.video_id !== undefined) row.video_id = r.video_id;
     if (r.detected !== undefined) row.detected = r.detected;
+    if (r.rvm_sources !== undefined) row.rvm_sources = r.rvm_sources;
     const { error } = await c.from('mg_events').update(row).eq('id', id);
     if (error) this.err(error);
   }
