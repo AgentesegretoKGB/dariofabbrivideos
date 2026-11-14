@@ -50,10 +50,12 @@
       @if (saidPhrases().length) {
         <ul class="app-chips">@for (p of saidPhrases(); track p.id) { <li class="app-chip">{{ p.text }} <span>{{ p.points }} pt</span></li> }</ul>
       } @else { <p class="app-note">Nessuna delle formule in lista.</p> }
+      @if (e.has_rvm) {
       <h3 class="app-sub">Da dove arrivavano gli RVM</h3>
       @if (rvmSources().length) {
         <ul class="app-chips">@for (s of rvmSources(); track s) { <li class="app-chip">{{ tvLabel(s) }}</li> }</ul>
       } @else { <p class="app-note">Nessuna delle TV in lista.</p> }
+      }
 
       @if (scores().length) {
         <h3 class="app-sub">Classifica dell'evento</h3>
@@ -100,7 +102,7 @@
           }
         </ul>
       } @else {
-        <p class="app-note">Scegli fino a {{ MAX }} formule che secondo te Fabbri dirà e la TV da cui arriveranno gli RVM.</p>
+        <p class="app-note">Scegli fino a {{ MAX }} formule che secondo te Fabbri dirà@if (e.has_rvm) { e la TV da cui arriveranno gli RVM}.</p>
       }
       <div class="app-slip__actions">
         <button type="button" class="fc-btn fc-btn--primary" [disabled]="saving() || !canSave() || !dirty()" (click)="save()">{{ saving() ? 'Salvo…' : (hasEntry() ? 'Aggiorna schedina' : 'Salva schedina') }}</button>
@@ -109,6 +111,7 @@
       @if (msg()) { <p class="app-msg" [class.is-error]="msgError()" role="status">{{ msg() }}</p> }
     </section>
 
+    @if (e.has_rvm) {
     <section class="app-card" aria-labelledby="rvm-title">
       <h2 class="app-card__title" id="rvm-title">Da quale TV arriveranno gli RVM?</h2>
       <p class="app-note app-rvm-note">Scegline una: se è tra quelle da cui arrivano gli RVM della puntata, guadagni {{ RVM_POINTS }} punti.</p>
@@ -120,6 +123,7 @@
         }
       </div>
     </section>
+    }
 
     <section class="app-card" aria-label="Elenco delle formule">
       <h2 class="app-card__title">Le formule</h2>

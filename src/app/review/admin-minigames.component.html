@@ -25,6 +25,7 @@
       <label>Ora di inizio *<input name="t" type="time" required [(ngModel)]="nf.time" /></label>
       <label>Canale YouTube<input name="y" [(ngModel)]="nf.youtube_channel" placeholder="https://www.youtube.com/@…" /></label>
       <label>Link dell'organizzazione<input name="o" [(ngModel)]="nf.org_link" placeholder="https://…" /></label>
+      <label class="adm-wide adm-rvmflag"><input type="checkbox" name="r" [(ngModel)]="nf.has_rvm" /> <span><strong>Sezione «TV degli RVM»</strong> (Il Grande Gioco): i giocatori indovinano da quale TV arrivano gli RVM</span></label>
       <div class="adm-wide adm-row">
         <button type="submit" class="btn-approve" [disabled]="creating()">{{ creating() ? 'Creo…' : 'Crea evento' }}</button>
         @if (createMsg()) { <span class="row-message">{{ createMsg() }}</span> }
@@ -39,7 +40,7 @@
   @for (e of sortedEvents(); track e.id) {
     <div class="review-card adm-ev" [class.is-open]="openId() === e.id">
       <button type="button" class="adm-ev__head" (click)="toggleOpen(e)" [attr.aria-expanded]="openId() === e.id">
-        <span class="adm-ev__name">{{ e.name }}</span>
+        <span class="adm-ev__name">{{ e.name }}@if (e.has_rvm) { <span class="adm-rvmtag">TV RVM</span> }</span>
         <span class="adm-ev__meta">{{ when(e.starts_at) }} · {{ counts().get(e.id) ?? 0 }} schedine</span>
         <span class="adm-badge" [class]="'adm-badge adm-badge--' + e.status">{{ statusLabel(e) }}</span>
       </button>
@@ -53,6 +54,7 @@
             <label>Ora *<input type="time" [name]="'t'+e.id" [(ngModel)]="d.time" /></label>
             <label>Canale YouTube<input [name]="'y'+e.id" [(ngModel)]="d.youtube_channel" /></label>
             <label>Link dell'organizzazione<input [name]="'o'+e.id" [(ngModel)]="d.org_link" /></label>
+            <label class="adm-wide adm-rvmflag"><input type="checkbox" [name]="'r'+e.id" [(ngModel)]="d.has_rvm" /> <span><strong>Sezione «TV degli RVM»</strong> (Il Grande Gioco)</span></label>
             <div class="adm-wide adm-row">
               <button type="submit" class="adm-btn" [disabled]="d.busy">Salva dati evento</button>
               <button type="button" class="btn-reject" (click)="remove(e)">Elimina evento</button>
@@ -96,6 +98,7 @@
             </ul>
           </div>
 
+          @if (e.has_rvm) {
           <h4 class="adm-h4">Da quali TV sono arrivati gli RVM</h4>
           <p class="adm-hint">Segna tutte le televisioni da cui sono arrivati gli RVM: chi ne ha indovinata una prende 5 punti. Quelle citate nella trascrizione («TV svedese», «televisione tedesca», «BBC»…) vengono spuntate in automatico, con il numero di volte accanto.</p>
           <ul class="adm-plist adm-tvs">
@@ -109,6 +112,7 @@
               </li>
             }
           </ul>
+          }
 
           <div class="review-actions">
             @if (e.status === 'confirmed') {

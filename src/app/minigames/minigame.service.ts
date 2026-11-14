@@ -16,6 +16,7 @@ export interface MgEvent {
   detected: { [phraseId: string]: number };
   said_ids: number[];
   rvm_sources?: string[];
+  has_rvm?: boolean;
   confirmed_at: string | null;
 }
 
@@ -252,6 +253,7 @@ export class MinigameService {
   async saveEvent(e: Partial<MgEvent> & { name: string; starts_at: string }): Promise<MgEvent> {
     const c = await this.db();
     const row: any = { name: e.name.trim(), starts_at: e.starts_at, youtube_channel: e.youtube_channel || null, org_link: e.org_link || null };
+    if (e.has_rvm !== undefined) row.has_rvm = !!e.has_rvm;
     const q = e.id ? c.from('mg_events').update(row).eq('id', e.id) : c.from('mg_events').insert(row);
     const { data, error } = await q.select('*').single();
     if (error) this.err(error);
@@ -307,8 +309,9 @@ export class MinigameService {
    * Calcola le formule dette in un video (dalla trascrizione) o in un testo incollato
    * e le salva come risultato provvisorio dell'evento, da confermare.
    */
-  async detectAndSave(eventId: string, src: { videoId?: string | null; text?: string }): Promise<{ found: number; tvs: number; source: string }> {
-    const phrases = await this.phrases(true);
+  async detectAndSave(eventId: string, src: { videoId?: string | null; text?: string }): Promise<{ found: number; tvs: number | null; source: string }> {
+    const [phrases, ev] = await Promise.all([this.phrases(true), this.event(eventId)]);
+    const withTv = !!ev?.has_rvm;
     let text = src.text || '', source = 'testo incollato';
     if (!text && src.videoId) {
       const tr = await this.transcript(src.videoId);
@@ -318,10 +321,11 @@ export class MinigameService {
     if (!text.trim()) throw new Error('Nessun testo da analizzare.');
     const detected: { [k: string]: number } = countPhrases(stripTimestamps(text), phrases);
     const said = Object.keys(detected).map(Number);
-    const tvs = countTvs(text);
+    // le TV si cercano solo negli eventi con la sezione «TV degli RVM» (Il Grande Gioco)
+    const tvs = withTv ? countTvs(text) : {};
     for (const [id, n] of Object.entries(tvs)) detected['tv:' + id] = n;
-    await this.saveResult(eventId, { video_id: src.videoId === undefined ? undefined : src.videoId, detected, said_ids: said, rvm_sources: Object.keys(tvs), confirm: false });
-    return { found: said.length, tvs: Object.keys(tvs).length, source };
+    await this.saveResult(eventId, { video_id: src.videoId === undefined ? undefined : src.videoId, detected, said_ids: said, ...(withTv ? { rvm_sources: Object.keys(tvs) } : {}), confirm: false });
+    return { found: said.length, tvs: withTv ? Object.keys(tvs).length : null, source };
   }
 
   async deletePhrase(id: number) {

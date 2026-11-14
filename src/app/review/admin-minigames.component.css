@@ -62,3 +62,7 @@ textarea { width: 100%; resize: vertical; }
 .adm-sub button.is-on { background: var(--card-bg); color: var(--ink); box-shadow: var(--shadow-sm); }
 .adm-tvs { grid-template-columns: repeat(3, minmax(0, 1fr)); max-height: none; }
 @media (max-width: 639px) { .adm-tvs { grid-template-columns: 1fr 1fr; } }
+
+.adm-form label.adm-rvmflag { flex-direction: row; align-items: flex-start; gap: .5rem; font-weight: 400; padding: .6rem .75rem; border-radius: var(--radius-md); background: #eaf0fe; }
+.adm-rvmflag input { margin-top: 3px; }
+.adm-rvmtag { margin-left: .5rem; padding: 1px 7px; border-radius: 99px; background: #1652f0; color: #fff; font-size: 11px; font-weight: 700; vertical-align: middle; }
