@@ -16,6 +16,38 @@
   <button type="submit" class="fc-btn fc-btn--primary" [disabled]="searching">{{ searching ? 'Cerco…' : 'Cerca' }}</button>
 </form>
 
+<div class="app-tr-filters" role="group" aria-label="Filtri">
+  <label class="app-tr-filter" [class.is-active]="filters.category">
+    <span>Categoria</span>
+    <select name="fc" [(ngModel)]="filters.category" (ngModelChange)="onFilterChange()" [disabled]="!catalogReady">
+      <option value="">Tutte</option>
+      @for (o of categoryOptions; track o.value) { <option [value]="o.value">{{ o.label }}</option> }
+    </select>
+  </label>
+  <label class="app-tr-filter" [class.is-active]="filters.format">
+    <span>Formato</span>
+    <select name="ff" [(ngModel)]="filters.format" (ngModelChange)="onFilterChange()" [disabled]="!catalogReady">
+      <option value="">Tutti</option>
+      @for (o of formatOptions; track o) { <option [value]="o">{{ o }}</option> }
+    </select>
+  </label>
+  <label class="app-tr-filter" [class.is-active]="filters.topic">
+    <span>Argomento</span>
+    <select name="ft" [(ngModel)]="filters.topic" (ngModelChange)="onFilterChange()" [disabled]="!catalogReady">
+      <option value="">Tutti</option>
+      @for (o of topicOptions; track o) { <option [value]="o">{{ o }}</option> }
+    </select>
+  </label>
+  <label class="app-tr-filter" [class.is-active]="filters.year">
+    <span>Anno</span>
+    <select name="fy" [(ngModel)]="filters.year" (ngModelChange)="onFilterChange()" [disabled]="!catalogReady">
+      <option value="">Tutti</option>
+      @for (o of yearOptions; track o) { <option [value]="o">{{ o }}</option> }
+    </select>
+  </label>
+  @if (activeFilters) { <button type="button" class="app-tr-clear" (click)="clearFilters()">Azzera filtri</button> }
+</div>
+
 @if (searchError) {
   <p class="app-tr-msg app-tr-msg--error" role="alert">{{ searchError }}</p>
 }

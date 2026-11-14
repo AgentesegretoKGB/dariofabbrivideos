@@ -1,6 +1,6 @@
 // Vercel Serverless Function (Node.js)
 // POST /api/search-transcripts
-// body: { query }
+// body: { query, videoIds? }  — videoIds: se presente, cerca solo in questi video (filtri della pagina)
 //
 // Pubblica (nessuna password). Il token GitHub resta sul server: serve solo a leggere l'indice.
 // Variabili d'ambiente: GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { query } = req.body || {};
+  const { query, videoIds } = req.body || {};
 
   // Gli spazi all'inizio o alla fine contano: «Nato » cerca la parola intera, non «Natoli».
   const raw = String(query || '').replace(/\s+/g, ' ');
@@ -74,7 +74,13 @@ export default async function handler(req, res) {
       cache = { at: Date.now(), docs };
     }
 
-    res.status(200).json(searchDocs(docs, raw));
+    // filtri (categoria, formato, argomento, anno): la pagina manda l'elenco dei video ammessi
+    let pool = docs;
+    if (Array.isArray(videoIds)) {
+      const allowed = new Set(videoIds.slice(0, 5000).map(String));
+      pool = docs.filter(d => allowed.has(d.videoId));
+    }
+    res.status(200).json(searchDocs(pool, raw));
   } catch (err) {
     res.status(500).json({ message: 'Errore interno: ' + String(err) });
   }
