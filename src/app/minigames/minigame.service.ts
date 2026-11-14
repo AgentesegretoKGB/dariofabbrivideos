@@ -16,6 +16,7 @@ export interface MgEvent {
   detected: { [phraseId: string]: number };
   said_ids: number[];
   rvm_sources?: string[];
+  has_rvm?: boolean;
   confirmed_at: string | null;
 }
 
@@ -59,6 +60,35 @@ export function stripTimestamps(text: string): string {
   return text
     .replace(/^\s*(\d+\s+(ore|ora|minuti|minuto|secondi|secondo)(,|\s+e)?\s*)+$/gim, ' ')
     .replace(/\b\d{1,2}(:\d{2}){1,2}\b/g, ' ');
+}
+
+/** Aggettivi (anche al maschile e con grafie diverse) → TV degli RVM. */
+const TV_ADJ: [RegExp, string][] = [
+  [/francofona belga|belga francofona|francofona del belgio|del belgio|belga|belgi|belghe/, 'belga'],
+  [/svedese|svedesi/, 'svedese'], [/rumena|rumeno|romena|romeno|rumene|romene/, 'rumena'],
+  [/olandese|olandesi/, 'olandese'], [/cinese|cinesi/, 'cinese'], [/iraniana|iraniano|iraniane/, 'iraniana'],
+  [/danese|danesi/, 'danese'], [/australiana|australiano|australiane/, 'australiana'],
+  [/tedesca|tedesco|tedesche/, 'tedesca'], [/albanese|albanesi/, 'albanese'], [/francese|francesi/, 'francese'],
+  [/lettone|lettoni/, 'lettone'],
+];
+const TV_WORD = '(?:tv|tivu|t v|televisione|televisioni|telegiornale|tg)';
+const TV_MIDDLE = '(?:(?:pubblica|di stato|nazionale|statale|privata) )?';
+
+/** Conta le TV citate nella trascrizione: «TV svedese», «televisione tedesca», «tg iraniano», «BBC»… */
+export function countTvs(text: string): { [tv: string]: number } {
+  const t = fold(stripTimestamps(text));
+  const out: { [tv: string]: number } = {};
+  const add = (id: string) => { out[id] = (out[id] || 0) + 1; };
+  const re = new RegExp(` ${TV_WORD} ${TV_MIDDLE}((?:[a-z']+ ){1,3})`, 'g');
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(t))) {
+    const words = ' ' + m[1];
+    for (const [adj, id] of TV_ADJ) if (new RegExp(` (?:${adj.source}) `).test(words)) { add(id); break; }
+    re.lastIndex = m.index + 1;
+  }
+  const bbc = t.match(/ bbc /g);
+  if (bbc) out['bbc'] = bbc.length;
+  return out;
 }
 
 /** Conta quante volte ogni formula compare in un testo (es. una trascrizione). */
@@ -223,6 +253,7 @@ export class MinigameService {
   async saveEvent(e: Partial<MgEvent> & { name: string; starts_at: string }): Promise<MgEvent> {
     const c = await this.db();
     const row: any = { name: e.name.trim(), starts_at: e.starts_at, youtube_channel: e.youtube_channel || null, org_link: e.org_link || null };
+    if (e.has_rvm !== undefined) row.has_rvm = !!e.has_rvm;
     const q = e.id ? c.from('mg_events').update(row).eq('id', e.id) : c.from('mg_events').insert(row);
     const { data, error } = await q.select('*').single();
     if (error) this.err(error);
@@ -278,8 +309,9 @@ export class MinigameService {
    * Calcola le formule dette in un video (dalla trascrizione) o in un testo incollato
    * e le salva come risultato provvisorio dell'evento, da confermare.
    */
-  async detectAndSave(eventId: string, src: { videoId?: string | null; text?: string }): Promise<{ found: number; source: string }> {
-    const phrases = await this.phrases(true);
+  async detectAndSave(eventId: string, src: { videoId?: string | null; text?: string }): Promise<{ found: number; tvs: number | null; source: string }> {
+    const [phrases, ev] = await Promise.all([this.phrases(true), this.event(eventId)]);
+    const withTv = !!ev?.has_rvm;
     let text = src.text || '', source = 'testo incollato';
     if (!text && src.videoId) {
       const tr = await this.transcript(src.videoId);
@@ -287,10 +319,13 @@ export class MinigameService {
       source = tr.source === 'indice' ? 'trascrizione del sito' : 'trascrizione di YouTube';
     }
     if (!text.trim()) throw new Error('Nessun testo da analizzare.');
-    const detected = countPhrases(stripTimestamps(text), phrases);
+    const detected: { [k: string]: number } = countPhrases(stripTimestamps(text), phrases);
     const said = Object.keys(detected).map(Number);
-    await this.saveResult(eventId, { video_id: src.videoId === undefined ? undefined : src.videoId, detected, said_ids: said, confirm: false });
-    return { found: said.length, source };
+    // le TV si cercano solo negli eventi con la sezione «TV degli RVM» (Il Grande Gioco)
+    const tvs = withTv ? countTvs(text) : {};
+    for (const [id, n] of Object.entries(tvs)) detected['tv:' + id] = n;
+    await this.saveResult(eventId, { video_id: src.videoId === undefined ? undefined : src.videoId, detected, said_ids: said, ...(withTv ? { rvm_sources: Object.keys(tvs) } : {}), confirm: false });
+    return { found: said.length, tvs: withTv ? Object.keys(tvs).length : null, source };
   }
 
   async deletePhrase(id: number) {

@@ -98,7 +98,7 @@ export class PredictionEventComponent implements OnInit, OnDestroy {
     const e = this.ev(); if (!e) return;
     this.saving.set(true); this.msg.set('');
     try {
-      await this.mg.saveEntry(e.id, this.picks(), this.rvm());
+      await this.mg.saveEntry(e.id, this.picks(), e.has_rvm ? this.rvm() : null);
       this.saved.set([...this.picks()]); this.savedRvm.set(this.rvm()); this.hasEntry.set(true);
       this.msgError.set(false); this.msg.set('Schedina salvata! Puoi modificarla fino all\'inizio dell\'evento.');
       this.participants.set(await this.mg.entriesCount(e.id));

@@ -8,6 +8,7 @@ import { youtubeId } from '../shared/catalog-video';
 import { PhraseEditorComponent } from './phrase-editor.component';
 
 interface Draft {
+  has_rvm: boolean;
   name: string; date: string; time: string; youtube_channel: string; org_link: string;
   video: string; pasted: string; said: Set<number>; rvm: Set<string>; query: string; onlyFound: boolean;
   busy: boolean; msg: string; error: boolean;
@@ -46,7 +47,7 @@ export class AdminMinigamesComponent implements OnInit {
   drafts = new Map<string, Draft>();
 
   // nuovo evento
-  nf = { name: '', date: '', time: '', youtube_channel: '', org_link: '' };
+  nf = { name: '', date: '', time: '', youtube_channel: '', org_link: '', has_rvm: false };
   creating = signal(false);
   createMsg = signal('');
 
@@ -89,6 +90,7 @@ export class AdminMinigamesComponent implements OnInit {
     const { date, time } = splitLocal(e.starts_at);
     const old = this.drafts.get(e.id);
     this.drafts.set(e.id, {
+      has_rvm: !!e.has_rvm,
       name: e.name, date, time, youtube_channel: e.youtube_channel || '', org_link: e.org_link || '',
       video: e.video_id ? 'https://www.youtube.com/watch?v=' + e.video_id : '', pasted: '',
       said: new Set(e.said_ids || []), rvm: new Set(e.rvm_sources || []), query: old?.query || '', onlyFound: old?.onlyFound ?? !!Object.keys(e.detected || {}).length,
@@ -110,8 +112,8 @@ export class AdminMinigamesComponent implements OnInit {
     if (!f.name.trim() || !f.date || !f.time) { this.createMsg.set('Nome, data e ora sono obbligatori.'); return; }
     this.creating.set(true); this.createMsg.set('');
     try {
-      await this.mg.saveEvent({ name: f.name, starts_at: toIso(f.date, f.time), youtube_channel: f.youtube_channel, org_link: f.org_link });
-      this.nf = { name: '', date: '', time: '', youtube_channel: '', org_link: '' };
+      await this.mg.saveEvent({ name: f.name, starts_at: toIso(f.date, f.time), youtube_channel: f.youtube_channel, org_link: f.org_link, has_rvm: f.has_rvm });
+      this.nf = { name: '', date: '', time: '', youtube_channel: '', org_link: '', has_rvm: false };
       this.createMsg.set('Evento creato.');
       await this.reload();
     } catch (e: any) { this.createMsg.set(e.message); }
@@ -122,7 +124,7 @@ export class AdminMinigamesComponent implements OnInit {
     const d = this.draft(e);
     if (!d.name.trim() || !d.date || !d.time) { this.say(d, 'Nome, data e ora sono obbligatori.', true); return; }
     await this.run(e, async () => {
-      await this.mg.saveEvent({ id: e.id, name: d.name, starts_at: toIso(d.date, d.time), youtube_channel: d.youtube_channel, org_link: d.org_link });
+      await this.mg.saveEvent({ id: e.id, name: d.name, starts_at: toIso(d.date, d.time), youtube_channel: d.youtube_channel, org_link: d.org_link, has_rvm: d.has_rvm });
       return 'Dati dell\'evento salvati.';
     });
   }
@@ -145,7 +147,7 @@ export class AdminMinigamesComponent implements OnInit {
     try {
       const r = await this.mg.detectAndSave(e.id, { videoId: id });
       await this.reload(e.id);
-      this.say(this.draft(e), `Trovate ${r.found} formule nella ${r.source}. Controlla l'elenco e conferma.`);
+      this.say(this.draft(e), `Trovate ${r.found} formule${r.tvs === null ? '' : ' e ' + r.tvs + ' TV'} nella ${r.source}. Controlla gli elenchi e conferma.`);
     } catch {
       // YouTube non dà la trascrizione ai server: il video resta collegato e si incolla il testo
       try { await this.mg.linkVideo(e.id, id); await this.reload(e.id); } catch { }
@@ -162,7 +164,7 @@ export class AdminMinigamesComponent implements OnInit {
       const vid = this.videoIdOf(d);
       const r = await this.mg.detectAndSave(e.id, vid ? { text: d.pasted, videoId: vid } : { text: d.pasted });
       d.pasted = '';
-      return `Trovate ${r.found} formule nel testo incollato. Controlla l'elenco e conferma.`;
+      return `Trovate ${r.found} formule${r.tvs === null ? '' : ' e ' + r.tvs + ' TV'} nel testo incollato. Controlla gli elenchi e conferma.`;
     });
   }
 
@@ -186,12 +188,13 @@ export class AdminMinigamesComponent implements OnInit {
     return list.sort((a, b) => (det[b.id] || 0) - (det[a.id] || 0) || a.text.localeCompare(b.text));
   }
   found(e: MgEvent, p: Phrase) { return (e.detected || {})[p.id] || 0; }
+  foundTv(e: MgEvent, id: string) { return (e.detected || {})['tv:' + id] || 0; }
 
   async saveResult(e: MgEvent, confirm: boolean) {
     const d = this.draft(e);
     if (confirm && !window.confirm(`Confermare i risultati di "${e.name}"? I punti verranno assegnati a tutti i giocatori.`)) return;
     await this.run(e, async () => {
-      await this.mg.saveResult(e.id, { said_ids: [...d.said], rvm_sources: [...d.rvm], confirm });
+      await this.mg.saveResult(e.id, { said_ids: [...d.said], ...(e.has_rvm ? { rvm_sources: [...d.rvm] } : {}), confirm });
       return confirm ? 'Risultati confermati: punti assegnati.' : 'Salvato come provvisorio.';
     });
   }
