@@ -437,3 +437,106 @@ button, input, select, textarea { font: inherit; }
   .app-suggest h2 { font-size: 21px; line-height: 28px; }
   .app-suggest .fc-btn { width: 100%; }
 }
+
+/* =====================================================================
+   Tema «rivista» (v5) — ispirato allo stile di una copertina di rivista
+   di geopolitica: fondo rosso vermiglio, titoli lilla in bastoni nero,
+   titoli graziati in grassetto, dettagli verde lime, immagini in bicromia
+   blu-viola, schede color carta. Solo colori e caratteri: nessun logo.
+   ===================================================================== */
+:root {
+  --rv-red: #e2523e;
+  --rv-red-deep: #c8412f;
+  --rv-lilac: #c9c5f5;
+  --rv-lilac-soft: #e6e3fc;
+  --rv-violet: #3a2fb5;
+  --rv-lime: #dbe35a;
+  --rv-paper: #fbf7ef;
+  --rv-paper-2: #f1eadc;
+  --rv-black: #141212;
+
+  --bg: var(--rv-red);
+  --card-bg: var(--rv-paper);
+  --surface-sunken: var(--rv-paper-2);
+  --border: rgba(20, 12, 10, 0.14);
+  --border-control: rgba(20, 12, 10, 0.32);
+  --ink: #141212;
+  --ink-hover: #2b2624;
+  --muted: #2a1c19;
+  --subtle: #4a3a36;
+  --accent: var(--rv-violet);
+  --accent-hover: #2a2190;
+  --accent-soft: var(--rv-lilac-soft);
+  --focus: var(--rv-black);
+  --success-surface: #e3f4e8;
+  --success-ink: #1d6b36;
+  --scrim: rgba(20, 12, 10, 0.45);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius: 12px;
+  --font-serif: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Archivo Black", "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-head: "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+body { background: var(--rv-red); font-family: var(--font-serif); font-size: 16px; line-height: 25px; }
+a { text-decoration-color: var(--rv-violet); }
+.fc :focus-visible, :focus-visible { outline-color: var(--rv-black); }
+
+/* Barra in alto e menu */
+.fc-topbar { background: var(--rv-red); border-bottom: 2px solid var(--rv-black); }
+.fc-topbar__title { font-family: var(--font-display); font-weight: 400; font-size: 17px; letter-spacing: .01em; text-transform: uppercase; }
+.fc-topbar .fc-hamburger { background: var(--rv-paper); border-color: var(--rv-black); }
+.fc-drawer { background: var(--rv-paper); }
+.fc-drawer a { font-family: var(--font-serif); font-weight: 700; }
+.fc-drawer a[aria-current="page"] { background: var(--rv-lilac); box-shadow: inset 4px 0 0 var(--rv-black); }
+
+/* Intestazioni: titolo grande lilla in bastoni nero, testo lime/nero */
+.fc-hero h1 { font-family: var(--font-display); font-weight: 400; color: var(--rv-lilac); font-size: clamp(40px, 6.2vw, 72px); line-height: .95; letter-spacing: -0.02em; text-transform: uppercase; }
+.fc-hero--page h1 { font-size: clamp(32px, 4.6vw, 52px); }
+.fc-hero p { color: var(--rv-black); font-weight: 500; font-size: 18px; line-height: 27px; }
+.fc-section-title { font-family: var(--font-head); font-weight: 800; color: var(--rv-black); letter-spacing: -0.01em; }
+
+/* Titoli di schede e pagine in graziato */
+.fc-video__title, .fc-material__title, .app-map__title, .app-game__title, .app-create__title,
+.app-pe-title, .app-pr-title, .app-md__title, .app-rank__title, .fi__title, .app-ev__name { font-family: var(--font-head); font-weight: 700; letter-spacing: -0.01em; }
+.app-rank__title, .app-pr-title, .app-md__title, .app-pe-title { color: var(--rv-black); }
+
+/* Schede color carta con bordo netto */
+.fc-video, .fc-material { background: var(--rv-paper); border: 1.5px solid var(--rv-black); }
+.fc-video:hover, .fc-video:focus-within { border-color: var(--rv-black); }
+
+/* Immagini in bicromia blu-viola, a colori al passaggio del mouse */
+body .fc-video__preview, body .fc-video__preview .app-poster { background: var(--rv-violet) !important; isolation: isolate; }
+.fc-video__preview .app-poster img, .app-tr-poster img, .fc-video__preview > img {
+  filter: grayscale(1) contrast(1.15) brightness(1.05); mix-blend-mode: screen; transition: filter 250ms ease, mix-blend-mode 0ms 250ms;
+}
+.fc-video:hover .app-poster img, .fc-video:focus-within .app-poster img { filter: none; mix-blend-mode: normal; transition: filter 250ms ease; }
+.fc-video__play { background: var(--rv-black); color: var(--rv-lilac); }
+.app-poster:hover .fc-video__play { background: var(--rv-black); color: var(--rv-lime); }
+
+/* Etichette */
+.fc-tag { background: var(--rv-lilac-soft); border-color: transparent; color: var(--rv-black); font-weight: 600; }
+.fc-badge--pending { background: var(--rv-lime); color: var(--rv-black); font-style: normal; font-weight: 700; }
+
+/* Pulsanti: nero con testo lilla (come il disco della copertina) */
+.fc-btn--primary { background: var(--rv-black); color: var(--rv-lilac); border-color: var(--rv-black); }
+.fc-btn--primary:hover { background: #000; color: var(--rv-lime); }
+.fc-btn--secondary { background: var(--rv-paper); border-color: var(--rv-black); }
+
+/* Barra di ricerca e filtri */
+.fc-search { background: transparent; }
+.fc-search input { background: var(--rv-paper); border: 1.5px solid var(--rv-black); border-radius: var(--radius-md); }
+.fc-filter-btn { background: var(--rv-paper); border-color: var(--rv-black); color: var(--rv-black); }
+.fc-filter-btn.is-active { background: var(--rv-black); color: var(--rv-lilac); border-color: var(--rv-black); }
+.fc-filter-btn--ghost { background: transparent; border-color: transparent; }
+.fc-filter-chip { background: var(--rv-lilac); border-color: var(--rv-black); color: var(--rv-black); }
+.fc-active__count, .fc-active__count strong { color: var(--rv-black); }
+.fc-separator { background: var(--rv-black); opacity: 1; height: 2px; }
+
+/* Piè di pagina nero con dettagli lilla e lime */
+.fc-footer { background: var(--rv-black); border-top: 0; color: var(--rv-paper); }
+.fc-footer__text { color: var(--rv-lime); font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; }
+.fc-social { background: transparent; border-color: rgba(201, 197, 245, .5); color: var(--rv-lilac); }
+.fc-social svg { fill: currentColor !important; }
+.fc-social:hover { background: var(--rv-lilac); color: var(--rv-black); }
