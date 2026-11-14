@@ -1,82 +1,61 @@
 <h1 class="rv-page-title">Calendario</h1>
 
-<section class="cal" aria-label="Calendario degli eventi">
-  <header class="cal__head">
-    <h2 class="cal__month"><strong>{{ monthName() }}</strong> {{ year() }}</h2>
-    <div class="cal__nav">
-      <button type="button" class="cal__navbtn" (click)="move(-1)" aria-label="Mese precedente"><app-icon name="sinistra" [size]="18" [stroke]="2.2" /></button>
-      <button type="button" class="cal__today" (click)="goToday()">Oggi</button>
-      <button type="button" class="cal__navbtn" (click)="move(1)" aria-label="Mese successivo"><app-icon name="destra" [size]="18" [stroke]="2.2" /></button>
-    </div>
-  </header>
+<p class="cal-lead">Gli incontri, le presentazioni e le dirette di Dario Fabbri. Conosci un evento che manca? Segnalalo con il pulsante +.</p>
 
-  <div class="cal__weekdays" aria-hidden="true">
-    @for (w of weekdays; track w) { <span>{{ w }}</span> }
-  </div>
+@if (loading()) {
+  <p class="cal-note">Carico gli eventi…</p>
+} @else if (error()) {
+  <p class="cal-note cal-note--error">{{ error() }}</p>
+} @else {
+  @for (g of upcoming(); track g.key) {
+    <section class="cal-month" [attr.aria-labelledby]="'m-' + g.key">
+      <h2 class="cal-month__title" [id]="'m-' + g.key">{{ g.label }}</h2>
+      <ul class="cal-tiles">
+        @for (e of g.events; track e.id) {
+          <li>
+            <button type="button" class="cal-tile" [style.background]="color(e)" (click)="open(e)" [attr.aria-label]="e.title + ', ' + long(e.day)">
+              <span class="cal-tile__date"><span class="cal-tile__wd">{{ weekday(e) }}</span><span class="cal-tile__dn">{{ dayNum(e) }}</span>@if (isToday(e)) { <span class="cal-tile__today">oggi</span> }</span>
+              <span class="cal-tile__title">{{ e.title }}</span>
+              <span class="cal-tile__info">
+                @if (e.place) { <span class="cal-tile__row"><app-icon name="luogo" [size]="15" [stroke]="2" />{{ e.place }}</span> }
+                @if (e.time) { <span class="cal-tile__row"><app-icon name="orario" [size]="15" [stroke]="2" />ore {{ hhmm(e.time) }}</span> }
+                @if (e.description) { <span class="cal-tile__row cal-tile__desc"><app-icon name="descrizione" [size]="15" [stroke]="2" /><span>{{ e.description }}</span></span> }
+                @if (e.link) { <span class="cal-tile__row cal-tile__link"><app-icon name="link" [size]="15" [stroke]="2" />{{ host(e.link) }}</span> }
+              </span>
+            </button>
+          </li>
+        }
+      </ul>
+    </section>
+  } @empty {
+    <p class="cal-note">Nessun evento in programma. Conosci un incontro di Dario Fabbri? Segnalalo con il pulsante +.</p>
+  }
 
-  <div class="cal__grid" role="grid" [class.is-loading]="loading()">
-    @for (c of cells(); track c.day) {
-      <div class="cal__cell" role="gridcell" tabindex="0" [class.is-out]="!c.inMonth" [class.is-selected]="c.day === selected()"
-           [attr.aria-selected]="c.day === selected()" [attr.aria-label]="long(c.day) + (c.events.length ? ', ' + c.events.length + (c.events.length === 1 ? ' evento' : ' eventi') : '')"
-           (click)="pick(c)" (keydown.enter)="pick(c)" (keydown.space)="$event.preventDefault(); pick(c)">
-        <span class="cal__num" [class.is-today]="c.today">{{ dayNum(c) }}</span>
-        <ul class="cal__evs">
-          @for (e of c.events.slice(0, 3); track e.id) {
-            <li><button type="button" class="cal__ev" (click)="open(e, $event)" [attr.aria-label]="e.title">
-              <span class="cal__dot" aria-hidden="true"></span><span class="cal__evtitle">{{ e.title }}</span>
-              @if (e.time) { <span class="cal__evtime">{{ hhmm(e.time) }}</span> }
-            </button></li>
-          }
-          @if (c.events.length > 3) { <li class="cal__more">altri {{ c.events.length - 3 }}</li> }
-        </ul>
-        @if (c.events.length) { <span class="cal__dots" aria-hidden="true">@for (e of c.events.slice(0, 3); track e.id) { <i></i> }</span> }
-      </div>
+  @if (pastCount()) {
+    <button type="button" class="cal-pastbtn" (click)="showPast.set(!showPast())">{{ showPast() ? 'Nascondi' : 'Mostra' }} gli eventi passati ({{ pastCount() }})</button>
+    @if (showPast()) {
+      @for (g of past(); track g.key) {
+        <section class="cal-month cal-month--past">
+          <h2 class="cal-month__title">{{ g.label }}</h2>
+          <ul class="cal-tiles">
+            @for (e of g.events; track e.id) {
+              <li>
+                <button type="button" class="cal-tile" [style.background]="color(e)" (click)="open(e)">
+                  <span class="cal-tile__date"><span class="cal-tile__wd">{{ weekday(e) }}</span><span class="cal-tile__dn">{{ dayNum(e) }}</span></span>
+                  <span class="cal-tile__title">{{ e.title }}</span>
+                  <span class="cal-tile__info">
+                    @if (e.place) { <span class="cal-tile__row"><app-icon name="luogo" [size]="15" [stroke]="2" />{{ e.place }}</span> }
+                    @if (e.time) { <span class="cal-tile__row"><app-icon name="orario" [size]="15" [stroke]="2" />ore {{ hhmm(e.time) }}</span> }
+                  </span>
+                </button>
+              </li>
+            }
+          </ul>
+        </section>
+      }
     }
-  </div>
-  @if (error()) { <p class="cal__error">{{ error() }}</p> }
-</section>
-
-<section class="cal-day" aria-live="polite">
-  <h2 class="cal-day__title">{{ selectedLabel() }}</h2>
-  @if (selectedEvents().length) {
-    <ul class="cal-list">
-      @for (e of selectedEvents(); track e.id) {
-        <li>
-          <button type="button" class="cal-item" (click)="open(e)">
-            <span class="cal-item__time">{{ e.time ? hhmm(e.time) : 'tutto il giorno' }}</span>
-            <span class="cal-item__bar" aria-hidden="true"></span>
-            <span class="cal-item__body">
-              <span class="cal-item__title">{{ e.title }}</span>
-              @if (e.place) { <span class="cal-item__place"><span class="cal-part"><app-icon name="luogo" [size]="15" />{{ e.place }}</span></span> }
-            </span>
-            <app-icon name="destra" [size]="16" class="cal-item__chev" />
-          </button>
-        </li>
-      }
-    </ul>
-  } @else {
-    <p class="cal-empty">Nessun evento in questo giorno.</p>
   }
-
-  @if (upcoming().length) {
-    <h3 class="cal-day__sub">Prossimi eventi</h3>
-    <ul class="cal-list">
-      @for (e of upcoming(); track e.id) {
-        <li>
-          <button type="button" class="cal-item" (click)="open(e)">
-            <span class="cal-item__time cal-item__time--date">{{ long(e.day).split(' ').slice(1, 3).join(' ') }}</span>
-            <span class="cal-item__bar" aria-hidden="true"></span>
-            <span class="cal-item__body">
-              <span class="cal-item__title">{{ e.title }}</span>
-              <span class="cal-item__place">@if (e.time) { <span class="cal-part"><app-icon name="orario" [size]="15" />{{ hhmm(e.time) }}</span> } @if (e.place) { <span class="cal-part"><app-icon name="luogo" [size]="15" />{{ e.place }}</span> }</span>
-            </span>
-            <app-icon name="destra" [size]="16" class="cal-item__chev" />
-          </button>
-        </li>
-      }
-    </ul>
-  }
-</section>
+}
 
 <button type="button" class="cal-fab" (click)="openReport()" aria-label="Segnala un evento" title="Segnala un evento">
   <app-icon name="piu" [size]="28" [stroke]="2.4" />

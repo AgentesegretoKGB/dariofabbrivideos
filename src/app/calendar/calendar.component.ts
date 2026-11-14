@@ -3,10 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { IconComponent } from '../shared/icon.component';
 import { CalEvent, CalendarService, hhmm, isoDay, linkHost, linkHref, parseDay } from './calendar.service';
 
-interface Cell { day: string; date: Date; inMonth: boolean; today: boolean; events: CalEvent[]; }
+interface MonthGroup { key: string; label: string; events: CalEvent[]; }
 
 const MONTHS = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+const WEEKDAY = new Intl.DateTimeFormat('it-IT', { weekday: 'short' });
 const LONG = new Intl.DateTimeFormat('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+/** Colori dei riquadri, tenui come nell'esempio; si alternano evento dopo evento. */
+const TILE_COLORS = ['#b2abd2', '#e2687f', '#ccb59c', '#a08a3c', '#d6bcc9', '#e2523e', '#cf9fc8', '#9fb3b8', '#d9a35f', '#a9b48f'];
 
 @Component({
   selector: 'app-calendar',
@@ -20,13 +23,11 @@ export class CalendarComponent implements OnInit {
   @ViewChild('detailDlg') detailDlg?: ElementRef<HTMLDialogElement>;
   @ViewChild('reportDlg') reportDlg?: ElementRef<HTMLDialogElement>;
 
-  readonly weekdays = ['lun', 'mar', 'mer', 'gio', 'ven', 'sab', 'dom'];
   readonly today = isoDay(new Date());
-  month = signal(new Date(new Date().getFullYear(), new Date().getMonth(), 1));
-  selected = signal(this.today);
   events = signal<CalEvent[]>([]);
   loading = signal(true);
   error = signal('');
+  showPast = signal(false);
   detail = signal<CalEvent | null>(null);
 
   // segnalazione
@@ -35,70 +36,45 @@ export class CalendarComponent implements OnInit {
   sent = signal(false);
   reportError = signal('');
 
-  readonly monthName = computed(() => MONTHS[this.month().getMonth()]);
-  readonly year = computed(() => this.month().getFullYear());
-
-  /** 6 settimane da lunedì, come il Calendario di Apple. */
-  readonly cells = computed<Cell[]>(() => {
-    const m = this.month();
-    const first = new Date(m.getFullYear(), m.getMonth(), 1);
-    const offset = (first.getDay() + 6) % 7;            // lunedì = 0
-    const start = new Date(first); start.setDate(1 - offset);
-    const byDay = new Map<string, CalEvent[]>();
-    for (const e of this.events()) (byDay.get(e.day) || byDay.set(e.day, []).get(e.day)!).push(e);
-    const out: Cell[] = [];
-    for (let i = 0; i < 42; i++) {
-      const d = new Date(start); d.setDate(start.getDate() + i);
-      const day = isoDay(d);
-      out.push({ day, date: d, inMonth: d.getMonth() === m.getMonth(), today: day === this.today, events: byDay.get(day) || [] });
+  private group(list: CalEvent[]): MonthGroup[] {
+    const map = new Map<string, MonthGroup>();
+    for (const e of list) {
+      const d = parseDay(e.day), key = e.day.slice(0, 7);
+      if (!map.has(key)) map.set(key, { key, label: `${MONTHS[d.getMonth()]} ${d.getFullYear()}`, events: [] });
+      map.get(key)!.events.push(e);
     }
-    return out;
-  });
-  readonly selectedEvents = computed(() => this.events().filter(e => e.day === this.selected()));
-  readonly selectedLabel = computed(() => LONG.format(parseDay(this.selected())));
-  readonly upcoming = computed(() => this.events().filter(e => e.day >= this.today).slice(0, 5));
+    return [...map.values()];
+  }
+  readonly upcoming = computed(() => this.group(this.events().filter(e => e.day >= this.today)));
+  readonly past = computed(() => this.group(this.events().filter(e => e.day < this.today).reverse()));
+  readonly pastCount = computed(() => this.events().filter(e => e.day < this.today).length);
 
   async ngOnInit() { await this.load(); }
 
   async load() {
     this.loading.set(true); this.error.set('');
-    const m = this.month();
-    const from = isoDay(new Date(m.getFullYear(), m.getMonth(), -6));
-    const to = isoDay(new Date(m.getFullYear(), m.getMonth() + 1, 13));
+    const n = new Date();
+    const from = isoDay(new Date(n.getFullYear() - 1, n.getMonth(), 1));
+    const to = isoDay(new Date(n.getFullYear() + 2, n.getMonth(), 1));
     try { this.events.set((await this.cal.events(from, to)).sort((a, b) => a.day.localeCompare(b.day) || (a.time || '').localeCompare(b.time || ''))); }
     catch (e: any) { this.error.set(e.message); this.events.set([]); }
     this.loading.set(false);
   }
 
-  move(delta: number) {
-    const m = this.month();
-    this.month.set(new Date(m.getFullYear(), m.getMonth() + delta, 1));
-    this.load();
+  /** Colore del riquadro: stabile per ogni evento. */
+  color(e: CalEvent): string {
+    let h = 0;
+    for (const c of (e.id || e.title)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+    return TILE_COLORS[h % TILE_COLORS.length];
   }
+  dayNum(e: CalEvent) { return parseDay(e.day).getDate(); }
+  weekday(e: CalEvent) { return WEEKDAY.format(parseDay(e.day)).replace('.', ''); }
+  long(day: string) { return LONG.format(parseDay(day)); }
+  isToday(e: CalEvent) { return e.day === this.today; }
 
-  goToday() {
-    const n = new Date();
-    this.month.set(new Date(n.getFullYear(), n.getMonth(), 1));
-    this.selected.set(this.today);
-    this.load();
-  }
+  open(e: CalEvent) { this.detail.set(e); setTimeout(() => this.detailDlg?.nativeElement.showModal()); }
 
-  pick(c: Cell) {
-    this.selected.set(c.day);
-    if (!c.inMonth) { this.month.set(new Date(c.date.getFullYear(), c.date.getMonth(), 1)); this.load(); }
-  }
-
-  open(e: CalEvent, ev?: Event) {
-    ev?.stopPropagation();
-    this.detail.set(e);
-    setTimeout(() => this.detailDlg?.nativeElement.showModal());
-  }
-
-  openReport() {
-    this.sent.set(false); this.reportError.set('');
-    if (!this.rf.day) this.rf.day = this.selected();
-    this.reportDlg?.nativeElement.showModal();
-  }
+  openReport() { this.sent.set(false); this.reportError.set(''); this.reportDlg?.nativeElement.showModal(); }
 
   async sendReport() {
     this.sending.set(true); this.reportError.set('');
@@ -115,6 +91,4 @@ export class CalendarComponent implements OnInit {
   readonly hhmm = hhmm;
   readonly href = linkHref;
   readonly host = linkHost;
-  long(day: string) { return LONG.format(parseDay(day)); }
-  dayNum(c: Cell) { return c.date.getDate(); }
 }
