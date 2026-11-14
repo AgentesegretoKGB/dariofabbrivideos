@@ -1,42 +1,35 @@
 <div class="fc fc-page">
   <a class="app-skip" href="#contenuto">Vai al contenuto</a>
 
-  <header class="fc-topbar">
-    <button class="fc-hamburger" type="button" aria-label="Apri menu" aria-controls="menu" [attr.aria-expanded]="drawerOpen" (click)="openDrawer()">
-      <span class="fc-hamburger__lines" aria-hidden="true"><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span></span>
-    </button>
-    <p class="fc-topbar__title">@if (topIcon) { <app-icon [name]="topIcon" [size]="20" /> }<span class="fc-topbar__text">{{ topTitle }}</span></p>
-    @if (!onAccount) {
-    <a class="app-account" routerLink="/account" [attr.aria-label]="auth.user() ? 'Il tuo account' : 'Accedi'">
+  <!-- Menu laterale stile Supabase: icone sempre visibili, nomi al passaggio del mouse -->
+  @if (railOpen) {
+    <div class="app-rail-scrim" (click)="closeRail()" aria-hidden="true"></div>
+  }
+  <nav #rail class="app-rail" [class.is-open]="railOpen" aria-label="Menu"
+       (pointerenter)="onEnter($event)" (pointerleave)="onLeave($event)" (pointerdown)="onPointerDown($event)"
+       (focusin)="onFocusIn()" (focusout)="onFocusOut($event)">
+    <a class="app-rail__logo" routerLink="/" aria-label="Catalogo video di Dario Fabbri" (click)="afterItem()"><span aria-hidden="true">DF</span><span class="app-rail__label app-rail__brand">Catalogo Fabbri</span></a>
+    <ul class="app-rail__list">
+      <li><a class="app-rail__item" routerLink="/" routerLinkActive="is-current" [routerLinkActiveOptions]="{ paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }" ariaCurrentWhenActive="page" [attr.title]="railOpen ? null : 'Catalogo'" (click)="afterItem()"><app-icon name="catalogo" [size]="22" /><span class="app-rail__label">Catalogo</span></a></li>
+      <li><a class="app-rail__item" routerLink="/trascrizioni" routerLinkActive="is-current" [routerLinkActiveOptions]="{ paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }" ariaCurrentWhenActive="page" [attr.title]="railOpen ? null : 'Cerca nelle trascrizioni'" (click)="afterItem()"><app-icon name="trascrizioni" [size]="22" /><span class="app-rail__label">Cerca nelle trascrizioni</span></a></li>
+      <li><a class="app-rail__item" routerLink="/mappe" routerLinkActive="is-current" ariaCurrentWhenActive="page" [attr.title]="railOpen ? null : 'Mappe'" (click)="afterItem()"><app-icon name="mappe" [size]="22" /><span class="app-rail__label">Mappe</span></a></li>
+      <li><a class="app-rail__item" routerLink="/minigiochi" routerLinkActive="is-current" ariaCurrentWhenActive="page" [attr.title]="railOpen ? null : 'Minigiochi'" (click)="afterItem()"><app-icon name="minigiochi" [size]="22" /><span class="app-rail__label">Minigiochi</span></a></li>
+      <li><a class="app-rail__item" routerLink="/calendario" routerLinkActive="is-current" ariaCurrentWhenActive="page" [attr.title]="railOpen ? null : 'Calendario'" (click)="afterItem()"><app-icon name="calendario" [size]="22" /><span class="app-rail__label">Calendario</span></a></li>
+      <li><a class="app-rail__item" routerLink="/sources" routerLinkActive="is-current" ariaCurrentWhenActive="page" [attr.title]="railOpen ? null : 'Fonti'" (click)="afterItem()"><app-icon name="fonti" [size]="22" /><span class="app-rail__label">Fonti</span></a></li>
+      <li><a class="app-rail__item" routerLink="/materials" routerLinkActive="is-current" ariaCurrentWhenActive="page" [attr.title]="railOpen ? null : 'Materiali utili'" (click)="afterItem()"><app-icon name="materiali" [size]="22" /><span class="app-rail__label">Materiali utili</span></a></li>
+    </ul>
+    <a class="app-rail__item app-rail__account" routerLink="/account" routerLinkActive="is-current" [attr.title]="railOpen ? null : accountLabel" (click)="afterItem()">
       @if (auth.user(); as u) {
         @if (auth.avatar(u); as pic) {
-          <img class="app-account__pic" [src]="pic" alt="" referrerpolicy="no-referrer" />
+          <img class="app-rail__pic" [src]="pic" alt="" referrerpolicy="no-referrer" />
         } @else {
-          <span class="app-account__pic app-account__pic--letter" aria-hidden="true">{{ auth.displayName(u).charAt(0).toUpperCase() }}</span>
+          <span class="app-rail__pic app-rail__pic--letter" aria-hidden="true">{{ auth.displayName(u).charAt(0).toUpperCase() }}</span>
         }
-      } @else if (auth.ready()) {
-        <span>Accedi</span>
+      } @else {
+        <app-icon name="account" [size]="22" />
       }
+      <span class="app-rail__label">{{ accountLabel }}</span>
     </a>
-    }
-  </header>
-
-  @if (drawerOpen) {
-    <div class="fc-scrim app-scrim" (click)="closeDrawer()" aria-hidden="true"></div>
-  }
-  <nav id="menu" class="fc-drawer app-drawer" [class.open]="drawerOpen" aria-label="Menu" [attr.aria-hidden]="!drawerOpen" [attr.inert]="drawerOpen ? null : ''">
-    <button #closeBtn class="fc-hamburger app-drawer__close" type="button" aria-label="Chiudi menu" (click)="closeDrawer()">
-      <span class="fc-hamburger__lines" aria-hidden="true"><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span></span>
-    </button>
-    <ul>
-      <li><a routerLink="/" routerLinkActive="is-current" [routerLinkActiveOptions]="{ paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="catalogo" [size]="22" />Catalogo</a></li>
-      <li><a routerLink="/trascrizioni" routerLinkActive="is-current" [routerLinkActiveOptions]="{ paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="trascrizioni" [size]="22" />Cerca nelle trascrizioni</a></li>
-      <li><a routerLink="/mappe" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="mappe" [size]="22" />Mappe</a></li>
-      <li><a routerLink="/minigiochi" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="minigiochi" [size]="22" />Minigiochi</a></li>
-      <li><a routerLink="/calendario" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="calendario" [size]="22" />Calendario</a></li>
-      <li><a routerLink="/sources" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="fonti" [size]="22" />Fonti</a></li>
-      <li><a routerLink="/materials" routerLinkActive="is-current" ariaCurrentWhenActive="page" (click)="closeDrawer()"><app-icon name="materiali" [size]="22" />Materiali utili</a></li>
-    </ul>
   </nav>
 
   <main id="contenuto" class="fc-page__main">

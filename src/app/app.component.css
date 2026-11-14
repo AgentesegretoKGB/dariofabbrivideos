@@ -6,34 +6,42 @@
 }
 .app-skip:focus { top: var(--space-2); }
 
-.app-scrim { position: fixed; inset: 0; }
-
-.app-drawer {
-  position: fixed; top: 0; bottom: 0; left: 0; overflow-y: auto;
-  transform: translateX(-100%); visibility: hidden;
-  transition: transform 200ms ease, visibility 0ms 200ms;
-}
-.app-drawer.open { transform: none; visibility: visible; transition: transform 200ms ease; }
-.app-drawer__close { position: absolute; top: 6px; left: var(--space-4); box-shadow: none; }
-.app-drawer .is-current { background: var(--accent-soft); color: var(--ink); font-weight: 700; }
-
 .fc-footer { margin-top: var(--space-16); }
 .fc-social svg { flex: none; }
 
-/* Pulsante account in alto a destra */
-.app-account {
-  margin-left: auto; display: inline-flex; align-items: center; justify-content: center;
-  min-height: 40px; min-width: 40px; padding: 0 var(--space-3);
-  border: 1px solid var(--border-control); border-radius: var(--radius-pill);
-  color: var(--ink); font-size: 15px; font-weight: 700; text-decoration: none; background: var(--card-bg);
-}
-.app-account:hover { background: var(--surface-sunken); }
-.app-account:has(.app-account__pic) { padding: 0; border: 0; background: none; }
-.app-account__pic { width: 36px; height: 36px; border-radius: var(--radius-pill); object-fit: cover; display: block; }
-.app-account__pic--letter { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: var(--white); font-size: 16px; }
+/* ---------- Menu laterale (stile Supabase) ---------- */
+:host { --rail-w: 60px; --rail-open-w: 248px; }
+.fc-page { padding-left: var(--rail-w); }
 
-/* Icone di sezione nel menu e nella barra in alto */
-.app-drawer a { gap: var(--space-3); }
-.app-drawer a app-icon { color: var(--muted); }
-.app-drawer a.is-current app-icon, .app-drawer a:hover app-icon { color: var(--ink); }
-.fc-topbar__title { display: inline-flex; align-items: center; gap: var(--space-2); }
+.app-rail {
+  position: fixed; top: 0; bottom: 0; left: 0; z-index: 40; width: var(--rail-w);
+  display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3) 10px;
+  background: var(--bg); border-right: 1px solid var(--border); overflow: hidden;
+  transition: width 180ms ease, box-shadow 180ms ease;
+}
+.app-rail.is-open { width: var(--rail-open-w); box-shadow: 8px 0 30px rgba(20, 12, 10, .12); }
+.app-rail-scrim { position: fixed; inset: 0; z-index: 39; background: rgba(20, 12, 10, .38); animation: rail-fade 180ms ease; }
+@keyframes rail-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.app-rail__logo { display: flex; align-items: center; gap: var(--space-3); min-height: 40px; margin-bottom: var(--space-2); text-decoration: none; color: var(--ink); white-space: nowrap; }
+.app-rail__logo > span:first-child { flex: none; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px;
+  background: #e2523e; color: #fff; font-family: var(--font-display, sans-serif); font-size: 15px; letter-spacing: .02em; }
+.app-rail__brand { font-family: var(--font-display, sans-serif); text-transform: uppercase; font-size: 15px; }
+
+.app-rail__list { list-style: none; margin: 0; padding: var(--space-2) 0 0; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.app-rail__item { display: flex; align-items: center; gap: var(--space-3); height: 40px; padding: 0 9px; border-radius: 8px;
+  color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 600; white-space: nowrap; }
+.app-rail__item app-icon { flex: none; }
+.app-rail__item:hover { background: var(--surface-sunken); color: var(--ink); }
+.app-rail__item.is-current { background: var(--accent-soft); color: var(--ink); }
+.app-rail__item.is-current app-icon { color: #e2523e; }
+.app-rail__label { opacity: 0; transition: opacity 120ms ease; }
+.app-rail.is-open .app-rail__label { opacity: 1; transition-delay: 60ms; }
+.app-rail__account { margin-top: auto; }
+.app-rail__pic { flex: none; width: 24px; height: 24px; margin-left: -1px; border-radius: 50%; object-fit: cover; }
+.app-rail__pic--letter { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: var(--white); font-size: 12px; font-weight: 700; }
+
+@media (max-width: 639px) {
+  :host { --rail-w: 52px; }
+  .app-rail { padding: var(--space-2) 6px; }
+}

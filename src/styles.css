@@ -476,6 +476,7 @@ button, input, select, textarea { font: inherit; }
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius: 12px;
+  --topbar-height: 0px;
   --font-serif: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-display: "Archivo Black", "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-head: "Fraunces", Georgia, "Times New Roman", serif;
