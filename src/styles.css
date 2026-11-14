@@ -441,8 +441,7 @@ button, input, select, textarea { font: inherit; }
 /* =====================================================================
    Tema «rivista» (v5) — ispirato allo stile di una copertina di rivista
    di geopolitica: fondo rosso vermiglio, titoli lilla in bastoni nero,
-   titoli graziati in grassetto, dettagli verde lime, immagini in bicromia
-   blu-viola, schede color carta. Solo colori e caratteri: nessun logo.
+   titoli graziati in grassetto, dettagli lilla, schede color carta. Solo colori e caratteri: nessun logo.
    ===================================================================== */
 :root {
   --rv-red: #e2523e;
@@ -450,7 +449,6 @@ button, input, select, textarea { font: inherit; }
   --rv-lilac: #c9c5f5;
   --rv-lilac-soft: #e6e3fc;
   --rv-violet: #3a2fb5;
-  --rv-lime: #dbe35a;
   --rv-paper: #fbf7ef;
   --rv-paper-2: #f1eadc;
   --rv-black: #141212;
@@ -491,7 +489,7 @@ a { text-decoration-color: var(--rv-violet); }
 .fc-drawer a { font-family: var(--font-serif); font-weight: 700; }
 .fc-drawer a[aria-current="page"] { background: var(--rv-lilac); box-shadow: inset 4px 0 0 var(--rv-black); }
 
-/* Intestazioni: titolo grande lilla in bastoni nero, testo lime/nero */
+/* Intestazioni: titolo grande lilla in bastoni nero, testo nero */
 .fc-hero h1 { font-family: var(--font-display); font-weight: 400; color: var(--rv-lilac); font-size: clamp(40px, 6.2vw, 72px); line-height: .95; letter-spacing: -0.02em; text-transform: uppercase; }
 .fc-hero--page h1 { font-size: clamp(32px, 4.6vw, 52px); }
 .fc-hero p { color: var(--rv-black); font-weight: 500; font-size: 18px; line-height: 27px; }
@@ -506,22 +504,17 @@ a { text-decoration-color: var(--rv-violet); }
 .fc-video, .fc-material { background: var(--rv-paper); border: 1.5px solid var(--rv-black); }
 .fc-video:hover, .fc-video:focus-within { border-color: var(--rv-black); }
 
-/* Immagini in bicromia blu-viola, a colori al passaggio del mouse */
-body .fc-video__preview, body .fc-video__preview .app-poster { background: var(--rv-violet) !important; isolation: isolate; }
-.fc-video__preview .app-poster img, .app-tr-poster img, .fc-video__preview > img {
-  filter: grayscale(1) contrast(1.15) brightness(1.05); mix-blend-mode: screen; transition: filter 250ms ease, mix-blend-mode 0ms 250ms;
-}
-.fc-video:hover .app-poster img, .fc-video:focus-within .app-poster img { filter: none; mix-blend-mode: normal; transition: filter 250ms ease; }
+/* Miniature dei video nei loro colori originali */
 .fc-video__play { background: var(--rv-black); color: var(--rv-lilac); }
-.app-poster:hover .fc-video__play { background: var(--rv-black); color: var(--rv-lime); }
+.app-poster:hover .fc-video__play { background: var(--rv-black); color: #fff; }
 
 /* Etichette */
 .fc-tag { background: var(--rv-lilac-soft); border-color: transparent; color: var(--rv-black); font-weight: 600; }
-.fc-badge--pending { background: var(--rv-lime); color: var(--rv-black); font-style: normal; font-weight: 700; }
+.fc-badge--pending { background: var(--rv-lilac); color: var(--rv-black); font-style: normal; font-weight: 700; }
 
 /* Pulsanti: nero con testo lilla (come il disco della copertina) */
 .fc-btn--primary { background: var(--rv-black); color: var(--rv-lilac); border-color: var(--rv-black); }
-.fc-btn--primary:hover { background: #000; color: var(--rv-lime); }
+.fc-btn--primary:hover { background: #000; color: #fff; }
 .fc-btn--secondary { background: var(--rv-paper); border-color: var(--rv-black); }
 
 /* Barra di ricerca e filtri */
@@ -534,9 +527,9 @@ body .fc-video__preview, body .fc-video__preview .app-poster { background: var(-
 .fc-active__count, .fc-active__count strong { color: var(--rv-black); }
 .fc-separator { background: var(--rv-black); opacity: 1; height: 2px; }
 
-/* Piè di pagina nero con dettagli lilla e lime */
+/* Piè di pagina nero con dettagli lilla */
 .fc-footer { background: var(--rv-black); border-top: 0; color: var(--rv-paper); }
-.fc-footer__text { color: var(--rv-lime); font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; }
+.fc-footer__text { color: var(--rv-lilac); font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; }
 .fc-social { background: transparent; border-color: rgba(201, 197, 245, .5); color: var(--rv-lilac); }
 .fc-social svg { fill: currentColor !important; }
 .fc-social:hover { background: var(--rv-lilac); color: var(--rv-black); }
