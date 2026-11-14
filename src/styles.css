@@ -440,20 +440,21 @@ button, input, select, textarea { font: inherit; }
 
 /* =====================================================================
    Tema «rivista» (v5) — ispirato allo stile di una copertina di rivista
-   di geopolitica: fondo rosso vermiglio, titoli lilla in bastoni nero,
-   titoli graziati in grassetto, dettagli lilla, schede color carta. Solo colori e caratteri: nessun logo.
+   di geopolitica: fondo bianco panna, titolo rosso vermiglio in bastoni nero,
+   titoli graziati in grassetto, accenti in lilla grigio, schede bianche. Solo colori e caratteri: nessun logo.
    ===================================================================== */
 :root {
   --rv-red: #e2523e;
   --rv-red-deep: #c8412f;
-  --rv-lilac: #c9c5f5;
-  --rv-lilac-soft: #e6e3fc;
-  --rv-violet: #3a2fb5;
-  --rv-paper: #fbf7ef;
-  --rv-paper-2: #f1eadc;
+  --rv-lilac: #c3c0d3;        /* lilla grigio, desaturato: colore di tutti gli accenti */
+  --rv-lilac-soft: #e7e5ee;
+  --rv-violet: #6e6a8c;       /* versione scura dello stesso lilla, per linee e testi */
+  --rv-cream: #faf6ee;        /* bianco panna leggero: sfondo */
+  --rv-paper: #fffdf9;
+  --rv-paper-2: #f2ede3;
   --rv-black: #141212;
 
-  --bg: var(--rv-red);
+  --bg: var(--rv-cream);
   --card-bg: var(--rv-paper);
   --surface-sunken: var(--rv-paper-2);
   --border: rgba(20, 12, 10, 0.14);
@@ -463,7 +464,7 @@ button, input, select, textarea { font: inherit; }
   --muted: #2a1c19;
   --subtle: #4a3a36;
   --accent: var(--rv-violet);
-  --accent-hover: #2a2190;
+  --accent-hover: #575371;
   --accent-soft: var(--rv-lilac-soft);
   --focus: var(--rv-black);
   --success-surface: #e3f4e8;
@@ -477,20 +478,20 @@ button, input, select, textarea { font: inherit; }
   --font-head: "Fraunces", Georgia, "Times New Roman", serif;
 }
 
-body { background: var(--rv-red); font-family: var(--font-serif); font-size: 16px; line-height: 25px; }
+body { background: var(--rv-cream); font-family: var(--font-serif); font-size: 16px; line-height: 25px; }
 a { text-decoration-color: var(--rv-violet); }
 .fc :focus-visible, :focus-visible { outline-color: var(--rv-black); }
 
 /* Barra in alto e menu */
-.fc-topbar { background: var(--rv-red); border-bottom: 2px solid var(--rv-black); }
+.fc-topbar { background: var(--rv-cream); border-bottom: 2px solid var(--rv-black); }
 .fc-topbar__title { font-family: var(--font-display); font-weight: 400; font-size: 17px; letter-spacing: .01em; text-transform: uppercase; }
 .fc-topbar .fc-hamburger { background: var(--rv-paper); border-color: var(--rv-black); }
 .fc-drawer { background: var(--rv-paper); }
 .fc-drawer a { font-family: var(--font-serif); font-weight: 700; }
 .fc-drawer a[aria-current="page"] { background: var(--rv-lilac); box-shadow: inset 4px 0 0 var(--rv-black); }
 
-/* Intestazioni: titolo grande lilla in bastoni nero, testo nero */
-.fc-hero h1 { font-family: var(--font-display); font-weight: 400; color: var(--rv-lilac); font-size: clamp(40px, 6.2vw, 72px); line-height: .95; letter-spacing: -0.02em; text-transform: uppercase; }
+/* Intestazioni: titolo grande rosso in bastoni nero, testo nero */
+.fc-hero h1 { font-family: var(--font-display); font-weight: 400; color: var(--rv-red); font-size: clamp(40px, 6.2vw, 72px); line-height: .95; letter-spacing: -0.02em; text-transform: uppercase; }
 .fc-hero--page h1 { font-size: clamp(32px, 4.6vw, 52px); }
 .fc-hero p { color: var(--rv-black); font-weight: 500; font-size: 18px; line-height: 27px; }
 .fc-section-title { font-family: var(--font-head); font-weight: 800; color: var(--rv-black); letter-spacing: -0.01em; }
