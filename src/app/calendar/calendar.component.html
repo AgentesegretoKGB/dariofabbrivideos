@@ -2,6 +2,25 @@
 
 <p class="cal-lead">Gli incontri, le presentazioni e le dirette di Dario Fabbri. Conosci un evento che manca? Segnalalo con il pulsante +.</p>
 
+<ng-template #tile let-e>
+  <article class="cal-tile" [style.background]="color(e)">
+    <div class="cal-tile__date"><span class="cal-tile__wd">{{ weekday(e) }}</span><span class="cal-tile__dn">{{ dayNum(e) }}</span>@if (isToday(e)) { <span class="cal-tile__today">oggi</span> }</div>
+    <h3 class="cal-tile__title">{{ e.title }}</h3>
+    <div class="cal-tile__info">
+      @if (e.place) { <p class="cal-tile__row"><app-icon name="luogo" [size]="15" [stroke]="2" /><span>{{ e.place }}</span></p> }
+      @if (e.time) { <p class="cal-tile__row"><app-icon name="orario" [size]="15" [stroke]="2" /><span>ore {{ hhmm(e.time) }}</span></p> }
+      @if (e.description) { <p class="cal-tile__row cal-tile__desc"><app-icon name="descrizione" [size]="15" [stroke]="2" /><span>{{ short(e.description) }}</span></p> }
+    </div>
+    <div class="cal-tile__foot">
+      @if (e.link) { <a class="cal-tile__link" [href]="href(e.link)" target="_blank" rel="noopener"><app-icon name="link" [size]="15" [stroke]="2" />{{ host(e.link) }} ↗</a> }
+      <button type="button" class="cal-tile__dl" (click)="downloadPdf(e)" [disabled]="pdfBusy() === (e.id ?? e.title)" [attr.aria-label]="'Scarica il PDF di ' + e.title" title="Scarica il PDF">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg>
+        <span>PDF</span>
+      </button>
+    </div>
+  </article>
+</ng-template>
+
 @if (loading()) {
   <p class="cal-note">Carico gli eventi…</p>
 } @else if (error()) {
@@ -11,20 +30,7 @@
     <section class="cal-month" [attr.aria-labelledby]="'m-' + g.key">
       <h2 class="cal-month__title" [id]="'m-' + g.key">{{ g.label }}</h2>
       <ul class="cal-tiles">
-        @for (e of g.events; track e.id) {
-          <li>
-            <button type="button" class="cal-tile" [style.background]="color(e)" (click)="open(e)" [attr.aria-label]="e.title + ', ' + long(e.day)">
-              <span class="cal-tile__date"><span class="cal-tile__wd">{{ weekday(e) }}</span><span class="cal-tile__dn">{{ dayNum(e) }}</span>@if (isToday(e)) { <span class="cal-tile__today">oggi</span> }</span>
-              <span class="cal-tile__title">{{ e.title }}</span>
-              <span class="cal-tile__info">
-                @if (e.place) { <span class="cal-tile__row"><app-icon name="luogo" [size]="15" [stroke]="2" />{{ e.place }}</span> }
-                @if (e.time) { <span class="cal-tile__row"><app-icon name="orario" [size]="15" [stroke]="2" />ore {{ hhmm(e.time) }}</span> }
-                @if (e.description) { <span class="cal-tile__row cal-tile__desc"><app-icon name="descrizione" [size]="15" [stroke]="2" /><span>{{ e.description }}</span></span> }
-                @if (e.link) { <span class="cal-tile__row cal-tile__link"><app-icon name="link" [size]="15" [stroke]="2" />{{ host(e.link) }}</span> }
-              </span>
-            </button>
-          </li>
-        }
+        @for (e of g.events; track e.id) { <li><ng-container *ngTemplateOutlet="tile; context: { $implicit: e }" /></li> }
       </ul>
     </section>
   } @empty {
@@ -38,18 +44,7 @@
         <section class="cal-month cal-month--past">
           <h2 class="cal-month__title">{{ g.label }}</h2>
           <ul class="cal-tiles">
-            @for (e of g.events; track e.id) {
-              <li>
-                <button type="button" class="cal-tile" [style.background]="color(e)" (click)="open(e)">
-                  <span class="cal-tile__date"><span class="cal-tile__wd">{{ weekday(e) }}</span><span class="cal-tile__dn">{{ dayNum(e) }}</span></span>
-                  <span class="cal-tile__title">{{ e.title }}</span>
-                  <span class="cal-tile__info">
-                    @if (e.place) { <span class="cal-tile__row"><app-icon name="luogo" [size]="15" [stroke]="2" />{{ e.place }}</span> }
-                    @if (e.time) { <span class="cal-tile__row"><app-icon name="orario" [size]="15" [stroke]="2" />ore {{ hhmm(e.time) }}</span> }
-                  </span>
-                </button>
-              </li>
-            }
+            @for (e of g.events; track e.id) { <li><ng-container *ngTemplateOutlet="tile; context: { $implicit: e }" /></li> }
           </ul>
         </section>
       }
@@ -60,25 +55,6 @@
 <button type="button" class="cal-fab" (click)="openReport()" aria-label="Segnala un evento" title="Segnala un evento">
   <app-icon name="piu" [size]="28" [stroke]="2.4" />
 </button>
-
-<!-- Dettaglio evento -->
-<dialog #detailDlg class="cal-dlg" (click)="backdropClose($event, detailDlg)" (close)="detail.set(null)" aria-labelledby="cal-detail-title">
-  @if (detail(); as e) {
-    <div class="cal-dlg__inner">
-      <header class="cal-dlg__head">
-        <h2 id="cal-detail-title">{{ e.title }}</h2>
-        <button type="button" class="cal-dlg__close" (click)="detailDlg.close()" aria-label="Chiudi"><app-icon name="chiudi" [size]="18" /></button>
-      </header>
-      <ul class="cal-info">
-        <li><app-icon name="data" /><span>{{ long(e.day) }}</span></li>
-        @if (e.time) { <li><app-icon name="orario" /><span>ore {{ hhmm(e.time) }}</span></li> }
-        @if (e.place) { <li><app-icon name="luogo" /><span>{{ e.place }}</span></li> }
-        @if (e.description) { <li><app-icon name="descrizione" /><span class="cal-info__desc">{{ e.description }}</span></li> }
-        @if (e.link) { <li><app-icon name="link" /><a [href]="href(e.link)" target="_blank" rel="noopener">{{ host(e.link) }} ↗</a></li> }
-      </ul>
-    </div>
-  }
-</dialog>
 
 <!-- Segnalazione -->
 <dialog #reportDlg class="cal-dlg" (click)="backdropClose($event, reportDlg)" aria-labelledby="cal-report-title">
@@ -106,7 +82,7 @@
         <label class="cal-field"><app-icon name="luogo" /><span class="cal-sr">Luogo</span>
           <input name="l" maxlength="200" placeholder="Luogo" [(ngModel)]="rf.place" /></label>
         <label class="cal-field cal-field--top"><app-icon name="descrizione" /><span class="cal-sr">Breve descrizione</span>
-          <textarea name="de" rows="3" maxlength="2000" placeholder="Breve descrizione" [(ngModel)]="rf.description"></textarea></label>
+          <textarea name="de" rows="3" maxlength="200" placeholder="Breve descrizione (max 200 caratteri)" [(ngModel)]="rf.description"></textarea></label>
         <label class="cal-field"><app-icon name="link" /><span class="cal-sr">Link</span>
           <input name="li" maxlength="500" placeholder="Link (sito, biglietti, diretta…)" [(ngModel)]="rf.link" /></label>
         <label class="cal-field"><app-icon name="email" /><span class="cal-sr">La tua email (facoltativa)</span>

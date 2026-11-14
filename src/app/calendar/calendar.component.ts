@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgTemplateOutlet } from '@angular/common';
 import { IconComponent } from '../shared/icon.component';
 import { CalEvent, CalendarService, hhmm, isoDay, linkHost, linkHref, parseDay } from './calendar.service';
 
@@ -14,13 +15,12 @@ const TILE_COLORS = ['#b2abd2', '#e2687f', '#ccb59c', '#a08a3c', '#d6bcc9', '#e2
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [FormsModule, IconComponent],
+  imports: [FormsModule, NgTemplateOutlet, IconComponent],
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
   private cal = inject(CalendarService);
-  @ViewChild('detailDlg') detailDlg?: ElementRef<HTMLDialogElement>;
   @ViewChild('reportDlg') reportDlg?: ElementRef<HTMLDialogElement>;
 
   readonly today = isoDay(new Date());
@@ -28,7 +28,7 @@ export class CalendarComponent implements OnInit {
   loading = signal(true);
   error = signal('');
   showPast = signal(false);
-  detail = signal<CalEvent | null>(null);
+  pdfBusy = signal<string | null>(null);
 
   // segnalazione
   rf = { title: '', day: '', time: '', place: '', description: '', link: '', email: '' };
@@ -72,7 +72,14 @@ export class CalendarComponent implements OnInit {
   long(day: string) { return LONG.format(parseDay(day)); }
   isToday(e: CalEvent) { return e.day === this.today; }
 
-  open(e: CalEvent) { this.detail.set(e); setTimeout(() => this.detailDlg?.nativeElement.showModal()); }
+  /** Descrizione sulla card: al massimo 200 caratteri. */
+  short(s: string) { const t = s.trim(); return t.length > 200 ? t.slice(0, 199).trimEnd() + '…' : t; }
+
+  async downloadPdf(e: CalEvent) {
+    this.pdfBusy.set(e.id ?? e.title);
+    try { (await import('./event-pdf')).downloadEventPdf(e, this.long(e.day)); }
+    finally { this.pdfBusy.set(null); }
+  }
 
   openReport() { this.sent.set(false); this.reportError.set(''); this.reportDlg?.nativeElement.showModal(); }
 
