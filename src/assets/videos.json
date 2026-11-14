@@ -8268,5 +8268,52 @@
         "attualità"
       ]
     }
+  },
+  {
+    "id": 505,
+    "title": "L&#39;Impero e il Diluvio, Dario Fabbri presenta il libro: &quot;Perchè americani riscrivono la storia&quot;",
+    "url": "https://www.youtube.com/embed/l7kONFsFWqU",
+    "channel": "Tag24",
+    "date": "2026-11-14",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 506,
+    "title": "Noi cerchiamo benessere, gli imperi vivono di gloria",
+    "url": "https://www.youtube.com/embed/ZZRHl1Z-Fjk",
+    "channel": "Grandi Lezioni di Filosofia e Psicologia",
+    "date": "2026-11-14",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 507,
+    "title": "Dario Fabbri su Usa, Israele, Iran e Ucraina",
+    "url": "https://www.youtube.com/embed/2TuDjy1hILo",
+    "channel": "Tag24",
+    "date": "2026-11-13",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [
+        "Israele"
+      ],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
