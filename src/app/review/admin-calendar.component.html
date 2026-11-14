@@ -21,7 +21,7 @@
       <label class="acal-field acal-wide"><app-icon name="luogo" /><span>Luogo</span><input name="l" [(ngModel)]="form.place" maxlength="200" placeholder="Es. Palazzo Ducale, Genova" /></label>
       <label class="acal-field"><app-icon name="data" /><span>Data *</span><input name="d" type="date" [(ngModel)]="form.day" /></label>
       <label class="acal-field"><app-icon name="orario" /><span>Orario</span><input name="o" type="time" [(ngModel)]="form.time" /></label>
-      <label class="acal-field acal-wide acal-field--top"><app-icon name="descrizione" /><span>Breve descrizione</span><textarea name="de" rows="3" maxlength="2000" [(ngModel)]="form.description"></textarea></label>
+      <label class="acal-field acal-wide acal-field--top"><app-icon name="descrizione" /><span>Breve descrizione</span><textarea name="de" rows="3" maxlength="200" [(ngModel)]="form.description"></textarea></label>
       <label class="acal-field acal-wide"><app-icon name="link" /><span>Link pubblico</span><input name="li" [(ngModel)]="form.link" maxlength="500" placeholder="https://…" /></label>
       <div class="acal-wide acal-actions">
         <button type="submit" class="acal-btn" [disabled]="saving()">{{ saving() ? 'Salvo…' : fromReport ? 'Pubblica' : form.id ? 'Salva modifiche' : 'Aggiungi al calendario' }}</button>

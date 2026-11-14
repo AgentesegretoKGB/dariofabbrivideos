@@ -8,7 +8,7 @@ import { LeaderRow, MinigameService } from './minigame.service';
   standalone: true,
   imports: [RouterLink],
   template: `
-    <h1 class="app-mg-hidden">Minigiochi</h1>
+    <h1 class="rv-page-title">Minigiochi</h1>
 
     <section class="app-rank" aria-labelledby="classifica">
       <h2 class="app-rank__title" id="classifica">Classifica</h2>

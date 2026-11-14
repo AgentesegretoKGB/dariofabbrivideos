@@ -437,3 +437,110 @@ button, input, select, textarea { font: inherit; }
   .app-suggest h2 { font-size: 21px; line-height: 28px; }
   .app-suggest .fc-btn { width: 100%; }
 }
+
+/* =====================================================================
+   Tema «rivista» (v5) — ispirato allo stile di una copertina di rivista
+   di geopolitica: fondo quasi bianco, titoli rossi vermiglio in bastoni nero,
+   titoli graziati in grassetto, accenti in lilla grigio, schede bianche senza bordi neri. Solo colori e caratteri: nessun logo.
+   ===================================================================== */
+:root {
+  --rv-red: #e2523e;
+  --rv-red-deep: #c8412f;
+  --rv-lilac: #c3c0d3;        /* lilla grigio, desaturato: colore di tutti gli accenti */
+  --rv-lilac-soft: #e7e5ee;
+  --rv-violet: #6e6a8c;       /* versione scura dello stesso lilla, per linee e testi */
+  --rv-cream: #fdfcf9;        /* bianco appena caldo: sfondo */
+  --rv-line: #e7e3da;         /* contorni leggeri al posto dei bordi neri */
+  --rv-paper: #ffffff;
+  --rv-paper-2: #f4f1ea;
+  --rv-black: #141212;
+
+  --bg: var(--rv-cream);
+  --card-bg: var(--rv-paper);
+  --surface-sunken: var(--rv-paper-2);
+  --border: var(--rv-line);
+  --border-control: #d6d1c6;
+  --shadow-card: 0 1px 2px rgba(20, 12, 10, .04), 0 4px 14px rgba(20, 12, 10, .05);
+  --shadow-card-hover: 0 2px 6px rgba(20, 12, 10, .06), 0 10px 26px rgba(20, 12, 10, .09);
+  --ink: #141212;
+  --ink-hover: #2b2624;
+  --muted: #2a1c19;
+  --subtle: #4a3a36;
+  --accent: var(--rv-violet);
+  --accent-hover: #575371;
+  --accent-soft: var(--rv-lilac-soft);
+  --focus: var(--rv-black);
+  --success-surface: #e3f4e8;
+  --success-ink: #1d6b36;
+  --scrim: rgba(20, 12, 10, 0.45);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius: 12px;
+  --topbar-height: 0px;
+  --font-serif: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Archivo Black", "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-head: "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+body { background: var(--rv-cream); font-family: var(--font-serif); font-size: 16px; line-height: 25px; }
+a { text-decoration-color: var(--rv-violet); }
+.fc :focus-visible, :focus-visible { outline-color: var(--rv-black); }
+
+/* Barra in alto e menu */
+.fc-topbar { background: var(--rv-cream); border-bottom: 1px solid var(--rv-line); }
+.fc-topbar__title { font-family: var(--font-display); font-weight: 400; font-size: 17px; letter-spacing: .01em; text-transform: uppercase; }
+.fc-topbar .fc-hamburger { background: var(--rv-paper); border-color: var(--rv-line); }
+.fc-drawer { background: var(--rv-paper); }
+.fc-drawer a { font-family: var(--font-serif); font-weight: 700; }
+.fc-drawer a[aria-current="page"] { background: var(--rv-lilac); box-shadow: inset 4px 0 0 var(--rv-red); }
+
+/* Intestazioni: titolo grande rosso in bastoni nero, testo nero */
+.fc-hero h1, .rv-page-title, .app-pr-title, .app-pe-title, .app-md__title { font-family: var(--font-display); font-weight: 400; color: var(--rv-red); font-size: clamp(40px, 6.2vw, 72px); line-height: .95; letter-spacing: -0.02em; text-transform: uppercase; }
+.fc-hero--page h1, .rv-page-title, .app-pr-title, .app-pe-title, .app-md__title { font-size: clamp(32px, 4.6vw, 52px); }
+/* Titolo rosso visibile in ogni pagina */
+.rv-page-title { display: block; margin: var(--space-6) 0 var(--space-4); text-align: center; }
+.app-pr-title, .app-pe-title, .app-md__title { margin-bottom: var(--space-2) !important; font-size: clamp(32px, 4.6vw, 52px) !important; line-height: .95 !important; }
+.fc-topbar__title { min-width: 0; display: flex; align-items: center; }
+.fc-topbar__text { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 639px) { .fc-topbar__title { font-size: 14px; } }
+.fc-hero p { color: var(--rv-black); font-weight: 500; font-size: 18px; line-height: 27px; }
+.fc-section-title { font-family: var(--font-head); font-weight: 800; color: var(--rv-black); letter-spacing: -0.01em; }
+
+/* Titoli di schede e pagine in graziato */
+.fc-video__title, .fc-material__title, .app-map__title, .app-game__title, .app-create__title,
+.app-rank__title, .fi__title, .app-ev__name { font-family: var(--font-head); font-weight: 700; letter-spacing: -0.01em; }
+.app-rank__title { color: var(--rv-black); }
+
+/* Schede bianche con contorno leggero e ombra appena accennata */
+.fc-video, .fc-material { background: var(--rv-paper); border: 1px solid var(--rv-line); box-shadow: var(--shadow-card); }
+.fc-video:hover, .fc-video:focus-within { border-color: var(--rv-line); box-shadow: var(--shadow-card-hover); }
+
+/* Miniature dei video nei loro colori originali */
+.fc-video__play { background: var(--rv-black); color: var(--rv-lilac); }
+.app-poster:hover .fc-video__play { background: var(--rv-black); color: #fff; }
+
+/* Etichette */
+.fc-tag { background: var(--rv-lilac-soft); border-color: transparent; color: var(--rv-black); font-weight: 600; }
+.fc-badge--pending { background: var(--rv-lilac); color: var(--rv-black); font-style: normal; font-weight: 700; }
+
+/* Pulsanti: nero con testo lilla (come il disco della copertina) */
+.fc-btn--primary { background: var(--rv-black); color: var(--rv-lilac); border-color: var(--rv-black); }
+.fc-btn--primary:hover { background: #000; color: #fff; }
+.fc-btn--secondary { background: var(--rv-paper); border-color: var(--border-control); }
+
+/* Barra di ricerca e filtri */
+.fc-search { background: transparent; }
+.fc-search input { background: var(--rv-paper); border: 1px solid var(--border-control); border-radius: var(--radius-md); box-shadow: var(--shadow-card); }
+.fc-filter-btn { background: var(--rv-paper); border-color: var(--border-control); color: var(--rv-black); }
+.fc-filter-btn.is-active { background: var(--rv-black); color: var(--rv-lilac); border-color: var(--rv-black); }
+.fc-filter-btn--ghost { background: transparent; border-color: transparent; }
+.fc-filter-chip { background: var(--rv-lilac); border-color: transparent; color: var(--rv-black); }
+.fc-active__count, .fc-active__count strong { color: var(--rv-black); }
+.fc-separator { background: var(--rv-line); opacity: 1; height: 1px; }
+
+/* Piè di pagina nero con dettagli lilla */
+.fc-footer { background: var(--rv-black); border-top: 0; color: var(--rv-paper); }
+.fc-footer__text { color: var(--rv-lilac); font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .04em; }
+.fc-social { background: transparent; border-color: rgba(201, 197, 245, .5); color: var(--rv-lilac); }
+.fc-social svg { fill: currentColor !important; }
+.fc-social:hover { background: var(--rv-lilac); color: var(--rv-black); }
