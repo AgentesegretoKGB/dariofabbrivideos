@@ -75,9 +75,9 @@ export class CalendarComponent implements OnInit {
   /** Descrizione sulla card: al massimo 200 caratteri. */
   short(s: string) { const t = s.trim(); return t.length > 200 ? t.slice(0, 199).trimEnd() + '…' : t; }
 
-  async downloadPdf(e: CalEvent) {
+  async downloadPdf(e: CalEvent, card: HTMLElement) {
     this.pdfBusy.set(e.id ?? e.title);
-    try { (await import('./event-pdf')).downloadEventPdf(e, this.long(e.day)); }
+    try { await (await import('./event-pdf')).downloadEventPdf(e, card); }
     finally { this.pdfBusy.set(null); }
   }
 

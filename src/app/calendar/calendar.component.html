@@ -3,7 +3,7 @@
 <p class="cal-lead">Gli incontri, le presentazioni e le dirette di Dario Fabbri. Conosci un evento che manca? Segnalalo con il pulsante +.</p>
 
 <ng-template #tile let-e>
-  <article class="cal-tile" [style.background]="color(e)">
+  <article #card class="cal-tile" [style.background]="color(e)">
     <div class="cal-tile__date"><span class="cal-tile__wd">{{ weekday(e) }}</span><span class="cal-tile__dn">{{ dayNum(e) }}</span>@if (isToday(e)) { <span class="cal-tile__today">oggi</span> }</div>
     <h3 class="cal-tile__title">{{ e.title }}</h3>
     <div class="cal-tile__info">
@@ -13,7 +13,7 @@
     </div>
     <div class="cal-tile__foot">
       @if (e.link) { <a class="cal-tile__link" [href]="href(e.link)" target="_blank" rel="noopener"><app-icon name="link" [size]="15" [stroke]="2" />{{ host(e.link) }} ↗</a> }
-      <button type="button" class="cal-tile__dl" (click)="downloadPdf(e)" [disabled]="pdfBusy() === (e.id ?? e.title)" [attr.aria-label]="'Scarica il PDF di ' + e.title" title="Scarica il PDF">
+      <button type="button" class="cal-tile__dl" (click)="downloadPdf(e, card)" [disabled]="pdfBusy() === (e.id ?? e.title)" [attr.aria-label]="'Scarica il PDF di ' + e.title" title="Scarica il PDF">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg>
         <span>PDF</span>
       </button>
