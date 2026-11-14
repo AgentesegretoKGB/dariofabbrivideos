@@ -74,8 +74,9 @@ export class TranscriptsComponent implements OnInit {
   }
 
   search() {
-    const q = this.query.trim();
-    if (q.length < 3) {
+    // gli spazi all'inizio/alla fine si tengono: «Nato » = parola intera
+    const q = this.query.replace(/\s+/g, ' ');
+    if (q.trim().length < 3) {
       this.searchError = 'Scrivi almeno 3 caratteri.';
       return;
     }
