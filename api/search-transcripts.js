@@ -1,6 +1,7 @@
 // Vercel Serverless Function (Node.js)
 // POST /api/search-transcripts
-// body: { query, videoIds? }  — videoIds: se presente, cerca solo in questi video (filtri della pagina)
+// body: { query, videoIds?, sort? }  — videoIds: se presente, cerca solo in questi video (filtri della pagina);
+//        sort: 'list' = risultati nell'ordine di videoIds (la pagina li manda già ordinati per data)
 //
 // Pubblica (nessuna password). Il token GitHub resta sul server: serve solo a leggere l'indice.
 // Variabili d'ambiente: GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH
@@ -25,7 +26,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { query, videoIds } = req.body || {};
+  const { query, videoIds, sort } = req.body || {};
 
   // Gli spazi all'inizio o alla fine contano: «Nato » cerca la parola intera, non «Natoli».
   const raw = String(query || '').replace(/\s+/g, ' ');
@@ -80,7 +81,7 @@ export default async function handler(req, res) {
       const allowed = new Set(videoIds.slice(0, 5000).map(String));
       pool = docs.filter(d => allowed.has(d.videoId));
     }
-    res.status(200).json(searchDocs(pool, raw));
+    res.status(200).json(searchDocs(pool, raw, sort === 'list' && Array.isArray(videoIds) ? videoIds.map(String) : null));
   } catch (err) {
     res.status(500).json({ message: 'Errore interno: ' + String(err) });
   }
@@ -97,7 +98,7 @@ export function prepareIndex(index) {
 }
 
 /** Cerca la frase in tutte le trascrizioni; i video con più occorrenze vengono prima. */
-export function searchDocs(docs, query) {
+export function searchDocs(docs, query, order = null) {
   const needle = foldText(collapse(query)).text;
   // spazio iniziale/finale = confine di parola: prima/dopo non ci deve essere una lettera o una cifra
   const boundStart = /^\s/.test(query), boundEnd = /\s$/.test(query);
@@ -155,7 +156,13 @@ export function searchDocs(docs, query) {
     });
   }
 
-  results.sort((a, b) => b.matches - a.matches);
+  if (order) {
+    // ordine scelto dalla pagina (per data): prima i video che vengono prima nell'elenco
+    const rank = new Map(order.map((id, i) => [id, i]));
+    results.sort((a, b) => (rank.get(a.videoId) ?? 1e9) - (rank.get(b.videoId) ?? 1e9));
+  } else {
+    results.sort((a, b) => b.matches - a.matches);
+  }
   if (results.length > MAX_VIDEOS) { results = results.slice(0, MAX_VIDEOS); truncated = true; }
   return { results, total, videos: results.length, truncated };
 }

@@ -1,10 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SafeUrlPipe } from '../catalog/safe-url.pipe';
-import { CatalogVideo, CATEGORY_LABEL, decodeEntities, toCatalogVideo, youtubeThumb } from '../shared/catalog-video';
+import { CatalogVideo, Category, CATEGORY_LABEL, decodeEntities, norm, toCatalogVideo, youtubeThumb } from '../shared/catalog-video';
+
+type Facet = 'categoria' | 'formato' | 'argomento' | 'anno';
+type Sort = 'relevance' | 'newest' | 'oldest';
+interface Option { value: string; label: string; count: number; selected: boolean; }
+interface ActiveFilter { key: string; label: string; remove: () => void; }
+const SORT_LABEL: { [k in Sort]: string } = { relevance: 'Più pertinenti', newest: 'Più recenti', oldest: 'Meno recenti' };
 
 /** Un periodo (da punto a punto) che contiene la frase cercata. */
 interface ApiHit { start: number; text: string; marks: [number, number][]; cutStart?: boolean; cutEnd?: boolean; }
@@ -55,40 +61,114 @@ export class TranscriptsComponent implements OnInit {
   private catalog = new Map<string, CatalogVideo>();
   catalogReady = false;
 
-  // ---------- Filtri ----------
-  filters = { category: '', format: '', topic: '', year: '' };
-  formatOptions: string[] = [];
-  topicOptions: string[] = [];
-  yearOptions: string[] = [];
-  readonly categoryOptions = Object.entries(CATEGORY_LABEL).map(([value, label]) => ({ value, label }));
+  // ---------- Filtri (stessa logica e stessa grafica del catalogo) ----------
+  readonly sortLabel = SORT_LABEL;
+  readonly sorts: Sort[] = ['relevance', 'newest', 'oldest'];
+  category: Category = '';
+  formats = new Set<string>();
+  topics = new Set<string>();
+  years = new Set<string>();
+  sortBy: Sort = 'relevance';
+  openMenu: Facet | 'ordina' | null = null;
+  sheetOpen = false;
+  topicSearch = '';
+  sheetShowAll: { [k: string]: boolean } = {};
+  options: { [k in Facet]: Option[] } = { categoria: [], formato: [], argomento: [], anno: [] };
+  /** Video del catalogo che rispettano i filtri (per i conteggi e per la ricerca). */
+  filtered: CatalogVideo[] = [];
 
-  get activeFilters(): number { return Object.values(this.filters).filter(Boolean).length; }
-
-  /** Video del catalogo che rispettano i filtri (null = nessun filtro attivo). */
-  private allowedIds(): string[] | null {
-    if (!this.activeFilters) return null;
-    const f = this.filters;
-    return [...this.catalog.values()].filter(v =>
-      (!f.category || v.category === f.category) &&
-      (!f.format || v.formats.includes(f.format)) &&
-      (!f.topic || v.topics.includes(f.topic)) &&
-      (!f.year || v.year === f.year)
-    ).map(v => v.youtubeId!).filter(Boolean);
+  private matchesFilters(v: CatalogVideo, skip?: Facet): boolean {
+    if (skip !== 'categoria' && this.category && v.category !== this.category) return false;
+    if (skip !== 'formato' && this.formats.size && !v.formats.some(f => this.formats.has(f))) return false;
+    if (skip !== 'argomento' && this.topics.size && !v.topics.some(x => this.topics.has(x))) return false;
+    if (skip !== 'anno' && this.years.size && !this.years.has(v.year)) return false;
+    return true;
   }
 
-  onFilterChange() { if (this.hasSearchedOnce && this.query.trim().length >= 3) this.search(); }
+  /** Ricalcola conteggi e video ammessi; se c'è già una ricerca la ripete. */
+  recomputeFilters(rerun = true) {
+    const all = [...this.catalog.values()];
+    this.filtered = all.filter(v => this.matchesFilters(v));
+    const count = (facet: Facet, values: (v: CatalogVideo) => string[]) => {
+      const m = new Map<string, number>();
+      for (const v of all) for (const x of values(v)) if (x && !m.has(x)) m.set(x, 0);
+      for (const v of all) if (this.matchesFilters(v, facet)) for (const x of values(v)) if (x) m.set(x, (m.get(x) || 0) + 1);
+      return m;
+    };
+    const cats = count('categoria', v => [v.category]);
+    this.options.categoria = ['teoria', 'attualita'].map(c => ({ value: c, label: CATEGORY_LABEL[c], count: cats.get(c) || 0, selected: this.category === c }));
+    const byCount = (a: Option, b: Option) => b.count - a.count || a.label.localeCompare(b.label, 'it');
+    this.options.formato = [...count('formato', v => v.formats).entries()].map(([f, n]) => ({ value: f, label: f, count: n, selected: this.formats.has(f) })).sort(byCount);
+    this.options.argomento = [...count('argomento', v => v.topics).entries()].map(([x, n]) => ({ value: x, label: x, count: n, selected: this.topics.has(x) })).sort(byCount);
+    this.options.anno = [...count('anno', v => [v.year]).entries()].map(([y, n]) => ({ value: y, label: y, count: n, selected: this.years.has(y) })).sort((a, b) => b.value.localeCompare(a.value));
+    if (rerun && this.hasSearchedOnce && this.query.trim().length >= 3) this.search();
+  }
 
-  clearFilters() { this.filters = { category: '', format: '', topic: '', year: '' }; this.onFilterChange(); }
+  get topicOptions(): Option[] {
+    const q = norm(this.topicSearch);
+    return q ? this.options.argomento.filter(o => norm(o.label).includes(q)) : this.options.argomento;
+  }
+  get selectedTopicOptions(): Option[] { return this.topicSearch ? [] : this.options.argomento.filter(o => o.selected); }
+  get unselectedTopicOptions(): Option[] { return this.topicSearch ? this.topicOptions : this.options.argomento.filter(o => !o.selected); }
 
-  private buildFilterOptions() {
-    const formats = new Set<string>(), topics = new Set<string>(), years = new Set<string>();
-    for (const v of this.catalog.values()) {
-      v.formats.forEach(x => formats.add(x)); v.topics.forEach(x => topics.add(x)); if (v.year) years.add(v.year);
+  setCategoryExact(c: Category) { this.category = c; this.recomputeFilters(); }
+  toggle(facet: 'formato' | 'argomento' | 'anno', value: string) {
+    const set = facet === 'formato' ? this.formats : facet === 'argomento' ? this.topics : this.years;
+    set.has(value) ? set.delete(value) : set.add(value);
+    this.recomputeFilters();
+  }
+  clearFacet(facet: Facet) {
+    if (facet === 'categoria') this.category = '';
+    if (facet === 'formato') this.formats.clear();
+    if (facet === 'argomento') { this.topics.clear(); this.topicSearch = ''; }
+    if (facet === 'anno') this.years.clear();
+    this.recomputeFilters();
+  }
+  clearAll() { this.category = ''; this.formats.clear(); this.topics.clear(); this.years.clear(); this.topicSearch = ''; this.recomputeFilters(); }
+  setSort(s: Sort) { this.sortBy = s; this.openMenu = null; if (this.hasSearchedOnce && this.query.trim().length >= 3) this.search(); }
+
+  facetCount(facet: Facet): number {
+    if (facet === 'categoria') return this.category ? 1 : 0;
+    return (facet === 'formato' ? this.formats : facet === 'argomento' ? this.topics : this.years).size;
+  }
+  facetValue(facet: Facet): string {
+    if (facet === 'categoria') return this.category ? CATEGORY_LABEL[this.category] : '';
+    const set = facet === 'formato' ? this.formats : facet === 'argomento' ? this.topics : this.years;
+    return set.size === 1 ? [...set][0] : '';
+  }
+  get activeCount(): number { return (this.category ? 1 : 0) + this.formats.size + this.topics.size + this.years.size; }
+  get activeFilters(): ActiveFilter[] {
+    const out: ActiveFilter[] = [];
+    if (this.category) out.push({ key: 'Categoria', label: CATEGORY_LABEL[this.category], remove: () => this.clearFacet('categoria') });
+    this.formats.forEach(f => out.push({ key: 'Formato', label: f, remove: () => this.toggle('formato', f) }));
+    this.topics.forEach(x => out.push({ key: 'Argomento', label: x, remove: () => this.toggle('argomento', x) }));
+    this.years.forEach(y => out.push({ key: 'Anno', label: y, remove: () => this.toggle('anno', y) }));
+    return out;
+  }
+  opts(f: string): Option[] { return this.options[f as Facet] || []; }
+
+  toggleMenu(m: Facet | 'ordina', ev: Event) {
+    ev.stopPropagation();
+    this.openMenu = this.openMenu === m ? null : m;
+    if (m === 'argomento') this.topicSearch = '';
+  }
+  openSheet() { this.sheetOpen = true; this.openMenu = null; document.body.style.overflow = 'hidden'; }
+  closeSheet() { this.sheetOpen = false; document.body.style.overflow = ''; }
+  @HostListener('document:click', ['$event'])
+  onDocClick(ev: MouseEvent) { if (this.openMenu && !(ev.target as HTMLElement)?.closest('.app-filter')) this.openMenu = null; }
+  @HostListener('document:keydown.escape')
+  onEscape() { if (this.openMenu) this.openMenu = null; else if (this.sheetOpen) this.closeSheet(); }
+  @HostListener('window:resize')
+  onResize() { if (this.sheetOpen && window.innerWidth >= 640) this.closeSheet(); }
+
+  /** Elenco dei video da mandare al server: null se non serve (nessun filtro e ordine per pertinenza). */
+  private requestIds(): string[] | null {
+    if (!this.activeCount && this.sortBy === 'relevance') return null;
+    const list = [...this.filtered];
+    if (this.sortBy !== 'relevance') {
+      list.sort((a, b) => { const d = (a.date || '').localeCompare(b.date || ''); return this.sortBy === 'oldest' ? d : -d; });
     }
-    const it = (a: string, b: string) => a.localeCompare(b, 'it');
-    this.formatOptions = [...formats].sort(it);
-    this.topicOptions = [...topics].sort(it);
-    this.yearOptions = [...years].sort((a, b) => b.localeCompare(a));
+    return list.map(v => v.youtubeId!).filter(Boolean);
   }
   private raw: ApiResult[] = [];
 
@@ -103,8 +183,8 @@ export class TranscriptsComponent implements OnInit {
           const v = toCatalogVideo(raw);
           if (v.youtubeId && v.title) this.catalog.set(v.youtubeId, v);
         }
-        this.buildFilterOptions();
         this.catalogReady = true;
+        this.recomputeFilters(false);
         // se la ricerca è arrivata prima del catalogo, completo le card
         if (this.raw.length) this.results = this.raw.map(r => this.card(r));
       },
@@ -127,14 +207,16 @@ export class TranscriptsComponent implements OnInit {
 
     this.router.navigate([], { relativeTo: this.route, queryParams: { q }, replaceUrl: true });
 
-    const videoIds = this.allowedIds();
+    const videoIds = this.catalogReady ? this.requestIds() : null;
     if (videoIds && !videoIds.length) {
       this.lastQuery = q; this.raw = []; this.results = []; this.total = 0; this.truncated = false;
       this.infoMessage = 'Nessun video corrisponde ai filtri scelti.';
       this.searching = false;
       return;
     }
-    this.http.post<ApiResponse>('/api/search-transcripts', videoIds ? { query: q, videoIds } : { query: q }).subscribe({
+    const body: any = { query: q };
+    if (videoIds) { body.videoIds = videoIds; if (this.sortBy !== 'relevance') body.sort = 'list'; }
+    this.http.post<ApiResponse>('/api/search-transcripts', body).subscribe({
       next: (res) => {
         this.lastQuery = q;
         this.raw = res.results || [];
