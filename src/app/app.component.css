@@ -24,8 +24,9 @@
 @keyframes rail-fade { from { opacity: 0; } to { opacity: 1; } }
 
 .app-rail__logo { display: flex; align-items: center; gap: var(--space-3); min-height: 40px; margin-bottom: var(--space-2); text-decoration: none; color: var(--ink); white-space: nowrap; }
-.app-rail__logo > span:first-child { flex: none; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px;
-  background: #e2523e; color: #fff; font-family: var(--font-display, sans-serif); font-size: 15px; letter-spacing: .02em; }
+.app-rail__mark { flex: none; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px;
+  background: #e2523e; color: #fff; }
+.app-rail__mark svg { display: block; }
 .app-rail__brand { font-family: var(--font-display, sans-serif); text-transform: uppercase; font-size: 15px; }
 
 .app-rail__list { list-style: none; margin: 0; padding: var(--space-2) 0 0; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 2px; flex: 1; }
