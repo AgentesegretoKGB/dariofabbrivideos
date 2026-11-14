@@ -70,10 +70,27 @@
 /* Titolo nascosto alla vista (è già nella barra in alto) ma letto dagli screen reader */
 .app-tr-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-/* Filtri della ricerca */
-.app-tr-filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3); max-width: 880px; margin: var(--space-4) auto var(--space-2); }
-.app-tr-filter { display: flex; flex-direction: column; gap: 4px; flex: 1 1 150px; min-width: 0; font-size: 13px; font-weight: 700; color: var(--muted); }
-.app-tr-filter select { width: 100%; min-width: 0; min-height: var(--touch-target); padding: 0 var(--space-3); border: 1px solid var(--border-control); border-radius: var(--radius-md); background: var(--card-bg); color: var(--ink); font: inherit; font-size: 15px; font-weight: 400; }
-.app-tr-filter.is-active select { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); font-weight: 700; }
-.app-tr-clear { min-height: var(--touch-target); padding: 0 var(--space-2); border: 0; background: none; color: var(--ink); font: inherit; font-size: 15px; text-decoration: underline; cursor: pointer; }
-@media (max-width: 639px) { .app-tr-filter { flex: 1 1 calc(50% - var(--space-3)); max-width: none; } }
+
+/* Filtri: stessa grafica del catalogo (classi fc-* globali + posizionamento copiato dal catalogo) */
+.app-tr-filterwrap { max-width: 880px; margin: 0 auto var(--space-4); }
+.app-filter { position: relative; }
+.app-filter__menu { position: absolute; top: calc(100% + 6px); left: 0; z-index: 40; }
+.app-filter__menu--end { left: auto; right: 0; width: 220px; }
+.app-menu-empty { padding: var(--space-3); font-size: 15px; color: var(--muted); }
+.fc-filter-btn .app-no-rotate { transform: none !important; }
+
+/* Pannello filtri su telefono */
+.app-sheet-scrim { position: fixed; inset: 0; z-index: 45; }
+.app-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 46; max-height: 90vh; max-height: 90dvh; }
+.app-sheet__search { padding: 0 var(--space-3) var(--space-2); }
+.app-sheet__search input {
+  width: 100%; min-height: 44px; padding: 0 var(--space-3); border: 1px solid var(--border-control);
+  border-radius: var(--radius-md); font: inherit; font-size: 17px; color: var(--ink); background: var(--card-bg);
+}
+@media (min-width: 640px) { .app-sheet, .app-sheet-scrim { display: none; } }
+
+/* Su telefono i quattro filtri lasciano il posto al pulsante «Filtri». */
+@media (max-width: 639px) {
+  .app-filter:not(.fc-filter-row__end) { display: none; }
+  .fc-filter-row { flex-wrap: nowrap; }
+}
