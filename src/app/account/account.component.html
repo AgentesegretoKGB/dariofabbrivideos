@@ -2,7 +2,7 @@
   <p class="app-acc-wait">Un momento…</p>
 } @else if (auth.user(); as u) {
   <section class="app-acc-card">
-    <h1 class="app-acc-hidden">Il tuo account</h1>
+    <h1 class="rv-page-title">Il tuo account</h1>
     <div class="app-acc-user">
       @if (auth.avatar(u); as pic) {
         <img class="app-acc-avatar" [src]="pic" alt="" referrerpolicy="no-referrer" />
@@ -43,7 +43,7 @@
   </section>
 } @else {
   <section class="app-acc-card">
-    <h1 class="app-acc-hidden">Accedi</h1>
+    <h1 class="rv-page-title">Accedi</h1>
     <p class="app-acc-lead">Entra con un account che hai già. Se è la prima volta, l'account viene creato in automatico.</p>
 
     @if (error()) { <p class="app-acc-msg app-acc-msg--error" role="alert">{{ error() }}</p> }

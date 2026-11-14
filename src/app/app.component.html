@@ -5,7 +5,7 @@
     <button class="fc-hamburger" type="button" aria-label="Apri menu" aria-controls="menu" [attr.aria-expanded]="drawerOpen" (click)="openDrawer()">
       <span class="fc-hamburger__lines" aria-hidden="true"><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span></span>
     </button>
-    <p class="fc-topbar__title">@if (topIcon) { <app-icon [name]="topIcon" [size]="20" /> }{{ topTitle }}</p>
+    <p class="fc-topbar__title">@if (topIcon) { <app-icon [name]="topIcon" [size]="20" /> }<span class="fc-topbar__text">{{ topTitle }}</span></p>
     @if (!onAccount) {
     <a class="app-account" routerLink="/account" [attr.aria-label]="auth.user() ? 'Il tuo account' : 'Accedi'">
       @if (auth.user(); as u) {
