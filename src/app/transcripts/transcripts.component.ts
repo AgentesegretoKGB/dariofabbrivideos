@@ -53,6 +53,43 @@ export class TranscriptsComponent implements OnInit {
   playing: { key: string; start: number; nonce: number } | null = null;
 
   private catalog = new Map<string, CatalogVideo>();
+  catalogReady = false;
+
+  // ---------- Filtri ----------
+  filters = { category: '', format: '', topic: '', year: '' };
+  formatOptions: string[] = [];
+  topicOptions: string[] = [];
+  yearOptions: string[] = [];
+  readonly categoryOptions = Object.entries(CATEGORY_LABEL).map(([value, label]) => ({ value, label }));
+
+  get activeFilters(): number { return Object.values(this.filters).filter(Boolean).length; }
+
+  /** Video del catalogo che rispettano i filtri (null = nessun filtro attivo). */
+  private allowedIds(): string[] | null {
+    if (!this.activeFilters) return null;
+    const f = this.filters;
+    return [...this.catalog.values()].filter(v =>
+      (!f.category || v.category === f.category) &&
+      (!f.format || v.formats.includes(f.format)) &&
+      (!f.topic || v.topics.includes(f.topic)) &&
+      (!f.year || v.year === f.year)
+    ).map(v => v.youtubeId!).filter(Boolean);
+  }
+
+  onFilterChange() { if (this.hasSearchedOnce && this.query.trim().length >= 3) this.search(); }
+
+  clearFilters() { this.filters = { category: '', format: '', topic: '', year: '' }; this.onFilterChange(); }
+
+  private buildFilterOptions() {
+    const formats = new Set<string>(), topics = new Set<string>(), years = new Set<string>();
+    for (const v of this.catalog.values()) {
+      v.formats.forEach(x => formats.add(x)); v.topics.forEach(x => topics.add(x)); if (v.year) years.add(v.year);
+    }
+    const it = (a: string, b: string) => a.localeCompare(b, 'it');
+    this.formatOptions = [...formats].sort(it);
+    this.topicOptions = [...topics].sort(it);
+    this.yearOptions = [...years].sort((a, b) => b.localeCompare(a));
+  }
   private raw: ApiResult[] = [];
 
   ngOnInit(): void {
@@ -66,6 +103,8 @@ export class TranscriptsComponent implements OnInit {
           const v = toCatalogVideo(raw);
           if (v.youtubeId && v.title) this.catalog.set(v.youtubeId, v);
         }
+        this.buildFilterOptions();
+        this.catalogReady = true;
         // se la ricerca è arrivata prima del catalogo, completo le card
         if (this.raw.length) this.results = this.raw.map(r => this.card(r));
       },
@@ -74,8 +113,9 @@ export class TranscriptsComponent implements OnInit {
   }
 
   search() {
-    const q = this.query.trim();
-    if (q.length < 3) {
+    // gli spazi all'inizio/alla fine si tengono: «Nato » = parola intera
+    const q = this.query.replace(/\s+/g, ' ');
+    if (q.trim().length < 3) {
       this.searchError = 'Scrivi almeno 3 caratteri.';
       return;
     }
@@ -87,7 +127,14 @@ export class TranscriptsComponent implements OnInit {
 
     this.router.navigate([], { relativeTo: this.route, queryParams: { q }, replaceUrl: true });
 
-    this.http.post<ApiResponse>('/api/search-transcripts', { query: q }).subscribe({
+    const videoIds = this.allowedIds();
+    if (videoIds && !videoIds.length) {
+      this.lastQuery = q; this.raw = []; this.results = []; this.total = 0; this.truncated = false;
+      this.infoMessage = 'Nessun video corrisponde ai filtri scelti.';
+      this.searching = false;
+      return;
+    }
+    this.http.post<ApiResponse>('/api/search-transcripts', videoIds ? { query: q, videoIds } : { query: q }).subscribe({
       next: (res) => {
         this.lastQuery = q;
         this.raw = res.results || [];

@@ -1,6 +1,6 @@
 // Vercel Serverless Function (Node.js)
 // POST /api/search-transcripts
-// body: { query }
+// body: { query, videoIds? }  — videoIds: se presente, cerca solo in questi video (filtri della pagina)
 //
 // Pubblica (nessuna password). Il token GitHub resta sul server: serve solo a leggere l'indice.
 // Variabili d'ambiente: GITHUB_TOKEN, GITHUB_REPO, GITHUB_BRANCH
@@ -25,9 +25,11 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { query } = req.body || {};
+  const { query, videoIds } = req.body || {};
 
-  const q = String(query || '').trim();
+  // Gli spazi all'inizio o alla fine contano: «Nato » cerca la parola intera, non «Natoli».
+  const raw = String(query || '').replace(/\s+/g, ' ');
+  const q = raw.trim();
   if (q.length < 3) {
     res.status(400).json({ message: 'Scrivi almeno 3 caratteri da cercare' });
     return;
@@ -72,7 +74,13 @@ export default async function handler(req, res) {
       cache = { at: Date.now(), docs };
     }
 
-    res.status(200).json(searchDocs(docs, q));
+    // filtri (categoria, formato, argomento, anno): la pagina manda l'elenco dei video ammessi
+    let pool = docs;
+    if (Array.isArray(videoIds)) {
+      const allowed = new Set(videoIds.slice(0, 5000).map(String));
+      pool = docs.filter(d => allowed.has(d.videoId));
+    }
+    res.status(200).json(searchDocs(pool, raw));
   } catch (err) {
     res.status(500).json({ message: 'Errore interno: ' + String(err) });
   }
@@ -91,6 +99,9 @@ export function prepareIndex(index) {
 /** Cerca la frase in tutte le trascrizioni; i video con più occorrenze vengono prima. */
 export function searchDocs(docs, query) {
   const needle = foldText(collapse(query)).text;
+  // spazio iniziale/finale = confine di parola: prima/dopo non ci deve essere una lettera o una cifra
+  const boundStart = /^\s/.test(query), boundEnd = /\s$/.test(query);
+  const isWordChar = (c) => !!c && /[\p{L}\p{N}]/u.test(c);
   let results = [];
   let total = 0;
   let truncated = false;
@@ -103,6 +114,10 @@ export function searchDocs(docs, query) {
     while (true) {
       const pos = doc.folded.indexOf(needle, from);
       if (pos === -1) break;
+      if ((boundStart && isWordChar(doc.folded[pos - 1])) || (boundEnd && isWordChar(doc.folded[pos + needle.length]))) {
+        from = pos + 1;
+        continue;
+      }
       from = pos + needle.length;
       videoMatches++;
 
