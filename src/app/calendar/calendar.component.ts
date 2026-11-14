@@ -77,7 +77,7 @@ export class CalendarComponent implements OnInit {
 
   async downloadPdf(e: CalEvent, card: HTMLElement) {
     this.pdfBusy.set(e.id ?? e.title);
-    try { await (await import('./event-pdf')).downloadEventPdf(e, card); }
+    try { await (await import('./event-pdf')).downloadEventPdf(e, card, this.color(e)); }
     finally { this.pdfBusy.set(null); }
   }
 
