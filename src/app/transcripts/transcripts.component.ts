@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -56,7 +56,10 @@ export class TranscriptsComponent implements OnInit {
   hasSearchedOnce = false;
 
   /** Video in riproduzione: chiave della card e secondo di partenza. */
-  playing: { key: string; start: number; nonce: number } | null = null;
+  playing: { key: string; start: number } | null = null;
+  /** Indirizzo del player: cambia solo quando si apre un altro video, non a ogni minuto. */
+  playSrc = '';
+  @ViewChild('ytPlayer') ytPlayer?: ElementRef<HTMLIFrameElement>;
 
   private catalog = new Map<string, CatalogVideo>();
   catalogReady = false;
@@ -203,7 +206,7 @@ export class TranscriptsComponent implements OnInit {
     this.searchError = null;
     this.infoMessage = null;
     this.hasSearchedOnce = true;
-    this.playing = null;
+    this.playing = null; this.ytReady = null;
 
     this.router.navigate([], { relativeTo: this.route, queryParams: { q }, replaceUrl: true });
 
@@ -238,7 +241,16 @@ export class TranscriptsComponent implements OnInit {
   // ---------- Player ----------
 
   play(r: ResultCard, start: number) {
-    this.playing = { key: r.key, start, nonce: (this.playing?.nonce ?? 0) + 1 };
+    if (this.playing?.key === r.key && this.ytReady) {
+      // stesso video: salto al minuto senza ricaricare il player (YouTube rifiuta i caricamenti ripetuti)
+      this.playing = { key: r.key, start };
+      this.ytReady.seekTo(start, true);
+      this.ytReady.playVideo();
+    } else {
+      this.playing = { key: r.key, start };
+      this.ytReady = null;
+      this.playSrc = `https://www.youtube.com/embed/${r.videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&start=${start}&origin=${encodeURIComponent(location.origin)}`;
+    }
     // se il player non è visibile (periodi lunghi, telefono) lo riporto in vista
     setTimeout(() => {
       const el = document.getElementById('tr-player-' + r.key);
@@ -247,15 +259,30 @@ export class TranscriptsComponent implements OnInit {
       if (box.top < 56 || box.bottom > window.innerHeight) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
-  stop() { this.playing = null; }
+
+  /** Player di YouTube controllato con la sua API ufficiale, quando è pronto. */
+  private ytReady: any = null;
+  private static ytApi?: Promise<any>;
+  private loadYtApi(): Promise<any> {
+    const w = window as any;
+    if (w.YT?.Player) return Promise.resolve(w.YT);
+    return TranscriptsComponent.ytApi ??= new Promise(resolve => {
+      const prev = w.onYouTubeIframeAPIReady;
+      w.onYouTubeIframeAPIReady = () => { prev?.(); resolve(w.YT); };
+      const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; s.async = true;
+      document.head.appendChild(s);
+    });
+  }
+  async onPlayerLoad(el: HTMLIFrameElement) {
+    if (!el.src) return;
+    try {
+      const YT = await this.loadYtApi();
+      const player = new YT.Player(el, { events: { onReady: () => { if (this.ytPlayer?.nativeElement === el) this.ytReady = player; } } });
+    } catch { /* senza API il salto al minuto ricarica il player */ }
+  }
+  stop() { this.playing = null; this.playSrc = ''; this.ytReady = null; }
   isPlaying(r: ResultCard) { return this.playing?.key === r.key; }
   isCurrent(r: ResultCard, h: Hit) { return this.isPlaying(r) && this.playing!.start === h.start; }
-
-  embedUrl(r: ResultCard): string {
-    const start = this.playing?.start ?? 0;
-    // «nonce» forza il ricaricamento quando si clicca di nuovo lo stesso minuto
-    return `https://www.youtube.com/embed/${r.videoId}?autoplay=1&rel=0&modestbranding=1&start=${start}&n=${this.playing?.nonce ?? 0}`;
-  }
 
   // ---------- Costruzione card ----------
 

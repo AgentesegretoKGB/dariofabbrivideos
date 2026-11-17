@@ -145,7 +145,7 @@
           <span class="fc-badge fc-badge--pending" title="Aggiunto automaticamente, in attesa di revisione">Catalogazione automatica, non revisionata</span>
         }
         @if (isPlaying(r)) {
-          <iframe class="app-player" [src]="embedUrl(r) | safeUrl" allowfullscreen allow="autoplay; encrypted-media" [title]="r.title"></iframe>
+          <iframe class="app-player" referrerpolicy="strict-origin-when-cross-origin" #ytPlayer (load)="onPlayerLoad(ytPlayer)" [src]="playSrc | safeUrl" allowfullscreen allow="autoplay; encrypted-media" [title]="r.title"></iframe>
           <button type="button" class="app-player__close" (click)="stop()" aria-label="Chiudi il video">
             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
           </button>

@@ -138,7 +138,7 @@
             </button>
           }
           @if (playingId === v.id) {
-            <iframe class="app-player" [src]="buildEmbedUrl(v.url) | safeUrl" allowfullscreen allow="autoplay; encrypted-media" [title]="v.title"></iframe>
+            <iframe class="app-player" referrerpolicy="strict-origin-when-cross-origin" [src]="buildEmbedUrl(v.url) | safeUrl" allowfullscreen allow="autoplay; encrypted-media" [title]="v.title"></iframe>
             <button type="button" class="app-player__close" (click)="stopVideo()" aria-label="Chiudi il video">
               <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
             </button>
