@@ -26,10 +26,10 @@ import { LeaderRow, MinigameService } from './minigame.service';
                 <th scope="col" class="app-board__pos"><span class="app-mg-hidden">Posizione</span>#</th>
                 <th scope="col" class="app-board__name"><span class="app-board__long">Giocatore</span><span class="app-board__short" aria-hidden="true">Nome</span></th>
                 <th scope="col" class="app-board__num app-board__pts"><span class="app-board__long">Punti</span><span class="app-board__short" aria-hidden="true">Punti</span></th>
-                <th scope="col" class="app-board__num"><span class="app-board__long">Polymarket</span><span class="app-board__short" aria-hidden="true">Poly</span></th>
+                <th scope="col" class="app-board__num" title="Punti in Polymarket"><abbr title="Polymarket">PM</abbr></th>
                 <th scope="col" class="app-board__num" title="Giocate: schedine Polymarket giocate"><abbr title="Giocate">G.</abbr></th>
                 <th scope="col" class="app-board__num" title="Media punti Polymarket per giocata">Media <abbr title="giocate">G.</abbr></th>
-                <th scope="col" class="app-board__num"><span class="app-board__long">Fiume</span><span class="app-board__short" aria-hidden="true">Fiume</span></th>
+                <th scope="col" class="app-board__num" title="Punti in Riprendiamoci Fiume!"><abbr title="Riprendiamoci Fiume!">RF</abbr></th>
               </tr>
             </thead>
             <tbody>
