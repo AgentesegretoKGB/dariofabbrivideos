@@ -27,8 +27,8 @@ import { LeaderRow, MinigameService } from './minigame.service';
                 <th scope="col" class="app-board__name"><span class="app-board__long">Giocatore</span><span class="app-board__short" aria-hidden="true">Nome</span></th>
                 <th scope="col" class="app-board__num app-board__pts"><span class="app-board__long">Punti</span><span class="app-board__short" aria-hidden="true">Punti</span></th>
                 <th scope="col" class="app-board__num"><span class="app-board__long">Polymarket</span><span class="app-board__short" aria-hidden="true">Poly</span></th>
-                <th scope="col" class="app-board__num"><span class="app-board__long">N° schedine</span><span class="app-board__short" aria-hidden="true">Sched.</span></th>
-                <th scope="col" class="app-board__num"><span class="app-board__long">Media schedine</span><span class="app-board__short" aria-hidden="true">Media sched.</span></th>
+                <th scope="col" class="app-board__num" title="Giocate: schedine Polymarket giocate"><abbr title="Giocate">G.</abbr></th>
+                <th scope="col" class="app-board__num" title="Media punti Polymarket per giocata">Media <abbr title="giocate">G.</abbr></th>
                 <th scope="col" class="app-board__num"><span class="app-board__long">Fiume</span><span class="app-board__short" aria-hidden="true">Fiume</span></th>
               </tr>
             </thead>
@@ -116,6 +116,7 @@ import { LeaderRow, MinigameService } from './minigame.service';
     .app-board__table td.app-board__num:last-child, .app-board__table th:last-child { padding-right: var(--space-4); }
     .app-board__pts { font-weight: 800 !important; color: var(--ink) !important; }
     .app-board__short { display: none; }
+    .app-board__table abbr { text-decoration: none; }
     .app-board__more { display: block; margin: var(--space-4) auto 0; min-height: 44px; padding: 0 var(--space-5); border: 1px solid var(--border); border-radius: 99px;
       background: var(--card-bg); color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
     .app-board__more:hover { background: var(--surface-sunken); }
