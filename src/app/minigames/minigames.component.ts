@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, HostListener, OnInit, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { LeaderRow, MinigameService } from './minigame.service';
@@ -19,16 +19,59 @@ import { LeaderRow, MinigameService } from './minigame.service';
       } @else if (!rows().length) {
         <p class="app-mg-note">Ancora nessun punteggio: la classifica si riempie quando vengono confermati i risultati del primo evento.</p>
       } @else {
-        <ol class="app-board">
-          @for (r of rows(); track r.user_id; let i = $index) {
-            <li class="app-board__row" [class.is-me]="r.user_id === auth.user()?.id">
-              <span class="app-board__pos">{{ i + 1 }}</span>
-              <span class="app-board__name">&#64;{{ r.username }}</span>
-              <span class="app-board__meta">{{ detail(r) }}</span>
-              <span class="app-board__pts">{{ r.points }} pt</span>
-            </li>
-          }
-        </ol>
+        <div class="app-board">
+          <table class="app-board__table">
+            <thead>
+              <tr>
+                <th scope="col" class="app-board__pos"><span class="app-mg-hidden">Posizione</span>#</th>
+                <th scope="col" class="app-board__name"><span class="app-board__long">Giocatore</span><span class="app-board__short" aria-hidden="true">Nome</span></th>
+                <th scope="col" class="app-board__num app-board__pts">
+                  <button type="button" class="app-board__tip" [class.is-open]="tip() === 'Pt'" (click)="toggleTip('Pt', $event)" [attr.aria-label]="'Pt, Punti totali'">
+                    Pt<span class="app-board__tipbox" role="tooltip">Pt – Punti totali</span>
+                  </button>
+                </th>
+                <th scope="col" class="app-board__num">
+                  <button type="button" class="app-board__tip" [class.is-open]="tip() === 'PM'" (click)="toggleTip('PM', $event)" [attr.aria-label]="'PM, Polymarket'">
+                    PM<span class="app-board__tipbox" role="tooltip">PM – Polymarket</span>
+                  </button>
+                </th>
+                <th scope="col" class="app-board__num">
+                  <button type="button" class="app-board__tip" [class.is-open]="tip() === 'G'" (click)="toggleTip('G', $event)" [attr.aria-label]="'G, Giocate'">
+                    G<span class="app-board__tipbox" role="tooltip">G – Giocate</span>
+                  </button>
+                </th>
+                <th scope="col" class="app-board__num">
+                  <button type="button" class="app-board__tip" [class.is-open]="tip() === 'MG'" (click)="toggleTip('MG', $event)" [attr.aria-label]="'MG, Media punti per giocata'">
+                    MG<span class="app-board__tipbox" role="tooltip">MG – Media punti per giocata</span>
+                  </button>
+                </th>
+                <th scope="col" class="app-board__num">
+                  <button type="button" class="app-board__tip" [class.is-open]="tip() === 'RF'" (click)="toggleTip('RF', $event)" [attr.aria-label]="'RF, Riprendiamoci Fiume!'">
+                    RF<span class="app-board__tipbox" role="tooltip">RF – Riprendiamoci Fiume!</span>
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (r of shown(); track r.user_id; let i = $index) {
+                <tr [class.is-me]="r.user_id === auth.user()?.id">
+                  <td class="app-board__pos">{{ i + 1 }}</td>
+                  <th scope="row" class="app-board__name"><span class="app-board__user" [title]="'@' + r.username">&#64;{{ r.username }}</span></th>
+                  <td class="app-board__num app-board__pts">{{ r.points }}</td>
+                  <td class="app-board__num">{{ pm(r) }}</td>
+                  <td class="app-board__num">{{ r.events }}</td>
+                  <td class="app-board__num">{{ avg(r) }}</td>
+                  <td class="app-board__num">{{ r.fiume_points ?? 0 }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+        @if (rows().length > TOP) {
+          <button type="button" class="app-board__more" (click)="showAll.set(!showAll())" [attr.aria-expanded]="showAll()">
+            {{ showAll() ? 'Mostra solo i primi ' + TOP : 'Mostra tutta la classifica (' + rows().length + ')' }}
+          </button>
+        }
       }
     </section>
 
@@ -79,16 +122,30 @@ import { LeaderRow, MinigameService } from './minigame.service';
   styles: [`
     .app-mg-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     .app-mg-note { color: var(--muted); text-align: center; }
-    .app-rank { max-width: 640px; margin: var(--space-6) auto 0; }
+    .app-rank { max-width: 880px; margin: var(--space-6) auto 0; }
     .app-rank__title { margin: 0 0 var(--space-4); text-align: center; font-size: 31px; line-height: 36px; }
-    .app-board { list-style: none; margin: 0; padding: 0; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card-bg); overflow: hidden; box-shadow: var(--shadow-card); }
-    .app-board__row { display: grid; grid-template-columns: 40px 1fr auto auto; gap: var(--space-3); align-items: center; padding: var(--space-3) var(--space-4); border-top: 1px solid var(--border); }
-    .app-board__row:first-child { border-top: 0; }
-    .app-board__row.is-me { background: var(--accent-soft); }
-    .app-board__pos { font-weight: 700; color: var(--muted); }
+    .app-board { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card-bg); overflow: visible; box-shadow: var(--shadow-card); }
+    .app-board__table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 20px; }
+    .app-board__table th, .app-board__table td { padding: var(--space-3) var(--space-3); border-top: 1px solid var(--border); text-align: left; white-space: nowrap; }
+    .app-board__table thead th { border-top: 0; font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); white-space: normal; vertical-align: bottom; }
+    .app-board__table tbody tr.is-me { background: var(--accent-soft); }
+    .app-board__pos { width: 36px; font-weight: 700; color: var(--muted); padding-left: var(--space-4) !important; }
     .app-board__name { font-weight: 700; }
-    .app-board__meta { font-size: 14px; color: var(--muted); }
-    .app-board__pts { font-weight: 700; min-width: 60px; text-align: right; }
+    .app-board__num { text-align: right !important; font-variant-numeric: tabular-nums; }
+    .app-board__table .app-board__num { width: 1%; min-width: 64px; }
+    .app-board__table thead th.app-board__num { overflow: visible; }
+    .app-board__tip { position: relative; padding: 2px 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-transform: none; cursor: help; }
+    .app-board__tipbox { position: absolute; top: calc(100% + 8px); right: 0; z-index: 3; width: max-content; max-width: 200px; padding: 8px 10px; border-radius: 8px;
+      background: var(--rv-black, #141212); color: #fff; font-size: 13px; line-height: 17px; font-weight: 600; letter-spacing: 0; text-transform: none; text-align: left; white-space: normal;
+      box-shadow: 0 6px 18px rgba(0,0,0,.2); opacity: 0; visibility: hidden; transition: opacity 120ms ease; pointer-events: none; }
+    .app-board__tip:hover .app-board__tipbox, .app-board__tip:focus-visible .app-board__tipbox, .app-board__tip.is-open .app-board__tipbox { opacity: 1; visibility: visible; }
+    .app-board__table td.app-board__num:last-child, .app-board__table th:last-child { padding-right: var(--space-4); }
+    .app-board__pts { font-weight: 800 !important; color: var(--ink) !important; }
+    .app-board__short { display: none; }
+    .app-board__table abbr { text-decoration: none; }
+    .app-board__more { display: block; margin: var(--space-4) auto 0; min-height: 44px; padding: 0 var(--space-5); border: 1px solid var(--border); border-radius: 99px;
+      background: var(--card-bg); color: var(--ink); font: inherit; font-weight: 700; cursor: pointer; }
+    .app-board__more:hover { background: var(--surface-sunken); }
     .app-game { color: var(--ink); text-decoration: none; }
     .app-game:hover { box-shadow: var(--shadow-card-hover); }
     .app-game__art { aspect-ratio: 16 / 9; background: #fff; border-bottom: 1px solid var(--border); }
@@ -99,8 +156,16 @@ import { LeaderRow, MinigameService } from './minigame.service';
     @media (max-width: 639px) {
       .app-rank { margin-top: var(--space-4); }
       .app-rank__title { font-size: 25px; line-height: 32px; }
-      .app-board__row { grid-template-columns: 32px 1fr auto; }
-      .app-board__meta { display: none; }
+      .app-board__table { font-size: 14px; }
+      .app-board__table th, .app-board__table td { padding: 10px 3px; }
+      .app-board__pos { width: 18px; padding-left: 8px !important; }
+      .app-board__table td.app-board__num:last-child, .app-board__table th:last-child { padding-right: 10px; }
+      .app-board__user { display: block; max-width: 70px; overflow: hidden; text-overflow: ellipsis; }
+      .app-board__table { font-size: 13px; }
+      .app-board__long { display: none; }
+      .app-board__short { display: inline; }
+      .app-board__table thead th { font-size: 11px; letter-spacing: 0; }
+      .app-board__table .app-board__num { min-width: 0; }
     }
   `]
 })
@@ -111,15 +176,21 @@ export class MinigamesComponent implements OnInit {
   loaded = signal(false);
   error = signal('');
 
-  detail(r: LeaderRow): string {
-    const parts: string[] = [];
-    if (r.polymarket_points || r.events) parts.push(`Polymarket ${r.polymarket_points ?? r.points}`);
-    if (r.fiume_points || r.fiume_games) parts.push(`Fiume ${r.fiume_points}`);
-    return parts.join(' · ');
-  }
+  readonly TOP = 10;
+  /** Spiegazione aperta toccando un'intestazione (sul telefono non c'è il passaggio del mouse). */
+  tip = signal<string | null>(null);
+  toggleTip(k: string, ev: Event) { ev.stopPropagation(); this.tip.set(this.tip() === k ? null : k); }
+  @HostListener('document:click') closeTip() { this.tip.set(null); }
+
+  showAll = signal(false);
+  readonly shown = computed(() => this.showAll() ? this.rows() : this.rows().slice(0, this.TOP));
+
+  pm(r: LeaderRow) { return r.polymarket_points ?? r.points; }
+  /** Punti Polymarket diviso numero di schedine (con un decimale). */
+  avg(r: LeaderRow) { return r.events ? (this.pm(r) / r.events).toLocaleString('it-IT', { maximumFractionDigits: 1 }) : '–'; }
 
   async ngOnInit() {
-    try { this.rows.set(await this.mg.leaderboard(50)); }
+    try { this.rows.set(await this.mg.leaderboard(1000)); }
     catch (e: any) { this.error.set(e.message); }
     this.loaded.set(true);
   }
