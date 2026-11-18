@@ -8312,10 +8312,14 @@
         "Il Grande Gioco"
       ],
       "argomento": [
-        "Trump"
+        "Trump",
+        "BigTech",
+        "ai",
+        "Guerra in Ucraina"
       ],
-      "categoria": []
-    },
-    "pending": true
+      "categoria": [
+        "attualità"
+      ]
+    }
   }
 ]
