@@ -93,6 +93,14 @@ export default async function handler(req, res) {
       return;
     }
 
+    // Un'etichetta scritta con maiuscole diverse da una già esistente (es. «big tech» e «Big Tech»)
+    // prende la grafia già usata nel catalogo, così non compaiono doppioni nei filtri.
+    const known = { format: new Map(), argomento: new Map(), categoria: new Map() };
+    videosArray.forEach((v, i) => { if (i !== idx) for (const k of Object.keys(known)) for (const t of v.tags?.[k] || []) {
+      const key = String(t).trim().toLowerCase(); if (!known[k].has(key)) known[k].set(key, t);
+    } });
+    const canon = (k, list) => [...new Set((list || []).map(t => String(t).trim()).filter(Boolean).map(t => known[k].get(t.toLowerCase()) || t))];
+
     let commitMessage;
     if (action === 'reject') {
       videosArray.splice(idx, 1);
@@ -106,9 +114,9 @@ export default async function handler(req, res) {
         ...((video.channel || videosArray[idx].channel) ? { channel: video.channel || videosArray[idx].channel } : {}),
         date: video.date,
         tags: {
-          format: video.tags?.format || [],
-          argomento: video.tags?.argomento || [],
-          categoria: video.tags?.categoria || []
+          format: canon('format', video.tags?.format),
+          argomento: canon('argomento', video.tags?.argomento),
+          categoria: canon('categoria', video.tags?.categoria)
         }
       }; // niente più "pending": è stato revisionato
       commitMessage = `Revisione: approvato video #${video.id}`;
