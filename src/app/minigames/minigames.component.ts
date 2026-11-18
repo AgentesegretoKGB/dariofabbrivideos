@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { Component, HostListener, OnInit, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { LeaderRow, MinigameService } from './minigame.service';
@@ -25,11 +25,31 @@ import { LeaderRow, MinigameService } from './minigame.service';
               <tr>
                 <th scope="col" class="app-board__pos"><span class="app-mg-hidden">Posizione</span>#</th>
                 <th scope="col" class="app-board__name"><span class="app-board__long">Giocatore</span><span class="app-board__short" aria-hidden="true">Nome</span></th>
-                <th scope="col" class="app-board__num app-board__pts"><span class="app-board__long">Punti</span><span class="app-board__short" aria-hidden="true">Punti</span></th>
-                <th scope="col" class="app-board__num" title="Punti in Polymarket"><abbr title="Polymarket">PM</abbr></th>
-                <th scope="col" class="app-board__num" title="Giocate: schedine Polymarket giocate"><abbr title="Giocate">G.</abbr></th>
-                <th scope="col" class="app-board__num" title="Media punti Polymarket per giocata">Media <abbr title="giocate">G.</abbr></th>
-                <th scope="col" class="app-board__num" title="Punti in Riprendiamoci Fiume!"><abbr title="Riprendiamoci Fiume!">RF</abbr></th>
+                <th scope="col" class="app-board__num app-board__pts">
+                  <button type="button" class="app-board__tip" [class.is-open]="tip() === 'Pt'" (click)="toggleTip('Pt', $event)" [attr.aria-label]="'Pt, Punti totali'">
+                    Pt<span class="app-board__tipbox" role="tooltip">Pt – Punti totali</span>
+                  </button>
+                </th>
+                <th scope="col" class="app-board__num">
+                  <button type="button" class="app-board__tip" [class.is-open]="tip() === 'PM'" (click)="toggleTip('PM', $event)" [attr.aria-label]="'PM, Polymarket'">
+                    PM<span class="app-board__tipbox" role="tooltip">PM – Polymarket</span>
+                  </button>
+                </th>
+                <th scope="col" class="app-board__num">
+                  <button type="button" class="app-board__tip" [class.is-open]="tip() === 'G'" (click)="toggleTip('G', $event)" [attr.aria-label]="'G, Giocate'">
+                    G<span class="app-board__tipbox" role="tooltip">G – Giocate</span>
+                  </button>
+                </th>
+                <th scope="col" class="app-board__num">
+                  <button type="button" class="app-board__tip" [class.is-open]="tip() === 'MG'" (click)="toggleTip('MG', $event)" [attr.aria-label]="'MG, Media punti per giocata'">
+                    MG<span class="app-board__tipbox" role="tooltip">MG – Media punti per giocata</span>
+                  </button>
+                </th>
+                <th scope="col" class="app-board__num">
+                  <button type="button" class="app-board__tip" [class.is-open]="tip() === 'RF'" (click)="toggleTip('RF', $event)" [attr.aria-label]="'RF, Riprendiamoci Fiume!'">
+                    RF<span class="app-board__tipbox" role="tooltip">RF – Riprendiamoci Fiume!</span>
+                  </button>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -104,7 +124,7 @@ import { LeaderRow, MinigameService } from './minigame.service';
     .app-mg-note { color: var(--muted); text-align: center; }
     .app-rank { max-width: 880px; margin: var(--space-6) auto 0; }
     .app-rank__title { margin: 0 0 var(--space-4); text-align: center; font-size: 31px; line-height: 36px; }
-    .app-board { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card-bg); overflow-x: auto; box-shadow: var(--shadow-card); }
+    .app-board { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card-bg); overflow: visible; box-shadow: var(--shadow-card); }
     .app-board__table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 20px; }
     .app-board__table th, .app-board__table td { padding: var(--space-3) var(--space-3); border-top: 1px solid var(--border); text-align: left; white-space: nowrap; }
     .app-board__table thead th { border-top: 0; font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); white-space: normal; vertical-align: bottom; }
@@ -112,7 +132,13 @@ import { LeaderRow, MinigameService } from './minigame.service';
     .app-board__pos { width: 36px; font-weight: 700; color: var(--muted); padding-left: var(--space-4) !important; }
     .app-board__name { font-weight: 700; }
     .app-board__num { text-align: right !important; font-variant-numeric: tabular-nums; }
-    .app-board__table thead .app-board__num { max-width: 96px; }
+    .app-board__table .app-board__num { width: 1%; min-width: 64px; }
+    .app-board__table thead th.app-board__num { overflow: visible; }
+    .app-board__tip { position: relative; padding: 2px 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-transform: none; cursor: help; }
+    .app-board__tipbox { position: absolute; top: calc(100% + 8px); right: 0; z-index: 3; width: max-content; max-width: 200px; padding: 8px 10px; border-radius: 8px;
+      background: var(--rv-black, #141212); color: #fff; font-size: 13px; line-height: 17px; font-weight: 600; letter-spacing: 0; text-transform: none; text-align: left; white-space: normal;
+      box-shadow: 0 6px 18px rgba(0,0,0,.2); opacity: 0; visibility: hidden; transition: opacity 120ms ease; pointer-events: none; }
+    .app-board__tip:hover .app-board__tipbox, .app-board__tip:focus-visible .app-board__tipbox, .app-board__tip.is-open .app-board__tipbox { opacity: 1; visibility: visible; }
     .app-board__table td.app-board__num:last-child, .app-board__table th:last-child { padding-right: var(--space-4); }
     .app-board__pts { font-weight: 800 !important; color: var(--ink) !important; }
     .app-board__short { display: none; }
@@ -138,7 +164,8 @@ import { LeaderRow, MinigameService } from './minigame.service';
       .app-board__table { font-size: 13px; }
       .app-board__long { display: none; }
       .app-board__short { display: inline; }
-      .app-board__table thead th { font-size: 10px; letter-spacing: 0; }
+      .app-board__table thead th { font-size: 11px; letter-spacing: 0; }
+      .app-board__table .app-board__num { min-width: 0; }
     }
   `]
 })
@@ -150,6 +177,11 @@ export class MinigamesComponent implements OnInit {
   error = signal('');
 
   readonly TOP = 10;
+  /** Spiegazione aperta toccando un'intestazione (sul telefono non c'è il passaggio del mouse). */
+  tip = signal<string | null>(null);
+  toggleTip(k: string, ev: Event) { ev.stopPropagation(); this.tip.set(this.tip() === k ? null : k); }
+  @HostListener('document:click') closeTip() { this.tip.set(null); }
+
   showAll = signal(false);
   readonly shown = computed(() => this.showAll() ? this.rows() : this.rows().slice(0, this.TOP));
 
