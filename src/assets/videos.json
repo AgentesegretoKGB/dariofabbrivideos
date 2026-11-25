@@ -8334,5 +8334,35 @@
       "categoria": []
     },
     "pending": true
+  },
+  {
+    "id": 510,
+    "title": "&quot;L&#39;impero e il diluvio&quot;. Presentazione del libro alla Feltrinelli di Roma",
+    "url": "https://www.youtube.com/embed/fIScRwBRd5o",
+    "channel": "Il mondo tra le righe",
+    "date": "2026-11-25",
+    "tags": {
+      "format": [
+        "Incontro"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
+  },
+  {
+    "id": 511,
+    "title": "Quanto conta Shenzen? (con Dario Fabbri) - Il Grande Gioco",
+    "url": "https://www.youtube.com/embed/Sv7UiU1K96I",
+    "channel": "San Marino RTV",
+    "date": "2026-11-24",
+    "tags": {
+      "format": [
+        "Il Grande Gioco"
+      ],
+      "argomento": [],
+      "categoria": []
+    },
+    "pending": true
   }
 ]
