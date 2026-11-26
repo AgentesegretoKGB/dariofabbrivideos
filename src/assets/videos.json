@@ -8360,9 +8360,17 @@
       "format": [
         "Il Grande Gioco"
       ],
-      "argomento": [],
-      "categoria": []
-    },
-    "pending": true
+      "argomento": [
+        "USA",
+        "Cina",
+        "Russia",
+        "Europa",
+        "Guerra in Ucraina",
+        "Italia"
+      ],
+      "categoria": [
+        "attualità"
+      ]
+    }
   }
 ]
